@@ -1,18 +1,69 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hello World!</title>
+    <!-- <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    /> -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;400;500;700&display=swap");
+    </style>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Fortunae</title>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
-
+    <div class="container">
+      <section>
+        <header>Current Funds</header>
+        <ul>
+          <li>Checking: $2100</li>
+          <li>Saving: $8900</li>
+          <li>401K: $18000</li>
+          <li>Index Funds: $7900</li>
+        </ul>
+        <button>Add Fund [+]</button>
+        <div class="rectangle"><div class="inner-rectangle"></div></div>
+      </section>
+      <section>
+        <header>Monthly Expenses</header>
+        <ul>
+          <li>Checking: $2100</li>
+          <li>Saving: $8900</li>
+          <li>401K: $18000</li>
+          <li>Index Funds: $7900</li>
+        </ul>
+        <button>Add Fund [+]</button>
+        <div class="rectangle"><div class="inner-rectangle"></div></div>
+      </section>
+      <section>
+        <header>Debt Calculator</header>
+        <ul>
+          <li>Checking: $2100</li>
+          <li>Saving: $8900</li>
+          <li>401K: $18000</li>
+          <li>Index Funds: $7900</li>
+        </ul>
+        <button>Add Fund [+]</button>
+        <div class="rectangle"><div class="inner-rectangle"></div></div>
+      </section>
+      <section>
+        <header>Savings Calculator</header>
+        <ul>
+          <li>Checking: $2100</li>
+          <li>Saving: $8900</li>
+          <li>401K: $18000</li>
+          <li>Index Funds: $7900</li>
+        </ul>
+        <button>Add Fund [+]</button>
+        <div class="rectangle"><div class="inner-rectangle"></div></div>
+      </section>
+    </div>
     <!-- You can also require other files to run in this process -->
     <script src="./renderer.js"></script>
   </body>
