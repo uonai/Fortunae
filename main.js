@@ -1,4 +1,3 @@
-"use strict";
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
 const anime = require("animejs");
@@ -19,7 +18,7 @@ function createWindow() {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadFile("index.html");
+  mainWindow.loadFile("./client/index.html");
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
