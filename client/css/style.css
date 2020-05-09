@@ -16,7 +16,7 @@ body {
 }
 
 .container {
-  padding: 40px 80px;
+  padding: 40px 20px 20px 40px;
 }
 
 nav {
@@ -26,9 +26,26 @@ nav {
   display: none;
 }
 
+.top {
+  padding-bottom: 20px;
+  height: 220px;
+}
+
+.middle {
+  padding-bottom: 20px;
+}
 section {
-  width: 25%;
+  width: 230px;
   float: left;
+  padding: 0 20px;
+}
+section.chart {
+  width: 400px;
+}
+
+section.chart header {
+  text-align: center;
+  padding-bottom: 10px;
 }
 
 header {
@@ -81,4 +98,35 @@ form input .add-button {
 
 .alert-error {
   color: red;
+}
+
+/** chart **/
+
+.chart-outer {
+  padding: 0 55px;
+}
+.chart-inner {
+  border-radius: 125px;
+  border: 2px solid #fff;
+  height: 250px;
+  width: 250px;
+}
+
+#line {
+  width: 100%;
+  margin: 20px 0;
+  height: 250px;
+  background: #000;
+}
+path {
+  stroke: #fff;
+  stroke-width: 2;
+  fill: none;
+}
+
+/**bordered section **/
+
+.bordered {
+  border: 2px solid #fff;
+  padding: 20px;
 }
