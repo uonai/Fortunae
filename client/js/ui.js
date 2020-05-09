@@ -14,13 +14,16 @@ export default class UI {
     const list = document.querySelector("#item-list");
 
     const listItem = document.createElement("li");
-    listItem.className = item.id;
 
     listItem.innerHTML = `
-    <span>${item.title}</span>: $<span>${item.amount}</span>
-    <a="#" class="delete">X</a>
+    <button id="${item.id}" class="list-item">${item.title}: $${item.amount}</button>
     `;
     list.appendChild(listItem);
+  }
+
+  static openMenu(e) {
+    e.preventDefault();
+    console.log(e);
   }
 
   static addChartToSection() {
@@ -33,7 +36,7 @@ export default class UI {
 
   static deleteItem(el) {
     if (el.classList.contains("delete")) {
-      el.parentElement.remove();
+      el.parentElement.parentElement.parentElement.remove();
     }
   }
 
@@ -59,6 +62,26 @@ export default class UI {
 
   static hideModal() {
     const modal = document.querySelector(".form-container");
+
+    // this needs to be fixed
     modal.className += "form-container";
+  }
+
+  static showListItemMenu(e) {
+    e.preventDefault;
+    console.log(e);
+    const buttonId = `#${e}`;
+    const button = document.querySelector(buttonId);
+    const itemMenu = document.getElementById("item-menu");
+
+    if (itemMenu) {
+      itemMenu.parentNode.removeChild(itemMenu);
+    } else {
+      const itemMenu = document.createElement("span");
+      itemMenu.id = "item-menu";
+      itemMenu.innerHTML = `<button><a="#" class="edit">Edit: [/] </a></button><button><a="#" class="delete">Delete: [x]</a></button>`;
+      button.after(itemMenu);
+    }
+    return;
   }
 }

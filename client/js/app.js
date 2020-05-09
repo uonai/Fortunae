@@ -41,3 +41,20 @@ document.querySelector("#item-list").addEventListener("click", (e) => {
   Store.removeItem(e.target.parentElement.className);
   UI.deleteItem(e.target);
 });
+
+// listen for button click events
+document.addEventListener("click", (event) => {
+  const isButton = event.target.nodeName === "BUTTON";
+  if (!isButton) {
+    console.log("not button");
+    return;
+  }
+
+  if (isButton && event.target.className === "list-item") {
+    UI.showListItemMenu(event.target.id);
+    return;
+  }
+
+  console.log("is button");
+  console.dir(event.target.id);
+});

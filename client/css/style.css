@@ -22,8 +22,8 @@ body {
 nav {
   position: absolute;
   left: 0;
-  top: 250px;
-  display: none;
+  top: 300px;
+  transform: rotate(-90deg);
 }
 
 .top {
@@ -48,7 +48,8 @@ section.chart header {
   padding-bottom: 10px;
 }
 
-header {
+header,
+nav {
   font-size: 12px;
   text-transform: uppercase;
   font-weight: 600;
@@ -63,13 +64,13 @@ button {
   color: #fff;
   border: none;
   background: none;
-  margin-bottom: 15px;
 }
 
 .rectangle {
   width: 80%;
   height: 10px;
   background: #fff;
+  margin-top: 10px;
 }
 
 .inner-rectangle {
@@ -154,4 +155,14 @@ path {
 
 .form-container .add-item {
   border-width: 0px;
+}
+
+/** items **/
+.list-item {
+  width: 100%;
+  text-align: left;
+}
+.item-menu {
+  width: 100%;
+  float: left;
 }
