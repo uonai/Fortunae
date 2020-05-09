@@ -18,6 +18,7 @@
     <title>Fortunae</title>
   </head>
   <body>
+    <script type="module" src="./js/app.js"></script>
     <script
       type="text/javascript"
       src="https://mbostock.github.com/d3/d3.js?2.5.0"
@@ -29,6 +30,7 @@
         <div class="section-container">
           <header>Current Funds</header>
           <ul id="item-list"></ul>
+          <button id="add-item">Add Fund [+]</button>
         </div>
       </section>
       <section>
@@ -75,9 +77,11 @@
           <li>Index Funds: $7900</li>
         </ul>
       </section>
-      <section style="display: none;">
-        <div class="form-container hidden">
+      <section>
+        <div class="form-container">
+          <button id="hide-modal"><img src="./images/close.svg" width="12px"></button>
           <form id="item-form">
+            <header>Current Funds</header>
             <div class="form-group">
               <label for="title"></label>
               <input type="text" id="title" class="form-control" />
@@ -85,7 +89,8 @@
             <div class="form-group">
               <input type="text" id="amount" class="form-control" />
             </div>
-            <input type="submit" class="add-item" value="Add Item [+]" />
+            <input type="submit" class="add-item" value="Save [+]" />
+            <input type="submit" class="add-item" value="Cancel [+]" />
           </form>
         </div>
       </section>
@@ -122,7 +127,7 @@
   </footer>
   </div>
     <!-- You can also require other files to run in this process -->
-    <script src="./js/app.js"></script>
+
     <script>
       var svg = d3
         .select("#line")

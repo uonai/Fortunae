@@ -130,3 +130,28 @@ path {
   border: 2px solid #fff;
   padding: 20px;
 }
+
+/** modal **/
+.form-container {
+  display: none;
+  position: absolute;
+  left: 300px;
+  right: 300px;
+  background: #000;
+  border: 2px solid #fff;
+  padding: 20px;
+  top: 200px;
+}
+
+.show-modal {
+  display: block !important;
+}
+
+#hide-modal {
+  float: right;
+  line-height: 10px;
+}
+
+.form-container .add-item {
+  border-width: 0px;
+}
