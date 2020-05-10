@@ -18,12 +18,7 @@
     <title>Fortunae</title>
   </head>
   <body>
-    <div id ="form-container"></div>
-    <script type="module" src="./js/app.js"></script>
-    <script
-      type="text/javascript"
-      src="https://mbostock.github.com/d3/d3.js?2.5.0"
-    ></script>
+    <div id ="form-container"><form id="item-form"></form></div>
     <nav>Menu</nav>
     <div class="application-nav" style="-webkit-app-region: drag;"><img src="./images/close.svg" width="12px"></div>
     <div class="container">
@@ -84,7 +79,11 @@
   </footer>
   </div>
     <!-- You can also require other files to run in this process -->
-
+    <script type="module" src="./js/app.js"></script>
+    <script
+      type="text/javascript"
+      src="https://mbostock.github.com/d3/d3.js?2.5.0"
+    ></script>
     <script>
       var svg = d3
         .select("#line")

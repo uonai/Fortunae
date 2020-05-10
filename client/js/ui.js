@@ -17,6 +17,7 @@ export default class UI {
 
     listItem.innerHTML = `
     <button id="${item.id}" class="list-item">${item.title}: $${item.amount}</button>
+    <span id="item-menu-${item.id}" class="hidden"><button class="edit">Edit: [/]</button><button class="delete">Delete: [x]</button></span>
     `;
     list.appendChild(listItem);
   }
@@ -34,11 +35,12 @@ export default class UI {
     section.appendChild(sectionAddChart);
   }
 
-  static deleteItem(el) {
-    if (el.classList.contains("delete")) {
-      console.log(el.parentElement.parentElement.parentElement);
-      el.parentElement.parentElement.remove();
+  static deleteItem(e) {
+    if (e.classList.contains("delete")) {
+      console.log(e.parentElement.parentElement);
+      e.parentElement.parentElement.remove();
     }
+    Store.removeItem(e.parentElement.parentElement.className);
   }
 
   static clearFields() {
@@ -49,23 +51,17 @@ export default class UI {
   static showAlert(message, className) {
     const div = document.createElement("div");
     div.className = `alert alert-${className}`;
-    div.appendChild(document.createTextNode(message));
-    const container = document.querySelector(".form-container");
+    const container = document.querySelector(".form");
     const form = document.querySelector("#item-form");
     container.insertBefore(div, form);
     setTimeout(() => document.querySelector(".alert").remove(), 2000);
   }
 
   static showModal(e) {
-    console.log(e.target);
-    console.log("show modal ran");
-    //const modal = document.querySelector(".form-container");
-    // modal.className += " show-modal";
     const div = document.createElement("div");
     div.className = "form";
     div.innerHTML = `
     <button class="close-form"><img src="./images/close.svg" width="12px"></button>
-    <form id="item-form">
       <header>${e.target.dataset.title}</header>
       <input type="hidden" id="category" value=${e.target.id}> 
       <div class="form-group">
@@ -76,25 +72,21 @@ export default class UI {
         <input type="text" id="amount" class="form-control" />
       </div>
       <input type="submit" class="add-item" value="Save [+]" />
-      <input type="submit" class="add-item" value="Cancel [-]" />
-    </form>`;
-    const formContainer = document.getElementById("form-container");
+      <input type="submit" class="add-item" value="Cancel [-]" />`;
+    const formContainer = document.getElementById("item-form");
     formContainer.appendChild(div);
-  }
-
-  static hideModal() {
-    const modal = document.querySelector(".form-container");
-    console.log("hide modal ran");
-    // this needs to be fixed
-    modal.className += "form-container";
   }
 
   static showListItemMenu(e) {
     e.preventDefault;
     console.log(e);
-    // const buttonId = `#${e}`;
-    // const button = document.querySelector(buttonId);
-    // const itemMenu = document.getElementById("item-menu");
+    const itemMenu = document.getElementById(`item-menu-${e}`);
+    if (itemMenu.classList.length) {
+      itemMenu.classList = "";
+      console.log(itemMenu);
+    } else {
+      itemMenu.classList = "hidden";
+    }
 
     // if (itemMenu) {
     //   itemMenu.parentNode.removeChild(itemMenu);

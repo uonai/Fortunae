@@ -51,6 +51,10 @@ section.chart {
   width: 400px;
 }
 
+.hidden {
+  display: none;
+}
+
 section.chart header {
   text-align: center;
   padding-bottom: 10px;
