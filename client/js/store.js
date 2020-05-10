@@ -8,15 +8,20 @@ export default class Store {
       const fs = require("fs");
 
       fs.readdir(__dirname + database, (err, files) => {
+        let filesDirectory = [];
         files.forEach((file) => {
-          console.log(file);
-          if (file == "1589137176035.json") {
-            let rawData = fs.readFileSync(__dirname + database + file);
-            let items = JSON.parse(rawData);
-            console.log(items);
-            localStorage.setItem("items", JSON.stringify(items));
-          }
+          filesDirectory.push(file);
+          console.log(filesDirectory);
         });
+
+        filesDirectory.sort(function (a, b) {
+          // this sort isn't working as expected
+          return new Date(Date.now(b)) - new Date(Date.now(a));
+        });
+        const recentFile = filesDirectory[0];
+        let rawData = fs.readFileSync(__dirname + database + recentFile);
+        let items = JSON.parse(rawData);
+        localStorage.setItem("items", JSON.stringify(items));
       });
 
       items = [];
@@ -47,7 +52,7 @@ export default class Store {
     const fs = require("fs");
 
     // save main
-    const fileName = Date.now() + ".json";
+    const fileName = Date.now();
     let items = JSON.parse(localStorage.getItem("items"));
     const json = JSON.stringify(items);
     console.log(json);
