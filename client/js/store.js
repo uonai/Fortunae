@@ -1,5 +1,3 @@
-// Store Class: Handles Storage
-
 export default class Store {
   static getItems() {
     let items;
@@ -8,7 +6,6 @@ export default class Store {
     } else {
       items = JSON.parse(localStorage.getItem("items"));
     }
-    console.log(items);
     return items;
   }
 
@@ -20,8 +17,6 @@ export default class Store {
 
   static removeItem(id) {
     const items = Store.getItems();
-    console.log("remove item ran");
-    console.log(id);
     items.forEach((item, index) => {
       if (item.id === id) {
         items.splice(index, 1);

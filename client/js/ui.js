@@ -8,9 +8,7 @@ export default class UI {
   }
 
   static addItemToList(item) {
-    console.log(item);
     const list = document.querySelector(`#item-list-${item.category}`);
-    console.log(list);
 
     const listItem = document.createElement("li");
     listItem.className = item.id;
@@ -20,11 +18,6 @@ export default class UI {
     <span id="item-menu-${item.id}" class="hidden"><button class="edit">Edit: [/]</button><button class="delete">Delete: [x]</button></span>
     `;
     list.appendChild(listItem);
-  }
-
-  static openMenu(e) {
-    e.preventDefault();
-    console.log(e);
   }
 
   static addChartToSection() {
@@ -37,7 +30,6 @@ export default class UI {
 
   static deleteItem(e) {
     if (e.classList.contains("delete")) {
-      console.log(e.parentElement.parentElement);
       e.parentElement.parentElement.remove();
     }
     Store.removeItem(e.parentElement.parentElement.className);
@@ -48,7 +40,7 @@ export default class UI {
     document.querySelector("#amount").value = "";
   }
 
-  static showAlert(message, className) {
+  static showAlert(className) {
     const div = document.createElement("div");
     div.className = `alert alert-${className}`;
     const container = document.querySelector(".form");
@@ -78,24 +70,12 @@ export default class UI {
   }
 
   static showListItemMenu(e) {
-    e.preventDefault;
-    console.log(e);
     const itemMenu = document.getElementById(`item-menu-${e}`);
     if (itemMenu.classList.length) {
       itemMenu.classList = "";
-      console.log(itemMenu);
     } else {
       itemMenu.classList = "hidden";
     }
-
-    // if (itemMenu) {
-    //   itemMenu.parentNode.removeChild(itemMenu);
-    // } else {
-    //   const itemMenu = document.createElement("span");
-    //   itemMenu.id = "item-menu";
-    //   itemMenu.innerHTML = `<button><a="#" class="edit">Edit: [/] </a></button><button><a="#" class="delete">Delete: [x]</a></button>`;
-    //   button.after(itemMenu);
-    // }
     return;
   }
 }

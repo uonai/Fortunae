@@ -12,8 +12,6 @@ document.querySelector("#item-form").addEventListener("submit", (e) => {
   const title = document.querySelector("#title").value;
   const amount = document.querySelector("#amount").value;
   const category = document.querySelector("#category").value;
-  console.log(e);
-  console.log(title);
   // Validation
 
   if (title === "" || amount === "") {
@@ -30,14 +28,12 @@ document.querySelector("#item-form").addEventListener("submit", (e) => {
 
 document.querySelectorAll(".add-item").forEach((item) => {
   item.addEventListener("click", (e) => {
-    console.log(e.target);
     UI.showModal(e);
   });
 });
 
 document.querySelectorAll(".delete").forEach((item) => {
   item.addEventListener("click", (e) => {
-    console.log(e.target.parentElement.parentElement.parentElement);
     Store.removeItem(
       e.target.parentElement.parentElement.parentElement.className
     );
@@ -48,8 +44,9 @@ document.querySelectorAll(".delete").forEach((item) => {
 // listen for button click events
 document.addEventListener("click", (e) => {
   const isButton = e.target.nodeName === "BUTTON";
+
+  //this should be a switch statement
   if (!isButton) {
-    console.log("not button");
     return;
   }
 
