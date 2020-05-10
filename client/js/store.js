@@ -1,11 +1,10 @@
 const fs = require("fs");
+const { getCurrentWindow, globalShortcut } = require("electron").remote;
 
 export default class Store {
   static getItems() {
     let items;
     if (localStorage.getItem("items") === null) {
-      const database = "/db/";
-
       fs.readdir(__dirname + database, (err, files) => {
         let filesDirectory = [];
         files.forEach((file) => {
@@ -17,6 +16,9 @@ export default class Store {
           // this sort isn't working as expected
           return new Date(Date.now(b)) - new Date(Date.now(a));
         });
+
+        localStorage.setItem("history", JSON.stringify(filesDirectory));
+
         const recentFile = filesDirectory[0];
         let rawData = fs.readFileSync(__dirname + database + recentFile);
         let items = JSON.parse(rawData);
@@ -28,6 +30,19 @@ export default class Store {
       items = JSON.parse(localStorage.getItem("items"));
     }
     return items;
+  }
+
+  static restoreItems(timestamp) {
+    const database = "/db/";
+    let rawData = fs.readFileSync(__dirname + database + timestamp);
+    // console.log(rawData);
+    let items = JSON.parse(rawData);
+    // console.log(items);
+    localStorage.removeItem("items");
+    localStorage.setItem("items", JSON.stringify(items));
+
+    // this is an intense way to reload the window, need to find a different solution
+    getCurrentWindow().reload();
   }
 
   static addItem(item) {
@@ -43,7 +58,6 @@ export default class Store {
         items.splice(index, 1);
       }
     });
-
     localStorage.setItem("items", JSON.stringify(items));
   }
 

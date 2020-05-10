@@ -26,53 +26,59 @@ export default class HistoryChart {
       .append("path")
       .attr("d", line(points))
       .attr("id", "myPath");
-    var randomI = Math.round(Math.random() * myPath.getTotalLength());
+    // var randomI = Math.round(Math.random() * myPath.getTotalLength());
 
-    var historyPoint = myPath.getPointAtLength(randomI);
+    // var historyPoint = myPath.getPointAtLength(randomI);
 
-    console.log("x=" + historyPoint.x + "  y=" + historyPoint.y);
+    // console.log("x=" + historyPoint.x + "  y=" + historyPoint.y);
+    const history = [
+      { x: 20, y: 10, info: "1589150449155" },
+      { x: 100, y: 10, info: "1589151363043" },
+    ];
 
-    var tooltip = d3
-      .select("body")
-      .append("div")
-      .style("position", "absolute")
-      .style("z-index", "10")
-      .style("visibility", "hidden")
-      .text("2020-05-10T04:41:47+00:00");
+    history.forEach((item) => {
+      var tooltip = d3
+        .select("body")
+        .append("div")
+        .style("position", "absolute")
+        .style("z-index", "10")
+        .style("visibility", "hidden")
+        .text(item.info);
 
-    d3.select("#g-1")
-      .append("svg:circle")
-      .attr("cx", 20)
-      .attr("cy", historyPoint.y)
-      .attr("r", 5)
-      .style("fill", "white")
-      .on("mouseover", function () {
-        return tooltip.style("visibility", "visible");
-      })
-      .on("mousemove", function () {
-        return tooltip
-          .style("top", event.pageY + 20 + "px")
-          .style("left", event.pageX + 10 + "px");
-      })
-      .on("mouseout", function () {
-        return tooltip.style("visibility", "hidden");
-      })
-      .on("click", function () {
-        Store.saveJSON();
-      });
+      d3.select("#g-1")
+        .append("svg:circle")
+        .attr("cx", item.x)
+        .attr("cy", item.y)
+        .attr("r", 5)
+        .style("fill", "white")
+        .on("mouseover", function () {
+          return tooltip.style("visibility", "visible");
+        })
+        .on("mousemove", function () {
+          return tooltip
+            .style("top", event.pageY + 20 + "px")
+            .style("left", event.pageX + 10 + "px");
+        })
+        .on("mouseout", function () {
+          return tooltip.style("visibility", "hidden");
+        })
+        .on("click", function () {
+          Store.restoreItems(item.info);
+        });
 
-    d3.select("#g-1")
-      .append("svg:circle")
-      .attr("cx", 50)
-      .attr("cy", historyPoint.y)
-      .attr("r", 5)
-      .style("fill", "white");
+      // d3.select("#g-1")
+      //   .append("svg:circle")
+      //   .attr("cx", 50)
+      //   .attr("cy", historyPoint.y)
+      //   .attr("r", 5)
+      //   .style("fill", "white");
 
-    d3.select("#g-1")
-      .append("svg:circle")
-      .attr("cx", 100)
-      .attr("cy", historyPoint.y)
-      .attr("r", 5)
-      .style("fill", "white");
+      // d3.select("#g-1")
+      //   .append("svg:circle")
+      //   .attr("cx", 100)
+      //   .attr("cy", historyPoint.y)
+      //   .attr("r", 5)
+      //   .style("fill", "white");
+    });
   }
 }
