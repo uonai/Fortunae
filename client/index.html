@@ -73,71 +73,17 @@
     </div>
   <footer>
     <header>History</header>
-    <svg version="1.1" id="line" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1200px" height="5px" xml:space="preserve">
+     <svg version="1.1" id="line" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1200px" height="5px" xml:space="preserve">
       <path class="path" fill="#ffffff" stroke-width="3" stroke="#FFFFFF" d="M0 0 l1120 0"/>
     </svg>
   </footer>
   </div>
     <!-- You can also require other files to run in this process -->
-    <script type="module" src="./js/app.js"></script>
     <script
-      type="text/javascript"
-      src="https://mbostock.github.com/d3/d3.js?2.5.0"
-    ></script>
-    <script>
-      var svg = d3
-        .select("#line")
-        .append("svg:svg")
-        .attr("width", "100%")
-        .attr("height", "100%");
-      var data = d3.range(50).map(function () {
-        return Math.random() * 10;
-      });
-      var x = d3.scale.linear().domain([0, 10]).range([0, 700]);
-      var y = d3.scale.linear().domain([0, 10]).range([10, 290]);
-      var line = document.querySelector("#line");
-      var line = d3.svg
-        .line()
-        .interpolate("cardinal")
-        .x(function (d, i) {
-          return x(i);
-        })
-        .y(function (d) {
-          return y(d);
-        });
-
-      var path = svg.append("svg:path").attr("d", line(data));
-      var circle = svg
-        .append("circle")
-        .attr("cx", 100)
-        .attr("cy", 350)
-        .attr("r", 6)
-        .attr("fill", "white");
-
-      var pathEl = path.node();
-      var pathLength = pathEl.getTotalLength();
-      var BBox = pathEl.getBBox();
-      var scale = pathLength / BBox.width;
-      var offsetLeft = document.getElementById("line").offsetLeft;
-      var randomizeButton = d3.select("button");
-
-      svg.on("mousemove", function () {
-        var x = d3.event.pageX - offsetLeft;
-        var beginning = x,
-          end = pathLength,
-          target;
-        while (true) {
-          target = Math.floor((beginning + end) / 2);
-          pos = pathEl.getPointAtLength(target);
-          if ((target === end || target === beginning) && pos.x !== x) {
-            break;
-          }
-          if (pos.x > x) end = target;
-          else if (pos.x < x) beginning = target;
-          else break; //position found
-        }
-        circle.attr("opacity", 1).attr("cx", x).attr("cy", pos.y);
-      });
-    </script>
+    type="text/javascript"
+    src="https://d3js.org/d3.v4.min.js"
+  ></script>
+    <script type="module" src="./js/app.js"></script>
+    <script src="./js/chart.js"></script>
   </body>
 </html>
