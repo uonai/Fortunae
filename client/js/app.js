@@ -2,20 +2,24 @@ import UI from "./ui.js";
 import Store from "./store.js";
 import Helper from "./helper.js";
 import Item from "./item.js";
+import Recommendation from "./recommendation.js";
+import Menu from "./menu.js";
 
-// Event: Display Items
-document.addEventListener("DOMContentLoaded", UI.displayItems);
+document.addEventListener(
+  "DOMContentLoaded",
+  UI.displayItems(),
+  Recommendation.displayRecommendations()
+);
 
-// Event: Add an Item
 document.querySelector("#item-form").addEventListener("submit", (e) => {
   e.preventDefault();
   const title = document.querySelector("#title").value;
   const amount = document.querySelector("#amount").value;
   const category = document.querySelector("#category").value;
-  // Validation
+  const alertText = "Please fill out all form fields.";
 
   if (title === "" || amount === "") {
-    UI.showAlert("Please fill out all form fields.", "error");
+    UI.showAlert(alertText);
   } else {
     const id = Helper.generateUUIDv4();
     const item = new Item(id, category, title, amount);
@@ -41,7 +45,6 @@ document.querySelectorAll(".delete").forEach((item) => {
   });
 });
 
-// listen for button click events
 document.addEventListener("click", (e) => {
   const isButton = e.target.nodeName === "BUTTON";
 
@@ -59,5 +62,9 @@ document.addEventListener("click", (e) => {
     UI.deleteItem(e.target);
   }
 
+  if (isButton && e.target.className === "menu") {
+    console.log("menu button");
+    Menu.showModal(e);
+  }
   return;
 });
