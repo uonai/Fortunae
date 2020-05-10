@@ -1,6 +1,5 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, Menu } = require("electron");
 const path = require("path");
-const anime = require("animejs");
 
 require("electron-reload")(__dirname, {
   electron: path.join(__dirname, "node_modules", ".bin", "electron"),
@@ -15,6 +14,7 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
+    frame: false,
   });
 
   // and load the index.html of the app.
@@ -22,6 +22,7 @@ function createWindow() {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+  mainWindow.setMenuBarVisibility(false);
 }
 
 // This method will be called when Electron has finished

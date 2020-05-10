@@ -16,7 +16,7 @@ body {
 }
 
 .container {
-  padding: 40px 20px 20px 40px;
+  padding: 60px 20px 20px 40px;
 }
 
 nav {
@@ -24,6 +24,14 @@ nav {
   left: 0;
   top: 300px;
   transform: rotate(-90deg);
+}
+
+.application-nav {
+  position: absolute;
+  padding: 20px;
+  width: 100%;
+  text-align: right;
+  height: 50px;
 }
 
 .top {

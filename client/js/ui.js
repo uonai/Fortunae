@@ -14,6 +14,7 @@ export default class UI {
     const list = document.querySelector("#item-list");
 
     const listItem = document.createElement("li");
+    listItem.className = item.id;
 
     listItem.innerHTML = `
     <button id="${item.id}" class="list-item">${item.title}: $${item.amount}</button>
@@ -36,7 +37,8 @@ export default class UI {
 
   static deleteItem(el) {
     if (el.classList.contains("delete")) {
-      el.parentElement.parentElement.parentElement.remove();
+      console.log(el.parentElement.parentElement.parentElement);
+      el.parentElement.parentElement.remove();
     }
   }
 
@@ -70,18 +72,18 @@ export default class UI {
   static showListItemMenu(e) {
     e.preventDefault;
     console.log(e);
-    const buttonId = `#${e}`;
-    const button = document.querySelector(buttonId);
-    const itemMenu = document.getElementById("item-menu");
+    // const buttonId = `#${e}`;
+    // const button = document.querySelector(buttonId);
+    // const itemMenu = document.getElementById("item-menu");
 
-    if (itemMenu) {
-      itemMenu.parentNode.removeChild(itemMenu);
-    } else {
-      const itemMenu = document.createElement("span");
-      itemMenu.id = "item-menu";
-      itemMenu.innerHTML = `<button><a="#" class="edit">Edit: [/] </a></button><button><a="#" class="delete">Delete: [x]</a></button>`;
-      button.after(itemMenu);
-    }
+    // if (itemMenu) {
+    //   itemMenu.parentNode.removeChild(itemMenu);
+    // } else {
+    //   const itemMenu = document.createElement("span");
+    //   itemMenu.id = "item-menu";
+    //   itemMenu.innerHTML = `<button><a="#" class="edit">Edit: [/] </a></button><button><a="#" class="delete">Delete: [x]</a></button>`;
+    //   button.after(itemMenu);
+    // }
     return;
   }
 }

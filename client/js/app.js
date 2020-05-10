@@ -38,7 +38,10 @@ document.querySelector("#hide-modal").addEventListener("click", (e) => {
 });
 
 document.querySelector("#item-list").addEventListener("click", (e) => {
-  Store.removeItem(e.target.parentElement.className);
+  console.log(e.target.parentElement.parentElement.parentElement);
+  Store.removeItem(
+    e.target.parentElement.parentElement.parentElement.className
+  );
   UI.deleteItem(e.target);
 });
 
@@ -51,6 +54,7 @@ document.addEventListener("click", (event) => {
   }
 
   if (isButton && event.target.className === "list-item") {
+    console.log(event.target.id);
     UI.showListItemMenu(event.target.id);
     return;
   }

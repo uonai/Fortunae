@@ -21,6 +21,7 @@ export default class Store {
   static removeItem(id) {
     const items = Store.getItems();
     console.log("remove item ran");
+    console.log(id);
     items.forEach((item, index) => {
       if (item.id === id) {
         items.splice(index, 1);
