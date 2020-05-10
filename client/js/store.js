@@ -4,6 +4,21 @@ export default class Store {
   static getItems() {
     let items;
     if (localStorage.getItem("items") === null) {
+      const database = "/db/";
+      const fs = require("fs");
+
+      fs.readdir(__dirname + database, (err, files) => {
+        files.forEach((file) => {
+          console.log(file);
+          if (file == "1589137176035.json") {
+            let rawData = fs.readFileSync(__dirname + database + file);
+            let items = JSON.parse(rawData);
+            console.log(items);
+            localStorage.setItem("items", JSON.stringify(items));
+          }
+        });
+      });
+
       items = [];
     } else {
       items = JSON.parse(localStorage.getItem("items"));
@@ -32,9 +47,11 @@ export default class Store {
     const fs = require("fs");
 
     // save main
-    const fileName = Helper.generateUUIDv4();
-    const items = JSON.stringify(localStorage.getItem("items"));
-    fs.writeFile(__dirname + "/db/" + fileName, items, (err) => {
+    const fileName = Date.now() + ".json";
+    let items = JSON.parse(localStorage.getItem("items"));
+    const json = JSON.stringify(items);
+    console.log(json);
+    fs.writeFile(__dirname + "/db/" + fileName, json, "utf8", (err) => {
       if (err) {
         console.log(err);
         return;
@@ -56,7 +73,7 @@ export default class Store {
         console.log(err);
         return;
       }
-      alert("file saved");
+      alert("history saved");
     });
   }
 }
