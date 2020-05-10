@@ -38,20 +38,21 @@ export default class UI {
     document.querySelector("#amount").value = "";
   }
 
-  static showAlert(className) {
-    const div = document.createElement("div");
-    div.className = `alert alert-${className}`;
-    // const container = document.querySelector(".form");
-    // const form = document.querySelector("#item-form");
-    // container.insertBefore(div, form);
-    setTimeout(() => document.querySelector(".alert").remove(), 2000);
-  }
+  // static showAlert(className) {
+  //   const div = document.createElement("div");
+  //   div.className = `alert alert-${className}`;
+  //   alert("fill out form");
+  //   // const container = document.querySelector(".form");
+  //   // const form = document.querySelector("#item-form");
+  //   // container.insertBefore(div, form);
+  //   setTimeout(() => document.querySelector(".alert").remove(), 2000);
+  // }
 
   static showModal(e) {
     const div = document.createElement("div");
     div.className = "form";
     div.innerHTML = `
-    <button class="close-form"><img src="./images/close.svg" width="12px"></button>
+    <button class="close-form"></button>
       <header>${e.target.dataset.title}</header>
       <input type="hidden" id="category" value=${e.target.id}> 
       <div class="form-group">
@@ -63,9 +64,16 @@ export default class UI {
         <input type="text" id="amount" class="form-control" />
       </div>
       <input type="submit" class="add-item" value="Save [+]" />
-      <input type="submit" class="add-item" value="Cancel [-]" />`;
+      <button type="cancel" class="cancel-item">Cancel [-]<button/>`;
     const formContainer = document.getElementById("item-form");
     formContainer.appendChild(div);
+  }
+
+  // THIS SHOULD NOT WORK LIKE THIS IN PRODUCTION.
+  // innerHTML is a very heavy way to do this
+  static hideModal(e) {
+    const formContainer = document.getElementById("item-form");
+    formContainer.innerHTML = "";
   }
 
   static toggleItemMenu(e) {

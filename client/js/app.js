@@ -19,7 +19,7 @@ document.querySelector("#item-form").addEventListener("submit", (e) => {
   const alertText = "Please fill out all form fields.";
 
   if (title === "" || amount === "") {
-    UI.showAlert(alertText);
+    // UI.showAlert(alertText);
   } else {
     const id = Helper.generateUUIDv4();
     const item = new Item(id, category, title, amount);
@@ -66,9 +66,20 @@ document.addEventListener("click", (e) => {
     UI.deleteItem(e.target);
   }
 
+  if (isButton && e.target.className === "close-form") {
+    console.log("close form");
+    UI.hideModal();
+  }
+
+  if (isButton && e.target.className == "cancel-item") {
+    console.log("cancel");
+    UI.hideModal(e);
+  }
+
   if (isButton && e.target.className === "menu") {
     console.log("menu button");
     Menu.showModal(e);
   }
+
   return;
 });

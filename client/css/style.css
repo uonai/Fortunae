@@ -134,7 +134,8 @@ form {
   background: #000;
 }
 
-form input {
+form input,
+form .cancel-item {
   border: none;
   border: 2px solid #fff;
   margin-top: 10px;
@@ -201,8 +202,14 @@ path {
 
 .form .close-form {
   float: right;
+  background-image: url("../images/close.svg");
+  background-position: right top;
+  background-repeat: no-repeat;
+  width: 15px;
+  height: 15px;
 }
-.form .add-item {
+.form .add-item,
+.form .cancel-item {
   border-width: 0px;
 }
 

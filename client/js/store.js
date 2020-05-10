@@ -1,11 +1,10 @@
-import Helper from "./helper.js";
+const fs = require("fs");
 
 export default class Store {
   static getItems() {
     let items;
     if (localStorage.getItem("items") === null) {
       const database = "/db/";
-      const fs = require("fs");
 
       fs.readdir(__dirname + database, (err, files) => {
         let filesDirectory = [];
@@ -49,13 +48,9 @@ export default class Store {
   }
 
   static saveJSON() {
-    const fs = require("fs");
-
-    // save main
     const fileName = Date.now();
     let items = JSON.parse(localStorage.getItem("items"));
     const json = JSON.stringify(items);
-    console.log(json);
     fs.writeFile(__dirname + "/db/" + fileName, json, "utf8", (err) => {
       if (err) {
         console.log(err);
@@ -64,21 +59,6 @@ export default class Store {
       alert("file saved");
     });
 
-    this.saveHistory(fileName);
-  }
-
-  static saveHistory(guid) {
-    const fs = require("fs");
-    // history
-    const fileName = "filehistory";
-    const content = guid.toString();
-    console.log(content);
-    fs.writeFile(__dirname + "/db/history/" + fileName, content, (err) => {
-      if (err) {
-        console.log(err);
-        return;
-      }
-      alert("history saved");
-    });
+    // this.saveHistory(fileName);
   }
 }
