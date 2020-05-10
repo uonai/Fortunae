@@ -4,11 +4,15 @@ import Helper from "./helper.js";
 import Item from "./item.js";
 import Recommendation from "./recommendation.js";
 import Menu from "./menu.js";
+import HistoryChart from "./historyChart.js";
+//import Chart from "./chart.js";
 
 document.addEventListener(
   "DOMContentLoaded",
   UI.displayItems(),
-  Recommendation.displayRecommendations()
+  Recommendation.displayRecommendations(),
+  HistoryChart.loadHistoryChart()
+  //Chart.loadChart()
 );
 
 document.querySelector("#item-form").addEventListener("submit", (e) => {
@@ -16,7 +20,7 @@ document.querySelector("#item-form").addEventListener("submit", (e) => {
   const title = document.querySelector("#title").value;
   const amount = document.querySelector("#amount").value;
   const category = document.querySelector("#category").value;
-  const alertText = "Please fill out all form fields.";
+  // const alertText = "Please fill out all form fields.";
 
   if (title === "" || amount === "") {
     // UI.showAlert(alertText);

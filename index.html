@@ -19,8 +19,8 @@
   </head>
   <body>
     <div id="form-container"><form id="item-form"></form></div>
-    <nav><button class="menu">Menu</button></nav>
-    <div id="save" class="save" value="Files">Save</div>
+    <button class="menu">Menu</button>
+    <button id="save" class="save" value="Files">Save</button>
     <div class="application-nav" style="-webkit-app-region: drag;">
       <img src="./client/images/close.svg" width="12px" />
     </div>
@@ -43,7 +43,7 @@
           <header>Monthly Expenses</header>
           <ul id="item-list-2"></ul>
           <button id="2" class="add-item" data-title="Monthly Expenses">
-            Add Fund [+]
+            Add Expense [+]
           </button>
           <div class="rectangle">
             <div class="inner-rectangle"></div>
@@ -57,7 +57,7 @@
           <header>Debt Calculator</header>
           <ul id="item-list-3"></ul>
           <button id="3" class="add-item" data-title="Debt Calculator">
-            Add Fund [+]
+            Add Debt [+]
           </button>
           <div class="rectangle">
             <div class="inner-rectangle"></div>
@@ -69,7 +69,7 @@
           <header>Savings Calculator</header>
           <ul id="item-list-4"></ul>
           <button id="4" class="add-item" data-title="Savings Calculator">
-            Add Fund [+]
+            Add Savings [+]
           </button>
           <div class="rectangle">
             <div class="inner-rectangle"></div>
@@ -114,17 +114,17 @@
     </svg> -->
         <svg width="920" height="50">
           <g id="g-1"></g>
-          <g id="g-2"></g>
+          <!-- <g id="g-2"></g> -->
         </svg>
         <div class="date">2020-05-10T04:41:47+00:00 | Merge [=]</div>
       </footer>
     </div>
-    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+    <script type="text/javascript" src="./client/library/d3.js"></script>
     <script>
       require("./renderer.js");
     </script>
     <script type="module" src="./client/js/app.js"></script>
     <script src="./client/js/chart.js"></script>
-    <script src="./client/js/historyChart.js"></script>
+    <!-- <script type="module" src="./client/js/historyChart.js"></script> -->
   </body>
 </html>

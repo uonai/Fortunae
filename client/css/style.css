@@ -19,7 +19,7 @@ body {
   padding: 60px 20px 20px 40px;
 }
 
-nav button {
+.menu {
   position: absolute;
   left: 10px;
   top: 320px;
@@ -68,7 +68,7 @@ section.chart header {
 }
 
 header,
-nav button,
+.menu,
 .save {
   font-size: 12px;
   text-transform: uppercase;

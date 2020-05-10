@@ -71,7 +71,7 @@ export default class UI {
 
   // THIS SHOULD NOT WORK LIKE THIS IN PRODUCTION.
   // innerHTML is a very heavy way to do this
-  static hideModal(e) {
+  static hideModal() {
     const formContainer = document.getElementById("item-form");
     formContainer.innerHTML = "";
   }
