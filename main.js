@@ -1,5 +1,7 @@
 const { app, BrowserWindow, Menu } = require("electron");
 const path = require("path");
+const { ipcMain } = require("electron");
+const url = require("url");
 
 require("electron-reload")(__dirname, {
   electron: path.join(__dirname, "node_modules", ".bin", "electron"),
@@ -13,12 +15,19 @@ function createWindow() {
     resizable: false,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
+      nodeIntegration: true,
     },
     frame: false,
   });
 
   // and load the index.html of the app.
-  mainWindow.loadFile("./client/index.html");
+  mainWindow.loadURL(
+    url.format({
+      pathname: path.join(__dirname, "index.html"),
+      protocol: "file",
+      slashes: true,
+    })
+  );
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
@@ -41,6 +50,10 @@ app.on("activate", function () {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (BrowserWindow.getAllWindows().length === 0) createWindow();
+});
+
+ipcMain.on("request-mainprocess-action", (event, arg) => {
+  console.log(arg);
 });
 
 // In this file you can include the rest of your app's specific main process

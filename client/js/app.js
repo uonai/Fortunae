@@ -45,6 +45,10 @@ document.querySelectorAll(".delete").forEach((item) => {
   });
 });
 
+document.getElementById("save").onclick = () => {
+  Store.saveJSON();
+};
+
 document.addEventListener("click", (e) => {
   const isButton = e.target.nodeName === "BUTTON";
 

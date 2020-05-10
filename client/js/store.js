@@ -1,3 +1,5 @@
+import Helper from "./helper.js";
+
 export default class Store {
   static getItems() {
     let items;
@@ -24,5 +26,19 @@ export default class Store {
     });
 
     localStorage.setItem("items", JSON.stringify(items));
+  }
+
+  static saveJSON() {
+    const fs = require("fs");
+
+    const fileName = Helper.generateUUIDv4();
+    const items = JSON.stringify(localStorage.getItem("items"));
+    fs.writeFile(__dirname + "/db/" + fileName, items, (err) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      alert("file saved");
+    });
   }
 }
