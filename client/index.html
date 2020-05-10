@@ -18,6 +18,7 @@
     <title>Fortunae</title>
   </head>
   <body>
+    <div id ="form-container"></div>
     <script type="module" src="./js/app.js"></script>
     <script
       type="text/javascript"
@@ -30,62 +31,33 @@
       <section>
         <div class="section-container">
           <header>Current Funds</header>
-          <ul id="item-list"></ul>
-          <button id="add-item">Add Fund [+]</button>
+          <ul id="item-list-1"></ul>
+          <button id="1" class="add-item" data-title="Current Funds">Add Fund [+]</button>
         </div>
       </section>
       <section>
         <header>Monthly Expenses</header>
-        <ul>
-          <li>Rent: $2100</li>
-          <li>Electric: $200</li>
-        </ul>
-        <button>Add Fund [+]</button>
+        <ul id="item-list-2"></ul>
+        <button id="2" class="add-item" data-title="Monthly Expenses">Add Fund [+]</button>
         <div class="rectangle"><div class="inner-rectangle"></div></div>
       </section>
       <section>
         <header>Debt Calculator</header>
-        <ul>
-          <li>Car Loan: $16000</li>
-          <li>Student Loans: $11000</li>
-        </ul>
-        <button>Add Fund [+]</button>
+        <ul id="item-list-3"></ul>
+        <button id="3" class="add-item" data-title="Debt Calculator">Add Fund [+]</button>
         <div class="rectangle"><div class="inner-rectangle"></div></div>
       </section>
       <section>
         <header>Savings Calculator</header>
-        <ul>
-          <li>Moving: $10000</li>
-        </ul>
-        <button>Add Fund [+]</button>
+        <ul id="item-list-4"></ul>
+        <button id="4" class="add-item" data-title="Savings Calculator">Add Fund [+]</button>
         <div class="rectangle"><div class="inner-rectangle"></div>
       </section>
     </div>
     <div class="middle">
       <section>
         <header>Recommendations</header>
-        <ul>
-          <li>Save: $5000 / month</li>
-          <li>Spend: $300 / month</li>
-          <li>Invest: $1200 / month</li>
-        </ul>
-      </section>
-      <section>
-        <div class="form-container">
-          <button id="hide-modal"><img src="./images/close.svg" width="12px"></button>
-          <form id="item-form">
-            <header>Current Funds</header>
-            <div class="form-group">
-              <label for="title"></label>
-              <input type="text" id="title" class="form-control" />
-            </div>
-            <div class="form-group">
-              <input type="text" id="amount" class="form-control" />
-            </div>
-            <input type="submit" class="add-item" value="Save [+]" />
-            <input type="submit" class="add-item" value="Cancel [-]" />
-          </form>
-        </div>
+        <ul id="recommendation-list"></ul>
       </section>
       <section class="chart">
         <div class="chart-outer">
@@ -97,15 +69,11 @@
       </section>
       <section class="bordered">
         <header>Needs</header>
-        <ul>
-          <li>Running Shoes: $120</li>
-          <li>Backpack: $150</li>
-        </ul>
-        <header>Wants</header>
-        <ul>
-          <li>C# Essentials: $50</li>
-          <li>1TB Hard Drive: $120</li>
-        </ul>
+        <ul id="item-list-5"></ul>
+        <button id="5" class="add-item" data-title="Needs">Add Needs [+]</button>
+        <header style="margin-top:20px;">Wants</header>
+        <ul id="item-list-6"></ul>
+        <button id="6" class="add-item" data-title="Wants">Add Wants [+]</button>
       </section>
     </div>
   <footer>

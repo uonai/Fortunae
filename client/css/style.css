@@ -141,8 +141,7 @@ path {
 }
 
 /** modal **/
-.form-container {
-  display: none;
+.form {
   position: absolute;
   left: 300px;
   right: 300px;
@@ -152,16 +151,10 @@ path {
   top: 200px;
 }
 
-.show-modal {
-  display: block !important;
-}
-
-#hide-modal {
+.form .close-form {
   float: right;
-  line-height: 10px;
 }
-
-.form-container .add-item {
+.form .add-item {
   border-width: 0px;
 }
 

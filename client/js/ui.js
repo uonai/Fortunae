@@ -3,15 +3,14 @@ import Store from "./store.js";
 export default class UI {
   static displayItems() {
     const items = Store.getItems();
-    console.log(items);
     UI.addChartToSection();
-    if (items.length) {
-      items.forEach((item) => UI.addItemToList(item));
-    }
+    items.forEach((item) => UI.addItemToList(item));
   }
 
   static addItemToList(item) {
-    const list = document.querySelector("#item-list");
+    console.log(item);
+    const list = document.querySelector(`#item-list-${item.category}`);
+    console.log(list);
 
     const listItem = document.createElement("li");
     listItem.className = item.id;
@@ -57,14 +56,35 @@ export default class UI {
     setTimeout(() => document.querySelector(".alert").remove(), 2000);
   }
 
-  static showModal() {
-    const modal = document.querySelector(".form-container");
-    modal.className += " show-modal";
+  static showModal(e) {
+    console.log(e.target);
+    console.log("show modal ran");
+    //const modal = document.querySelector(".form-container");
+    // modal.className += " show-modal";
+    const div = document.createElement("div");
+    div.className = "form";
+    div.innerHTML = `
+    <button class="close-form"><img src="./images/close.svg" width="12px"></button>
+    <form id="item-form">
+      <header>${e.target.dataset.title}</header>
+      <input type="hidden" id="category" value=${e.target.id}> 
+      <div class="form-group">
+        <label for="title"></label>
+        <input type="text" id="title" class="form-control" />
+      </div>
+      <div class="form-group">
+        <input type="text" id="amount" class="form-control" />
+      </div>
+      <input type="submit" class="add-item" value="Save [+]" />
+      <input type="submit" class="add-item" value="Cancel [-]" />
+    </form>`;
+    const formContainer = document.getElementById("form-container");
+    formContainer.appendChild(div);
   }
 
   static hideModal() {
     const modal = document.querySelector(".form-container");
-
+    console.log("hide modal ran");
     // this needs to be fixed
     modal.className += "form-container";
   }

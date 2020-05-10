@@ -7,34 +7,31 @@ import Item from "./item.js";
 document.addEventListener("DOMContentLoaded", UI.displayItems);
 
 // Event: Add an Item
-document.querySelector("#item-form").addEventListener("submit", (e) => {
+document.querySelector("#form-container").addEventListener("submit", (e) => {
   e.preventDefault();
   const title = document.querySelector("#title").value;
   const amount = document.querySelector("#amount").value;
+  const category = document.querySelector("#category").value;
 
   // Validation
 
   if (title === "" || amount === "") {
     UI.showAlert("Please fill out all form fields.", "error");
   } else {
-    // Instantiate item
     const id = Helper.generateUUIDv4();
-    console.log(id);
-    const item = new Item(id, title, amount);
+    const item = new Item(id, category, title, amount);
+
     UI.addItemToList(item);
     Store.addItem(item);
     UI.clearFields();
-    console.log(item);
   }
 });
 
-document.querySelector("#add-item").addEventListener("click", (e) => {
-  console.log("additem ran");
-  UI.showModal();
-});
-
-document.querySelector("#hide-modal").addEventListener("click", (e) => {
-  UI.hideModal();
+document.querySelectorAll(".add-item").forEach((item) => {
+  item.addEventListener("click", (e) => {
+    console.log(e.target);
+    UI.showModal(e);
+  });
 });
 
 document.querySelector("#item-list").addEventListener("click", (e) => {
