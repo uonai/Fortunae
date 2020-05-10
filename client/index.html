@@ -19,30 +19,29 @@
   </head>
   <body>
     <div id ="form-container"><form id="item-form"></form></div>
-    <nav>Menu</nav>
+    <nav><button class="menu">Menu</button></nav>
+    <div class="save">Save</div>
     <div class="application-nav" style="-webkit-app-region: drag;"><img src="./images/close.svg" width="12px"></div>
     <div class="container">
       <div class="top">
-      <section>
-        <div class="section-container">
+      <section id="section-1" data-section="1">
           <header>Current Funds</header>
           <ul id="item-list-1"></ul>
           <button id="1" class="add-item" data-title="Current Funds">Add Fund [+]</button>
-        </div>
       </section>
-      <section>
+      <section id="section-2" data-section="2">
         <header>Monthly Expenses</header>
         <ul id="item-list-2"></ul>
         <button id="2" class="add-item" data-title="Monthly Expenses">Add Fund [+]</button>
         <div class="rectangle"><div class="inner-rectangle"></div></div>
       </section>
-      <section>
+      <section id="section-3" data-section="3">
         <header>Debt Calculator</header>
         <ul id="item-list-3"></ul>
         <button id="3" class="add-item" data-title="Debt Calculator">Add Fund [+]</button>
         <div class="rectangle"><div class="inner-rectangle"></div></div>
       </section>
-      <section>
+      <section id="section-4" data-section="4">
         <header>Savings Calculator</header>
         <ul id="item-list-4"></ul>
         <button id="4" class="add-item" data-title="Savings Calculator">Add Fund [+]</button>
@@ -59,6 +58,7 @@
           <header>Trend Data</header>
           <div class="chart-inner">
             <div id="line"></div>
+            <div id="line-2"></div>
           </div> ​
         </div>
       </section>
@@ -73,12 +73,12 @@
     </div>
   <footer>
     <header>History</header>
-     <svg version="1.1" id="line" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1200px" height="5px" xml:space="preserve">
+    <svg version="1.1" id="line" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1200px" height="5px" xml:space="preserve">
       <path class="path" fill="#ffffff" stroke-width="3" stroke="#FFFFFF" d="M0 0 l1120 0"/>
     </svg>
+    <div class="date">2020-05-10T04:41:47+00:00 | Merge [=]</div>
   </footer>
   </div>
-    <!-- You can also require other files to run in this process -->
     <script
     type="text/javascript"
     src="https://d3js.org/d3.v4.min.js"

@@ -19,11 +19,18 @@ body {
   padding: 60px 20px 20px 40px;
 }
 
-nav {
+nav button {
   position: absolute;
-  left: 0;
-  top: 300px;
+  left: 10px;
+  top: 320px;
   transform: rotate(-90deg);
+}
+
+.save {
+  transform: rotate(90deg);
+  position: absolute;
+  right: 10px;
+  top: 320px;
 }
 
 .application-nav {
@@ -61,7 +68,8 @@ section.chart header {
 }
 
 header,
-nav {
+nav button,
+.save {
   font-size: 12px;
   text-transform: uppercase;
   font-weight: 600;
@@ -103,6 +111,13 @@ form input {
   margin-top: 10px;
   background: none;
   padding: 5px;
+  float: left;
+}
+
+label {
+  width: 80px !important;
+  float: left;
+  line-height: 50px;
 }
 
 form input .add-button {
@@ -170,4 +185,12 @@ path {
 .item-menu {
   width: 100%;
   float: left;
+}
+
+/** footer **/
+.date {
+  z-index: 1000;
+  bottom: 20px;
+  right: 20px;
+  position: absolute;
 }
