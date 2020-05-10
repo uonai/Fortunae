@@ -16,7 +16,7 @@ export default class Recommendation {
     const list = document.querySelector("#recommendation-list");
 
     const listItem = document.createElement("li");
-    const save = (salary / 12) * 0.3;
+    const save = Math.round((salary / 12) * 0.3);
 
     listItem.innerHTML = `
         <button class="list-item">Save: $${save} / m</button>
@@ -27,7 +27,7 @@ export default class Recommendation {
   static addSpendRecommendationToList(salary) {
     const list = document.querySelector(`#recommendation-list`);
     const listItem = document.createElement("li");
-    const spend = (salary / 12) * 0.6;
+    const spend = Math.round((salary / 12) * 0.6);
 
     listItem.innerHTML = `
                <button class="list-item">Spend: $${spend} / m</button>
@@ -38,7 +38,7 @@ export default class Recommendation {
   static addInvestRecommendationToList(salary) {
     const list = document.querySelector(`#recommendation-list`);
     const listItem = document.createElement("li");
-    const invest = (salary / 12) * 0.1;
+    const invest = Math.round((salary / 12) * 0.1);
 
     listItem.innerHTML = `
             <button class="list-item">Invest: $${invest} / m</button>

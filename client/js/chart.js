@@ -74,7 +74,7 @@ var circle = svg
   .append("circle")
   .attr("cx", 100)
   .attr("cy", 350)
-  .attr("r", 6)
+  .attr("r", 5)
   .attr("fill", "white");
 
 var pathEl = path.node();

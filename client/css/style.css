@@ -96,7 +96,36 @@ button {
 .inner-rectangle {
   width: 20%;
   height: 10px;
-  background: #e9e9e9;
+  background: #999;
+  float: left;
+}
+
+.inner-rectangle-2 {
+  width: 20%;
+  height: 10px;
+  background: #666;
+  float: left;
+}
+
+.inner-rectangle-3 {
+  width: 20%;
+  height: 10px;
+  background: #adadad;
+  float: left;
+}
+
+.inner-rectangle-4 {
+  width: 20%;
+  height: 10px;
+  background: #d4d4d4;
+  float: left;
+}
+
+.inner-rectangle-5 {
+  width: 20%;
+  height: 10px;
+  background: #666;
+  float: left;
 }
 
 /* Form */
@@ -187,10 +216,16 @@ path {
   float: left;
 }
 
+/** history **/
+path {
+  fill: none;
+  stroke: #fff;
+}
+
 /** footer **/
 .date {
   z-index: 1000;
   bottom: 20px;
-  right: 20px;
+  right: 38px;
   position: absolute;
 }
