@@ -62,8 +62,8 @@ export default class HistoryChart {
         })
         .on("mousemove", function () {
           return tooltip
-            .style("top", event.pageY + 0 + "px")
-            .style("left", event.pageX + 0 + "px");
+            .style("top", event.pageY + 10 + "px")
+            .style("left", event.pageX + 20 + "px");
         })
         .on("mouseout", function () {
           return tooltip.style("visibility", "hidden");

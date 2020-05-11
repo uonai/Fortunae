@@ -32,19 +32,29 @@ export default class Store {
       localStorage.setItem("history", JSON.stringify(filesDirectory));
 
       const recentFile = filesDirectory[0];
+      console.log(recentFile);
       let rawData = fs.readFileSync(__dirname + database + recentFile);
+      console.log(__dirname);
+      console.log(database);
+      console.log(recentFile);
       let items = JSON.parse(rawData);
-      localStorage.setItem("items", JSON.stringify(items));
+      console.log(items);
+      if (localStorage.getItem("items") === null) {
+        localStorage.setItem("items", JSON.stringify(items));
+      }
       HistoryChart.loadHistoryChart();
     });
   }
 
   static restoreItems(timestamp) {
+    console.log(timestamp);
     let rawData = fs.readFileSync(__dirname + database + timestamp);
-    // console.log(rawData);
+
+    console.log(rawData);
     let items = JSON.parse(rawData);
-    // console.log(items);
+    console.log(items);
     localStorage.removeItem("items");
+    // this.getItems();
     localStorage.setItem("items", JSON.stringify(items));
 
     // this is an intense way to reload the window, need to find a different solution
@@ -71,14 +81,17 @@ export default class Store {
     const fileName = Date.now();
     let items = JSON.parse(localStorage.getItem("items"));
     const json = JSON.stringify(items);
+    console.log(json);
     fs.writeFile(__dirname + "/db/" + fileName, json, "utf8", (err) => {
       if (err) {
         console.log(err);
         return;
       }
-      alert("file saved");
+      console.log("item saved");
+      getCurrentWindow().reload();
     });
 
     // this.saveHistory(fileName);
+    // this.getCurrentWindow().reload();
   }
 }

@@ -1,6 +1,6 @@
 export default class Chart {
   static loadChart() {
-    var data = [
+    const data = [
       {
         name: "Checking",
         values: [
@@ -24,7 +24,7 @@ export default class Chart {
         ],
       },
       {
-        name: "Investment",
+        name: "401k",
         values: [
           { date: "2000", amount: "150" },
           { date: "2001", amount: "75" },
@@ -36,24 +36,24 @@ export default class Chart {
       },
     ];
 
-    var width = 250;
-    var height = 250;
-    var margin = 0;
-    var duration = 300;
+    const width = 250;
+    const height = 250;
+    const margin = 0;
+    const duration = 300;
 
-    var lineOpacity = "0.9";
-    var lineOpacityHover = "1";
-    var otherLinesOpacityHover = "0.05";
-    var lineStroke = "3px";
-    var lineStrokeHover = "3px";
+    const lineOpacity = "0.9";
+    const lineOpacityHover = "1";
+    const otherLinesOpacityHover = "0.05";
+    const lineStroke = "3px";
+    const lineStrokeHover = "3px";
 
-    var circleOpacity = "0.9";
-    var circleOpacityOnLineHover = "1";
-    var circleRadius = 5;
-    var circleRadiusHover = 6;
+    const circleOpacity = "0.9";
+    const circleOpacityOnLineHover = "1";
+    const circleRadius = 5;
+    const circleRadiusHover = 6;
 
     /* Format Data */
-    var parseDate = d3.timeParse("%Y");
+    const parseDate = d3.timeParse("%Y");
     data.forEach(function (d) {
       d.values.forEach(function (d) {
         d.date = parseDate(d.date);
@@ -62,20 +62,20 @@ export default class Chart {
     });
 
     /* Scale */
-    var xScale = d3
+    const xScale = d3
       .scaleTime()
       .domain(d3.extent(data[0].values, (d) => d.date))
       .range([0, width - margin]);
 
-    var yScale = d3
+    const yScale = d3
       .scaleLinear()
       .domain([0, d3.max(data[0].values, (d) => d.amount)])
       .range([height - margin, 0]);
 
-    var color = d3.scaleOrdinal(d3.schemeGreys);
+    const color = d3.scaleOrdinal(d3.schemeGreys);
 
     /* Add SVG */
-    var svg = d3
+    const svg = d3
       .select("#line")
       .append("svg")
       .attr("width", width + margin + "px")
@@ -84,7 +84,7 @@ export default class Chart {
       .attr("transform", `translate(${margin}, ${margin})`);
 
     /* Add line into SVG */
-    var line = d3
+    const line = d3
       .line()
       .curve(d3.curveCardinal)
       .x((d) => xScale(d.date))

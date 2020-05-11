@@ -8,6 +8,10 @@
   line-height: 1.8;
 }
 
+*:focus {
+  outline: none;
+}
+
 body {
   background: #000;
   color: #fff;

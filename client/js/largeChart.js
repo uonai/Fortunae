@@ -175,8 +175,8 @@ lines
     d3.select(this).transition().duration(duration).attr("r", circleRadius);
   });
 
-svg
-  .append("g")
-  .attr("class", "x axis")
-  .attr("transform", `translate(0, ${height - margin})`)
-  .call(xAxis);
+// svg
+//   .append("g")
+//   .attr("class", "x axis")
+//   .attr("transform", `translate(0, ${height - margin})`)
+//   .call(xAxis);

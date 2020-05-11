@@ -14,7 +14,7 @@ export default class UI {
     listItem.className = item.id;
     listItem.innerHTML = `
     <button id="${item.id}" class="list-item">${item.title}: $${item.amount}</button>
-    <span id="item-menu-${item.id}" class="hidden"><button class="edit">Edit [/] </button><button class="delete">Delete [x]</button></span>
+    <span id="item-menu-${item.id}" class="hidden"><button class="edit">Edit [/] </button>&nbsp;<button class="delete">Delete [x]</button></span>
     `;
     list.appendChild(listItem);
   }
@@ -86,7 +86,7 @@ export default class UI {
       width: 900,
       height: 600,
       // modal: true,
-      resizable: false,
+      resizable: true,
       webPreferences: {
         preload: path.join(__dirname, "preload.js"),
         nodeIntegration: true,
