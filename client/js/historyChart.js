@@ -19,16 +19,17 @@ export default class HistoryChart {
     ];
 
     const historyData = JSON.parse(localStorage.getItem("history"));
-    //if (historyData) {
+    console.log(historyData);
+    // if (historyData) {
     let n = 15;
     const history = historyData.map(function (item) {
-      x = n + 10;
-      y = 10;
-      const d = Date(item);
-      const infoISO = d;
+      console.log(item);
+      const x = n + 10;
+      const y = 10;
+      const _item = item;
+      const infoISO = Date(item);
       n += 150;
-      // info = item.info;
-      return new HistoryItem(x, y, item, infoISO);
+      return new HistoryItem(x, y, _item, infoISO);
     });
 
     console.log(history);
@@ -39,6 +40,7 @@ export default class HistoryChart {
       .append("path")
       .attr("d", line(points))
       .attr("id", "myPath");
+
     history.forEach((item) => {
       var tooltip = d3
         .select("body")
@@ -46,7 +48,7 @@ export default class HistoryChart {
         .style("position", "absolute")
         .style("z-index", "1000")
         .style("visibility", "hidden")
-        .style("background-color", "#000")
+        .style("background-color", "black")
         .text(item.infoISO);
 
       d3.select("#g-1")

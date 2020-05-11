@@ -5,13 +5,13 @@ import Item from "./item.js";
 import Recommendation from "./recommendation.js";
 import Menu from "./menu.js";
 import HistoryChart from "./historyChart.js";
-//import Chart from "./chart.js";
+import Chart from "./chart.js";
 
 document.addEventListener(
   "DOMContentLoaded",
   UI.displayItems(),
-  Recommendation.displayRecommendations()
-  //Chart.loadChart()
+  Recommendation.displayRecommendations(),
+  Chart.loadChart()
 );
 
 document.querySelector("#item-form").addEventListener("submit", (e) => {
