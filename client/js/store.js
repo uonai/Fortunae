@@ -1,39 +1,45 @@
+import HistoryChart from "./historyChart.js";
+
 const fs = require("fs");
 const { getCurrentWindow, globalShortcut } = require("electron").remote;
-
+const database = "/db/";
 export default class Store {
   static getItems() {
     let items;
     if (localStorage.getItem("items") === null) {
-      fs.readdir(__dirname + database, (err, files) => {
-        let filesDirectory = [];
-        files.forEach((file) => {
-          filesDirectory.push(file);
-          console.log(filesDirectory);
-        });
-
-        filesDirectory.sort(function (a, b) {
-          // this sort isn't working as expected
-          return new Date(Date.now(b)) - new Date(Date.now(a));
-        });
-
-        localStorage.setItem("history", JSON.stringify(filesDirectory));
-
-        const recentFile = filesDirectory[0];
-        let rawData = fs.readFileSync(__dirname + database + recentFile);
-        let items = JSON.parse(rawData);
-        localStorage.setItem("items", JSON.stringify(items));
-      });
-
+      this.loadDatabase();
       items = [];
     } else {
       items = JSON.parse(localStorage.getItem("items"));
+      this.loadDatabase();
     }
     return items;
   }
 
+  static loadDatabase() {
+    fs.readdir(__dirname + database, (err, files) => {
+      let filesDirectory = [];
+      files.forEach((file) => {
+        filesDirectory.push(file);
+        console.log(filesDirectory);
+      });
+
+      filesDirectory.sort(function (a, b) {
+        // this sort isn't working as expected
+        return new Date(Date.now(b)) - new Date(Date.now(a));
+      });
+
+      localStorage.setItem("history", JSON.stringify(filesDirectory));
+
+      const recentFile = filesDirectory[0];
+      let rawData = fs.readFileSync(__dirname + database + recentFile);
+      let items = JSON.parse(rawData);
+      localStorage.setItem("items", JSON.stringify(items));
+      HistoryChart.loadHistoryChart();
+    });
+  }
+
   static restoreItems(timestamp) {
-    const database = "/db/";
     let rawData = fs.readFileSync(__dirname + database + timestamp);
     // console.log(rawData);
     let items = JSON.parse(rawData);

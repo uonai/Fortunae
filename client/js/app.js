@@ -10,8 +10,7 @@ import HistoryChart from "./historyChart.js";
 document.addEventListener(
   "DOMContentLoaded",
   UI.displayItems(),
-  Recommendation.displayRecommendations(),
-  HistoryChart.loadHistoryChart()
+  Recommendation.displayRecommendations()
   //Chart.loadChart()
 );
 

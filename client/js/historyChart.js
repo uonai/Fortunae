@@ -19,18 +19,18 @@ export default class HistoryChart {
     ];
 
     const historyData = JSON.parse(localStorage.getItem("history"));
-
-    //syntax is off here, need to es6
+    //if (historyData) {
     let n = 15;
     const history = historyData.map(function (item) {
       x = n + 10;
       y = 10;
       const info = item;
-      console.log(item);
       n += 150;
       // info = item.info;
       return new HistoryItem(x, y, item);
     });
+    // }
+    //syntax is off here, need to es6
 
     d3.select("#g-1")
       .append("path")
