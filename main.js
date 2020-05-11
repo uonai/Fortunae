@@ -14,7 +14,7 @@ function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 1000,
-    height: 700,
+    height: 690,
     resizable: false,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
@@ -40,7 +40,7 @@ function createWindow() {
     width: 900,
     height: 600,
     parent: mainWindow,
-    modal: false,
+    // modal: true,
     show: true,
     resizable: false,
     webPreferences: {

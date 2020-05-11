@@ -5,6 +5,7 @@ export default class UI {
     const items = Store.getItems();
     items.forEach((item) => UI.addItemToList(item));
     this.addChartToSection();
+    console.log("ran");
   }
 
   static addItemToList(item) {

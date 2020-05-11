@@ -24,7 +24,7 @@ var data = [
   {
     name: "Investment",
     values: [
-      { date: "2000", amount: "150" },
+      { date: "2000", amount: "200" },
       { date: "2001", amount: "75" },
       { date: "2002", amount: "44" },
       { date: "2003", amount: "120" },
@@ -174,9 +174,6 @@ lines
   .on("mouseout", function (d) {
     d3.select(this).transition().duration(duration).attr("r", circleRadius);
   });
-
-/* Add Axis into SVG */
-var xAxis = d3.axisBottom(xScale).ticks(5);
 
 svg
   .append("g")

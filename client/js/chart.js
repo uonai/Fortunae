@@ -178,14 +178,5 @@ export default class Chart {
       .on("mouseout", function (d) {
         d3.select(this).transition().duration(duration).attr("r", circleRadius);
       });
-
-    /* Add Axis into SVG */
-    var xAxis = d3.axisBottom(xScale).ticks(5);
-
-    svg
-      .append("g")
-      .attr("class", "x axis")
-      .attr("transform", `translate(0, ${height - margin})`)
-      .call(xAxis);
   }
 }

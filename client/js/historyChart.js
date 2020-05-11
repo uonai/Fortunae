@@ -14,8 +14,8 @@ export default class HistoryChart {
       .curve(d3.curveCardinal.tension(0));
 
     const points = [
-      { x: 0, y: 10 },
-      { x: 1000, y: 10 },
+      { x: 0, y: 20 },
+      { x: 1000, y: 20 },
     ];
 
     const historyData = JSON.parse(localStorage.getItem("history"));
@@ -25,7 +25,7 @@ export default class HistoryChart {
     const history = historyData.map(function (item) {
       console.log(item);
       const x = n + 10;
-      const y = 10;
+      const y = 20;
       const _item = item;
       const infoISO = new Date(_item * 1000);
       n += 100;
@@ -62,8 +62,8 @@ export default class HistoryChart {
         })
         .on("mousemove", function () {
           return tooltip
-            .style("top", event.pageY + 20 + "px")
-            .style("left", event.pageX + 10 + "px");
+            .style("top", event.pageY + 0 + "px")
+            .style("left", event.pageX + 0 + "px");
         })
         .on("mouseout", function () {
           return tooltip.style("visibility", "hidden");
