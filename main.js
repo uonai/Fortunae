@@ -7,9 +7,12 @@ require("electron-reload")(__dirname, {
   electron: path.join(__dirname, "node_modules", ".bin", "electron"),
 });
 
+let mainWindow;
+let childWindow;
+
 function createWindow() {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 1000,
     height: 700,
     resizable: false,
@@ -32,6 +35,30 @@ function createWindow() {
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
   mainWindow.setMenuBarVisibility(false);
+
+  childWindow = new BrowserWindow({
+    width: 900,
+    height: 600,
+    parent: mainWindow,
+    modal: false,
+    show: true,
+    resizable: false,
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+      nodeIntegration: true,
+    },
+    frame: false,
+  });
+
+  childWindow.loadURL(`file://${__dirname}/index-child.html`);
+
+  // open all dev tools
+  var windows = BrowserWindow.getAllWindows();
+  windows[1].openDevTools();
+
+  // childWindow.once("ready-to-show", () => {
+  //   childWindow.show();
+  // });
 }
 
 // This method will be called when Electron has finished

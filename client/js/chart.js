@@ -4,34 +4,34 @@ export default class Chart {
       {
         name: "Checking",
         values: [
-          { date: "2000", price: "100" },
-          { date: "2001", price: "110" },
-          { date: "2002", price: "145" },
-          { date: "2003", price: "241" },
-          { date: "2004", price: "101" },
-          { date: "2005", price: "90" },
+          { date: "2000", amount: "100" },
+          { date: "2001", amount: "110" },
+          { date: "2002", amount: "145" },
+          { date: "2003", amount: "241" },
+          { date: "2004", amount: "101" },
+          { date: "2005", amount: "90" },
         ],
       },
       {
         name: "Savings",
         values: [
-          { date: "2000", price: "200" },
-          { date: "2001", price: "120" },
-          { date: "2002", price: "33" },
-          { date: "2003", price: "21" },
-          { date: "2004", price: "51" },
-          { date: "2005", price: "190" },
+          { date: "2000", amount: "200" },
+          { date: "2001", amount: "120" },
+          { date: "2002", amount: "33" },
+          { date: "2003", amount: "21" },
+          { date: "2004", amount: "51" },
+          { date: "2005", amount: "190" },
         ],
       },
       {
         name: "Investment",
         values: [
-          { date: "2000", price: "300" },
-          { date: "2001", price: "75" },
-          { date: "2002", price: "44" },
-          { date: "2003", price: "120" },
-          { date: "2004", price: "70" },
-          { date: "2005", price: "180" },
+          { date: "2000", amount: "150" },
+          { date: "2001", amount: "75" },
+          { date: "2002", amount: "44" },
+          { date: "2003", amount: "120" },
+          { date: "2004", amount: "70" },
+          { date: "2005", amount: "180" },
         ],
       },
     ];
@@ -39,13 +39,13 @@ export default class Chart {
     var width = 250;
     var height = 250;
     var margin = 0;
-    var duration = 250;
+    var duration = 300;
 
     var lineOpacity = "0.9";
     var lineOpacityHover = "1";
-    var otherLinesOpacityHover = "0.1";
-    var lineStroke = "3.5px";
-    var lineStrokeHover = "3.5px";
+    var otherLinesOpacityHover = "0.05";
+    var lineStroke = "3px";
+    var lineStrokeHover = "3px";
 
     var circleOpacity = "0.9";
     var circleOpacityOnLineHover = "1";
@@ -57,7 +57,7 @@ export default class Chart {
     data.forEach(function (d) {
       d.values.forEach(function (d) {
         d.date = parseDate(d.date);
-        d.price = +d.price;
+        d.amount = +d.amount;
       });
     });
 
@@ -69,7 +69,7 @@ export default class Chart {
 
     var yScale = d3
       .scaleLinear()
-      .domain([0, d3.max(data[0].values, (d) => d.price)])
+      .domain([0, d3.max(data[0].values, (d) => d.amount)])
       .range([height - margin, 0]);
 
     var color = d3.scaleOrdinal(d3.schemeGreys);
@@ -88,7 +88,7 @@ export default class Chart {
       .line()
       .curve(d3.curveCardinal)
       .x((d) => xScale(d.date))
-      .y((d) => yScale(d.price));
+      .y((d) => yScale(d.amount));
 
     let lines = svg.append("g").attr("class", "lines");
 
@@ -150,9 +150,9 @@ export default class Chart {
           .append("text")
           .attr("class", "text")
           .style("fill", "#ffffff")
-          .text(`${d.price}`)
+          .text(`${d.amount}`)
           .attr("x", (d) => xScale(d.date) + 5)
-          .attr("y", (d) => yScale(d.price) - 10);
+          .attr("y", (d) => yScale(d.amount) - 10);
       })
       .on("mouseout", function (d) {
         d3.select(this)
@@ -164,7 +164,7 @@ export default class Chart {
       })
       .append("circle")
       .attr("cx", (d) => xScale(d.date))
-      .attr("cy", (d) => yScale(d.price))
+      .attr("cy", (d) => yScale(d.amount))
       .attr("r", circleRadius)
       .style("opacity", circleOpacity)
       .style("fill", "white")

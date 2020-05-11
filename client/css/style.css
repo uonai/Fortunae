@@ -36,9 +36,16 @@ body {
 .application-nav {
   position: absolute;
   padding: 20px;
-  width: 100%;
+  width: 90%;
   text-align: right;
   height: 50px;
+}
+
+#close-window {
+  position: absolute;
+  z-index: 1000;
+  top: 20px;
+  right: 20px;
 }
 
 .top {
@@ -170,11 +177,6 @@ form input .add-button {
   width: 250px;
 }
 
-#line {
-  width: 100%;
-  height: 250px;
-  background: #000;
-}
 path {
   stroke: #fff;
   stroke-width: 2;

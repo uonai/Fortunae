@@ -27,9 +27,9 @@ export default class HistoryChart {
       const x = n + 10;
       const y = 10;
       const _item = item;
-      const infoISO = Date(item);
-      n += 150;
-      return new HistoryItem(x, y, _item, infoISO);
+      const infoISO = new Date(_item * 1000);
+      n += 100;
+      return new HistoryItem(x, y, item, infoISO);
     });
 
     console.log(history);
