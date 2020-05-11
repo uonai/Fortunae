@@ -8,7 +8,6 @@ require("electron-reload")(__dirname, {
 });
 
 let mainWindow;
-let childWindow;
 
 function createWindow() {
   // Create the browser window.
@@ -35,26 +34,6 @@ function createWindow() {
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
   mainWindow.setMenuBarVisibility(false);
-
-  childWindow = new BrowserWindow({
-    width: 900,
-    height: 600,
-    parent: mainWindow,
-    // modal: true,
-    show: true,
-    resizable: false,
-    webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
-      nodeIntegration: true,
-    },
-    frame: false,
-  });
-
-  childWindow.loadURL(`file://${__dirname}/index-child.html`);
-
-  // open all dev tools
-  var windows = BrowserWindow.getAllWindows();
-  windows[1].openDevTools();
 
   // childWindow.once("ready-to-show", () => {
   //   childWindow.show();

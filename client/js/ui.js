@@ -77,6 +77,28 @@ export default class UI {
     formContainer.innerHTML = "";
   }
 
+  static openChild() {
+    const { remote } = require("electron");
+    const path = require("path");
+
+    let win = new remote.BrowserWindow({
+      parent: remote.getCurrentWindow(),
+      width: 900,
+      height: 600,
+      // modal: true,
+      resizable: false,
+      webPreferences: {
+        preload: path.join(__dirname, "preload.js"),
+        nodeIntegration: true,
+      },
+      frame: false,
+    });
+
+    const theUrl = "file://" + __dirname + "/index-child.html";
+
+    win.loadURL(theUrl);
+  }
+
   static toggleItemMenu(e) {
     const itemMenu = document.getElementById(`item-menu-${e}`);
     if (itemMenu.classList.length) {

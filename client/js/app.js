@@ -84,5 +84,10 @@ document.addEventListener("click", (e) => {
     Menu.showModal(e);
   }
 
+  if (isButton && e.target.id === "child-window") {
+    console.log("child window");
+    UI.openChild();
+  }
+
   return;
 });

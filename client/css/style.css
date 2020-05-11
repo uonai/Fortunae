@@ -69,14 +69,16 @@ section.chart {
   display: none;
 }
 
-section.chart header {
+section.chart header,
+.header {
   text-align: center;
   padding-bottom: 10px;
 }
 
 header,
 .menu,
-.save {
+.save,
+.header {
   font-size: 12px;
   text-transform: uppercase;
   font-weight: 600;
