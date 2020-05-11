@@ -24,11 +24,14 @@ export default class HistoryChart {
     const history = historyData.map(function (item) {
       x = n + 10;
       y = 10;
-      const info = item;
+      const d = Date(item);
+      const infoISO = d;
       n += 150;
       // info = item.info;
-      return new HistoryItem(x, y, item);
+      return new HistoryItem(x, y, item, infoISO);
     });
+
+    console.log(history);
     // }
     //syntax is off here, need to es6
 
@@ -36,15 +39,15 @@ export default class HistoryChart {
       .append("path")
       .attr("d", line(points))
       .attr("id", "myPath");
-
     history.forEach((item) => {
       var tooltip = d3
         .select("body")
         .append("div")
         .style("position", "absolute")
-        .style("z-index", "10")
+        .style("z-index", "1000")
         .style("visibility", "hidden")
-        .text(item.info);
+        .style("background-color", "#000")
+        .text(item.infoISO);
 
       d3.select("#g-1")
         .append("svg:circle")
