@@ -9,6 +9,8 @@ export default class UI {
   }
 
   static addItemToList(item) {
+    console.log(item);
+    console.log("add item");
     const list = document.querySelector(`#item-list-${item.category}`);
     const listItem = document.createElement("li");
     listItem.className = item.id;
@@ -35,46 +37,37 @@ export default class UI {
   }
 
   static clearFields() {
-    document.querySelector("#title").value = "";
-    document.querySelector("#amount").value = "";
+    document.querySelector("#form-title").value = "";
+    document.querySelector("#form-amount").value = "";
   }
 
-  // static showAlert(className) {
-  //   const div = document.createElement("div");
-  //   div.className = `alert alert-${className}`;
-  //   alert("fill out form");
-  //   // const container = document.querySelector(".form");
-  //   // const form = document.querySelector("#item-form");
-  //   // container.insertBefore(div, form);
-  //   setTimeout(() => document.querySelector(".alert").remove(), 2000);
-  // }
+  static showAlert(alertText) {
+    const div = document.createElement("div");
+    div.className = `alert`;
+    div.innerHTML = `${alertText}`;
+    const form = document.querySelector("#form-header");
+    form.before(div);
+    setTimeout(() => document.querySelector(".alert").remove(), 2000);
+  }
 
   static showModal(e) {
-    const div = document.createElement("div");
-    div.className = "form";
-    div.innerHTML = `
-    <button class="close-form"></button>
-      <header>${e.target.dataset.title}</header>
-      <input type="hidden" id="category" value=${e.target.id}> 
-      <div class="form-group">
-        <label for="title">Title: </label>
-        <input type="text" id="title" class="form-control" />
-      </div>
-      <div class="form-group">
-      <label for="amount">Amount: </label>
-        <input type="text" id="amount" class="form-control" />
-      </div>
-      <input type="submit" class="add-item" value="Save [+]" />
-      <button type="cancel" class="cancel-item">Cancel [-]<button/>`;
-    const formContainer = document.getElementById("item-form");
-    formContainer.appendChild(div);
+    console.log("show-modal");
+    const formHeader = document.getElementById("form-header");
+    formHeader.innerHTML = `${e.target.dataset.title}`;
+
+    const formCategory = document.getElementById("form-category");
+    formCategory.value = `${e.target.id}`;
+
+    const modal = document.getElementById("main-modal");
+    modal.style.display = "block";
   }
 
   // THIS SHOULD NOT WORK LIKE THIS IN PRODUCTION.
   // innerHTML is a very heavy way to do this
   static hideModal() {
-    const formContainer = document.getElementById("item-form");
-    formContainer.innerHTML = "";
+    console.log("hide modal");
+    const modal = document.getElementById("main-modal");
+    modal.style.display = "none";
   }
 
   static openChild() {

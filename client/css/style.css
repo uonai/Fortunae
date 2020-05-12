@@ -9,7 +9,7 @@
 }
 
 *:focus {
-  outline: none;
+  outline: 1px solid #999;
 }
 
 body {
@@ -167,7 +167,7 @@ form input .add-button {
   border: 0px;
 }
 
-.alert-error {
+.alert {
   color: red;
 }
 
@@ -207,17 +207,31 @@ path {
   top: 200px;
 }
 
-.form .close-form {
+#form-submit,
+#form-cancel {
+  border-width: 0px;
+}
+
+/**modal revised**/
+.modal {
+  display: none;
+  z-index: 1;
+  position: absolute;
+  left: 300px;
+  right: 300px;
+  background: #000;
+  border: 2px solid #fff;
+  padding: 20px;
+  top: 200px;
+}
+
+#modal-close {
   float: right;
   background-image: url("../images/close.svg");
   background-position: right top;
   background-repeat: no-repeat;
   width: 15px;
   height: 15px;
-}
-.form .add-item,
-.form .cancel-item {
-  border-width: 0px;
 }
 
 /** items **/

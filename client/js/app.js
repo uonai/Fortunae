@@ -14,23 +14,34 @@ document.addEventListener(
   Chart.loadChart()
 );
 
-document.querySelector("#item-form").addEventListener("submit", (e) => {
+document.querySelector("#form-submit").addEventListener("click", (e) => {
   e.preventDefault();
-  const title = document.querySelector("#title").value;
-  const amount = document.querySelector("#amount").value;
-  const category = document.querySelector("#category").value;
-  // const alertText = "Please fill out all form fields.";
+
+  const title = document.querySelector("#form-title").value;
+  const amount = document.querySelector("#form-amount").value;
+  const category = document.querySelector("#form-category").value;
+  const alertText = "Please fill out all form fields.";
 
   if (title === "" || amount === "") {
-    // UI.showAlert(alertText);
+    UI.showAlert(alertText);
   } else {
     const id = Helper.generateUUIDv4();
     const item = new Item(id, category, title, amount);
-
     UI.addItemToList(item);
     Store.addItem(item);
+    // UI.hideModal();
     UI.clearFields();
   }
+});
+
+document.querySelector("#form-cancel").addEventListener("click", () => {
+  UI.hideModal();
+  UI.clearFields();
+});
+
+document.querySelector("#modal-close").addEventListener("click", () => {
+  UI.hideModal();
+  UI.clearFields();
 });
 
 document.querySelectorAll(".add-item").forEach((item) => {
@@ -69,14 +80,9 @@ document.addEventListener("click", (e) => {
     UI.deleteItem(e.target);
   }
 
-  if (isButton && e.target.className === "close-form") {
+  if (isButton && e.target.id === "close-modal") {
     console.log("close form");
     UI.hideModal();
-  }
-
-  if (isButton && e.target.className == "cancel-item") {
-    console.log("cancel");
-    UI.hideModal(e);
   }
 
   if (isButton && e.target.className === "menu") {
@@ -87,6 +93,10 @@ document.addEventListener("click", (e) => {
   if (isButton && e.target.id === "child-window") {
     console.log("child window");
     UI.openChild();
+  }
+
+  if (isButton && e.target.id === "main-button") {
+    UI.showModal(e);
   }
 
   return;
