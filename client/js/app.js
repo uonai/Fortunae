@@ -21,9 +21,12 @@ document.querySelector("#form-submit").addEventListener("click", (e) => {
   const amount = document.querySelector("#form-amount").value;
   const category = document.querySelector("#form-category").value;
   const alertText = "Please fill out all form fields.";
+  const numberAlertText = "Please enter valid number";
 
   if (title === "" || amount === "") {
     UI.showAlert(alertText);
+  } else if (!Number(amount)) {
+    UI.showAlert(numberAlertText);
   } else {
     const id = Helper.generateUUIDv4();
     const item = new Item(id, category, title, amount);
