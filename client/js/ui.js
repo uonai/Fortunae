@@ -7,7 +7,10 @@ export default class UI {
       items.forEach((item) => UI.addItemToList(item));
     }
 
-    this.buildItemChart();
+    this.buildItemChart(1);
+    this.buildItemChart(2);
+    // this.buildItemChart(3);
+    // this.buildItemChart(4);
     console.log("ran");
   }
 
@@ -20,55 +23,49 @@ export default class UI {
       listItem.className = item.id;
       listItem.innerHTML = `
       <button id="${item.id}" class="list-item">${item.title}: $${item.amount}</button>
-      <span id="item-menu-${item.id}" class="hidden"><button class="edit">Edit [/] </button>&nbsp;<button class="delete">Delete [x]</button></span>
+      <span id="item-menu-${item.id}" class="hidden"><button class="edit">Edit [/] </button>&nbsp;<button class="delete" data-category=${item.category}>Delete [x]</button></span>
       `;
       list.appendChild(listItem);
     }
   }
 
-  static buildItemChart() {
+  static buildItemChart(category) {
+    const categoryNumber = category.toString();
     const items = Store.getItems();
+    console.log(items);
     let n = [];
     console.log(items);
+    console.log(n);
     items.map(function (i) {
-      const iNumber = Number(i.amount);
-      n.push(iNumber);
+      i.category === categoryNumber ? n.push(Number(i.amount)) : "";
+      // n.push(iNumber);
     });
 
     let nTotal = n.reduce((partial_sum, a) => partial_sum + a, 0);
+    const chart = document.querySelector(`#item-chart-${categoryNumber}`);
+    chart.innerHTML = "";
+    items.forEach((item) => {
+      if (item.category == categoryNumber) {
+        console.log(item);
 
-    if (nTotal) {
-      const chart = document.querySelector(`#item-chart-1`);
-      chart.innerHTML = "";
-      items.forEach((item) => {
-        if (item.category === 1 || 2 || 3 || 4) {
-          const itemWidth = Math.round((item.amount / nTotal) * 100);
-          const chart = document.querySelector(`#item-chart-1`);
-          // const chart = document.querySelector(`#item-chart-${item.category}`);
-          const chartItem = document.createElement("div");
-          chartItem.className = "inner-rectangle";
-          chartItem.style.cssText = `width: ${itemWidth}%`;
-          chart.appendChild(chartItem);
-          console.log(chartItem);
-        }
-      });
-    }
+        const itemWidth = Math.round((item.amount / nTotal) * 100);
+        const chart = document.querySelector(`#item-chart-${categoryNumber}`);
+        // const chart = document.querySelector(`#item-chart-${item.category}`);
+        const chartItem = document.createElement("div");
+        chartItem.className = "inner-rectangle";
+        chartItem.style.cssText = `width: ${itemWidth}%`;
+        chart.appendChild(chartItem);
+        console.log(chartItem);
+      }
+    });
   }
-
-  // static addChartToSection() {
-  //   const section = document.querySelector("#section-1");
-  //   const sectionAddChart = document.createElement("div");
-  //   sectionAddChart.className = "rectangle";
-  //   sectionAddChart.innerHTML = `<div class="inner-rectangle"></div>`;
-  //   //  section.appendChild(sectionAddChart);
-  // }
 
   static deleteItem(e) {
     if (e.classList.contains("delete")) {
       e.parentElement.parentElement.remove();
     }
     Store.removeItem(e.parentElement.parentElement.className);
-    UI.buildItemChart();
+    this.buildItemChart(e.dataset.category);
   }
 
   static clearFields() {

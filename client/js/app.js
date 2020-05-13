@@ -32,7 +32,7 @@ document.querySelector("#form-submit").addEventListener("click", (e) => {
     const item = new Item(id, category, title, amount);
     UI.addItemToList(item);
     Store.addItem(item);
-    UI.buildItemChart();
+    UI.buildItemChart(category);
     // UI.hideModal();
     UI.clearFields();
   }
@@ -81,6 +81,7 @@ document.addEventListener("click", (e) => {
   }
 
   if (isButton && e.target.className === "delete") {
+    console.log(e.target);
     UI.deleteItem(e.target);
   }
 
