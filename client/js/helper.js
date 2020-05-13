@@ -7,4 +7,32 @@ export default class Helper {
       ).toString(16)
     );
   }
+
+  static getTimeFromUNIXTimestamp(item) {
+    const unixTimestamp = item;
+    let x = new Date(unixTimestamp * 1000);
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+    const year = x.getFullYear();
+    const month = months[x.getMonth()];
+    const date = x.getDate();
+    const hour = x.getHours();
+    const min = x.getMinutes();
+    const sec = x.getSeconds();
+    const time =
+      date + " " + month + " " + year + " " + hour + ":" + min + ":" + sec;
+    return time;
+  }
 }

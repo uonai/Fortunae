@@ -67,7 +67,9 @@ export default class Store {
   }
 
   static saveJSON() {
-    const fileName = Date.now();
+    // generate unix timestamp
+    let fileName = Math.round(new Date().getTime() / 1000);
+    console.log(fileName);
     let items = JSON.parse(localStorage.getItem("items"));
     const json = JSON.stringify(items);
     fs.writeFile(__dirname + "/db/" + fileName, json, "utf8", (err) => {

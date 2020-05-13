@@ -1,5 +1,6 @@
 import Store from "./store.js";
 import HistoryItem from "./historyItem.js";
+import Helper from "./helper.js";
 
 export default class HistoryChart {
   static loadHistoryChart() {
@@ -19,18 +20,15 @@ export default class HistoryChart {
     ];
 
     const historyData = JSON.parse(localStorage.getItem("history"));
-    // if (historyData) {
     let n = 15;
     const history = historyData.map(function (item) {
       const x = n + 10;
       const y = 20;
       const _item = item;
-      const infoISO = new Date(_item * 1000);
+      const infoISO = Helper.getTimeFromUNIXTimestamp(_item);
       n += 100;
       return new HistoryItem(x, y, item, infoISO);
     });
-    // }
-    //syntax is off here, need to es6
 
     d3.select("#g-1")
       .append("path")
