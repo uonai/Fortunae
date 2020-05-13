@@ -19,11 +19,9 @@ export default class HistoryChart {
     ];
 
     const historyData = JSON.parse(localStorage.getItem("history"));
-    console.log(historyData);
     // if (historyData) {
     let n = 15;
     const history = historyData.map(function (item) {
-      console.log(item);
       const x = n + 10;
       const y = 20;
       const _item = item;
@@ -31,8 +29,6 @@ export default class HistoryChart {
       n += 100;
       return new HistoryItem(x, y, item, infoISO);
     });
-
-    console.log(history);
     // }
     //syntax is off here, need to es6
 

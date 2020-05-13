@@ -106,39 +106,32 @@ button {
   margin-top: 10px;
 }
 
+.item-chart {
+  width: 100%;
+  overflow: hidden;
+  height: 10px;
+}
+
 .inner-rectangle {
-  width: 20%;
   height: 10px;
   background: #999;
   float: left;
 }
 
-.inner-rectangle-2 {
-  width: 20%;
-  height: 10px;
-  background: #666;
-  float: left;
+.item-chart div:nth-child(2) {
+  background: #fff;
 }
 
-.inner-rectangle-3 {
-  width: 20%;
-  height: 10px;
-  background: #adadad;
-  float: left;
-}
-
-.inner-rectangle-4 {
-  width: 20%;
-  height: 10px;
+.item-chart div:nth-child(3) {
   background: #d4d4d4;
-  float: left;
 }
 
-.inner-rectangle-5 {
-  width: 20%;
-  height: 10px;
+.item-chart div:nth-child(4) {
   background: #666;
-  float: left;
+}
+
+.item-chart div:nth-child(5) {
+  background: #adadad;
 }
 
 /* Form */

@@ -1,7 +1,7 @@
 import HistoryChart from "./historyChart.js";
 
 const fs = require("fs");
-const { getCurrentWindow, globalShortcut } = require("electron").remote;
+const { getCurrentWindow } = require("electron").remote;
 const database = "/db/";
 export default class Store {
   static getItems() {

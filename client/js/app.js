@@ -29,6 +29,7 @@ document.querySelector("#form-submit").addEventListener("click", (e) => {
     const item = new Item(id, category, title, amount);
     UI.addItemToList(item);
     Store.addItem(item);
+    UI.buildItemChart();
     // UI.hideModal();
     UI.clearFields();
   }
