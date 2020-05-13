@@ -21,7 +21,6 @@ export default class Store {
       let filesDirectory = [];
       files.forEach((file) => {
         filesDirectory.push(file);
-        console.log(filesDirectory);
       });
 
       filesDirectory.sort(function (a, b) {
@@ -30,15 +29,9 @@ export default class Store {
       });
 
       localStorage.setItem("history", JSON.stringify(filesDirectory));
-
       const recentFile = filesDirectory[0];
-      console.log(recentFile);
       let rawData = fs.readFileSync(__dirname + database + recentFile);
-      console.log(__dirname);
-      console.log(database);
-      console.log(recentFile);
       let items = JSON.parse(rawData);
-      console.log(items);
       if (localStorage.getItem("items") === null) {
         localStorage.setItem("items", JSON.stringify(items));
       }
@@ -47,12 +40,8 @@ export default class Store {
   }
 
   static restoreItems(timestamp) {
-    console.log(timestamp);
     let rawData = fs.readFileSync(__dirname + database + timestamp);
-
-    console.log(rawData);
     let items = JSON.parse(rawData);
-    console.log(items);
     localStorage.removeItem("items");
     // this.getItems();
     localStorage.setItem("items", JSON.stringify(items));
@@ -81,13 +70,10 @@ export default class Store {
     const fileName = Date.now();
     let items = JSON.parse(localStorage.getItem("items"));
     const json = JSON.stringify(items);
-    console.log(json);
     fs.writeFile(__dirname + "/db/" + fileName, json, "utf8", (err) => {
       if (err) {
-        console.log(err);
         return;
       }
-      console.log("item saved");
       getCurrentWindow().reload();
     });
 

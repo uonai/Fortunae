@@ -63,7 +63,7 @@ document.querySelectorAll(".delete").forEach((item) => {
   });
 });
 
-document.getElementById("save").onclick = () => {
+document.querySelector("#save").onclick = () => {
   Store.saveJSON();
 };
 
@@ -81,22 +81,18 @@ document.addEventListener("click", (e) => {
   }
 
   if (isButton && e.target.className === "delete") {
-    console.log(e.target);
     UI.deleteItem(e.target);
   }
 
   if (isButton && e.target.id === "close-modal") {
-    console.log("close form");
     UI.hideModal();
   }
 
   if (isButton && e.target.className === "menu") {
-    console.log("menu button");
     Menu.showModal(e);
   }
 
   if (isButton && e.target.id === "child-window") {
-    console.log("child window");
     UI.openChild();
   }
 

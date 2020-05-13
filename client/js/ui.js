@@ -9,15 +9,12 @@ export default class UI {
 
     this.buildItemChart(1);
     this.buildItemChart(2);
-    // this.buildItemChart(3);
-    // this.buildItemChart(4);
-    console.log("ran");
+    this.buildItemChart(3);
+    this.buildItemChart(4);
   }
 
   static addItemToList(item) {
     if (item) {
-      console.log(item);
-      console.log("add item");
       const list = document.querySelector(`#item-list-${item.category}`);
       const listItem = document.createElement("li");
       listItem.className = item.id;
@@ -32,10 +29,7 @@ export default class UI {
   static buildItemChart(category) {
     const categoryNumber = category.toString();
     const items = Store.getItems();
-    console.log(items);
     let n = [];
-    console.log(items);
-    console.log(n);
     items.map(function (i) {
       i.category === categoryNumber ? n.push(Number(i.amount)) : "";
       // n.push(iNumber);
@@ -46,8 +40,6 @@ export default class UI {
     chart.innerHTML = "";
     items.forEach((item) => {
       if (item.category == categoryNumber) {
-        console.log(item);
-
         const itemWidth = Math.round((item.amount / nTotal) * 100);
         const chart = document.querySelector(`#item-chart-${categoryNumber}`);
         // const chart = document.querySelector(`#item-chart-${item.category}`);
@@ -55,7 +47,6 @@ export default class UI {
         chartItem.className = "inner-rectangle";
         chartItem.style.cssText = `width: ${itemWidth}%`;
         chart.appendChild(chartItem);
-        console.log(chartItem);
       }
     });
   }
@@ -83,22 +74,20 @@ export default class UI {
   }
 
   static showModal(e) {
-    console.log("show-modal");
-    const formHeader = document.getElementById("form-header");
+    const formHeader = document.querySelector("#form-header");
     formHeader.innerHTML = `${e.target.dataset.title}`;
 
-    const formCategory = document.getElementById("form-category");
+    const formCategory = document.querySelector("#form-category");
     formCategory.value = `${e.target.id}`;
 
-    const modal = document.getElementById("main-modal");
+    const modal = document.querySelector("#main-modal");
     modal.style.display = "block";
   }
 
   // THIS SHOULD NOT WORK LIKE THIS IN PRODUCTION.
   // innerHTML is a very heavy way to do this
   static hideModal() {
-    console.log("hide modal");
-    const modal = document.getElementById("main-modal");
+    const modal = document.querySelector("#main-modal");
     modal.style.display = "none";
   }
 

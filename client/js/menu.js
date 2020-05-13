@@ -12,7 +12,7 @@ export default class Menu {
       </div>
       <input type="submit" class="add-item" value="Save [+]" />
       <input type="submit" class="add-item" value="Cancel [-]" />`;
-    const formContainer = document.getElementById("item-form");
+    const formContainer = document.querySelector("#item-form");
     formContainer.appendChild(div);
   }
 }
