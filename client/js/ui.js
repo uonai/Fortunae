@@ -26,13 +26,13 @@ export default class UI {
     }
   }
 
+  // this should eventually be refactored
   static buildItemChart(category) {
     const categoryNumber = category.toString();
     const items = Store.getItems();
     let n = [];
     items.map(function (i) {
       i.category === categoryNumber ? n.push(Number(i.amount)) : "";
-      // n.push(iNumber);
     });
 
     let nTotal = n.reduce((partial_sum, a) => partial_sum + a, 0);

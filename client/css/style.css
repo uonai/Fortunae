@@ -110,20 +110,21 @@ button {
   width: 100%;
   overflow: hidden;
   height: 10px;
+  margin-top: 10px;
 }
 
 .inner-rectangle {
   height: 10px;
-  background: #999;
+  background: #fff;
   float: left;
 }
 
 .item-chart div:nth-child(2) {
-  background: #fff;
+  background: #555;
 }
 
 .item-chart div:nth-child(3) {
-  background: #d4d4d4;
+  background: #aaa;
 }
 
 .item-chart div:nth-child(4) {
@@ -131,7 +132,7 @@ button {
 }
 
 .item-chart div:nth-child(5) {
-  background: #adadad;
+  background: #fff;
 }
 
 /* Form */
@@ -148,6 +149,7 @@ form .cancel-item {
   background: none;
   padding: 5px;
   float: left;
+  padding: 5px 10px;
 }
 
 label {
@@ -161,7 +163,7 @@ form input .add-button {
 }
 
 .alert {
-  color: red;
+  color: #fc533e;
 }
 
 /** chart **/
@@ -249,4 +251,29 @@ path {
   bottom: 20px;
   right: 38px;
   position: absolute;
+}
+
+/** focus and text area updates**/
+
+:focus {
+  outline: none;
+}
+
+input[type="text"],
+textarea,
+input[type="button"] {
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  box-shadow: 0 0 5px #ffffff;
+}
+
+input[type="button"]:focus,
+textarea:focus {
+  font-weight: 900;
 }
