@@ -52,7 +52,18 @@ export default class Store {
 
   static addItem(item) {
     const items = Store.getItems();
+    console.log(items);
     items.push(item);
+    console.log(items);
+    localStorage.setItem("items", JSON.stringify(items));
+  }
+
+  static editItem(item) {
+    const items = Store.getItems();
+    console.log(items);
+    const foundIndex = items.findIndex((x) => x.id == item.id);
+    items[foundIndex] = item;
+    console.log(items);
     localStorage.setItem("items", JSON.stringify(items));
   }
 

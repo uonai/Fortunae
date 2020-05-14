@@ -14,6 +14,7 @@ document.addEventListener(
   Chart.loadChart()
 );
 
+// SAVE
 document.querySelector("#form-submit").addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -34,6 +35,31 @@ document.querySelector("#form-submit").addEventListener("click", (e) => {
     Store.addItem(item);
     UI.buildItemChart(category);
     // UI.hideModal();
+    UI.clearFields();
+  }
+});
+
+//EDIT
+document.querySelector("#form-edit-submit").addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const title = document.querySelector("#form-title").value;
+  const amount = document.querySelector("#form-amount").value;
+  const category = document.querySelector("#form-category").value;
+  const id = document.querySelector("#form-id").value;
+  const alertText = "Please fill out all form fields.";
+  const numberAlertText = "Please enter valid number";
+
+  if (title === "" || amount === "") {
+    UI.showAlert(alertText);
+  } else if (!Number(amount)) {
+    UI.showAlert(numberAlertText);
+  } else {
+    const item = new Item(id, category, title, amount);
+    UI.updateItem(item);
+    Store.editItem(item);
+    UI.buildItemChart(category);
+    UI.hideModal();
     UI.clearFields();
   }
 });
@@ -85,7 +111,7 @@ document.addEventListener("click", (e) => {
   }
 
   if (isButton && e.target.className == "edit") {
-    UI.editItem(e.target);
+    UI.showEditItemModal(e.target);
   }
 
   if (isButton && e.target.id === "close-modal") {

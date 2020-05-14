@@ -16,7 +16,6 @@ export default class UI {
   static addItemToList(item) {
     if (item) {
       const list = document.querySelector(`#item-list-${item.category}`);
-      console.log(list);
       const listItem = document.createElement("li");
       listItem.className = item.id;
       console.log(listItem);
@@ -26,6 +25,17 @@ export default class UI {
       <button class="edit" data-id=${item.id} data-category=${item.category} data-title=${item.title} data-amount=${item.amount}>Edit [/] </button>&nbsp;<button class="delete" data-category=${item.category}>Delete [x]</button></span>`;
       list.appendChild(listItem);
     }
+  }
+
+  static updateItem(item) {
+    const list = document.querySelector(`#item-list-${item.category}`);
+    const listItem = document.querySelector(`[class='${item.id}']`);
+    listItem.className = item.id;
+    listItem.innerHTML = `
+      <button id="${item.id}" class="list-item">${item.title}: $${item.amount}</button>
+      <span id="item-menu-${item.id}" class="hidden">
+      <button class="edit" data-id=${item.id} data-category=${item.category} data-title=${item.title} data-amount=${item.amount}>Edit [/] </button>&nbsp;<button class="delete" data-category=${item.category}>Delete [x]</button></span>`;
+    list.appendChild(listItem);
   }
 
   // this should eventually be refactored
@@ -75,7 +85,7 @@ export default class UI {
     setTimeout(() => document.querySelector(".alert").remove(), 2000);
   }
 
-  static editItem(e) {
+  static showEditItemModal(e) {
     console.log(e);
     console.log(e.dataset.category);
     const formHeader = document.querySelector("#form-header");
@@ -83,6 +93,9 @@ export default class UI {
 
     const formCategory = document.querySelector("#form-category");
     formCategory.value = `${e.dataset.category}`;
+
+    const formId = document.querySelector("#form-id");
+    formId.value = `${e.dataset.id}`;
 
     const modal = document.querySelector("#main-modal");
     modal.style.display = "block";
