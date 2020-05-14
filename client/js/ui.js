@@ -16,12 +16,14 @@ export default class UI {
   static addItemToList(item) {
     if (item) {
       const list = document.querySelector(`#item-list-${item.category}`);
+      console.log(list);
       const listItem = document.createElement("li");
       listItem.className = item.id;
+      console.log(listItem);
       listItem.innerHTML = `
       <button id="${item.id}" class="list-item">${item.title}: $${item.amount}</button>
-      <span id="item-menu-${item.id}" class="hidden"><button class="edit">Edit [/] </button>&nbsp;<button class="delete" data-category=${item.category}>Delete [x]</button></span>
-      `;
+      <span id="item-menu-${item.id}" class="hidden">
+      <button class="edit" data-id=${item.id} data-category=${item.category} data-title=${item.title} data-amount=${item.amount}>Edit [/] </button>&nbsp;<button class="delete" data-category=${item.category}>Delete [x]</button></span>`;
       list.appendChild(listItem);
     }
   }
@@ -73,19 +75,36 @@ export default class UI {
     setTimeout(() => document.querySelector(".alert").remove(), 2000);
   }
 
-  static showModal(e) {
+  static editItem(e) {
+    console.log(e);
+    console.log(e.dataset.category);
     const formHeader = document.querySelector("#form-header");
-    formHeader.innerHTML = `${e.target.dataset.title}`;
+    formHeader.innerHTML = `${e.dataset.title}`;
 
     const formCategory = document.querySelector("#form-category");
-    formCategory.value = `${e.target.id}`;
+    formCategory.value = `${e.dataset.category}`;
+
+    const modal = document.querySelector("#main-modal");
+    modal.style.display = "block";
+
+    const formTitle = document.querySelector("#form-title");
+    formTitle.value = `${e.dataset.title}`;
+
+    const formAmount = document.querySelector("#form-amount");
+    formAmount.value = `${e.dataset.amount}`;
+  }
+
+  static showModal(e) {
+    const formHeader = document.querySelector("#form-header");
+    formHeader.innerHTML = `${e.dataset.title}`;
+
+    const formCategory = document.querySelector("#form-category");
+    formCategory.value = `${e.id}`;
 
     const modal = document.querySelector("#main-modal");
     modal.style.display = "block";
   }
 
-  // THIS SHOULD NOT WORK LIKE THIS IN PRODUCTION.
-  // innerHTML is a very heavy way to do this
   static hideModal() {
     const modal = document.querySelector("#main-modal");
     modal.style.display = "none";

@@ -50,7 +50,7 @@ document.querySelector("#modal-close").addEventListener("click", () => {
 
 document.querySelectorAll(".add-item").forEach((item) => {
   item.addEventListener("click", (e) => {
-    UI.showModal(e);
+    UI.showModal(e.target);
   });
 });
 
@@ -84,12 +84,16 @@ document.addEventListener("click", (e) => {
     UI.deleteItem(e.target);
   }
 
+  if (isButton && e.target.className == "edit") {
+    UI.editItem(e.target);
+  }
+
   if (isButton && e.target.id === "close-modal") {
     UI.hideModal();
   }
 
   if (isButton && e.target.className === "menu") {
-    Menu.showModal(e);
+    Menu.showModal(e.target);
   }
 
   if (isButton && e.target.id === "child-window") {
@@ -97,7 +101,7 @@ document.addEventListener("click", (e) => {
   }
 
   if (isButton && e.target.id === "main-button") {
-    UI.showModal(e);
+    UI.showModal(e.target);
   }
 
   return;
