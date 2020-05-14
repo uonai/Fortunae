@@ -3,7 +3,7 @@ import Store from "./store.js";
 import Helper from "./helper.js";
 import Item from "./item.js";
 import Recommendation from "./recommendation.js";
-import Menu from "./menu.js";
+// import Menu from "./menu.js";
 import HistoryChart from "./historyChart.js";
 import Chart from "./chart.js";
 
@@ -132,3 +132,25 @@ document.addEventListener("click", (e) => {
 
   return;
 });
+
+// hotkeys
+document.addEventListener("keyup", doc_keyUp, false);
+
+function doc_keyUp(e) {
+  if (e.ctrlKey && e.keyCode == 83) {
+    // ctrl + s
+    Store.saveJSON();
+  } else if (e.ctrlKey && e.keyCode == 49) {
+    // ctrl + 1
+    console.log("1");
+  } else if (e.ctrlKey && e.keyCode == 50) {
+    // ctrl + 2
+    console.log("2");
+  } else if (e.ctrlKey && e.keyCode == 51) {
+    // ctrl + 3
+    console.log("3");
+  } else if (e.ctrlKey && e.keyCode == 52) {
+    // ctrl + 4
+    console.log("4");
+  }
+}

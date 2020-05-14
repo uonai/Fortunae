@@ -105,6 +105,12 @@ export default class UI {
 
     const formAmount = document.querySelector("#form-amount");
     formAmount.value = `${e.dataset.amount}`;
+
+    const formSubmit = document.querySelector("#form-submit");
+    formSubmit.style.display = "none";
+
+    const formEditSubmit = document.querySelector("#form-edit-submit");
+    formEditSubmit.style.display = "block";
   }
 
   static showModal(e) {
@@ -116,6 +122,12 @@ export default class UI {
 
     const modal = document.querySelector("#main-modal");
     modal.style.display = "block";
+
+    const formSubmit = document.querySelector("#form-submit");
+    formSubmit.style.display = "block";
+
+    const formEditSubmit = document.querySelector("#form-edit-submit");
+    formEditSubmit.style.display = "none";
   }
 
   static hideModal() {

@@ -203,7 +203,8 @@ path {
 }
 
 #form-submit,
-#form-cancel {
+#form-cancel,
+#form-edit-submit {
   border-width: 0px;
 }
 
