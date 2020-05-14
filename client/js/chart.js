@@ -1,44 +1,22 @@
 export default class Chart {
   static loadChart() {
+    const db = JSON.parse(localStorage.getItem("category1ItemsHistorical"));
+    const db2 = JSON.parse(localStorage.getItem("category2ItemsHistorical"));
+    console.log(db);
     const data = [
       {
-        name: "Checking",
-        values: [
-          { date: "2000", amount: "100" },
-          { date: "2001", amount: "110" },
-          { date: "2002", amount: "145" },
-          { date: "2003", amount: "241" },
-          { date: "2004", amount: "101" },
-          { date: "2005", amount: "90" },
-        ],
+        name: "Category 1",
+        values: db,
       },
       {
-        name: "Savings",
-        values: [
-          { date: "2000", amount: "200" },
-          { date: "2001", amount: "120" },
-          { date: "2002", amount: "33" },
-          { date: "2003", amount: "21" },
-          { date: "2004", amount: "51" },
-          { date: "2005", amount: "190" },
-        ],
-      },
-      {
-        name: "401k",
-        values: [
-          { date: "2000", amount: "150" },
-          { date: "2001", amount: "75" },
-          { date: "2002", amount: "44" },
-          { date: "2003", amount: "120" },
-          { date: "2004", amount: "70" },
-          { date: "2005", amount: "180" },
-        ],
+        name: "Category 2",
+        values: db2,
       },
     ];
 
-    const width = 250;
-    const height = 250;
-    const margin = 0;
+    const width = 200;
+    const height = 200;
+    const margin = 50;
     const duration = 300;
 
     const lineOpacity = "0.9";
@@ -53,11 +31,13 @@ export default class Chart {
     const circleRadiusHover = 6;
 
     /* Format Data */
-    const parseDate = d3.timeParse("%Y");
+    const parseDate = d3.timeParse("%s");
     data.forEach(function (d) {
       d.values.forEach(function (d) {
         d.date = parseDate(d.date);
-        d.amount = +d.amount;
+        console.log(d.date);
+        d.amount = +d.item.amount;
+        console.log(d.item.amount);
       });
     });
 
@@ -103,7 +83,7 @@ export default class Chart {
           .append("text")
           .attr("class", "title-text")
           .style("fill", "#ffffff")
-          .text(d.name)
+          .text(d.title)
           .attr("text-anchor", "middle")
           .attr("x", (width - margin) / 2)
           .attr("y", 50);

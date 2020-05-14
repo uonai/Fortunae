@@ -11,7 +11,8 @@ document.addEventListener(
   "DOMContentLoaded",
   UI.displayItems(),
   Recommendation.displayRecommendations(),
-  Chart.loadChart()
+  Chart.loadChart(),
+  Store.loadCompleteDatabase()
 );
 
 // SAVE

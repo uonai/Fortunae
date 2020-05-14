@@ -24,7 +24,6 @@ export default class Store {
       });
 
       filesDirectory.sort(function (a, b) {
-        // this sort isn't working as expected
         return new Date(Date.now(b)) - new Date(Date.now(a));
       });
 
@@ -36,6 +35,60 @@ export default class Store {
         localStorage.setItem("items", JSON.stringify(items));
       }
       HistoryChart.loadHistoryChart();
+    });
+  }
+
+  static loadCompleteDatabase() {
+    fs.readdir(__dirname + database, (err, files) => {
+      let filesDirectory = [];
+      files.forEach((file) => {
+        filesDirectory.push(file);
+      });
+
+      filesDirectory.sort(function (a, b) {
+        return new Date(Date.now(b)) - new Date(Date.now(a));
+      });
+
+      let category1 = [];
+      let category2 = [];
+      let category3 = [];
+      let category4 = [];
+      filesDirectory.forEach((file) => {
+        let rawData = fs.readFileSync(__dirname + database + file);
+        const items = JSON.parse(rawData);
+
+        items.forEach((item) => {
+          if (item.category == 1) {
+            category1.push({
+              item: item,
+              date: file,
+            });
+          } else if (item.category == 2) {
+            category2.push({ item: item, date: file });
+          } else if (item.category == 3) {
+            category3.push({ item: item, date: file });
+          } else if (item.category == 4) {
+            category4.push({ item: item, date: file });
+          }
+          return;
+        });
+      });
+      localStorage.setItem(
+        "category1ItemsHistorical",
+        JSON.stringify(category1)
+      );
+      localStorage.setItem(
+        "category2ItemsHistorical",
+        JSON.stringify(category2)
+      );
+      localStorage.setItem(
+        "category3ItemsHistorical",
+        JSON.stringify(category3)
+      );
+      localStorage.setItem(
+        "category4ItemsHistorical",
+        JSON.stringify(category4)
+      );
     });
   }
 
