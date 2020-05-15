@@ -1,0 +1,19 @@
+* {
+  font-family: "Roboto Mono", monospace;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+#close-window {
+  position: absolute;
+  z-index: 1000;
+  top: 20px;
+  right: 20px;
+  background-color: black;
+  border: 0px;
+}

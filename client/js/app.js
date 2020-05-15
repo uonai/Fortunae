@@ -127,6 +127,10 @@ document.addEventListener("click", (e) => {
     UI.openChild();
   }
 
+  if (isButton && e.target.id === "sankey-button") {
+    UI.openSankey();
+  }
+
   if (isButton && e.target.id === "main-button") {
     UI.showModal(e.target);
   }

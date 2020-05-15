@@ -89,7 +89,7 @@ export default class UI {
     console.log(e);
     console.log(e.dataset.category);
     const formHeader = document.querySelector("#form-header");
-    formHeader.innerHTML = `${e.dataset.title}`;
+    formHeader.innerHTML = `Edit Item`;
 
     const formCategory = document.querySelector("#form-category");
     formCategory.value = `${e.dataset.category}`;
@@ -153,6 +153,28 @@ export default class UI {
     });
 
     const theUrl = "file://" + __dirname + "/index-child.html";
+
+    win.loadURL(theUrl);
+  }
+
+  static openSankey() {
+    const { remote } = require("electron");
+    const path = require("path");
+
+    let win = new remote.BrowserWindow({
+      parent: remote.getCurrentWindow(),
+      width: 1000,
+      height: 750,
+      // modal: true,
+      resizable: true,
+      webPreferences: {
+        preload: path.join(__dirname, "preload.js"),
+        nodeIntegration: true,
+      },
+      frame: false,
+    });
+
+    const theUrl = "file://" + __dirname + "/sankey.html";
 
     win.loadURL(theUrl);
   }
