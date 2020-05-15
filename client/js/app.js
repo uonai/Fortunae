@@ -6,7 +6,9 @@ import Recommendation from "./recommendation.js";
 import Menu from "./menu.js";
 import HistoryChart from "./historyChart.js";
 import Chart from "./chart.js";
-import CalculatorModal from "./calculatorModal.js";
+import DebtModal from "./debtModal.js";
+import ExpenseModal from "./expenseModal.js";
+import IncomeModal from "./incomeModal.js";
 
 document.addEventListener(
   "DOMContentLoaded",
@@ -79,9 +81,13 @@ document.querySelector("#modal-close").addEventListener("click", (e) => {
 document.querySelectorAll(".add-item").forEach((item) => {
   item.addEventListener("click", (e) => {
     console.log(e.target.id);
-    if (e.target.id !== "3") {
+    if (e.target.id == 1) {
       UI.showModal(e.target);
-    } else CalculatorModal.showModal(e);
+    } else if (e.target.id == 2) {
+      ExpenseModal.showModal(e);
+    } else if (e.target.id == 3) {
+      DebtModal.showModal(e);
+    } else IncomeModal.showModal(e);
   });
 });
 

@@ -1,4 +1,4 @@
-export default class CalculatorModal {
+export default class DebtModal {
   static showModal(e) {
     const div = document.createElement("div");
     div.id = "calculator-modal";
@@ -7,7 +7,7 @@ export default class CalculatorModal {
     <div class="modal-calculator-content">
       <button id="modal-calculator-close"></button>
       <form id="modal-calculator-form">
-        <header id="form-calculator-header"></header>
+        <header id="form-calculator-header">Debt Calculator</header>
         <input type="hidden" id="form-calculator-category" value="" />
         <input type="hidden" id="form-calcultor-id" value="" />
         <div class="form-group">
@@ -17,9 +17,10 @@ export default class CalculatorModal {
           <input type="text" id="form-calculator-amount" class="form-control" placeholder="Amount" />
         </div>
         <select id="Category">
-          <option value="1">Passive</option>
-          <option value="2">Active</option>
-          <option value="3">Portfolio</option>
+          <option value="1">Secured</option>
+          <option value="2">Unsecured</option>
+          <option value="3">Revolving</option>
+          <option value="4">Non-revolving</option>
         </select>
 
         <div class="form-group">
