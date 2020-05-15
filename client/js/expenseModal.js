@@ -8,8 +8,8 @@ export default class ExpenseModal {
       <button id="modal-close"></button>
       <form id="modal-form">
         <header id="form-header"></header>
-        <input type="hidden" id="form-category" value="" />
-        <input type="hidden" id="form-calcultor-id" value="" />
+        <input type="hidden" id="form-category" value="2" />
+        <input type="hidden" id="form-calculator-id" value="" />
         <div class="form-group">
           <input type="text" id="form-title" class="form-control" placeholder="Title" />
         </div>

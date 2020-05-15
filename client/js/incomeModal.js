@@ -8,8 +8,8 @@ export default class IncomeModal {
       <button id="modal-calculator-close"></button>
       <form id="modal-calculator-form">
         <header id="form-calculator-header">Income Calculator</header>
-        <input type="hidden" id="form-calculator-category" value="" />
-        <input type="hidden" id="form-calcultor-id" value="" />
+        <input type="hidden" id="form-calculator-category" value="4" />
+        <input type="hidden" id="form-calculator-id" value="" />
         <div class="form-group">
           <input type="text" id="form-calculator-title" class="form-control" placeholder="Title" />
         </div>

@@ -268,7 +268,7 @@
           .attr("width", 12)
           .attr("height", (d) => d.y1 - d.y0)
           .attr("pointer-events", "none")
-          .attr("stroke", "#555")
+          //.attr("stroke", "#555")
           //.attr("stroke-width", "4px")
           .attr("fill", (d) => color(d.index));
 
@@ -280,7 +280,7 @@
           .enter()
           .append("text")
           .text((d) => d.name)
-          .attr("font-size", "16")
+          .attr("font-size", "14")
           .attr("fill", "#fff")
           .attr("x", (d) => {
             if (d.sourceLinks.length > 0) {

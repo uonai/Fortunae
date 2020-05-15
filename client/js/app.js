@@ -68,6 +68,33 @@ document.querySelector("#form-edit-submit").addEventListener("click", (e) => {
   }
 });
 
+// FORM CALCULATOR SUBMIT
+document
+  .querySelector("#form-calculator-submit")
+  .addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const title = document.querySelector("#form-title").value;
+    const amount = document.querySelector("#form-amount").value;
+    const category = document.querySelector("#form-category").value;
+    const alertText = "Please fill out all form fields.";
+    const numberAlertText = "Please enter valid number";
+
+    if (title === "" || amount === "") {
+      UI.showAlert(alertText);
+    } else if (!Number(amount)) {
+      UI.showAlert(numberAlertText);
+    } else {
+      const id = Helper.generateUUIDv4();
+      const item = new Item(id, category, title, amount);
+      UI.addItemToList(item);
+      Store.addItem(item);
+      UI.buildItemChart(category);
+      // UI.hideModal();
+      UI.clearFields();
+    }
+  });
+
 document.querySelector("#form-cancel").addEventListener("click", () => {
   UI.hideModal();
   UI.clearFields();
@@ -77,6 +104,18 @@ document.querySelector("#modal-close").addEventListener("click", (e) => {
   UI.hideModal(e.target);
   UI.clearFields(e.target);
 });
+
+document
+  .querySelector("#modal-calculator-close")
+  .addEventListener("click", (e) => {
+    DebtModal.hideModal();
+  });
+
+document
+  .querySelector("#form-calculator-cancel")
+  .addEventListener("click", () => {
+    DebtModal.hideModal();
+  });
 
 document.querySelectorAll(".add-item").forEach((item) => {
   item.addEventListener("click", (e) => {
