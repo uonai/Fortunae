@@ -3,9 +3,9 @@ export default class Menu {
     const div = document.createElement("div");
     div.className = "form";
     div.innerHTML = `
-      <button class="close-form"></button>
+      <button class="close-form">x</button>
       <header>Settings</header>
-      <input type="hidden" id="category" value=${e.target.id}> 
+      <input type="hidden" id="category" value=""> 
       <div class="form-group">
       <label for="amount">Salary: </label>
         <input type="text" id="salary" class="form-control" />

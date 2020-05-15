@@ -71,9 +71,15 @@ export default class UI {
     this.buildItemChart(e.dataset.category);
   }
 
-  static clearFields() {
-    document.querySelector("#form-title").value = "";
-    document.querySelector("#form-amount").value = "";
+  static clearFields(e) {
+    if (e.id !== "3") {
+      document.querySelector("#form-title").value = "";
+      document.querySelector("#form-amount").value = "";
+    }
+    if (e.id == "3") {
+      document.querySelector("#form-calculator-title").value = "";
+      document.querySelector("#form-calculator-amount").value = "";
+    }
   }
 
   static showAlert(alertText) {
@@ -114,14 +120,15 @@ export default class UI {
   }
 
   static showModal(e) {
+    console.log(e);
     const formHeader = document.querySelector("#form-header");
     formHeader.innerHTML = `${e.dataset.title}`;
 
     const formCategory = document.querySelector("#form-category");
     formCategory.value = `${e.id}`;
 
-    const modal = document.querySelector("#main-modal");
-    modal.style.display = "block";
+    const modal1 = document.querySelector("#main-modal");
+    modal1.style.display = "block";
 
     const formSubmit = document.querySelector("#form-submit");
     formSubmit.style.display = "block";
@@ -130,7 +137,8 @@ export default class UI {
     formEditSubmit.style.display = "none";
   }
 
-  static hideModal() {
+  static hideModal(e) {
+    console.log(e.parentElement.parentElement.id);
     const modal = document.querySelector("#main-modal");
     modal.style.display = "none";
   }

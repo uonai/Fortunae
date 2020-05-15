@@ -3,9 +3,10 @@ import Store from "./store.js";
 import Helper from "./helper.js";
 import Item from "./item.js";
 import Recommendation from "./recommendation.js";
-// import Menu from "./menu.js";
+import Menu from "./menu.js";
 import HistoryChart from "./historyChart.js";
 import Chart from "./chart.js";
+import CalculatorModal from "./calculatorModal.js";
 
 document.addEventListener(
   "DOMContentLoaded",
@@ -70,14 +71,17 @@ document.querySelector("#form-cancel").addEventListener("click", () => {
   UI.clearFields();
 });
 
-document.querySelector("#modal-close").addEventListener("click", () => {
-  UI.hideModal();
-  UI.clearFields();
+document.querySelector("#modal-close").addEventListener("click", (e) => {
+  UI.hideModal(e.target);
+  UI.clearFields(e.target);
 });
 
 document.querySelectorAll(".add-item").forEach((item) => {
   item.addEventListener("click", (e) => {
-    UI.showModal(e.target);
+    console.log(e.target.id);
+    if (e.target.id !== "3") {
+      UI.showModal(e.target);
+    } else CalculatorModal.showModal(e);
   });
 });
 
@@ -115,9 +119,9 @@ document.addEventListener("click", (e) => {
     UI.showEditItemModal(e.target);
   }
 
-  if (isButton && e.target.id === "close-modal") {
-    UI.hideModal();
-  }
+  // if (isButton && e.target.id === "close-modal") {
+  //   UI.hideModal();
+  // }
 
   if (isButton && e.target.className === "menu") {
     Menu.showModal(e.target);

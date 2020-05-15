@@ -211,6 +211,10 @@ path {
 /**modal revised**/
 .modal {
   display: none;
+}
+
+.modal,
+.modal-generated {
   z-index: 1;
   position: absolute;
   left: 370px;
@@ -221,7 +225,8 @@ path {
   top: 200px;
 }
 
-#modal-close {
+#modal-close,
+#modal-calculator-close {
   float: right;
   background-image: url("../images/close.svg");
   background-position: right top;
