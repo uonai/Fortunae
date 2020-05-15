@@ -160,12 +160,13 @@ function doc_keyUp(e) {
     console.log("1");
   } else if (e.ctrlKey && e.keyCode == 50) {
     // ctrl + 2
+    ExpenseModal.showModal();
     console.log("2");
   } else if (e.ctrlKey && e.keyCode == 51) {
-    // ctrl + 3
+    DebtModal.showModal(e);
     console.log("3");
   } else if (e.ctrlKey && e.keyCode == 52) {
-    // ctrl + 4
+    IncomeModal.showModal(e);
     console.log("4");
   }
 }

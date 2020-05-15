@@ -26,7 +26,7 @@ export default class ExpenseModal {
           <option value="3">Food & Dining</option>
           <option value="">Gifts and Donations</option>
           <option value="">Investments</option>
-          <option value="">BIlls & Utilities</option>
+          <option value="">Bills & Utilities</option>
           <option value = ""> Auto & Transport</option>
           <option value = "">Fees and Charges</option>
           <option>Business Services</option>
