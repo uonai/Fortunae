@@ -38,9 +38,9 @@
         <div id="item-chart-1" class="item-chart"></div>
       </section>
       <section id="section-2" data-section="2">
-        <header><button id="sankey-button" class="header" >Monthly Expenses</button></header>
+        <header><button id="sankey-button" class="header" >Expenses</button></header>
         <ul id="item-list-2"></ul>
-        <button id="2" class="add-item" data-title="Monthly Expenses">
+        <button id="2" class="add-item" data-title="Expenses">
           Add Expense [+]
         </button>
         <div id="item-chart-2" class="item-chart"></div>
@@ -54,10 +54,10 @@
         <div id="item-chart-3" class="item-chart"></div>
       </section>
       <section id="section-4" data-section="4">
-        <header>Savings Calculator</header>
+        <header>Income Calculator</header>
         <ul id="item-list-4"></ul>
-        <button id="4" class="add-item" data-title="Savings Calculator">
-          Add Savings [+]
+        <button id="4" class="add-item" data-title="Income Calculator">
+          Add Income [+]
         </button>
         <div id="item-chart-4" class="item-chart"></div>
       </section>
@@ -112,6 +112,19 @@
           </div>
           <div class="form-group">
             <input type="text" id="form-amount" class="form-control" placeholder="Amount" />
+          </div>
+          <select id = "Category">
+            <option value = "1">Passive</option>
+            <option value = "2">Active</option>
+            <option value = "3">Portfolio</option>
+          </select>
+
+          <div class="form-group">
+            <input type="text" id="form-interest" class="form-control" placeholder="Interest" />
+          </div>
+
+          <div class="form-group">
+            <input type="text" id="form-monthly-payment" class="form-control" placeholder="Monthly Payment" />
           </div>
           <input type="button" id="form-submit" value="Save [+]" />
           <input type="button" id="form-edit-submit" value="Save [+]" />
