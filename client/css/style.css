@@ -204,7 +204,9 @@ path {
 
 #form-submit,
 #form-cancel,
-#form-edit-submit {
+#form-edit-submit,
+#form-calculator-cancel,
+#form-calculator-submit {
   border-width: 0px;
 }
 
@@ -282,6 +284,10 @@ textarea:focus {
 input[type="button"]:focus,
 textarea:focus {
   font-weight: 900;
+}
+
+input::placeholder {
+  color: #fff;
 }
 
 /** dropdown **/
