@@ -85,27 +85,57 @@ document
   .querySelector("#form-calculator-submit")
   .addEventListener("click", (e) => {
     e.preventDefault();
-    ExpenseModal.validate("submit");
+    const category = document.querySelector("#form-calculator-category").value;
+    console.log(category);
+    switch (category) {
+      case "2":
+        ExpenseModal.validate("submit");
+        break;
+      case "3":
+        DebtModal.validate("submit");
+        break;
+      case "4":
+        IncomeModal.validate("submit");
+        break;
+      default:
+        console.log("none found");
+    }
   });
 
 document
   .querySelector("#modal-calculator-close")
   .addEventListener("click", (e) => {
-    DebtModal.hideModal();
+    console.log(e);
+    UI.hideCalculatorModal();
   });
 
 document
   .querySelector("#form-calculator-cancel")
   .addEventListener("click", () => {
-    DebtModal.hideModal();
+    console.log(e);
+    UI.hideCalculatorModal();
   });
 
 document
   .querySelector("#form-calculator-edit-submit")
   .addEventListener("click", (e) => {
     e.preventDefault();
+    console.log(e);
+    const category = document.querySelector("#form-calculator-category").value;
 
-    ExpenseModal.validate("edit");
+    switch (category) {
+      case "2":
+        ExpenseModal.validate("edit");
+        break;
+      case "3":
+        DebtModal.validate("edit");
+        break;
+      case "4":
+        IncomeModal.validate("edit");
+        break;
+      default:
+        console.log("none found");
+    }
   });
 
 document.querySelectorAll(".add-item").forEach((item) => {
@@ -153,10 +183,19 @@ document.addEventListener("click", (e) => {
 
   if (isButton && e.target.className == "edit") {
     console.log(e.target.dataset.category);
-    if (e.target.dataset.category == 2) {
-      ExpenseModal.showEditItemModal(e.target);
-    } else {
-      UI.showEditItemModal(e.target);
+    switch (e.target.dataset.category) {
+      // case "1":
+      //   UI.showEditItemModal(e.target);
+      //   break;
+      case "2":
+        ExpenseModal.showEditItemModal(e.target);
+        break;
+      case "3":
+        DebtModal.showEditItemModal(e.target);
+        break;
+      case "4":
+        IncomeModal.showEditItemModal(e.target);
+        break;
     }
   }
 

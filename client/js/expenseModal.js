@@ -50,7 +50,7 @@ export default class ExpenseModal {
     this.showModal();
     console.log(e);
     const formHeader = document.querySelector("#form-calculator-header");
-    formHeader.innerHTML = `Edit Item`;
+    formHeader.innerHTML = `Edit Expense`;
 
     const formCategory = document.querySelector("#form-calculator-category");
     formCategory.value = `${e.dataset.category}`;
@@ -112,31 +112,6 @@ export default class ExpenseModal {
         UI.buildItemChart(category);
         UI.hideCalculatorModal();
       }
-
-      // UI.hideModal();
-      // UI.clearFields();
     }
   }
-
-  // static editSubmit(e) {
-  //   const title = document.querySelector("#form-calculator-title").value;
-  //   const amount = document.querySelector("#form-calculator-amount").value;
-  //   const category = document.querySelector("#form-calculator-category").value;
-  //   const type = document.querySelector("#form-calculator-type").value;
-  //   const id = document.querySelector("#form-calculator-id").value;
-  //   const alertText = "Please fill out all form fields.";
-  //   const numberAlertText = "Please enter valid number";
-
-  //   if (title === "" || amount === "") {
-  //     UI.showAlert(alertText);
-  //   } else if (!Number(amount)) {
-  //     UI.showAlert(numberAlertText);
-  //   } else {
-  //     const item = new ExpenseItem(id, category, title, amount, type);
-  //     UI.updateItem(item);
-  //     Store.editItem(item);
-  //     UI.buildItemChart(category);
-  //     this.hideModal();
-  //   }
-  // }
 }
