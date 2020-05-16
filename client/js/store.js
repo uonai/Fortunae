@@ -28,7 +28,13 @@ export default class Store {
       });
 
       localStorage.setItem("history", JSON.stringify(filesDirectory));
+      console.log("files directory ");
       const recentFile = filesDirectory[0];
+      console.log(recentFile);
+      if (localStorage.getItem("currentRecord") === null) {
+        localStorage.setItem("currentRecord", recentFile);
+      }
+
       let rawData = fs.readFileSync(__dirname + database + recentFile);
       let items = JSON.parse(rawData);
       if (localStorage.getItem("items") === null) {
@@ -98,7 +104,9 @@ export default class Store {
     localStorage.removeItem("items");
     // this.getItems();
     localStorage.setItem("items", JSON.stringify(items));
-
+    localStorage.setItem("currentRecord", timestamp);
+    console.log("restore items");
+    this.loadDatabase();
     // this is an intense way to reload the window, need to find a different solution
     getCurrentWindow().reload();
   }
@@ -130,20 +138,56 @@ export default class Store {
     localStorage.setItem("items", JSON.stringify(items));
   }
 
-  static saveJSON() {
+  static cloneRecord() {
     // generate unix timestamp
     let fileName = Math.round(new Date().getTime() / 1000);
-    console.log(fileName);
     let items = JSON.parse(localStorage.getItem("items"));
     const json = JSON.stringify(items);
     fs.writeFile(__dirname + "/db/" + fileName, json, "utf8", (err) => {
       if (err) {
         return;
       }
-      getCurrentWindow().reload();
+      alert("The record has been cloned");
+      localStorage.removeItem("items");
+      localStorage.removeItem("currentRecord");
+      this.restoreItems(currentRecord);
+      alert("The record has been cloned");
     });
+  }
 
-    // this.saveHistory(fileName);
-    // this.getCurrentWindow().reload();
+  static saveRecord() {
+    const currentRecord = localStorage.getItem("currentRecord");
+    let items = JSON.parse(localStorage.getItem("items"));
+    const json = JSON.stringify(items);
+    fs.writeFile(__dirname + database + currentRecord, json, (err) => {
+      if (err) {
+        alert("An error ocurred updating the file" + err.message);
+        console.log(err);
+        return;
+      }
+      localStorage.removeItem("items");
+      localStorage.removeItem("currentRecord");
+      this.restoreItems(currentRecord);
+    });
+  }
+
+  static deleteRecord() {
+    const currentRecord = localStorage.getItem("currentRecord");
+
+    if (fs.existsSync(__dirname + database + currentRecord)) {
+      fs.unlink(__dirname + database + currentRecord, (err) => {
+        if (err) {
+          alert("An error ocurred updating the file" + err.message);
+          console.log(err);
+          return;
+        }
+        alert("The record has been deleted");
+        localStorage.removeItem("items");
+        localStorage.removeItem("currentRecord");
+        this.restoreItems(currentRecord);
+      });
+    } else {
+      alert("This file doesn't exist, can't delete");
+    }
   }
 }

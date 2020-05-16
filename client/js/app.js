@@ -107,8 +107,17 @@ document.querySelectorAll(".delete").forEach((item) => {
   });
 });
 
-document.querySelector("#save").onclick = () => {
-  Store.saveJSON();
+document.querySelector("#save-record").onclick = () => {
+  Store.saveRecord();
+};
+
+document.querySelector("#clone-record").onclick = () => {
+  console.log("clone");
+  Store.cloneRecord();
+};
+
+document.querySelector("#delete-record").onclick = () => {
+  Store.deleteRecord();
 };
 
 document.addEventListener("click", (e) => {

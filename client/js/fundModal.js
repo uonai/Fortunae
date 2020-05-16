@@ -58,8 +58,8 @@ export default class FundModal {
     const formAmount = document.querySelector("#form-calculator-amount");
     formAmount.value = `${e.dataset.amount}`;
 
-    const formSubmit = document.querySelector("#form-calculator-submit");
-    formSubmit.style.display = "none";
+    // const formSubmit = document.querySelector("#form-calculator-submit");
+    // formSubmit.style.display = "none";
 
     const formEditSubmit = document.querySelector(
       "#form-calculator-edit-submit"

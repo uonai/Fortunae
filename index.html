@@ -22,7 +22,11 @@
     <form id="item-form"></form>
   </div>
   <button class="menu">Menu</button>
-  <button id="save" class="save" value="Files">Save</button>
+  <ul id="right-menu" class="right-menu">
+    <li><button id="save-record" class="save-record">Save</button></li>
+    <li> <button id="clone-record" class="clone-record">Clone</button></li>
+    <li> <button id="delete-record" class="delete-record">Delete</button></li>
+  </ul>
   <button id="close-window">
     <img style="z-index: 1000;" src="./client/images/close.svg" width="12px" />
   </button>
@@ -49,7 +53,8 @@
         <div id="item-chart-2" class="item-chart"></div>
       </section>
       <section id="section-3" data-section="3">
-        <header>Debt <button id="burndown-button" class="header" style="margin-bottom:0; padding-bottom:0">[::]</button></header>
+        <header>Debt <button id="burndown-button" class="header" style="margin-bottom:0; padding-bottom:0">[::]</button>
+        </header>
         <ul id="item-list-3"></ul>
         <button id="3" class="add-item" data-title="Debt Calculator">
           Add Debt [+]
@@ -68,24 +73,28 @@
     </div>
     <div class="middle">
       <section>
-        <header>Recommendations <button id="radar-button" class="header" style="margin-bottom:0; padding-bottom:0">[::]</button></header>
+        <header>Recommendations <button id="radar-button" class="header"
+            style="margin-bottom:0; padding-bottom:0">[::]</button></header>
         <ul id="recommendation-list"></ul>
       </section>
       <section class="chart">
         <div class="chart-outer">
-          <header> Trend Data <button id="radar-button" class="header" style="margin-bottom:0; padding-bottom:0">[::]</button></header>
+          <header> Trend Data <button id="radar-button" class="header"
+              style="margin-bottom:0; padding-bottom:0">[::]</button></header>
           <div class="chart-inner">
             <div id="line"></div>
           </div>
         </div>
       </section>
       <section class="bordered">
-        <header>Needs <button id="radar-button" class="header" style="margin-bottom:0; padding-bottom:0">[::]</button></header>
+        <header>Needs <button id="radar-button" class="header" style="margin-bottom:0; padding-bottom:0">[::]</button>
+        </header>
         <ul id="item-list-5"></ul>
         <button id="5" class="add-item" data-title="Needs">
           Add Needs [+]
         </button>
-        <header style="margin-top: 20px;">Wants <button id="radar-button" class="header" style="margin-bottom:0; padding-bottom:0">[::]</button></header>
+        <header style="margin-top: 20px;">Wants <button id="radar-button" class="header"
+            style="margin-bottom:0; padding-bottom:0">[::]</button></header>
         <ul id="item-list-6"></ul>
         <button id="6" class="add-item" data-title="Wants">
           Add Wants [+]
@@ -106,8 +115,8 @@
         <button id="modal-calculator-close"></button>
         <form id="modal-calculator-form">
           <div class="form-group" id="modal-calculator-footer">
-            <input type="button" id="form-calculator-submit" value="Save [+]" />
-            <input type="button" id="form-calculator-edit-submit" value="Save [+]" />
+            <input type="button" id="form-calculator-submit" value="Save New [+]" />
+            <input type="button" id="form-calculator-edit-submit" value="Edit [+]" />
             <input type="button" id="form-calculator-cancel" value="Cancel [-]" />
           </div>
         </form>

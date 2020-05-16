@@ -42,8 +42,8 @@ var duration = 300;
 var lineOpacity = "0.9";
 var lineOpacityHover = "1";
 var otherLinesOpacityHover = "0.05";
-var lineStroke = "3px";
-var lineStrokeHover = "3px";
+var lineStroke = "2px";
+var lineStrokeHover = "px";
 
 var circleOpacity = "0.9";
 var circleOpacityOnLineHover = "1";

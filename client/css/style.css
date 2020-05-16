@@ -30,11 +30,16 @@ body {
   transform: rotate(-90deg);
 }
 
-.save {
+.right-menu {
   transform: rotate(90deg);
   position: absolute;
-  right: 10px;
+  right: -60px;
   top: 320px;
+}
+
+.right-menu li {
+  display: inline;
+  margin-right: 20px;
 }
 
 .application-nav {
@@ -95,8 +100,10 @@ section ul {
 
 header,
 .menu,
-.save,
-.header {
+.save-record,
+.header,
+.clone-record,
+.delete-record {
   font-size: 12px;
   text-transform: uppercase;
   font-weight: 600;
@@ -263,8 +270,8 @@ path {
 .modal-generated {
   z-index: 1;
   position: absolute;
-  left: 370px;
-  right: 375px;
+  left: 300px;
+  right: 300px;
   background: #000;
   border: 2px solid #fff;
   padding: 20px;

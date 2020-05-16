@@ -25,6 +25,7 @@
     "electron-reload": "^1.5.0",
     "electron-store": "^5.1.1",
     "fs": "0.0.1-security",
-    "fs-extra": "^9.0.0"
+    "fs-extra": "^9.0.0",
+    "v8-compile-cache": "^2.1.0"
   }
 }
