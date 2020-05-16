@@ -54,7 +54,7 @@ export default class UI {
     chart.innerHTML = "";
     items.forEach((item) => {
       if (item.category == categoryNumber) {
-        const itemWidth = Math.round((item.amount / nTotal) * 100);
+        const itemWidth = Math.round((item.amount / nTotal) * 99.5);
         const chart = document.querySelector(`#item-chart-${categoryNumber}`);
         // const chart = document.querySelector(`#item-chart-${item.category}`);
         const chartItem = document.createElement("div");

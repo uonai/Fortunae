@@ -101,10 +101,20 @@ header,
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 2px;
+  margin-bottom: 5px;
 }
 
 ul {
   padding-bottom: 10px;
+}
+
+.edit,
+.delete {
+  font-size: 10px;
+}
+
+.add-item {
+  margin-top: 10px;
 }
 
 button {
@@ -133,7 +143,7 @@ button {
   float: left;
 }
 
-.item-chart div:nth-child(2) {
+/* .item-chart div:nth-child(2) {
   background: #555;
 }
 
@@ -147,6 +157,24 @@ button {
 
 .item-chart div:nth-child(5) {
   background: #fff;
+} */
+
+.item-chart div:nth-child(5n + 1) {
+  background: #aaa;
+}
+.item-chart div:nth-child(5n + 2) {
+  background: #555;
+}
+.item-chart div:nth-child(5n + 3) {
+  background: #aaa;
+}
+
+.item-chart div:nth-child(5n + 4) {
+  background: #666;
+}
+
+.item-chart div:nth-child(5n + 5) {
+  background: #444;
 }
 
 /* Form */
