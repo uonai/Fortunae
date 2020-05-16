@@ -21,66 +21,6 @@ document.addEventListener(
   Store.loadCompleteDatabase()
 );
 
-// SAVE
-// document.querySelector("#form-submit").addEventListener("click", (e) => {
-//   e.preventDefault();
-
-//   const title = document.querySelector("#form-title").value;
-//   const amount = document.querySelector("#form-amount").value;
-//   const category = document.querySelector("#form-category").value;
-//   const alertText = "Please fill out all form fields.";
-//   const numberAlertText = "Please enter valid number";
-
-//   if (title === "" || amount === "") {
-//     UI.showAlert(alertText);
-//   } else if (!Number(amount)) {
-//     UI.showAlert(numberAlertText);
-//   } else {
-//     const id = Helper.generateUUIDv4();
-//     const item = new Item(id, category, title, amount);
-//     UI.addItemToList(item);
-//     Store.addItem(item);
-//     UI.buildItemChart(category);
-//     // UI.hideModal();
-//     UI.clearFields();
-//   }
-// });
-
-// //EDIT
-// document.querySelector("#form-edit-submit").addEventListener("click", (e) => {
-//   e.preventDefault();
-
-//   const title = document.querySelector("#form-title").value;
-//   const amount = document.querySelector("#form-amount").value;
-//   const category = document.querySelector("#form-category").value;
-//   const id = document.querySelector("#form-id").value;
-//   const alertText = "Please fill out all form fields.";
-//   const numberAlertText = "Please enter valid number";
-
-//   if (title === "" || amount === "") {
-//     UI.showAlert(alertText);
-//   } else if (!Number(amount)) {
-//     UI.showAlert(numberAlertText);
-//   } else {
-//     const item = new Item(id, category, title, amount);
-//     UI.updateItem(item);
-//     Store.editItem(item);
-//     UI.buildItemChart(category);
-//     UI.hideModal();
-//     UI.clearFields();
-//   }
-// });
-
-// document.querySelector("#form-cancel").addEventListener("click", () => {
-//   UI.hideModal();
-//   UI.clearFields();
-// });
-
-// document.querySelector("#modal-close").addEventListener("click", (e) => {
-//   UI.hideModal(e.target);
-//   UI.clearFields(e.target);
-// });
-
 // EXPENSE FORM CALCULATOR SUBMIT
 document
   .querySelector("#form-calculator-submit")

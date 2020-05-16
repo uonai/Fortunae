@@ -104,7 +104,7 @@ lines
       .text(d.name)
       .attr("text-anchor", "middle")
       .attr("x", (width - margin) / 2)
-      .attr("y", 50);
+      .attr("y", 100);
   })
   .on("mouseout", function (d) {
     svg.select(".title-text").remove();

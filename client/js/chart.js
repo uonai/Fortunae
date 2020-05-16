@@ -3,37 +3,48 @@ export default class Chart {
     const result = JSON.parse(localStorage.getItem("category1ItemsHistorical"));
     if (result) {
       const db = result.filter(function (item) {
-        return item.item.category == "1";
+        return item.item.type == "1";
       });
+
+      console.log(db);
 
       const db2 = result.filter(function (item) {
-        return item.item.category == "2";
+        return item.item.type == "2";
       });
 
+      const db3 = result.filter(function (item) {
+        return item.item.type == "3";
+      });
+
+      console.log(db2);
       const data = [
+        // {
+        //   name: "Category 1",
+        //   values: db,
+        // },
         {
-          name: "Category 1",
-          values: db,
+          name: "Checking",
+          values: db2,
         },
         {
-          name: "Category 2",
-          values: db2,
+          name: "Savings",
+          values: db3,
         },
       ];
 
       const width = 200;
       const height = 200;
-      const margin = 50;
+      const margin = 20;
       const duration = 300;
 
       const lineOpacity = "0.9";
-      const lineOpacityHover = "1";
-      const otherLinesOpacityHover = "0.05";
+      const lineOpacityHover = "0.1";
+      const otherLinesOpacityHover = "0";
       const lineStroke = "3px";
       const lineStrokeHover = "3px";
 
       const circleOpacity = "0.9";
-      const circleOpacityOnLineHover = "1";
+      const circleOpacityOnLineHover = "0.1";
       const circleRadius = 5;
       const circleRadiusHover = 6;
 
@@ -91,10 +102,10 @@ export default class Chart {
               .append("text")
               .attr("class", "title-text")
               .style("fill", "#ffffff")
-              .text(d.title)
+              .text(d.name)
               .attr("text-anchor", "middle")
               .attr("x", (width - margin) / 2)
-              .attr("y", 50);
+              .attr("y", 30);
           })
           .on("mouseout", function (d) {
             svg.select(".title-text").remove();
@@ -138,7 +149,7 @@ export default class Chart {
               .append("text")
               .attr("class", "text")
               .style("fill", "#ffffff")
-              .text(`${d.amount}, ${d.date}`)
+              .text(`${d.amount}`)
               .attr("x", (d) => xScale(d.date) + 5)
               .attr("y", (d) => yScale(d.amount) - 10);
           })

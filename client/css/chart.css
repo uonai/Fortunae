@@ -17,3 +17,9 @@ body {
   background-color: black;
   border: 0px;
 }
+
+/** d3**/
+.title-text {
+  stroke: #000;
+  stroke-width: 2.5px;
+}

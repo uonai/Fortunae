@@ -218,6 +218,7 @@ form input .add-button {
   border: 2px solid #fff;
   height: 250px;
   width: 250px;
+  padding: 25px 10px 25px 10px;
 }
 
 path {
