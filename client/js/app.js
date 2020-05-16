@@ -10,6 +10,7 @@ import Chart from "./chart.js";
 import DebtModal from "./debtModal.js";
 import ExpenseModal from "./expenseModal.js";
 import IncomeModal from "./incomeModal.js";
+import FundModal from "./fundModal.js";
 import PopOut from "./popOut.js";
 
 document.addEventListener(
@@ -21,64 +22,64 @@ document.addEventListener(
 );
 
 // SAVE
-document.querySelector("#form-submit").addEventListener("click", (e) => {
-  e.preventDefault();
+// document.querySelector("#form-submit").addEventListener("click", (e) => {
+//   e.preventDefault();
 
-  const title = document.querySelector("#form-title").value;
-  const amount = document.querySelector("#form-amount").value;
-  const category = document.querySelector("#form-category").value;
-  const alertText = "Please fill out all form fields.";
-  const numberAlertText = "Please enter valid number";
+//   const title = document.querySelector("#form-title").value;
+//   const amount = document.querySelector("#form-amount").value;
+//   const category = document.querySelector("#form-category").value;
+//   const alertText = "Please fill out all form fields.";
+//   const numberAlertText = "Please enter valid number";
 
-  if (title === "" || amount === "") {
-    UI.showAlert(alertText);
-  } else if (!Number(amount)) {
-    UI.showAlert(numberAlertText);
-  } else {
-    const id = Helper.generateUUIDv4();
-    const item = new Item(id, category, title, amount);
-    UI.addItemToList(item);
-    Store.addItem(item);
-    UI.buildItemChart(category);
-    // UI.hideModal();
-    UI.clearFields();
-  }
-});
+//   if (title === "" || amount === "") {
+//     UI.showAlert(alertText);
+//   } else if (!Number(amount)) {
+//     UI.showAlert(numberAlertText);
+//   } else {
+//     const id = Helper.generateUUIDv4();
+//     const item = new Item(id, category, title, amount);
+//     UI.addItemToList(item);
+//     Store.addItem(item);
+//     UI.buildItemChart(category);
+//     // UI.hideModal();
+//     UI.clearFields();
+//   }
+// });
 
-//EDIT
-document.querySelector("#form-edit-submit").addEventListener("click", (e) => {
-  e.preventDefault();
+// //EDIT
+// document.querySelector("#form-edit-submit").addEventListener("click", (e) => {
+//   e.preventDefault();
 
-  const title = document.querySelector("#form-title").value;
-  const amount = document.querySelector("#form-amount").value;
-  const category = document.querySelector("#form-category").value;
-  const id = document.querySelector("#form-id").value;
-  const alertText = "Please fill out all form fields.";
-  const numberAlertText = "Please enter valid number";
+//   const title = document.querySelector("#form-title").value;
+//   const amount = document.querySelector("#form-amount").value;
+//   const category = document.querySelector("#form-category").value;
+//   const id = document.querySelector("#form-id").value;
+//   const alertText = "Please fill out all form fields.";
+//   const numberAlertText = "Please enter valid number";
 
-  if (title === "" || amount === "") {
-    UI.showAlert(alertText);
-  } else if (!Number(amount)) {
-    UI.showAlert(numberAlertText);
-  } else {
-    const item = new Item(id, category, title, amount);
-    UI.updateItem(item);
-    Store.editItem(item);
-    UI.buildItemChart(category);
-    UI.hideModal();
-    UI.clearFields();
-  }
-});
+//   if (title === "" || amount === "") {
+//     UI.showAlert(alertText);
+//   } else if (!Number(amount)) {
+//     UI.showAlert(numberAlertText);
+//   } else {
+//     const item = new Item(id, category, title, amount);
+//     UI.updateItem(item);
+//     Store.editItem(item);
+//     UI.buildItemChart(category);
+//     UI.hideModal();
+//     UI.clearFields();
+//   }
+// });
 
-document.querySelector("#form-cancel").addEventListener("click", () => {
-  UI.hideModal();
-  UI.clearFields();
-});
+// document.querySelector("#form-cancel").addEventListener("click", () => {
+//   UI.hideModal();
+//   UI.clearFields();
+// });
 
-document.querySelector("#modal-close").addEventListener("click", (e) => {
-  UI.hideModal(e.target);
-  UI.clearFields(e.target);
-});
+// document.querySelector("#modal-close").addEventListener("click", (e) => {
+//   UI.hideModal(e.target);
+//   UI.clearFields(e.target);
+// });
 
 // EXPENSE FORM CALCULATOR SUBMIT
 document
@@ -88,6 +89,9 @@ document
     const category = document.querySelector("#form-calculator-category").value;
     console.log(category);
     switch (category) {
+      case "1":
+        FundModal.validate("submit");
+        break;
       case "2":
         ExpenseModal.validate("submit");
         break;
@@ -124,6 +128,9 @@ document
     const category = document.querySelector("#form-calculator-category").value;
 
     switch (category) {
+      case "1":
+        FundModal.validate("edit");
+        break;
       case "2":
         ExpenseModal.validate("edit");
         break;
@@ -142,7 +149,7 @@ document.querySelectorAll(".add-item").forEach((item) => {
   item.addEventListener("click", (e) => {
     console.log(e.target.id);
     if (e.target.id == 1) {
-      UI.showModal(e.target);
+      FundModal.showModal(e);
     } else if (e.target.id == 2) {
       ExpenseModal.showModal(e);
     } else if (e.target.id == 3) {
@@ -184,9 +191,9 @@ document.addEventListener("click", (e) => {
   if (isButton && e.target.className == "edit") {
     console.log(e.target.dataset.category);
     switch (e.target.dataset.category) {
-      // case "1":
-      //   UI.showEditItemModal(e.target);
-      //   break;
+      case "1":
+        FundModal.showEditItemModal(e.target);
+        break;
       case "2":
         ExpenseModal.showEditItemModal(e.target);
         break;
@@ -230,7 +237,7 @@ function doc_keyUp(e) {
     // ctrl + s
     Store.saveJSON();
   } else if (e.ctrlKey && e.keyCode == 49) {
-    // ctrl + 1
+    FundModal.showModal();
     console.log("1");
   } else if (e.ctrlKey && e.keyCode == 50) {
     // ctrl + 2

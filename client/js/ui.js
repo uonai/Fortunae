@@ -74,14 +74,8 @@ export default class UI {
   }
 
   static clearFields(e) {
-    if (e.id !== "3") {
-      document.querySelector("#form-title").value = "";
-      document.querySelector("#form-amount").value = "";
-    }
-    if (e.id == "3") {
-      document.querySelector("#form-calculator-title").value = "";
-      document.querySelector("#form-calculator-amount").value = "";
-    }
+    document.querySelector("#form-calculator-title").value = "";
+    document.querySelector("#form-calculator-amount").value = "";
   }
 
   static showAlert(alertText) {
@@ -94,57 +88,57 @@ export default class UI {
     setTimeout(() => document.querySelector(".alert").remove(), 2000);
   }
 
-  static showEditItemModal(e) {
-    console.log(e);
-    console.log(e.dataset.category);
-    const formHeader = document.querySelector("#form-header");
-    formHeader.innerHTML = `Edit Item`;
+  // static showEditItemModal(e) {
+  //   console.log(e);
+  //   console.log(e.dataset.category);
+  //   const formHeader = document.querySelector("#form-header");
+  //   formHeader.innerHTML = `Edit Item`;
 
-    const formCategory = document.querySelector("#form-category");
-    formCategory.value = `${e.dataset.category}`;
+  //   const formCategory = document.querySelector("#form-category");
+  //   formCategory.value = `${e.dataset.category}`;
 
-    const formId = document.querySelector("#form-id");
-    formId.value = `${e.dataset.id}`;
+  //   const formId = document.querySelector("#form-id");
+  //   formId.value = `${e.dataset.id}`;
 
-    const modal = document.querySelector("#main-modal");
-    modal.style.display = "block";
+  //   const modal = document.querySelector("#main-modal");
+  //   modal.style.display = "block";
 
-    const formTitle = document.querySelector("#form-title");
-    formTitle.value = `${e.dataset.title}`;
+  //   const formTitle = document.querySelector("#form-title");
+  //   formTitle.value = `${e.dataset.title}`;
 
-    const formAmount = document.querySelector("#form-amount");
-    formAmount.value = `${e.dataset.amount}`;
+  //   const formAmount = document.querySelector("#form-amount");
+  //   formAmount.value = `${e.dataset.amount}`;
 
-    const formSubmit = document.querySelector("#form-submit");
-    formSubmit.style.display = "none";
+  //   const formSubmit = document.querySelector("#form-submit");
+  //   formSubmit.style.display = "none";
 
-    const formEditSubmit = document.querySelector("#form-edit-submit");
-    formEditSubmit.style.display = "block";
-  }
+  //   const formEditSubmit = document.querySelector("#form-edit-submit");
+  //   formEditSubmit.style.display = "block";
+  // }
 
-  static showModal(e) {
-    console.log(e);
-    const formHeader = document.querySelector("#form-header");
-    formHeader.innerHTML = `${e.dataset.title}`;
+  // static showModal(e) {
+  //   console.log(e);
+  //   const formHeader = document.querySelector("#form-header");
+  //   formHeader.innerHTML = `${e.dataset.title}`;
 
-    const formCategory = document.querySelector("#form-category");
-    formCategory.value = `${e.id}`;
+  //   const formCategory = document.querySelector("#form-category");
+  //   formCategory.value = `${e.id}`;
 
-    const modal1 = document.querySelector("#main-modal");
-    modal1.style.display = "block";
+  //   const modal1 = document.querySelector("#main-modal");
+  //   modal1.style.display = "block";
 
-    const formSubmit = document.querySelector("#form-submit");
-    formSubmit.style.display = "block";
+  //   const formSubmit = document.querySelector("#form-submit");
+  //   formSubmit.style.display = "block";
 
-    const formEditSubmit = document.querySelector("#form-edit-submit");
-    formEditSubmit.style.display = "none";
-  }
+  //   const formEditSubmit = document.querySelector("#form-edit-submit");
+  //   formEditSubmit.style.display = "none";
+  // }
 
-  static hideModal(e) {
-    console.log(e.parentElement.parentElement.id);
-    const modal = document.querySelector("#main-modal");
-    modal.style.display = "none";
-  }
+  // static hideModal(e) {
+  //   console.log(e.parentElement.parentElement.id);
+  //   const modal = document.querySelector("#main-modal");
+  //   modal.style.display = "none";
+  // }
 
   static hideCalculatorModal() {
     const form = document.querySelector("#calculator-modal");
