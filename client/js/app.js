@@ -10,6 +10,7 @@ import Chart from "./chart.js";
 import DebtModal from "./debtModal.js";
 import ExpenseModal from "./expenseModal.js";
 import IncomeModal from "./incomeModal.js";
+import PopOut from "./popOut.js";
 
 document.addEventListener(
   "DOMContentLoaded",
@@ -84,7 +85,7 @@ document
   .querySelector("#form-calculator-submit")
   .addEventListener("click", (e) => {
     e.preventDefault();
-    ExpenseModal.validate(e);
+    ExpenseModal.validate("submit");
   });
 
 document
@@ -104,7 +105,7 @@ document
   .addEventListener("click", (e) => {
     e.preventDefault();
 
-    ExpenseModal.editSubmit();
+    ExpenseModal.validate("edit");
   });
 
 document.querySelectorAll(".add-item").forEach((item) => {
@@ -168,11 +169,11 @@ document.addEventListener("click", (e) => {
   }
 
   if (isButton && e.target.id === "child-window") {
-    UI.openChild();
+    PopOut.openChild();
   }
 
   if (isButton && e.target.id === "sankey-button") {
-    UI.openSankey();
+    PopOut.openSankey();
   }
 
   if (isButton && e.target.id === "main-button") {

@@ -88,7 +88,8 @@ export default class UI {
     const div = document.createElement("div");
     div.className = `alert`;
     div.innerHTML = `${alertText}`;
-    const form = document.querySelector("#form-header");
+    // const form = document.querySelector("#form-header");
+    const form = document.querySelector("#form-calculator-header");
     form.before(div);
     setTimeout(() => document.querySelector(".alert").remove(), 2000);
   }
@@ -145,48 +146,11 @@ export default class UI {
     modal.style.display = "none";
   }
 
-  static openChild() {
-    const { remote } = require("electron");
-    const path = require("path");
-
-    let win = new remote.BrowserWindow({
-      parent: remote.getCurrentWindow(),
-      width: 900,
-      height: 600,
-      // modal: true,
-      resizable: true,
-      webPreferences: {
-        preload: path.join(__dirname, "preload.js"),
-        nodeIntegration: true,
-      },
-      frame: false,
-    });
-
-    const theUrl = "file://" + __dirname + "/index-child.html";
-
-    win.loadURL(theUrl);
-  }
-
-  static openSankey() {
-    const { remote } = require("electron");
-    const path = require("path");
-
-    let win = new remote.BrowserWindow({
-      parent: remote.getCurrentWindow(),
-      width: 1000,
-      height: 750,
-      // modal: true,
-      resizable: true,
-      webPreferences: {
-        preload: path.join(__dirname, "preload.js"),
-        nodeIntegration: true,
-      },
-      frame: false,
-    });
-
-    const theUrl = "file://" + __dirname + "/sankey.html";
-
-    win.loadURL(theUrl);
+  static hideCalculatorModal() {
+    const form = document.querySelector("#calculator-modal");
+    form.style = "display:hidden;";
+    const content = document.querySelector("#form-calculator-content");
+    content.parentNode.removeChild(content);
   }
 
   static toggleItemMenu(e) {

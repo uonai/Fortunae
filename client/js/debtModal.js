@@ -29,6 +29,11 @@ export default class DebtModal {
     parent.insertBefore(div, formContainer);
     const form = document.querySelector("#calculator-modal");
     form.style = "display:block;";
+    const formEditSubmit = document.querySelector(
+      "#form-calculator-edit-submit"
+    );
+    console.log(formEditSubmit);
+    formEditSubmit.style.display = "none";
   }
 
   static hideModal() {

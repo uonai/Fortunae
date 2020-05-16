@@ -1,8 +1,7 @@
 import ExpenseItem from "./expenseItem.js";
 import UI from "./ui.js";
 import Store from "./store.js";
-import Helper from "./helper.js";
-export default class ExpenseModal {
+export default class FundModal {
   static showModal() {
     const div = document.createElement("div");
     div.id = "form-calculator-content";
@@ -39,11 +38,6 @@ export default class ExpenseModal {
     parent.insertBefore(div, formContainer);
     const form = document.querySelector("#calculator-modal");
     form.style = "display:block;";
-    // const formEditSubmit = document.querySelector(
-    //   "#form-calculator-edit-submit"
-    // );
-    // console.log(formEditSubmit);
-    // formEditSubmit.style.display = "none";
   }
 
   static showEditItemModal(e) {
@@ -76,8 +70,14 @@ export default class ExpenseModal {
     formEditSubmit.style.display = "block";
   }
 
-  static validate(action) {
-    console.log(action);
+  static hideModal() {
+    const form = document.querySelector("#calculator-modal");
+    form.style = "display:hidden;";
+    const content = document.querySelector("#form-calculator-content");
+    content.parentNode.removeChild(content);
+  }
+
+  static validate(e) {
     const title = document.querySelector("#form-calculator-title").value;
     const amount = document.querySelector("#form-calculator-amount").value;
     const category = document.querySelector("#form-calculator-category").value;
@@ -91,48 +91,35 @@ export default class ExpenseModal {
     } else if (!Number(amount)) {
       UI.showAlert(numberAlertText);
     } else {
-      if (action == "submit") {
-        console.log("submit");
-        const id = Helper.generateUUIDv4();
-        const item = new ExpenseItem(id, category, title, amount, type);
-        UI.addItemToList(item);
-        Store.addItem(item);
-        UI.buildItemChart(category);
-        UI.hideCalculatorModal();
-      } else {
-        console.log("edit");
-        const id = document.querySelector("#form-calculator-id").value;
-        const item = new ExpenseItem(id, category, title, amount, type);
-        UI.updateItem(item);
-        Store.editItem(item);
-        UI.buildItemChart(category);
-        UI.hideCalculatorModal();
-      }
-
+      const id = Helper.generateUUIDv4();
+      const item = new ExpenseItem(id, category, title, amount, type);
+      UI.addItemToList(item);
+      Store.addItem(item);
+      UI.buildItemChart(category);
       // UI.hideModal();
-      // UI.clearFields();
+      UI.clearFields();
     }
   }
 
-  // static editSubmit(e) {
-  //   const title = document.querySelector("#form-calculator-title").value;
-  //   const amount = document.querySelector("#form-calculator-amount").value;
-  //   const category = document.querySelector("#form-calculator-category").value;
-  //   const type = document.querySelector("#form-calculator-type").value;
-  //   const id = document.querySelector("#form-calculator-id").value;
-  //   const alertText = "Please fill out all form fields.";
-  //   const numberAlertText = "Please enter valid number";
+  static editSubmit(e) {
+    const title = document.querySelector("#form-calculator-title").value;
+    const amount = document.querySelector("#form-calculator-amount").value;
+    const category = document.querySelector("#form-calculator-category").value;
+    const type = document.querySelector("#form-calculator-type").value;
+    const id = document.querySelector("#form-calculator-id").value;
+    const alertText = "Please fill out all form fields.";
+    const numberAlertText = "Please enter valid number";
 
-  //   if (title === "" || amount === "") {
-  //     UI.showAlert(alertText);
-  //   } else if (!Number(amount)) {
-  //     UI.showAlert(numberAlertText);
-  //   } else {
-  //     const item = new ExpenseItem(id, category, title, amount, type);
-  //     UI.updateItem(item);
-  //     Store.editItem(item);
-  //     UI.buildItemChart(category);
-  //     this.hideModal();
-  //   }
-  // }
+    if (title === "" || amount === "") {
+      UI.showAlert(alertText);
+    } else if (!Number(amount)) {
+      UI.showAlert(numberAlertText);
+    } else {
+      const item = new ExpenseItem(id, category, title, amount, type);
+      UI.updateItem(item);
+      Store.editItem(item);
+      UI.buildItemChart(category);
+      this.hideModal();
+    }
+  }
 }
