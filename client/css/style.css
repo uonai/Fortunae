@@ -133,7 +133,7 @@ button {
 .item-chart {
   width: 100%;
   overflow: hidden;
-  height: 10px;
+  height: 2px;
   margin-top: 10px;
 }
 
@@ -159,13 +159,13 @@ button {
   background: #fff;
 } */
 
-.item-chart div:nth-child(5n + 1) {
-  background: #aaa;
+.item-chart div:nth-child(2n + 1) {
+  background: #fff;
 }
-.item-chart div:nth-child(5n + 2) {
+.item-chart div:nth-child(2n + 2) {
   background: #555;
 }
-.item-chart div:nth-child(5n + 3) {
+/* .item-chart div:nth-child(5n + 3) {
   background: #aaa;
 }
 
@@ -175,7 +175,7 @@ button {
 
 .item-chart div:nth-child(5n + 5) {
   background: #444;
-}
+} */
 
 /* Form */
 form {

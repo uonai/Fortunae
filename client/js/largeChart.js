@@ -34,8 +34,8 @@ var data = [
   },
 ];
 
-var width = 800;
-var height = 500;
+var width = 400;
+var height = 400;
 var margin = 50;
 var duration = 300;
 
