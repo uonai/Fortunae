@@ -55,14 +55,25 @@
         line-height: 2;
         transition: all 0.2s ease-out;
       }
+
+      .application-nav {
+        position: absolute;
+        padding: 20px;
+        width: 90%;
+        text-align: right;
+        height: 50px;
+      }
+
+      #close-window {
+        position: absolute;
+        z-index: 1000;
+        top: 20px;
+        right: 20px;
+      }
     </style>
     <title>Fortunae</title>
   </head>
   <body>
-    <div
-      class="application-nav"
-      style="-webkit-app-region: drag; width: 100%; float: left; height: 50px;"
-    ></div>
     <button id="close-window">
       <img
         style="z-index: 1000;"
@@ -70,6 +81,7 @@
         width="12px"
       />
     </button>
+    <div class="application-nav" style="-webkit-app-region: drag;"></div>
     <header style="padding: 60px 0 0 0; text-align: center;">
       MONTHLY EXPENSES
     </header>
@@ -295,6 +307,15 @@
             d.sourceLinks.length > 0 ? "start" : "end"
           );
       }
+    </script>
+    <script>
+      const remote = require("electron").remote;
+      document
+        .getElementById("close-window")
+        .addEventListener("click", function (e) {
+          var window = remote.getCurrentWindow();
+          window.close();
+        });
     </script>
   </body>
 </html>

@@ -79,6 +79,20 @@ section.chart header,
   padding-bottom: 10px;
 }
 
+section ul {
+  width: 100%;
+  max-height: 105px;
+  overflow-y: scroll;
+  padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
+  box-sizing: content-box; /* So the width will be 100% + 17px */
+}
+
+::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
+}
+
 header,
 .menu,
 .save,
