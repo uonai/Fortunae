@@ -14,6 +14,7 @@ export default class FundModal {
         <input type="text" id="form-calculator-title" class="form-control" placeholder="Title" />
       </div>
       <select id="form-calculator-type">
+      <option value="0">Fund Type</option>
         <option value="1">Checking</option>
         <option value="2">Saving</option>
         <option value="3">Investment</option>
@@ -49,6 +50,10 @@ export default class FundModal {
 
     const formTitle = document.querySelector("#form-calculator-title");
     formTitle.value = `${e.dataset.title}`;
+
+    const formType = document.querySelector("#form-calculator-type");
+    console.log(e.dataset.type);
+    formType.selectedIndex = `${e.dataset.type}`;
 
     const formAmount = document.querySelector("#form-calculator-amount");
     formAmount.value = `${e.dataset.amount}`;
