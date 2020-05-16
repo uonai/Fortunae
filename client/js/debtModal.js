@@ -9,7 +9,8 @@ export default class DebtModal {
         <div class="form-group">
           <input type="text" id="form-calculator-title" class="form-control" placeholder="Title" />
         </div>
-        <select id="Category">
+        <select id="category">
+        <option value="0">Category</option>
         <option value="1">Secured</option>
         <option value="2">Unsecured</option>
         <option value="3">Revolving</option>

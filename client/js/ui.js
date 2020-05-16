@@ -14,6 +14,8 @@ export default class UI {
   }
 
   static addItemToList(item) {
+    console.log(item.category);
+    console.log(item.id);
     if (item) {
       const list = document.querySelector(`#item-list-${item.category}`);
       const listItem = document.createElement("li");

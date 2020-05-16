@@ -2,6 +2,7 @@ import UI from "./ui.js";
 import Store from "./store.js";
 import Helper from "./helper.js";
 import Item from "./item.js";
+import ExpenseItem from "./expenseItem.js";
 import Recommendation from "./recommendation.js";
 import Menu from "./menu.js";
 import HistoryChart from "./historyChart.js";
@@ -68,33 +69,6 @@ document.querySelector("#form-edit-submit").addEventListener("click", (e) => {
   }
 });
 
-// FORM CALCULATOR SUBMIT
-document
-  .querySelector("#form-calculator-submit")
-  .addEventListener("click", (e) => {
-    e.preventDefault();
-
-    const title = document.querySelector("#form-title").value;
-    const amount = document.querySelector("#form-amount").value;
-    const category = document.querySelector("#form-category").value;
-    const alertText = "Please fill out all form fields.";
-    const numberAlertText = "Please enter valid number";
-
-    if (title === "" || amount === "") {
-      UI.showAlert(alertText);
-    } else if (!Number(amount)) {
-      UI.showAlert(numberAlertText);
-    } else {
-      const id = Helper.generateUUIDv4();
-      const item = new Item(id, category, title, amount);
-      UI.addItemToList(item);
-      Store.addItem(item);
-      UI.buildItemChart(category);
-      // UI.hideModal();
-      UI.clearFields();
-    }
-  });
-
 document.querySelector("#form-cancel").addEventListener("click", () => {
   UI.hideModal();
   UI.clearFields();
@@ -104,6 +78,14 @@ document.querySelector("#modal-close").addEventListener("click", (e) => {
   UI.hideModal(e.target);
   UI.clearFields(e.target);
 });
+
+// EXPENSE FORM CALCULATOR SUBMIT
+document
+  .querySelector("#form-calculator-submit")
+  .addEventListener("click", (e) => {
+    e.preventDefault();
+    ExpenseModal.validate(e);
+  });
 
 document
   .querySelector("#modal-calculator-close")
@@ -115,6 +97,14 @@ document
   .querySelector("#form-calculator-cancel")
   .addEventListener("click", () => {
     DebtModal.hideModal();
+  });
+
+document
+  .querySelector("#form-calculator-edit-submit")
+  .addEventListener("click", (e) => {
+    e.preventDefault();
+
+    ExpenseModal.editSubmit();
   });
 
 document.querySelectorAll(".add-item").forEach((item) => {
@@ -161,7 +151,12 @@ document.addEventListener("click", (e) => {
   }
 
   if (isButton && e.target.className == "edit") {
-    UI.showEditItemModal(e.target);
+    console.log(e.target.dataset.category);
+    if (e.target.dataset.category == 2) {
+      ExpenseModal.showEditItemModal(e.target);
+    } else {
+      UI.showEditItemModal(e.target);
+    }
   }
 
   // if (isButton && e.target.id === "close-modal") {

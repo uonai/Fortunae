@@ -206,7 +206,8 @@ path {
 #form-cancel,
 #form-edit-submit,
 #form-calculator-cancel,
-#form-calculator-submit {
+#form-calculator-submit,
+#form-calculator-edit-submit {
   border-width: 0px;
 }
 
