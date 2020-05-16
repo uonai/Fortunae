@@ -162,6 +162,10 @@ document.addEventListener("click", (e) => {
     PopOut.openSankey();
   }
 
+  if (isButton && e.target.id === "radar-button") {
+    PopOut.openRadar();
+  }
+
   if (isButton && e.target.id === "main-button") {
     UI.showModal(e.target);
   }

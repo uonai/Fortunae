@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html style="border-radius: 5px;">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!-- <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    /> -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;400;500;700&display=swap");
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="./client/css/chart.css" />
+    <style>
+      body {
+        /* min-height: 100vh;
+        width: 100%; */
+        overflow: hidden;
+      }
+
+      header {
+        font-size: 12px;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 2px;
+      }
+
+      .application-nav {
+        position: absolute;
+        padding: 20px;
+        width: 80%;
+        text-align: right;
+        height: 50px;
+      }
+
+      #close-window {
+        position: absolute;
+        z-index: 1000;
+        top: 20px;
+        right: 20px;
+      }
+
+    </style>
+    <title>Fortunae</title>
+  </head>
+  <body>
+    <button id="close-window">
+      <img
+        style="z-index: 1000;"
+        src="./client/images/close.svg"
+        width="12px"
+      />
+    </button>
+    <div class="application-nav" style="-webkit-app-region: drag;"></div>
+    <header style="padding: 40px 0 20px 0; text-align: center;">
+      EXPENSE BREAKDOWN
+    </header>
+    <script type="text/javascript" src="./client/library/d3.js"></script>
+    <script type="text/javascript" src="./client/js/radarChart.js"></script>
+    <div class="radarChart" style="display: inline-flex;"></div>
+
+    <script>
+
+			var margin = { top: 60, right: 80, bottom: 50, left: 80 },
+				width = Math.min(700, window.innerWidth / 4) - margin.left - margin.right,
+				height = Math.min(width, window.innerHeight - margin.top - margin.bottom);
+
+			var data = [
+				{ name: 'Feb',
+					axes: [
+						{axis: 'Misc Expenses', value: 42},
+						{axis: 'Shopping', value: 20},
+						{axis: 'Personal Care', value: 60},
+						{axis: 'Food', value: 26},
+						{axis: 'Auto & Transport', value: 35},
+            {axis: 'Bills & Utilities', value: 20},
+            {axis: 'Savings', value: 20}
+					]
+        },
+        { name: 'Jan',
+					axes: [
+						{axis: 'Misc Expenses', value: 50},
+						{axis: 'Shopping', value: 45},
+						{axis: 'Personal Care', value: 20},
+						{axis: 'Food', value: 20},
+						{axis: 'Auto & Transport', value: 20},
+            {axis: 'Bills & Utilities', value: 25},
+            {axis: 'Savings', value: 23}
+					]
+				}
+			];
+			var radarChartOptions = {
+			  w: 300,
+			  h: 300,
+			  margin: margin,
+			  levels: 4,
+			  roundStrokes: true,
+				color: d3.scaleOrdinal().range(["#fff", "#fff"]),
+				format: '.0f'
+			};
+
+			// Draw the chart, get a reference the created svg element :
+			let svg_radar1 = RadarChart(".radarChart", data, radarChartOptions);
+
+
+		</script>
+    </script>
+    <script>
+      require("./renderer.js");
+    </script>
+    <script>
+      const remote = require("electron").remote;
+      document
+        .getElementById("close-window")
+        .addEventListener("click", function (e) {
+          var window = remote.getCurrentWindow();
+          window.close();
+        });
+    </script>
+  </body>
+</html>

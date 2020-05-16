@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html style="border-radius: 5px;">
+
 <head>
   <meta charset="UTF-8" />
   <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
@@ -29,7 +30,8 @@
   <div class="container">
     <div class="top">
       <section id="section-1" data-section="1">
-        <header>Current Funds</header>
+        <header>Funds <button id="child-window" class="header" style="margin-bottom:0; padding-bottom:0">[::]</button>
+        </header>
         <ul id="item-list-1"></ul>
         <button id="1" class="add-item" data-title="Current Funds">
           Add Fund [+]
@@ -38,7 +40,8 @@
         <div id="item-chart-1" class="item-chart"></div>
       </section>
       <section id="section-2" data-section="2">
-        <header>Expenses <button id="sankey-button" class="header" style="margin-bottom:0; padding-bottom:0" >[::]</button></header>
+        <header>Expenses <button id="radar-button" class="header"
+            style="margin-bottom:0; padding-bottom:0">[::]</button></header>
         <ul id="item-list-2"></ul>
         <button id="2" class="add-item" data-title="Expenses">
           Add Expense [+]
@@ -46,7 +49,7 @@
         <div id="item-chart-2" class="item-chart"></div>
       </section>
       <section id="section-3" data-section="3">
-        <header>Debt Calculator</header>
+        <header>Debt <button id="radar-button" class="header" style="margin-bottom:0; padding-bottom:0">[::]</button></header>
         <ul id="item-list-3"></ul>
         <button id="3" class="add-item" data-title="Debt Calculator">
           Add Debt [+]
@@ -54,7 +57,8 @@
         <div id="item-chart-3" class="item-chart"></div>
       </section>
       <section id="section-4" data-section="4">
-        <header>Income Calculator</header>
+        <header>Income <button id="sankey-button" class="header" style="margin-bottom:0; padding-bottom:0">[::]</button>
+        </header>
         <ul id="item-list-4"></ul>
         <button id="4" class="add-item" data-title="Income Calculator">
           Add Income [+]
@@ -64,27 +68,24 @@
     </div>
     <div class="middle">
       <section>
-        <header>Recommendations</header>
+        <header>Recommendations <button id="radar-button" class="header" style="margin-bottom:0; padding-bottom:0">[::]</button></header>
         <ul id="recommendation-list"></ul>
       </section>
       <section class="chart">
         <div class="chart-outer">
-          <button id="child-window" class="header" style="width: 100%;">
-            Trend Data
-          </button>
+          <header> Trend Data <button id="radar-button" class="header" style="margin-bottom:0; padding-bottom:0">[::]</button></header>
           <div class="chart-inner">
             <div id="line"></div>
           </div>
-          ​
         </div>
       </section>
       <section class="bordered">
-        <header>Needs</header>
+        <header>Needs <button id="radar-button" class="header" style="margin-bottom:0; padding-bottom:0">[::]</button></header>
         <ul id="item-list-5"></ul>
         <button id="5" class="add-item" data-title="Needs">
           Add Needs [+]
         </button>
-        <header style="margin-top: 20px;">Wants</header>
+        <header style="margin-top: 20px;">Wants <button id="radar-button" class="header" style="margin-bottom:0; padding-bottom:0">[::]</button></header>
         <ul id="item-list-6"></ul>
         <button id="6" class="add-item" data-title="Wants">
           Add Wants [+]
@@ -99,38 +100,38 @@
       </svg>
     </footer>
 
-<!-- form calculator-->
+    <!-- form calculator-->
     <div id="calculator-modal" class="modal">
       <div class="modal-calculator-content">
         <button id="modal-calculator-close"></button>
         <form id="modal-calculator-form">
-          <div class="form-group" id="modal-calculator-footer"> 
-          <input type="button" id="form-calculator-submit" value="Save [+]" />
-         <input type="button" id="form-calculator-edit-submit" value="Save [+]" />
-          <input type="button" id="form-calculator-cancel" value="Cancel [-]" />
-        </div>
-      </form>
+          <div class="form-group" id="modal-calculator-footer">
+            <input type="button" id="form-calculator-submit" value="Save [+]" />
+            <input type="button" id="form-calculator-edit-submit" value="Save [+]" />
+            <input type="button" id="form-calculator-cancel" value="Cancel [-]" />
+          </div>
+        </form>
+      </div>
+      <script>
+      </script>
     </div>
+    <script type="text/javascript" src="./client/library/d3.js"></script>
     <script>
+      require("./renderer.js");
     </script>
-  </div>
-  <script type="text/javascript" src="./client/library/d3.js"></script>
-  <script>
-    require("./renderer.js");
-  </script>
-  <script type="module" src="./client/js/app.js"></script>
-  <script>
-    const remote = require("electron").remote;
-    document
-      .getElementById("close-window")
-      .addEventListener("click", function (e) {
-        var window = remote.getCurrentWindow();
-        window.close();
-      });
-  </script>
+    <script type="module" src="./client/js/app.js"></script>
+    <script>
+      const remote = require("electron").remote;
+      document
+        .getElementById("close-window")
+        .addEventListener("click", function (e) {
+          var window = remote.getCurrentWindow();
+          window.close();
+        });
+    </script>
 
-  <!-- <script src="./client/js/chart.js"></script> -->
-  <!-- <script type="module" src="./client/js/historyChart.js"></script> -->
+    <!-- <script src="./client/js/chart.js"></script> -->
+    <!-- <script type="module" src="./client/js/historyChart.js"></script> -->
 </body>
 
 </html>

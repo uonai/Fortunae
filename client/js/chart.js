@@ -40,8 +40,8 @@ export default class Chart {
       const lineOpacity = "0.9";
       const lineOpacityHover = "0.1";
       const otherLinesOpacityHover = "0";
-      const lineStroke = "3px";
-      const lineStrokeHover = "3px";
+      const lineStroke = "2px";
+      const lineStrokeHover = "0.5px";
 
       const circleOpacity = "0.9";
       const circleOpacityOnLineHover = "0.1";
@@ -114,6 +114,7 @@ export default class Chart {
           .attr("class", "line")
           .attr("d", (d) => line(d.values))
           .style("stroke", (d, i) => color(i))
+          .style("stroke-width", lineStroke)
           .style("opacity", lineOpacity)
           .on("mouseover", function (d) {
             d3.selectAll(".line").style("opacity", otherLinesOpacityHover);
