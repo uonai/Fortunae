@@ -15,18 +15,18 @@ export default class ExpenseModal {
         </div>
         <select id="form-calculator-type">
         <option value="0">Category</option>
-          <option value="1">Misc Expense</option>
-          <option value="2">Education</option>
-          <option value="3">Shopping</option>
-          <option value="4">Personal Care</option>
-          <option value="5">Health & Fitness</option>
-          <option value="6">Food & Dining</option>
-          <option value="7">Gifts and Donations</option>
-          <option value="8">Investments</option>
-          <option value="9">Bills & Utilities</option>
-          <option value = "10"> Auto & Transport</option>
-          <option value = "11">Fees and Charges</option>
-          <option value="12">Business Services</option>
+          <option value="Misc Expense">Misc Expense</option>
+          <option value="Education">Education</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Personal Care">Personal Care</option>
+          <option value="Health & Fitness">Health & Fitness</option>
+          <option value="Food & Dining">Food & Dining</option>
+          <option value="Gifts & Donations">Gifts & Donations</option>
+          <option value="Investments">Investments</option>
+          <option value="Bills & Utilities">Bills & Utilities</option>
+          <option value = "Auto & Transport"> Auto & Transport</option>
+          <option value = "Fees & Charges">Fees & Charges</option>
+          <option value="Business Services">Business Services</option>
           <option>Taxes</option>
         </select>
         <div class="form-group">

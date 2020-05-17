@@ -3,7 +3,67 @@ const sin = Math.sin;
 const cos = Math.cos;
 const HALF_PI = Math.PI / 2;
 
-const RadarChart = function RadarChart(parent_selector, data, options) {
+const removeDuplicates = (itemDates) => {
+  return itemDates.filter((a, b) => itemDates.indexOf(a) === b);
+};
+
+const RadarChart = function RadarChart(parent_selector, options) {
+  // var data = [
+  //   {
+  //     name: "Feb",
+  //     axes: [
+  //       { axis: "Misc Expenses", value: 42 },
+  //       { axis: "Shopping", value: 20 },
+  //       { axis: "Personal Care", value: 60 },
+  //       { axis: "Food", value: 26 },
+  //       { axis: "Auto & Transport", value: 35 },
+  //       { axis: "Bills & Utilities", value: 20 },
+  //       { axis: "Savings", value: 20 },
+  //     ],
+  //   },
+  //   {
+  //     name: "Jan",
+  //     axes: [
+  //       { axis: "Misc Expenses", value: 50 },
+  //       { axis: "Shopping", value: 45 },
+  //       { axis: "Personal Care", value: 20 },
+  //       { axis: "Food", value: 20 },
+  //       { axis: "Auto & Transport", value: 20 },
+  //       { axis: "Bills & Utilities", value: 25 },
+  //       { axis: "Savings", value: 23 },
+  //     ],
+  //   },
+  // ];
+  const data1 = JSON.parse(localStorage.getItem("category2ItemsHistorical"));
+  console.log(data1);
+  let itemDates = [];
+  data1.forEach((item) => {
+    itemDates.push(item.date);
+  });
+  let itemDatesFiltered = removeDuplicates(itemDates);
+  console.log(itemDatesFiltered);
+
+  let filteredData = [];
+  itemDatesFiltered.forEach((date) => {
+    const keys = Object.entries(data1);
+    let array = [];
+    for (const key of keys) {
+      console.log(key[1].date);
+      console.log(date);
+      if (key[1].date == date) {
+        console.log(key[1].item.type);
+        array.push({
+          axis: key[1].item.type,
+          value: key[1].item.amount,
+        });
+      }
+    }
+    filteredData.push({ name: date, axes: array });
+  });
+
+  var data = filteredData;
+  console.log(data);
+
   //Wraps SVG text - Taken from http://bl.ocks.org/mbostock/7555321
   const wrap = (text, width) => {
     text.each(function () {
@@ -139,32 +199,7 @@ const RadarChart = function RadarChart(parent_selector, data, options) {
   //Wrapper for the grid & axes
   let axisGrid = g.append("g").attr("class", "axisWrapper");
 
-  //Draw the background circles
   axisGrid;
-  // .selectAll(".levels")
-  // .data(d3.range(1, cfg.levels + 1).reverse())
-  // .enter()
-  // .append("circle")
-  // .attr("class", "gridCircle")
-  // .attr("r", (d) => (radius / cfg.levels) * d)
-  // .style("fill", "#CDCDCD")
-  // .style("stroke", "#CDCDCD")
-  // .style("fill-opacity", cfg.opacityCircles)
-  // .style("filter", "url(#glow)");
-
-  //Text indicating at what % each level is
-  axisGrid;
-  // .selectAll(".axisLabel")
-  // .data(d3.range(1, cfg.levels + 1).reverse())
-  // .enter()
-  // .append("text")
-  // .attr("class", "axisLabel")
-  // .attr("x", 4)
-  // .attr("y", (d) => (-d * radius) / cfg.levels)
-  // .attr("dy", "0.4em")
-  // .style("font-size", "10px")
-  // .attr("fill", "#737373")
-  // .text((d) => Format((maxValue * d) / cfg.levels) + cfg.unit);
 
   /////////////////////////////////////////////////////////
   //////////////////// Draw the axes //////////////////////

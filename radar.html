@@ -69,31 +69,31 @@
 			var margin = { top: 60, right: 80, bottom: 50, left: 80 },
 				width = Math.min(700, window.innerWidth / 4) - margin.left - margin.right,
 				height = Math.min(width, window.innerHeight - margin.top - margin.bottom);
-
-			var data = [
-				{ name: 'Feb',
-					axes: [
-						{axis: 'Misc Expenses', value: 42},
-						{axis: 'Shopping', value: 20},
-						{axis: 'Personal Care', value: 60},
-						{axis: 'Food', value: 26},
-						{axis: 'Auto & Transport', value: 35},
-            {axis: 'Bills & Utilities', value: 20},
-            {axis: 'Savings', value: 20}
-					]
-        },
-        { name: 'Jan',
-					axes: [
-						{axis: 'Misc Expenses', value: 50},
-						{axis: 'Shopping', value: 45},
-						{axis: 'Personal Care', value: 20},
-						{axis: 'Food', value: 20},
-						{axis: 'Auto & Transport', value: 20},
-            {axis: 'Bills & Utilities', value: 25},
-            {axis: 'Savings', value: 23}
-					]
-				}
-			];
+    
+			// var data = [
+			// 	{ name: 'Feb',
+			// 		axes: [
+			// 			{axis: 'Misc Expenses', value: 42},
+			// 			{axis: 'Shopping', value: 20},
+			// 			{axis: 'Personal Care', value: 60},
+			// 			{axis: 'Food', value: 26},
+			// 			{axis: 'Auto & Transport', value: 35},
+      //       {axis: 'Bills & Utilities', value: 20},
+      //       {axis: 'Savings', value: 20}
+			// 		]
+      //   },
+      //   { name: 'Jan',
+			// 		axes: [
+			// 			{axis: 'Misc Expenses', value: 50},
+			// 			{axis: 'Shopping', value: 45},
+			// 			{axis: 'Personal Care', value: 20},
+			// 			{axis: 'Food', value: 20},
+			// 			{axis: 'Auto & Transport', value: 20},
+      //       {axis: 'Bills & Utilities', value: 25},
+      //       {axis: 'Savings', value: 23}
+			// 		]
+			// 	}
+			// ];
 			var radarChartOptions = {
 			  w: 300,
 			  h: 300,
@@ -105,7 +105,7 @@
 			};
 
 			// Draw the chart, get a reference the created svg element :
-			let svg_radar1 = RadarChart(".radarChart", data, radarChartOptions);
+			let svg_radar1 = RadarChart(".radarChart", radarChartOptions);
 
 
 		</script>
