@@ -21,7 +21,7 @@
   <div id="form-container">
     <form id="item-form"></form>
   </div>
-  <button class="menu">Menu</button>
+  <!-- <button class="menu">Menu</button> -->
   <ul id="right-menu" class="right-menu">
     <li><button id="save-record" class="save-record">Save</button></li>
     <li> <button id="clone-record" class="clone-record">Clone</button></li>
@@ -73,8 +73,10 @@
     </div>
     <div class="middle">
       <section>
-        <header>Recommendations <button id="radar-button" class="header"
-            style="margin-bottom:0; padding-bottom:0">[::]</button></header>
+        <header>Recommendations 
+          <!-- <button id="radar-button" class="header"
+            style="margin-bottom:0; padding-bottom:0">[::]</button> -->
+          </header>
         <ul id="recommendation-list"></ul>
       </section>
       <section class="chart">
@@ -86,27 +88,30 @@
           </div>
         </div>
       </section>
-      <section class="bordered">
-        <header>Needs <button id="radar-button" class="header" style="margin-bottom:0; padding-bottom:0">[::]</button>
+      <section style="width:270px" >
+        <div class="bordered">
+        <header>Budget <button id="radar-button" class="header" style="margin-bottom:0; padding-bottom:0">[::]</button>
         </header>
         <ul id="item-list-5"></ul>
         <button id="5" class="add-item" data-title="Needs">
-          Add Needs [+]
+          Add Item [+]
         </button>
-        <header style="margin-top: 20px;">Wants <button id="radar-button" class="header"
+        <!-- <header style="margin-top: 20px;">Wants <button id="radar-button" class="header"
             style="margin-bottom:0; padding-bottom:0">[::]</button></header>
         <ul id="item-list-6"></ul>
         <button id="6" class="add-item" data-title="Wants">
           Add Wants [+]
-        </button>
+        </button> -->
+      </div>
       </section>
     </div>
 
     <footer>
       <header>History</header>
-      <svg width="920" height="40">
+      <svg width="920" height="30">
         <g id="g-1"></g>
       </svg>
+      <div id="timestamp"></div>
     </footer>
 
     <!-- form calculator-->
@@ -115,8 +120,8 @@
         <button id="modal-calculator-close"></button>
         <form id="modal-calculator-form">
           <div class="form-group" id="modal-calculator-footer">
-            <input type="button" id="form-calculator-submit" value="Save New [+]" />
             <input type="button" id="form-calculator-edit-submit" value="Edit [+]" />
+            <input type="button" id="form-calculator-submit" value="Save New [+]" />
             <input type="button" id="form-calculator-cancel" value="Cancel [-]" />
           </div>
         </form>

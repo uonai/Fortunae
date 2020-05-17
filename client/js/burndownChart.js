@@ -1,236 +1,240 @@
-const BurndownChart = function BurndownChart() {
-  var data = [
-    {
-      date: "1-May-12",
-      close: 58.13,
-      open: 3.41,
-    },
-    {
-      date: "30-Apr-12",
-      close: 53.98,
-      open: 4.55,
-    },
-    {
-      date: "27-Apr-12",
-      close: 67,
-      open: 6.78,
-    },
-    {
-      date: "26-Apr-12",
-      close: 89.7,
-      open: 7.85,
-    },
-    {
-      date: "25-Apr-12",
-      close: 99,
-      open: 8.92,
-    },
-    {
-      date: "24-Apr-12",
-      close: 130.28,
-      open: 9.92,
-    },
-    {
-      date: "23-Apr-12",
-      close: 166.7,
-      open: 10.13,
-    },
-    {
-      date: "20-Apr-12",
-      close: 234.98,
-      open: 12.23,
-    },
-    {
-      date: "19-Apr-12",
-      close: 345.44,
-      open: 13.45,
-    },
-    {
-      date: "18-Apr-12",
-      close: 443.34,
-      open: 16.04,
-    },
-    {
-      date: "17-Apr-12",
-      close: 543.7,
-      open: 18.03,
-    },
-    {
-      date: "16-Apr-12",
-      close: 580.13,
-      open: 21.02,
-    },
-    {
-      date: "13-Apr-12",
-      close: 605.23,
-      open: 22.34,
-    },
-    {
-      date: "12-Apr-12",
-      close: 622.77,
-      open: 20.15,
-    },
-    {
-      date: "11-Apr-12",
-      close: 626.2,
-      open: 21.26,
-    },
-    {
-      date: "10-Apr-12",
-      close: 628.44,
-      open: 31.04,
-    },
-    {
-      date: "9-Apr-12",
-      close: 636.23,
-      open: 35.04,
-    },
-    {
-      date: "5-Apr-12",
-      close: 633.68,
-      open: 41.02,
-    },
-    {
-      date: "4-Apr-12",
-      close: 624.31,
-      open: 43.05,
-    },
-    {
-      date: "3-Apr-12",
-      close: 629.32,
-      open: 46.03,
-    },
-    {
-      date: "2-Apr-12",
-      close: 618.63,
-      open: 51.03,
-    },
-    {
-      date: "30-Mar-12",
-      close: 599.55,
-      open: 53.42,
-    },
-    {
-      date: "29-Mar-12",
-      close: 609.86,
-      open: 57.82,
-    },
-    {
-      date: "28-Mar-12",
-      close: 617.62,
-      open: 59.01,
-    },
-    {
-      date: "27-Mar-12",
-      close: 614.48,
-      open: 56.03,
-    },
-    {
-      date: "26-Mar-12",
-      close: 606.98,
-      open: 58.01,
-    },
-    {
-      date: "26-Mar-12",
-      close: 626.98,
-      open: 62.01,
-    },
-  ];
-  // Get the data
-  var margin = { top: 30, right: 40, bottom: 30, left: 50 },
-    width = 450 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
-
-  var parseDate = d3.timeParse("%d-%b-%y");
-
-  var x = d3.scaleTime().range([0, width]);
-  var y0 = d3.scaleLinear().range([height, 0]);
-  var y1 = d3.scaleLinear().range([height, 0]);
-
-  var xAxis = d3.axisBottom().scale(x).ticks(5);
-
-  var yAxisLeft = d3.axisLeft().scale(y0).ticks(5);
-
-  var yAxisRight = d3.axisRight().scale(y1).ticks(5);
-
-  var valueline = d3
-    .line()
-    .curve(d3.curveCardinal)
-    .x(function (d) {
-      return x(d.date);
-    })
-    .y(function (d) {
-      return y0(d.close);
-    });
-
-  var valueline2 = d3
-    .line()
-    .x(function (d) {
-      return x(d.date);
-    })
-    .y(function (d) {
-      return y1(d.open);
-    });
-
-  var svg = d3
-    .select(".container")
-    .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  // d3.json(data, function (data) {
-  data.forEach(function (d) {
-    d.date = parseDate(d.date);
-    d.close = +d.close;
-    d.open = +d.open;
+const result = JSON.parse(localStorage.getItem("category3ItemsHistorical"));
+if (result) {
+  const db = result.filter(function (item) {
+    return item.item.type == "Secured";
   });
 
-  // Scale the range of the data
-  x.domain(
-    d3.extent(data, function (d) {
-      return d.date;
-    })
-  );
-  y0.domain([
-    0,
-    d3.max(data, function (d) {
-      return Math.max(d.close);
-    }),
-  ]);
-  y1.domain([
-    0,
-    d3.max(data, function (d) {
-      return Math.max(d.open);
-    }),
-  ]);
+  console.log(db);
 
-  svg
-    .append("path") // Add the valueline path.
-    .attr("d", valueline(data));
+  const db2 = result.filter(function (item) {
+    return item.item.type == "Unsecured";
+  });
 
-  svg
-    .append("path") // Add the valueline2 path.
-    .style("stroke", "white")
-    .attr("d", valueline2(data));
+  const db3 = result.filter(function (item) {
+    return item.item.type == "Revolving";
+  });
 
-  svg
-    .append("g") // Add the X Axis
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + height + ")")
-    .call(xAxis);
+  const db4 = result.filter(function (item) {
+    return item.item.type == "Non-revolving";
+  });
 
-  svg
-    .append("g")
-    .attr("class", "y axis")
-    //  .style("fill", "white")
-    .call(yAxisLeft);
+  console.log(db2);
+  const data = [
+    {
+      name: "Checking",
+      values: db,
+    },
+    {
+      name: "Saving",
+      values: db2,
+    },
+    {
+      name: "Investment",
+      values: db3,
+    },
+  ];
+  console.log(data);
+  // const data = [
+  //   {
+  //     name: "Checking",
+  //     values: [
+  //       { date: "2000", amount: "2000" },
+  //       { date: "2001", amount: "2200" },
+  //       { date: "2002", amount: "3000" },
+  //       { date: "2003", amount: "4000" },
+  //       { date: "2004", amount: "2000" },
+  //       { date: "2005", amount: "1500" },
+  //     ],
+  //   },
+  //   {
+  //     name: "Savings",
+  //     values: [
+  //       { date: "2000", amount: "3000" },
+  //       { date: "2001", amount: "3500" },
+  //       { date: "2002", amount: "4000" },
+  //       { date: "2003", amount: "4500" },
+  //       { date: "2004", amount: "5000" },
+  //       { date: "2005", amount: "5500" },
+  //     ],
+  //   },
+  //   {
+  //     name: "Investment",
+  //     values: [
+  //       { date: "2000", amount: "1000" },
+  //       { date: "2001", amount: "1200" },
+  //       { date: "2002", amount: "800" },
+  //       { date: "2003", amount: "1200" },
+  //       { date: "2004", amount: "1500" },
+  //       { date: "2005", amount: "2000" },
+  //     ],
+  //   },
+  // ];
 
-  svg
-    .append("g")
-    .attr("class", "y axis")
-    .attr("transform", "translate(" + width + " ,0)")
-    //  .attr("fill", "#fff")
-    .call(yAxisRight);
-};
+  const width = 420;
+  const height = 400;
+  const margin = 75;
+  const duration = 300;
+
+  const lineOpacity = "0.9";
+  const lineOpacityHover = "1";
+  const otherLinesOpacityHover = "0.05";
+  const lineStroke = "2px";
+  const lineStrokeHover = "px";
+
+  const circleOpacity = "0.9";
+  const circleOpacityOnLineHover = "1";
+  const circleRadius = 5;
+  const circleRadiusHover = 6;
+
+  /* Format Data */
+  if (db) {
+    const parseDate = d3.timeParse("%s");
+
+    let values = [];
+    data.forEach(function (d) {
+      d.values.forEach(function (d) {
+        console.log(d);
+        d.date = parseDate(d.date);
+        d.amount = +d.item.amount;
+        console.log(d.date);
+        values.push(d.item.amount);
+      });
+    });
+    /* Scale */
+    const xScale = d3
+      .scaleTime()
+      .domain(d3.extent(data[0].values, (d) => d.date))
+      .range([0, width - margin]);
+
+    const yScale = d3
+      .scaleLinear()
+      .domain([0, Math.max(...values)])
+      .range([height - margin, 0]);
+
+    const color = d3.scaleOrdinal(d3.schemeGreys);
+
+    /* Add SVG */
+    const svg = d3
+      .select("#line")
+      .append("svg")
+      .attr("width", width + margin + "px")
+      .attr("height", height + margin + "px")
+      .append("g")
+      .attr("transform", `translate(${margin}, ${margin})`);
+
+    /* Add line into SVG */
+    const line = d3
+      .line()
+      .curve(d3.curveCardinal)
+      .x((d) => xScale(d.date))
+      .y((d) => yScale(d.amount));
+
+    let lines = svg.append("g").attr("class", "lines");
+
+    lines
+      .selectAll(".line-group")
+      .data(data)
+      .enter()
+      .append("g")
+      .attr("class", "line-group")
+      .on("mouseover", function (d, i) {
+        svg
+          .append("text")
+          .attr("class", "title-text")
+          .style("fill", "#ffffff")
+          .text(d.name)
+          .attr("text-anchor", "middle")
+          .attr("x", (width - margin) / 2)
+          .attr("y", 100);
+      })
+      .on("mouseout", function (d) {
+        svg.select(".title-text").remove();
+      })
+      .append("path")
+      .attr("class", "line")
+      .attr("d", (d) => line(d.values))
+      .style("stroke", (d, i) => color(i))
+      .style("opacity", lineOpacity)
+      .on("mouseover", function (d) {
+        d3.selectAll(".line").style("opacity", otherLinesOpacityHover);
+        d3.selectAll(".circle").style("opacity", circleOpacityOnLineHover);
+        d3.select(this)
+          .style("opacity", lineOpacityHover)
+          .style("stroke-width", lineStrokeHover)
+          .style("cursor", "pointer");
+      })
+      .on("mouseout", function (d) {
+        d3.selectAll(".line").style("opacity", lineOpacity);
+        d3.selectAll(".circle").style("opacity", circleOpacity);
+        d3.select(this)
+          .style("stroke-width", lineStroke)
+          .style("cursor", "none");
+      });
+
+    /* Add circles in the line */
+    lines
+      .selectAll("circle-group")
+      .data(data)
+      .enter()
+      .append("g")
+      .style("fill", (d, i) => color(i))
+      .selectAll("circle")
+      .data((d) => d.values)
+      .enter()
+      .append("g")
+      .attr("class", "circle")
+      .on("mouseover", function (d) {
+        d3.select(this)
+          .style("cursor", "pointer")
+          .append("text")
+          .attr("class", "text")
+          .style("fill", "#ffffff")
+          .text(`${d.amount}`)
+          .attr("x", (d) => xScale(d.date) + 5)
+          .attr("y", (d) => yScale(d.amount) - 10);
+      })
+      .on("mouseout", function (d) {
+        d3.select(this)
+          .style("cursor", "none")
+          .transition()
+          .duration(duration)
+          .selectAll(".text")
+          .remove();
+      })
+      .append("circle")
+      .attr("cx", (d) => xScale(d.date))
+      .attr("cy", (d) => yScale(d.amount))
+      .attr("r", circleRadius)
+      .style("opacity", circleOpacity)
+      .style("fill", "white")
+      .on("mouseover", function (d) {
+        d3.select(this)
+          .transition()
+          .duration(duration)
+          .style("background-color", "#ffffff")
+          .attr("r", circleRadiusHover);
+      })
+      .on("mouseout", function (d) {
+        d3.select(this).transition().duration(duration).attr("r", circleRadius);
+      });
+
+    var xAxis = d3.axisBottom(xScale).ticks(5);
+    var yAxis = d3.axisLeft(yScale);
+
+    svg
+      .append("g")
+      .attr("class", "x axis")
+      .attr("transform", `translate(0, ${height - margin})`)
+      .style("fill", "white")
+      .call(xAxis);
+
+    svg
+      .append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+      .append("text")
+      .attr("y", 15)
+      .attr("transform", "rotate(-90)")
+      .attr("fill", "white");
+  }
+}

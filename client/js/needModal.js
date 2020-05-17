@@ -1,29 +1,27 @@
-import FundItem from "./fundItem.js";
+import NeedItem from "./needItem.js";
 import UI from "./ui.js";
 import Store from "./store.js";
 import Helper from "./helper.js";
-export default class FundModal {
+export default class NeedModal {
   static showModal() {
     const div = document.createElement("div");
     div.id = "form-calculator-content";
     div.innerHTML = `
-        <header id="form-calculator-header">Fund</header>
-        <input type="hidden" id="form-calculator-category" value="1" />
-        <input type="hidden" id="form-calculator-id" value="1" />
+        <header id="form-calculator-header">Budget Item</header>
+        <input type="hidden" id="form-calculator-category" value="5" />
+        <input type="hidden" id="form-calculator-id" value="5" />
         <div class="form-group">
-        <input type="text" id="form-calculator-title" class="form-control" placeholder="Title" />
-      </div>
-      <select id="form-calculator-type">
-      <option value="0">Fund Type</option>
-        <option value="Checking">Checking</option>
-        <option value="Saving">Saving</option>
-        <option value="Investment">Investment</option>
-        <option value="Emergency">Emergency</option>
-        </select>
-      <div class="form-group">
-        <input type="text" id="form-calculator-amount" class="form-control" placeholder="Amount" />
-      </div>
-
+          <input type="text" id="form-calculator-title" class="form-control" placeholder="Title" />
+        </div>
+        <select id="form-calculator-type">
+        <option value="0">Category</option>
+        <option value="Need">Need</option>
+        <option value="Want">Want</option>
+        <option value="Debt">Debt</option>
+      </select>
+        <div class="form-group">
+          <input type="text" id="form-calculator-amount" class="form-control" placeholder="Amount" />
+        </div>
  `;
     const formContainer = document.querySelector("#modal-calculator-footer");
     const parent = document.querySelector("#modal-calculator-form");
@@ -40,7 +38,7 @@ export default class FundModal {
     form.classList.add("edit");
 
     const formHeader = document.querySelector("#form-calculator-header");
-    formHeader.innerHTML = `Edit Item`;
+    formHeader.innerHTML = `Edit Budget Item`;
 
     const formCategory = document.querySelector("#form-calculator-category");
     formCategory.value = `${e.dataset.category}`;
@@ -56,31 +54,14 @@ export default class FundModal {
 
     const formType = document.querySelector("#form-calculator-type");
     console.log(e.dataset.type);
-    formType.value = `${e.dataset.type}`;
+    formType.selectedIndex = `${e.dataset.type}`;
 
     const formAmount = document.querySelector("#form-calculator-amount");
     formAmount.value = `${e.dataset.amount}`;
-
-    // const formSubmit = document.querySelector("#form-calculator-submit");
-    // formSubmit.style.display = "none";
-
-    const formEditSubmit = document.querySelector(
-      "#form-calculator-edit-submit"
-    );
-    formEditSubmit.style.display = "block";
   }
 
-  // static hideModal() {
-  //   const form = document.querySelector("#calculator-modal");
-  //   form.classList.remove("edit");
-  //   form.classList.remove("new");
-  //   form.style = "display:hidden;";
-
-  //   const content = document.querySelector("#form-calculator-content");
-  //   content.parentNode.removeChild(content);
-  // }
-
   static validate(action) {
+    console.log(action);
     const title = document.querySelector("#form-calculator-title").value;
     const amount = document.querySelector("#form-calculator-amount").value;
     const category = document.querySelector("#form-calculator-category").value;
@@ -88,6 +69,7 @@ export default class FundModal {
     const alertText = "Please fill out all form fields.";
     const numberAlertText = "Please enter valid number";
     console.log("validate");
+
     if (title === "" || amount === "") {
       UI.showAlert(alertText);
     } else if (!Number(amount)) {
@@ -96,7 +78,7 @@ export default class FundModal {
       if (action == "submit") {
         console.log("submit");
         const id = Helper.generateUUIDv4();
-        const item = new FundItem(id, category, title, amount, type);
+        const item = new NeedItem(id, category, title, amount, type);
         UI.addItemToList(item);
         Store.addItem(item);
         UI.buildItemChart(category);
@@ -104,7 +86,7 @@ export default class FundModal {
       } else {
         console.log("edit");
         const id = document.querySelector("#form-calculator-id").value;
-        const item = new FundItem(id, category, title, amount, type);
+        const item = new NeedItem(id, category, title, amount, type);
         UI.updateItem(item);
         Store.editItem(item);
         UI.buildItemChart(category);

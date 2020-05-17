@@ -1,16 +1,13 @@
 import UI from "./ui.js";
 import Store from "./store.js";
-import Helper from "./helper.js";
-import Item from "./item.js";
-import ExpenseItem from "./expenseItem.js";
 import Recommendation from "./recommendation.js";
 import Menu from "./menu.js";
-import HistoryChart from "./historyChart.js";
 import Chart from "./chart.js";
 import DebtModal from "./debtModal.js";
 import ExpenseModal from "./expenseModal.js";
 import IncomeModal from "./incomeModal.js";
 import FundModal from "./fundModal.js";
+import NeedModal from "./needModal.js";
 import PopOut from "./popOut.js";
 
 document.addEventListener(
@@ -40,6 +37,9 @@ document
         break;
       case "4":
         IncomeModal.validate("submit");
+        break;
+      case "5":
+        NeedModal.validate("submit");
         break;
       default:
         console.log("none found");
@@ -80,6 +80,9 @@ document
       case "4":
         IncomeModal.validate("edit");
         break;
+      case "5":
+        NeedModal.showModal("edit");
+        break;
       default:
         console.log("none found");
     }
@@ -87,14 +90,25 @@ document
 
 document.querySelectorAll(".add-item").forEach((item) => {
   item.addEventListener("click", (e) => {
-    console.log(e.target.id);
-    if (e.target.id == 1) {
-      FundModal.showModal(e);
-    } else if (e.target.id == 2) {
-      ExpenseModal.showModal(e);
-    } else if (e.target.id == 3) {
-      DebtModal.showModal(e);
-    } else IncomeModal.showModal(e);
+    switch (e.target.id) {
+      case "1":
+        FundModal.showModal(e);
+        break;
+      case "2":
+        ExpenseModal.showModal(e);
+        break;
+      case "3":
+        DebtModal.showModal(e);
+        break;
+      case "4":
+        IncomeModal.showModal(e);
+        break;
+      case "5":
+        NeedModal.showModal(e);
+        break;
+      default:
+        console.log("none found");
+    }
   });
 });
 
@@ -151,6 +165,8 @@ document.addEventListener("click", (e) => {
         break;
       case "4":
         IncomeModal.showEditItemModal(e.target);
+      case "5":
+        NeedModal.showEditItemModal(e.target);
         break;
     }
   }

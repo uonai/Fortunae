@@ -1,71 +1,60 @@
 <!DOCTYPE html>
-<meta charset="utf-8" />
-
-<head>
-  <link rel="stylesheet" type="text/css" href="./client/css/chart.css" />
-  <style>
-    path {
-      stroke: #fff;
-      stroke-width: 2;
-      fill: none;
-    }
-
-    .axis path,
-    .axis line {
-      fill: none;
-      stroke: #fff;
-      stroke-width: 2;
-    }
-
-    .tick text {
+<html style="border-radius: 5px;">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!-- <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    /> -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;400;500;700&display=swap");
+    </style>
+    <link rel="stylesheet" type="text/css" href="./client/css/style.css" />
+    <title>Fortunae</title>
+    <style>
+      .tick text {
       color: #fff;
       fill: #fff;
     }
 
-    header {
-      font-size: 12px;
-      text-transform: uppercase;
-      font-weight: 600;
-      letter-spacing: 2px;
-    }
+    </style>
+  </head>
+  <body>
+    <button id="close-window"><img style="z-index:1000" src="./client/images/close.svg" width="12px" /></button>
+    <div class="application-nav" style="-webkit-app-region: drag;">
 
-    .application-nav {
-      position: absolute;
-      padding: 20px;
-      width: 80%;
-      text-align: right;
-      height: 50px;
-    }
-
-    #close-window {
-      position: absolute;
-      z-index: 1000;
-      top: 20px;
-      right: 20px;
-    }
-  </style>
-</head>
-<script type="text/javascript" src="./client/library/d3.js"></script>
-
-<body>
-  <button id="close-window">
-    <img style="z-index: 1000;" src="./client/images/close.svg" width="12px" />
-  </button>
-  <div class="application-nav" style="-webkit-app-region: drag;"></div>
-  <header style="padding: 40px 0 20px 0; text-align: center;">
-    Debt Burndown
-  </header>
-  <div class="container"></div>
-  <script type="text/javascript" src="./client/js/burndownChart.js"></script>\
-  <script>BurndownChart();</script>
-   <script>
-    const remote = require("electron").remote;
-    document
-      .getElementById("close-window")
-      .addEventListener("click", function (e) {
-        var window = remote.getCurrentWindow();
-        window.close();
+    </div>
+<header style="padding:60px 0 0 0; text-align:center;">Debt Burndown</header>
+              <div id="line" style="position:fixed; left: 0; right: 0; top: 50; bottom: 0;"></div>
+  
+    </div>
+    <script type="text/javascript" src="./client/library/d3.js"></script>
+    <script>
+      require("./renderer.js");
+    </script>
+    <script src="./client/js/burndownChart.js"></script>
+    <!-- <script src="./client/js/chart.js"></script> -->
+    <!-- <script type="module" src="./client/js/historyChart.js"></script> -->
+    <script>
+      document.addEventListener("keydown", function (e) {
+        if (e.which === 123) {
+          require("remote").getCurrentWindow().toggleDevTools();
+        } else if (e.which === 116) {
+          location.reload();
+        }
       });
-  </script>
-</body>
+    </script>
+    <script>
+       const remote = require('electron').remote;
+       document.getElementById("close-window").addEventListener("click", function (e) {
+       var window = remote.getCurrentWindow();
+       window.close();
+  }); 
+    </script>
+  </body>
 </html>

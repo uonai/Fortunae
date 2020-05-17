@@ -39,6 +39,10 @@ export default class DebtModal {
   static showEditItemModal(e) {
     this.showModal();
     console.log(e);
+
+    const form = document.querySelector("#calculator-modal");
+    form.classList.add("edit");
+
     const formHeader = document.querySelector("#form-calculator-header");
     formHeader.innerHTML = `Edit Debt`;
 

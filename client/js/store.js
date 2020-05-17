@@ -27,6 +27,10 @@ export default class Store {
         return new Date(Date.now(b)) - new Date(Date.now(a));
       });
 
+      // get most recent file
+      const currentItem = localStorage.getItem("currentRecord");
+      HistoryChart.setTimestamp(currentItem);
+
       localStorage.setItem("history", JSON.stringify(filesDirectory));
       console.log("files directory ");
       const recentFile = filesDirectory[0];

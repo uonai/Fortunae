@@ -111,7 +111,7 @@ const SpiderChart = function RadarChart(parent_selector, options) {
     maxValue: maxNumber, //What is the value that the biggest circle will represent
     labelFactor: 1.25, //How much farther than the radius of the outer circle should the labels be placed
     wrapWidth: 60, //The number of pixels after which a label needs to be given a new line
-    opacityArea: 0.1, //The opacity of the area of the blob
+    opacityArea: 0.01, //The opacity of the area of the blob
     dotRadius: 4, //The size of the colored circles of each blog
     opacityCircles: 0.1, //The opacity of the circles of each blob
     strokeWidth: 2, //The width of the stroke around each blob
@@ -421,7 +421,7 @@ const SpiderChart = function RadarChart(parent_selector, options) {
       .attr("x", cfg.w - 52)
       .attr("y", (d, i) => i * 20 + 9)
       .attr("font-size", "10px")
-      .attr("fill", "red")
+      .attr("fill", "white")
       .attr("stroke", "white")
       .text((d) => d);
   }

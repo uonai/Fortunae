@@ -143,6 +143,8 @@ export default class UI {
   static hideCalculatorModal() {
     const form = document.querySelector("#calculator-modal");
     form.style = "display:hidden;";
+    form.classList.remove("edit");
+    form.classList.remove("new");
     const content = document.querySelector("#form-calculator-content");
     content.parentNode.removeChild(content);
   }

@@ -20,7 +20,7 @@ body {
 }
 
 .container {
-  padding: 60px 20px 20px 40px;
+  padding: 60px 20px 20px 20px;
 }
 
 .menu {
@@ -92,6 +92,10 @@ section ul {
   box-sizing: content-box; /* So the width will be 100% + 17px */
 }
 
+section ul#item-list-5 {
+  max-height: 80px;
+}
+
 ::-webkit-scrollbar {
   /* WebKit */
   width: 0;
@@ -138,7 +142,7 @@ button {
 }
 
 .item-chart {
-  width: 100%;
+  width: 90%;
   overflow: hidden;
   height: 2px;
   margin-top: 10px;
@@ -288,6 +292,19 @@ path {
   height: 15px;
 }
 
+.modal #form-calculator-edit-submit {
+  display: none;
+}
+
+.edit #form-calculator-edit-submit {
+  display: block;
+}
+
+.edit #form-calculator-type,
+.edit #form-calculator-category {
+  display: none;
+}
+
 /** items **/
 .list-item {
   width: 100%;
@@ -304,7 +321,15 @@ path {
   stroke: #fff;
 }
 
+#timestamp {
+  float: right;
+  margin-right: 20px;
+}
+
 /** footer **/
+footer {
+  padding-left: 20px;
+}
 .date {
   z-index: 1000;
   bottom: 20px;
