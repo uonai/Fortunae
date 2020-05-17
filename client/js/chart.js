@@ -3,17 +3,21 @@ export default class Chart {
     const result = JSON.parse(localStorage.getItem("category1ItemsHistorical"));
     if (result) {
       const db = result.filter(function (item) {
-        return item.item.type == "1";
+        return item.item.type == "Checking";
       });
 
       console.log(db);
 
       const db2 = result.filter(function (item) {
-        return item.item.type == "2";
+        return item.item.type == "Saving";
       });
 
       const db3 = result.filter(function (item) {
-        return item.item.type == "3";
+        return item.item.type == "Investment";
+      });
+
+      const db4 = result.filter(function (item) {
+        return item.item.type == "Emergency";
       });
 
       console.log(db2);
@@ -31,6 +35,7 @@ export default class Chart {
           values: db3,
         },
       ];
+      console.log(data);
 
       const width = 200;
       const height = 200;

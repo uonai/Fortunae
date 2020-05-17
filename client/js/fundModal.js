@@ -52,7 +52,7 @@ export default class FundModal {
 
     const formType = document.querySelector("#form-calculator-type");
     console.log(e.dataset.type);
-    formType.selectedIndex = `${e.dataset.type}`;
+    formType.value = `${e.dataset.type}`;
 
     const formAmount = document.querySelector("#form-calculator-amount");
     formAmount.value = `${e.dataset.amount}`;

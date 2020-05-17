@@ -106,7 +106,9 @@ export default class Store {
     localStorage.setItem("items", JSON.stringify(items));
     localStorage.setItem("currentRecord", timestamp);
     console.log("restore items");
+    this.loadCompleteDatabase();
     this.loadDatabase();
+
     // this is an intense way to reload the window, need to find a different solution
     getCurrentWindow().reload();
   }
@@ -140,18 +142,14 @@ export default class Store {
 
   static cloneRecord() {
     // generate unix timestamp
-    let fileName = Math.round(new Date().getTime() / 1000);
+    const fileName = Math.round(new Date().getTime() / 1000);
     let items = JSON.parse(localStorage.getItem("items"));
     const json = JSON.stringify(items);
     fs.writeFile(__dirname + "/db/" + fileName, json, "utf8", (err) => {
       if (err) {
         return;
       }
-      alert("The record has been cloned");
-      localStorage.removeItem("items");
-      localStorage.removeItem("currentRecord");
-      this.restoreItems(currentRecord);
-      alert("The record has been cloned");
+      this.resetData(fileName);
     });
   }
 
@@ -165,9 +163,7 @@ export default class Store {
         console.log(err);
         return;
       }
-      localStorage.removeItem("items");
-      localStorage.removeItem("currentRecord");
-      this.restoreItems(currentRecord);
+      this.resetData(currentRecord);
     });
   }
 
@@ -182,12 +178,20 @@ export default class Store {
           return;
         }
         alert("The record has been deleted");
-        localStorage.removeItem("items");
-        localStorage.removeItem("currentRecord");
-        this.restoreItems(currentRecord);
+        localStorage.clear();
+        this.loadDatabase();
+        this.loadCompleteDatabase();
+        getCurrentWindow().reload();
       });
     } else {
       alert("This file doesn't exist, can't delete");
     }
+  }
+  static resetData(currentRecord) {
+    localStorage.clear();
+    localStorage.removeItem("items");
+    localStorage.removeItem("currentRecord");
+    localStorage.setItem("currentRecord", currentRecord);
+    this.restoreItems(currentRecord);
   }
 }

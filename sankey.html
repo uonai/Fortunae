@@ -181,7 +181,6 @@
         });
       }
 
-      console.log(expenseSources);
       const expenseStartingPoint = links.length;
       expenseSources.forEach((item, index) => {
         links.push({
@@ -192,7 +191,6 @@
       });
 
       const savingsStartingPoint = links.length;
-      console.log(savingsStartingPoint);
       savingSources.forEach((item, index) => {
         links.push({
           source: incomeSources.length + 2,
@@ -200,9 +198,6 @@
           value: Number(item.item.amount),
         });
       });
-      // console.log(savingSources);
-
-      console.log(links);
 
       // END NODE ALGORITHM
 

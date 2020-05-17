@@ -14,7 +14,7 @@ export default class IncomeModal {
           <input type="text" id="form-calculator-title" class="form-control" placeholder="Title" />
         </div>
         <select id="form-calculator-type">
-        <option value="0">Category</option> 
+        <option value="Category">Category</option> 
           <option value="Active">Active</option>
           <option value="Passive">Passive</option>
           <option value="Portfolio">Portfolio</option>
@@ -55,11 +55,12 @@ export default class IncomeModal {
     formTitle.value = `${e.dataset.title}`;
 
     const formType = document.querySelector("#form-calculator-type");
-    console.log(e.dataset.type);
-    formType.selectedIndex = `${e.dataset.type}`;
+    formType.value = `${e.dataset.type}`;
+    console.log(`${e.dataset.type}`);
 
     const formAmount = document.querySelector("#form-calculator-amount");
     formAmount.value = `${e.dataset.amount}`;
+    console.log(formAmount.value);
 
     // const formSubmit = document.querySelector("#form-calculator-submit");
     // formSubmit.style.display = "none";
