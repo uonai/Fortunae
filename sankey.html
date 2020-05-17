@@ -125,10 +125,12 @@
             item,
           });
         } else if (item.category == "2" && item.type !== "Savings") {
+          console.log(item);
           expenseSources.push({
             item,
           });
         } else if (item.category == "2" && item.type == "Savings") {
+          console.log(item);
           savingSources.push({ item });
         }
       });
@@ -179,14 +181,26 @@
         });
       }
 
+      console.log(expenseSources);
       const expenseStartingPoint = links.length;
       expenseSources.forEach((item, index) => {
         links.push({
           source: expenseStartingPoint - 1,
-          target: index + 2 + expenseStartingPoint,
+          target: index + 1 + expenseStartingPoint,
           value: Number(item.item.amount),
         });
       });
+
+      const savingsStartingPoint = links.length;
+      console.log(savingsStartingPoint);
+      savingSources.forEach((item, index) => {
+        links.push({
+          source: incomeSources.length + 2,
+          target: index + 1 + savingsStartingPoint,
+          value: Number(item.item.amount),
+        });
+      });
+      // console.log(savingSources);
 
       console.log(links);
 
