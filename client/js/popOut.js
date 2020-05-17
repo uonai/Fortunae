@@ -1,5 +1,5 @@
 export default class PopOut {
-  static openChild() {
+  static openFund() {
     const { remote } = require("electron");
     const path = require("path");
 
@@ -16,7 +16,7 @@ export default class PopOut {
       frame: false,
     });
 
-    const theUrl = "file://" + __dirname + "/index-child.html";
+    const theUrl = "file://" + __dirname + "/fund.html";
 
     win.loadURL(theUrl);
   }
@@ -43,7 +43,7 @@ export default class PopOut {
     win.loadURL(theUrl);
   }
 
-  static openRadar() {
+  static openSpider() {
     const { remote } = require("electron");
     const path = require("path");
 
@@ -60,7 +60,7 @@ export default class PopOut {
       frame: false,
     });
 
-    const theUrl = "file://" + __dirname + "/radar.html";
+    const theUrl = "file://" + __dirname + "/spider.html";
 
     win.loadURL(theUrl);
   }

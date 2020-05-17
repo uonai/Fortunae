@@ -7,7 +7,7 @@ const removeDuplicates = (itemDates) => {
   return itemDates.filter((a, b) => itemDates.indexOf(a) === b);
 };
 
-const RadarChart = function RadarChart(parent_selector, options) {
+const SpiderChart = function RadarChart(parent_selector, options) {
   // var data = [
   //   {
   //     name: "Feb",
@@ -105,13 +105,13 @@ const RadarChart = function RadarChart(parent_selector, options) {
 
   const cfg = {
     w: 600, //Width of the circle
-    h: 600, //Height of the circle
+    h: 640, //Height of the circle
     margin: { top: 20, right: 20, bottom: 20, left: 20 }, //The margins of the SVG
     levels: 8, //How many levels or inner circles should there be drawn
     maxValue: maxNumber, //What is the value that the biggest circle will represent
     labelFactor: 1.25, //How much farther than the radius of the outer circle should the labels be placed
     wrapWidth: 60, //The number of pixels after which a label needs to be given a new line
-    opacityArea: 0.35, //The opacity of the area of the blob
+    opacityArea: 0.1, //The opacity of the area of the blob
     dotRadius: 4, //The size of the colored circles of each blog
     opacityCircles: 0.1, //The opacity of the circles of each blob
     strokeWidth: 2, //The width of the stroke around each blob
@@ -119,7 +119,7 @@ const RadarChart = function RadarChart(parent_selector, options) {
     color: d3.scaleOrdinal(d3.schemeCategory10), //Color function,
     format: ".2%",
     unit: "",
-    legend: false,
+    legend: true,
   };
 
   //Put all of the options into a variable called cfg
@@ -388,7 +388,7 @@ const RadarChart = function RadarChart(parent_selector, options) {
         .attr("x", cfg.w - 70)
         .attr("y", 10)
         .attr("font-size", "12px")
-        .attr("fill", "white")
+        .attr("fill", "red")
         .text(cfg.legend.title);
     }
     let legend = legendZone
@@ -406,8 +406,8 @@ const RadarChart = function RadarChart(parent_selector, options) {
       .data(names)
       .enter()
       .append("rect")
-      .attr("x", cfg.w - 65)
-      .attr("y", (d, i) => i * 20)
+      .attr("x", 50)
+      .attr("y", 50)
       .attr("width", 10)
       .attr("height", 10)
       .style("fill", "white")
@@ -421,8 +421,7 @@ const RadarChart = function RadarChart(parent_selector, options) {
       .attr("x", cfg.w - 52)
       .attr("y", (d, i) => i * 20 + 9)
       .attr("font-size", "10px")
-      .attr("fill", "white")
-      .style("fill", "white")
+      .attr("fill", "red")
       .attr("stroke", "white")
       .text((d) => d);
   }

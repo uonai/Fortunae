@@ -164,7 +164,7 @@ document.addEventListener("click", (e) => {
   }
 
   if (isButton && e.target.id === "child-window") {
-    PopOut.openChild();
+    PopOut.openFund();
   }
 
   if (isButton && e.target.id === "sankey-button") {
@@ -172,7 +172,7 @@ document.addEventListener("click", (e) => {
   }
 
   if (isButton && e.target.id === "radar-button") {
-    PopOut.openRadar();
+    PopOut.openSpider();
   }
 
   if (isButton && e.target.id === "burndown-button") {
