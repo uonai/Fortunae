@@ -26,20 +26,20 @@ export default class Chart {
           name: "Category 1",
           values: db,
         },
-        // {
-        //   name: "Checking",
-        //   values: db2,
-        // },
-        // {
-        //   name: "Savings",
-        //   values: db3,
-        // },
+        {
+          name: "Checking",
+          values: db2,
+        },
+        {
+          name: "Savings",
+          values: db3,
+        },
       ];
       console.log(data);
 
-      const width = 200;
-      const height = 200;
-      const margin = 20;
+      const width = 150;
+      const height = 150;
+      const margin = 40;
       const duration = 300;
 
       const lineOpacity = "0.9";

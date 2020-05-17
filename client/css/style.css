@@ -239,7 +239,7 @@ form input .add-button {
   border: 2px solid #fff;
   height: 250px;
   width: 250px;
-  padding: 25px 10px 25px 10px;
+  padding: 25px 10px 25px 20px;
 }
 
 path {
@@ -311,7 +311,8 @@ path {
 }
 
 .edit #form-calculator-type,
-.edit #form-calculator-category {
+.edit #form-calculator-category,
+.edit #form-calculator-submit {
   display: none;
 }
 

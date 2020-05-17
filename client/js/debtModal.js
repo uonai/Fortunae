@@ -73,10 +73,10 @@ export default class DebtModal {
     // const formSubmit = document.querySelector("#form-calculator-submit");
     // formSubmit.style.display = "none";
 
-    const formEditSubmit = document.querySelector(
-      "#form-calculator-edit-submit"
-    );
-    formEditSubmit.style.display = "block";
+    // const formEditSubmit = document.querySelector(
+    //   "#form-calculator-edit-submit"
+    // );
+    // formEditSubmit.style.display = "block";
   }
 
   static validate(action) {
