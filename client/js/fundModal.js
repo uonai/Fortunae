@@ -15,11 +15,10 @@ export default class FundModal {
       </div>
       <select id="form-calculator-type">
       <option value="0">Fund Type</option>
-        <option value="1">Checking</option>
-        <option value="2">Saving</option>
-        <option value="3">Investment</option>
-        <option value="4">Retirement</option>
-        <option value="5">Emergency</option>
+        <option value="Checking">Checking</option>
+        <option value="Saving">Saving</option>
+        <option value="Investment">Investment</option>
+        <option value="Emergency">Emergency</option>
         </select>
       <div class="form-group">
         <input type="text" id="form-calculator-amount" class="form-control" placeholder="Amount" />

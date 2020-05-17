@@ -16,6 +16,7 @@ export default class ExpenseModal {
         <select id="form-calculator-type">
         <option value="0">Category</option>
           <option value="Misc Expense">Misc Expense</option>
+          <option value="Savings">Savings</option>
           <option value="Education">Education</option>
           <option value="Shopping">Shopping</option>
           <option value="Personal Care">Personal Care</option>
@@ -24,7 +25,7 @@ export default class ExpenseModal {
           <option value="Gifts & Donations">Gifts & Donations</option>
           <option value="Investments">Investments</option>
           <option value="Bills & Utilities">Bills & Utilities</option>
-          <option value = "Auto & Transport"> Auto & Transport</option>
+          <option value = "Auto & Transport">Travel & Transportation</option>
           <option value = "Fees & Charges">Fees & Charges</option>
           <option value="Business Services">Business Services</option>
           <option>Taxes</option>

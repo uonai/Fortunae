@@ -24,7 +24,7 @@ export default class UI {
       listItem.innerHTML = `
       <button id="${item.id}" class="list-item">${item.title}: $${item.amount}</button>
       <span id="item-menu-${item.id}" class="hidden">
-      <button class="edit" data-id=${item.id} data-category=${item.category} data-title=${item.title} data-amount=${item.amount} data-type=${item.type}>Edit [/] </button>&nbsp;<button class="delete" data-category=${item.category}>Delete [x]</button></span>`;
+      <button class="edit" data-id=${item.id} data-category=${item.category} data-title=${item.title} data-amount=${item.amount} data-type=${item.type} data-remainingmonths=${item.remainingmonths}>Edit [/] </button>&nbsp;<button class="delete" data-category=${item.category}>Delete [x]</button></span>`;
       list.appendChild(listItem);
     }
   }
@@ -36,7 +36,7 @@ export default class UI {
     listItem.innerHTML = `
       <button id="${item.id}" class="list-item">${item.title}: $${item.amount}</button>
       <span id="item-menu-${item.id}" class="hidden">
-      <button class="edit" data-id=${item.id} data-category=${item.category} data-title=${item.title} data-amount=${item.amount} data-type=${item.type}>Edit [/] </button>&nbsp;<button class="delete" data-category=${item.category}>Delete [x]</button></span>`;
+      <button class="edit" data-id=${item.id} data-category=${item.category} data-title=${item.title} data-amount=${item.amount} data-type=${item.type} data-remainingmonths=${item.remainingmonths}>Edit [/] </button>&nbsp;<button class="delete" data-category=${item.category}>Delete [x]</button></span>`;
     list.appendChild(listItem);
   }
 

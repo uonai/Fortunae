@@ -16,14 +16,17 @@ export default class DebtModal {
         </div>
         <select id="form-calculator-type">
         <option value="0">Category</option>
-        <option value="1">Secured</option>
-        <option value="2">Unsecured</option>
-        <option value="3">Revolving</option>
-        <option value="4">Non-revolving</option>
+        <option value="Secured">Secured</option>
+        <option value="Unsecured">Unsecured</option>
+        <option value="Revolving">Revolving</option>
+        <option value="Non-revolving">Non-revolving</option>
       </select>
         <div class="form-group">
         <input type="text" id="form-calculator-amount" class="form-control" placeholder="Monthly Payment" />
       </div>
+      <div class="form-group">
+      <input type="text" id="form-calculator-remaining-months" class="form-control" placeholder="Remaining Months" />
+    </div>
         
         `;
     const formContainer = document.querySelector("#modal-calculator-footer");
@@ -55,8 +58,13 @@ export default class DebtModal {
     console.log(e.dataset.type);
     formType.selectedIndex = `${e.dataset.type}`;
 
-    // const formAmount = document.querySelector("#form-calculator-amount");
-    // formAmount.value = `${e.dataset.amount}`;
+    const formAmount = document.querySelector("#form-calculator-amount");
+    formAmount.value = `${e.dataset.amount}`;
+
+    const formRemainingMonths = document.querySelector(
+      "#form-calculator-remaining-months"
+    );
+    formRemainingMonths.value = `${e.dataset.remainingmonths}`;
 
     // const formSubmit = document.querySelector("#form-calculator-submit");
     // formSubmit.style.display = "none";
@@ -73,6 +81,10 @@ export default class DebtModal {
     const amount = document.querySelector("#form-calculator-amount").value;
     const category = document.querySelector("#form-calculator-category").value;
     const type = document.querySelector("#form-calculator-type").value;
+    const remainingmonths = document.querySelector(
+      "#form-calculator-remaining-months"
+    ).value;
+    console.log(remainingmonths);
     const alertText = "Please fill out all form fields.";
     const numberAlertText = "Please enter valid number";
     console.log("validate");
@@ -85,7 +97,14 @@ export default class DebtModal {
       if (action == "submit") {
         console.log("submit");
         const id = Helper.generateUUIDv4();
-        const item = new DebtItem(id, category, title, amount, type);
+        const item = new DebtItem(
+          id,
+          category,
+          title,
+          amount,
+          type,
+          remainingmonths
+        );
         UI.addItemToList(item);
         Store.addItem(item);
         UI.buildItemChart(category);
@@ -93,7 +112,14 @@ export default class DebtModal {
       } else {
         console.log("edit");
         const id = document.querySelector("#form-calculator-id").value;
-        const item = new DebtItem(id, category, title, amount, type);
+        const item = new DebtItem(
+          id,
+          category,
+          title,
+          amount,
+          type,
+          remainingmonths
+        );
         UI.updateItem(item);
         Store.editItem(item);
         UI.buildItemChart(category);
