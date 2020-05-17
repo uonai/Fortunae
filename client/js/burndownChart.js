@@ -155,6 +155,7 @@ const BurndownChart = function BurndownChart() {
 
   var valueline = d3
     .line()
+    .curve(d3.curveCardinal)
     .x(function (d) {
       return x(d.date);
     })
@@ -223,13 +224,13 @@ const BurndownChart = function BurndownChart() {
   svg
     .append("g")
     .attr("class", "y axis")
-    .style("fill", "white")
+    //  .style("fill", "white")
     .call(yAxisLeft);
 
   svg
     .append("g")
     .attr("class", "y axis")
     .attr("transform", "translate(" + width + " ,0)")
-    .attr("fill", "#fff")
+    //  .attr("fill", "#fff")
     .call(yAxisRight);
 };

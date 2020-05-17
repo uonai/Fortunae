@@ -170,7 +170,7 @@ button {
   background: #fff;
 }
 .item-chart div:nth-child(2n + 2) {
-  background: #555;
+  background: #333;
 }
 /* .item-chart div:nth-child(5n + 3) {
   background: #aaa;

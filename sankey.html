@@ -70,6 +70,16 @@
         top: 20px;
         right: 20px;
       }
+
+      .tick {
+        paint-order: stroke;
+        stroke: #000;
+        stroke-width: 10px;
+        stroke-linecap: butt;
+        stroke-linejoin: miter;
+        font-weight: 800;
+        fill: #fff;
+      }
     </style>
     <title>Fortunae</title>
   </head>
@@ -333,9 +343,9 @@
           .attr("stroke-width", (d) => "3px")
           // alter the opacity on hover
           // detail also the data through a simple tooltip
-          .attr("opacity", 0.2)
+          .attr("opacity", 1)
           .on("mouseenter", function (d) {
-            d3.select(this).transition().attr("opacity", 0.8);
+            d3.select(this).transition().attr("opacity", 0.5);
 
             tooltip
               .append("p")
@@ -351,7 +361,7 @@
               .style("top", `${d3.event.pageY}px`);
           })
           .on("mouseout", function () {
-            d3.select(this).transition().attr("opacity", 0.2);
+            d3.select(this).transition().attr("opacity", 1);
 
             tooltip.style("opacity", 0).selectAll("p").remove();
           });
@@ -383,6 +393,7 @@
           .text((d) => d.name)
           .attr("font-size", "14")
           .attr("fill", "#fff")
+          .attr("class", "tick")
           .attr("x", (d) => {
             if (d.sourceLinks.length > 0) {
               return d.x0 + sankey.nodeWidth() + 10;

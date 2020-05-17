@@ -1,24 +1,24 @@
-var data = [
+const data = [
   {
     name: "Checking",
     values: [
-      { date: "2000", amount: "100" },
-      { date: "2001", amount: "110" },
-      { date: "2002", amount: "145" },
-      { date: "2003", amount: "241" },
-      { date: "2004", amount: "101" },
-      { date: "2005", amount: "90" },
+      { date: "2000", amount: "2000" },
+      { date: "2001", amount: "2200" },
+      { date: "2002", amount: "3000" },
+      { date: "2003", amount: "4000" },
+      { date: "2004", amount: "2000" },
+      { date: "2005", amount: "1500" },
     ],
   },
   {
     name: "Savings",
     values: [
-      { date: "2000", amount: "200" },
-      { date: "2001", amount: "120" },
-      { date: "2002", amount: "33" },
-      { date: "2003", amount: "21" },
-      { date: "2004", amount: "51" },
-      { date: "2005", amount: "190" },
+      { date: "2000", amount: "3000" },
+      { date: "2001", amount: "3500" },
+      { date: "2002", amount: "4000" },
+      { date: "2003", amount: "4500" },
+      { date: "2004", amount: "5000" },
+      { date: "2005", amount: "5500" },
     ],
   },
   {
@@ -34,46 +34,48 @@ var data = [
   },
 ];
 
-var width = 400;
-var height = 400;
-var margin = 50;
-var duration = 300;
+const width = 420;
+const height = 400;
+const margin = 75;
+const duration = 300;
 
-var lineOpacity = "0.9";
-var lineOpacityHover = "1";
-var otherLinesOpacityHover = "0.05";
-var lineStroke = "2px";
-var lineStrokeHover = "px";
+const lineOpacity = "0.9";
+const lineOpacityHover = "1";
+const otherLinesOpacityHover = "0.05";
+const lineStroke = "2px";
+const lineStrokeHover = "px";
 
-var circleOpacity = "0.9";
-var circleOpacityOnLineHover = "1";
-var circleRadius = 5;
-var circleRadiusHover = 6;
+const circleOpacity = "0.9";
+const circleOpacityOnLineHover = "1";
+const circleRadius = 5;
+const circleRadiusHover = 6;
 
 /* Format Data */
-var parseDate = d3.timeParse("%Y");
+const parseDate = d3.timeParse("%Y");
+
+let values = [];
 data.forEach(function (d) {
   d.values.forEach(function (d) {
     d.date = parseDate(d.date);
     d.amount = +d.amount;
+    values.push(d.amount);
   });
 });
-
 /* Scale */
-var xScale = d3
+const xScale = d3
   .scaleTime()
   .domain(d3.extent(data[0].values, (d) => d.date))
   .range([0, width - margin]);
 
-var yScale = d3
+const yScale = d3
   .scaleLinear()
-  .domain([0, d3.max(data[0].values, (d) => d.amount)])
+  .domain([0, Math.max(...values)])
   .range([height - margin, 0]);
 
-var color = d3.scaleOrdinal(d3.schemeGreys);
+const color = d3.scaleOrdinal(d3.schemeGreys);
 
 /* Add SVG */
-var svg = d3
+const svg = d3
   .select("#line")
   .append("svg")
   .attr("width", width + margin + "px")
@@ -82,7 +84,7 @@ var svg = d3
   .attr("transform", `translate(${margin}, ${margin})`);
 
 /* Add line into SVG */
-var line = d3
+const line = d3
   .line()
   .curve(d3.curveCardinal)
   .x((d) => xScale(d.date))
@@ -175,8 +177,22 @@ lines
     d3.select(this).transition().duration(duration).attr("r", circleRadius);
   });
 
-// svg
-//   .append("g")
-//   .attr("class", "x axis")
-//   .attr("transform", `translate(0, ${height - margin})`)
-//   .call(xAxis);
+var xAxis = d3.axisBottom(xScale).ticks(5);
+var yAxis = d3.axisLeft(yScale);
+
+svg
+  .append("g")
+  .attr("class", "x axis")
+  .attr("transform", `translate(0, ${height - margin})`)
+  .style("fill", "white")
+  .call(xAxis);
+
+svg
+  .append("g")
+  .attr("class", "y axis")
+  .call(yAxis)
+  .append("text")
+  .attr("y", 15)
+  .attr("transform", "rotate(-90)")
+  .attr("fill", "white")
+  .text("Total values");

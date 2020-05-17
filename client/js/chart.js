@@ -22,18 +22,18 @@ export default class Chart {
 
       console.log(db2);
       const data = [
+        {
+          name: "Category 1",
+          values: db,
+        },
         // {
-        //   name: "Category 1",
-        //   values: db,
+        //   name: "Checking",
+        //   values: db2,
         // },
-        {
-          name: "Checking",
-          values: db2,
-        },
-        {
-          name: "Savings",
-          values: db3,
-        },
+        // {
+        //   name: "Savings",
+        //   values: db3,
+        // },
       ];
       console.log(data);
 
