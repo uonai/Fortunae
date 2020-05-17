@@ -15,9 +15,9 @@ export default class IncomeModal {
         </div>
         <select id="form-calculator-type">
         <option value="0">Category</option> 
-          <option value="1">Passive</option>
-          <option value="2">Active</option>
-          <option value="3">Portfolio</option>
+          <option value="Active">Active</option>
+          <option value="Passive">Passive</option>
+          <option value="Portfolio">Portfolio</option>
         </select>
         <div class="form-group">
           <input type="text" id="form-calculator-amount" class="form-control" placeholder="Amount" />

@@ -112,48 +112,128 @@
       /* globals d3 */
       const container = d3.select(".container");
 
-      // visualization based on the example at the provided url
+      // BEGIN NODE ALGORITHSM
+      const data = JSON.parse(localStorage.getItem("items"));
+      console.log(data);
+      incomeSources = [];
+      expenseSources = [];
+      savingSources = [];
+
+      data.forEach((item) => {
+        if (item.category == "4") {
+          incomeSources.push({
+            item,
+          });
+        } else if (item.category == "2" && item.type !== "Savings") {
+          expenseSources.push({
+            item,
+          });
+        } else if (item.category == "2" && item.type == "Savings") {
+          savingSources.push({ item });
+        }
+      });
+      nodes = [];
+      incomeSources.forEach((item) => {
+        nodes.push({ name: item.item.title });
+      });
+
+      nodes.push({ name: "Income" }, { name: "Expenses" });
+      if (savingSources.length) {
+        nodes.push({ name: "Savings" });
+      }
+
+      expenseSources.forEach((item) => {
+        nodes.push({ name: item.item.title });
+      });
+
+      savingSources.forEach((item) => {
+        nodes.push({ name: item.item.title });
+      });
+
+      links = [];
+      totalIncome = [];
+      incomeSources.forEach((item, index) => {
+        links.push({
+          source: index,
+          target: incomeSources.length,
+          value: Number(item.item.amount),
+        });
+        totalIncome.push(Number(item.item.amount));
+      });
+
+      links.push({
+        source: incomeSources.length,
+        target: incomeSources.length + 1,
+        value: totalIncome.reduce((a, b) => a + b, 0),
+      });
+
+      totalSavings = [];
+      if (savingSources.length) {
+        savingSources.forEach((item) => {
+          totalSavings.push(Number(item.item.amount));
+        });
+        links.push({
+          source: incomeSources.length,
+          target: incomeSources.length + 2,
+          value: totalSavings.reduce((a, b) => a + b, 0),
+        });
+      }
+
+      const expenseStartingPoint = links.length;
+      expenseSources.forEach((item, index) => {
+        links.push({
+          source: expenseStartingPoint - 1,
+          target: index + 2 + expenseStartingPoint,
+          value: Number(item.item.amount),
+        });
+      });
+
+      console.log(links);
+
+      // END NODE ALGORITHM
 
       const sampleData = {
-        nodes: [
-          { name: "Wages" },
-          { name: "Interest" },
-          { name: "Reimbursements" },
-          { name: "Miscellaneous" },
-          { name: "Income" },
-          { name: "Expenses" },
-          { name: "Savings" },
-          { name: "Rent" },
-          { name: "Internet" },
-          { name: "Utilities" },
-          { name: "Council Tax" },
-          { name: "Gym" },
-          { name: "Food" },
-          { name: "Social" },
-          { name: "Other" },
-          { name: "Travel" },
-          { name: "ISA" },
-          { name: "Emergency Fund" },
-        ],
-        links: [
-          { source: 0, target: 4, value: 24111.53 },
-          { source: 1, target: 4, value: 78.21 },
-          { source: 2, target: 4, value: 1393.35 },
-          { source: 3, target: 4, value: 2.2 },
-          { source: 4, target: 5, value: 17208.61 },
-          { source: 4, target: 6, value: 8376.68 },
-          { source: 5, target: 7, value: 8100 },
-          { source: 5, target: 8, value: 285.05 },
-          { source: 5, target: 9, value: 501.35 },
-          { source: 5, target: 10, value: 985.78 },
-          { source: 5, target: 11, value: 162.0 },
-          { source: 5, target: 12, value: 1188.38 },
-          { source: 5, target: 13, value: 1147.75 },
-          { source: 5, target: 14, value: 1788.4 },
-          { source: 5, target: 15, value: 3049.7 },
-          { source: 6, target: 16, value: 2400.0 },
-          { source: 6, target: 17, value: 5976.68 },
-        ],
+        nodes,
+        links,
+        // nodes: [
+        //   { name: "Wages" },
+        //   { name: "Interest" },
+        //   { name: "Reimbursements" },
+        //   { name: "Miscellaneous" },
+        //   { name: "Income" },
+        //   { name: "Expenses" },
+        //   { name: "Savings" },
+        //   { name: "Rent" },
+        //   { name: "Internet" },
+        //   { name: "Utilities" },
+        //   { name: "Council Tax" },
+        //   { name: "Gym" },
+        //   { name: "Food" },
+        //   { name: "Social" },
+        //   { name: "Other" },
+        //   { name: "Travel" },
+        //   { name: "ISA" },
+        //   { name: "Emergency Fund" },
+        // ],
+        // links: [
+        //   { source: 0, target: 4, value: 24111.53 },
+        //   { source: 1, target: 4, value: 78.21 },
+        //   { source: 2, target: 4, value: 1393.35 },
+        //   { source: 3, target: 4, value: 2.2 },
+        //   { source: 4, target: 5, value: 17208.61 },
+        //   { source: 4, target: 6, value: 8376.68 },
+        //   { source: 5, target: 7, value: 8100 },
+        //   { source: 5, target: 8, value: 285.05 },
+        //   { source: 5, target: 9, value: 501.35 },
+        //   { source: 5, target: 10, value: 985.78 },
+        //   { source: 5, target: 11, value: 162.0 },
+        //   { source: 5, target: 12, value: 1188.38 },
+        //   { source: 5, target: 13, value: 1147.75 },
+        //   { source: 5, target: 14, value: 1788.4 },
+        //   { source: 5, target: 15, value: 3049.7 },
+        //   { source: 6, target: 16, value: 2400.0 },
+        //   { source: 6, target: 17, value: 5976.68 },
+        // ],
       };
       const tooltip = container.append("div").attr("id", "tooltip");
 
