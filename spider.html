@@ -66,16 +66,16 @@
 
     <script>
 
-			var margin = { top: 30, right: 80, bottom: 50, left: 80 },
+			var margin = { top: 50, right: 80, bottom: 50, left: 80 },
 				width = Math.min(700, window.innerWidth / 4) - margin.left - margin.right,
 				height = Math.min(width, window.innerHeight - margin.top - margin.bottom);
     
 	
 			var spiderChartOptions = {
-			  w: 300,
-			  h: 350,
+			  w: 320,
+			  h: 320,
 			  margin: margin,
-			  levels: 4,
+			  levels: 1,
 			  roundStrokes: true,
 				color: d3.scaleOrdinal().range(["#fff", "#fff"]),
 				format: '.0f'

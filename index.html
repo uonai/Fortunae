@@ -27,6 +27,9 @@
     <li> <button id="clone-record" class="clone-record">Clone</button></li>
     <li> <button id="delete-record" class="delete-record">Delete</button></li>
   </ul>
+  <button id="minimize-window">
+    <img style="z-index: 1000;" src="./client/images/minimize.svg" width="12px" />
+  </button>
   <button id="close-window">
     <img style="z-index: 1000;" src="./client/images/close.svg" width="12px" />
   </button>
@@ -73,36 +76,30 @@
     </div>
     <div class="middle">
       <section>
-        <header>Recommendations 
+        <header>Recommendations
           <!-- <button id="radar-button" class="header"
             style="margin-bottom:0; padding-bottom:0">[::]</button> -->
-          </header>
+        </header>
         <ul id="recommendation-list"></ul>
       </section>
       <section class="chart">
         <div class="chart-outer">
-          <header> Trend Data <button id="radar-button" class="header"
-              style="margin-bottom:0; padding-bottom:0">[::]</button></header>
+          <header> Trend Data </header>
           <div class="chart-inner">
             <div id="line"></div>
           </div>
         </div>
       </section>
-      <section style="width:270px" >
+      <section style="width:270px">
         <div class="bordered">
-        <header>Budget <button id="radar-button" class="header" style="margin-bottom:0; padding-bottom:0">[::]</button>
-        </header>
-        <ul id="item-list-5"></ul>
-        <button id="5" class="add-item" data-title="Needs">
-          Add Item [+]
-        </button>
-        <!-- <header style="margin-top: 20px;">Wants <button id="radar-button" class="header"
-            style="margin-bottom:0; padding-bottom:0">[::]</button></header>
-        <ul id="item-list-6"></ul>
-        <button id="6" class="add-item" data-title="Wants">
-          Add Wants [+]
-        </button> -->
-      </div>
+          <header>Budget
+          </header>
+          <ul id="item-list-5"></ul>
+          <button id="5" class="add-item" data-title="Needs">
+            Add Item [+]
+          </button>
+          <div id="item-chart-5" class="item-chart"></div>
+        </div>
       </section>
     </div>
 
@@ -120,7 +117,7 @@
         <button id="modal-calculator-close"></button>
         <form id="modal-calculator-form">
           <div class="form-group" id="modal-calculator-footer">
-            <input type="button" id="form-calculator-edit-submit" value="Edit [+]" />
+            <input type="button" id="form-calculator-edit-submit" value="Edit [/]" />
             <input type="button" id="form-calculator-submit" value="Save New [+]" />
             <input type="button" id="form-calculator-cancel" value="Cancel [-]" />
           </div>
@@ -142,7 +139,15 @@
           var window = remote.getCurrentWindow();
           window.close();
         });
+      document.getElementById("minimize-window")
+        .addEventListener("click", function (e) {
+          var window = remote.getCurrentWindow();
+          window.minimize();
+        })
+
     </script>
+
+
 
     <!-- <script src="./client/js/chart.js"></script> -->
     <!-- <script type="module" src="./client/js/historyChart.js"></script> -->

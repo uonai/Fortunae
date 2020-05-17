@@ -81,7 +81,7 @@ document
         IncomeModal.validate("edit");
         break;
       case "5":
-        NeedModal.showModal("edit");
+        NeedModal.validate("edit");
         break;
       default:
         console.log("none found");

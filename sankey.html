@@ -93,7 +93,7 @@
     </button>
     <div class="application-nav" style="-webkit-app-region: drag;"></div>
     <header style="padding: 40px 0 0 0; text-align: center;">
-      MONTHLY EXPENSES
+      INCOME FLOW
     </header>
     <div class="container"></div>
     <script type="text/javascript" src="./client/library/d3.js"></script>
@@ -214,44 +214,12 @@
       const sampleData = {
         nodes,
         links,
+        // FOR REFERENCE
         // nodes: [
         //   { name: "Wages" },
-        //   { name: "Interest" },
-        //   { name: "Reimbursements" },
-        //   { name: "Miscellaneous" },
-        //   { name: "Income" },
-        //   { name: "Expenses" },
-        //   { name: "Savings" },
-        //   { name: "Rent" },
-        //   { name: "Internet" },
-        //   { name: "Utilities" },
-        //   { name: "Council Tax" },
-        //   { name: "Gym" },
-        //   { name: "Food" },
-        //   { name: "Social" },
-        //   { name: "Other" },
-        //   { name: "Travel" },
-        //   { name: "ISA" },
-        //   { name: "Emergency Fund" },
         // ],
         // links: [
         //   { source: 0, target: 4, value: 24111.53 },
-        //   { source: 1, target: 4, value: 78.21 },
-        //   { source: 2, target: 4, value: 1393.35 },
-        //   { source: 3, target: 4, value: 2.2 },
-        //   { source: 4, target: 5, value: 17208.61 },
-        //   { source: 4, target: 6, value: 8376.68 },
-        //   { source: 5, target: 7, value: 8100 },
-        //   { source: 5, target: 8, value: 285.05 },
-        //   { source: 5, target: 9, value: 501.35 },
-        //   { source: 5, target: 10, value: 985.78 },
-        //   { source: 5, target: 11, value: 162.0 },
-        //   { source: 5, target: 12, value: 1188.38 },
-        //   { source: 5, target: 13, value: 1147.75 },
-        //   { source: 5, target: 14, value: 1788.4 },
-        //   { source: 5, target: 15, value: 3049.7 },
-        //   { source: 6, target: 16, value: 2400.0 },
-        //   { source: 6, target: 17, value: 5976.68 },
         // ],
       };
       const tooltip = container.append("div").attr("id", "tooltip");
@@ -262,10 +230,10 @@
         top: 20,
         right: 20,
         bottom: 20,
-        left: 20,
+        left: 40,
       };
 
-      const width = 600 + (margin.left + margin.right);
+      const width = 580 + (margin.left + margin.right);
       const height = 500 + (margin.top + margin.bottom);
 
       const containerFrame = container

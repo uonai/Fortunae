@@ -11,6 +11,7 @@ export default class UI {
     this.buildItemChart(2);
     this.buildItemChart(3);
     this.buildItemChart(4);
+    this.buildItemChart(5);
   }
 
   static addItemToList(item) {
@@ -54,9 +55,8 @@ export default class UI {
     chart.innerHTML = "";
     items.forEach((item) => {
       if (item.category == categoryNumber) {
-        const itemWidth = Math.round((item.amount / nTotal) * 99.5);
+        const itemWidth = Math.round((item.amount / nTotal) * 99);
         const chart = document.querySelector(`#item-chart-${categoryNumber}`);
-        // const chart = document.querySelector(`#item-chart-${item.category}`);
         const chartItem = document.createElement("div");
         chartItem.className = "inner-rectangle";
         chartItem.style.cssText = `width: ${itemWidth}%`;

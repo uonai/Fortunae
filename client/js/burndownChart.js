@@ -32,6 +32,10 @@ if (result) {
       name: "Investment",
       values: db3,
     },
+    {
+      name: "Investment",
+      values: db4,
+    },
   ];
   console.log(data);
   // const data = [
