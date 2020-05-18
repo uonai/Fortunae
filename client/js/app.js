@@ -166,10 +166,6 @@ document.addEventListener("click", (e) => {
     }
   }
 
-  // if (isButton && e.target.id === "close-modal") {
-  //   UI.hideModal();
-  // }
-
   if (isButton && e.target.className === "menu") {
     Menu.showModal(e.target);
   }
@@ -201,8 +197,7 @@ document.addEventListener("keyup", doc_keyUp, false);
 
 function doc_keyUp(e) {
   if (e.ctrlKey && e.keyCode == 83) {
-    // ctrl + s
-    Store.saveJSON();
+    Store.saveRecord();
   } else if (e.ctrlKey && e.keyCode == 49) {
     FundModal.showModal();
     console.log("1");
@@ -215,6 +210,9 @@ function doc_keyUp(e) {
     console.log("3");
   } else if (e.ctrlKey && e.keyCode == 52) {
     IncomeModal.showModal(e);
+    console.log("4");
+  } else if (e.ctrlKey && e.keyCode == 53) {
+    NeedModal.showModal(e);
     console.log("4");
   }
 }

@@ -22,11 +22,7 @@
     <form id="item-form"></form>
   </div>
   <!-- <button class="menu">Menu</button> -->
-  <ul id="right-menu" class="right-menu">
-    <li><button id="save-record" class="save-record">Save</button></li>
-    <li> <button id="clone-record" class="clone-record">Clone</button></li>
-    <li> <button id="delete-record" class="delete-record">Delete</button></li>
-  </ul>
+
   <button id="minimize-window">
     <img style="z-index: 1000;" src="./client/images/minimize.svg" width="12px" />
   </button>
@@ -37,7 +33,7 @@
   <div class="container">
     <div class="top">
       <section id="section-1" data-section="1">
-        <header>Funds <button id="child-window" class="header" style="margin-bottom:0; padding-bottom:0">[::]</button>
+        <header>Funds <button id="child-window" class="header" style="margin-bottom:0; padding-bottom:0"></button>
         </header>
         <ul id="item-list-1"></ul>
         <button id="1" class="add-item" data-title="Current Funds">
@@ -48,7 +44,7 @@
       </section>
       <section id="section-2" data-section="2">
         <header>Expenses <button id="radar-button" class="header"
-            style="margin-bottom:0; padding-bottom:0">[::]</button></header>
+            style="margin-bottom:0; padding-bottom:0"></button></header>
         <ul id="item-list-2"></ul>
         <button id="2" class="add-item" data-title="Expenses">
           Add Expense [+]
@@ -56,7 +52,7 @@
         <div id="item-chart-2" class="item-chart"></div>
       </section>
       <section id="section-3" data-section="3">
-        <header>Debt <button id="burndown-button" class="header" style="margin-bottom:0; padding-bottom:0">[::]</button>
+        <header>Debt <button id="burndown-button" class="header" style="margin-bottom:0; padding-bottom:0"></button>
         </header>
         <ul id="item-list-3"></ul>
         <button id="3" class="add-item" data-title="Debt Calculator">
@@ -65,7 +61,7 @@
         <div id="item-chart-3" class="item-chart"></div>
       </section>
       <section id="section-4" data-section="4">
-        <header>Income <button id="sankey-button" class="header" style="margin-bottom:0; padding-bottom:0">[::]</button>
+        <header>Income <button id="sankey-button" class="header" style="margin-bottom:0; padding-bottom:0"></button>
         </header>
         <ul id="item-list-4"></ul>
         <button id="4" class="add-item" data-title="Income Calculator">
@@ -126,6 +122,11 @@
       <script>
       </script>
     </div>
+    <ul id="right-menu" class="right-menu">
+      <li><button id="save-record" class="save-record">Save</button></li>
+      <li> <button id="clone-record" class="clone-record">Clone</button></li>
+      <li> <button id="delete-record" class="delete-record">Delete</button></li>
+    </ul>
     <script type="text/javascript" src="./client/library/d3.js"></script>
     <script>
       require("./renderer.js");

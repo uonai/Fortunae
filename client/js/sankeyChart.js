@@ -161,15 +161,15 @@ function createSankeyDiagram(sampleData, frame) {
     .attr("y2", "50%");
 
   // linear gradient going from left to right and detailing a color based on the source and target values
-  linearGradients
-    .append("stop")
-    .attr("offset", "100%")
-    .attr("stop-color", (d) => color("#fff"));
+  // linearGradients
+  //   .append("stop")
+  //   .attr("offset", "100%")
+  //   .attr("stop-color", (d) => color("#fff"));
 
-  linearGradients
-    .append("stop")
-    .attr("offset", "100%")
-    .attr("stop-color", (d) => color("#fff"));
+  // linearGradients
+  //   .append("stop")
+  //   .attr("offset", "100%")
+  //   .attr("stop-color", (d) => color("#fff"));
 
   // detail a generator function for the links
   const sankeyLinks = d3.sankeyLinkHorizontal();
@@ -192,7 +192,7 @@ function createSankeyDiagram(sampleData, frame) {
     // detail also the data through a simple tooltip
     .attr("opacity", 1)
     .on("mouseenter", function (d) {
-      d3.select(this).transition().attr("opacity", 0.5);
+      d3.select(this).transition().attr("opacity", 0.2);
 
       tooltip
         .append("p")
@@ -223,9 +223,9 @@ function createSankeyDiagram(sampleData, frame) {
     .enter()
     .append("rect")
     .attr("class", "node")
-    .attr("x", (d) => d.x0)
+    .attr("x", (d) => d.x0 + 10)
     .attr("y", (d) => d.y0)
-    .attr("width", 2)
+    .attr("width", 4)
     .attr("height", (d) => d.y1 - d.y0)
     .attr("pointer-events", "none")
     //.attr("stroke", "#555")
