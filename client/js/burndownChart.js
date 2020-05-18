@@ -4,8 +4,6 @@ if (result) {
     return item.item.type == "Secured";
   });
 
-  console.log(db);
-
   const db2 = result.filter(function (item) {
     return item.item.type == "Unsecured";
   });
@@ -18,26 +16,25 @@ if (result) {
     return item.item.type == "Non-revolving";
   });
 
-  console.log(db2);
   const data = [
     {
-      name: "Checking",
+      name: "Secured",
       values: db,
     },
     {
-      name: "Saving",
+      name: "Unsecured",
       values: db2,
     },
     {
-      name: "Investment",
+      name: "Revolving",
       values: db3,
     },
     {
-      name: "Investment",
+      name: "Non-revolving",
       values: db4,
     },
   ];
-  console.log(data);
+
   // const data = [
   //   {
   //     name: "Checking",
@@ -75,7 +72,7 @@ if (result) {
   // ];
 
   const width = 420;
-  const height = 400;
+  const height = 450;
   const margin = 75;
   const duration = 300;
 
@@ -97,10 +94,8 @@ if (result) {
     let values = [];
     data.forEach(function (d) {
       d.values.forEach(function (d) {
-        console.log(d);
         d.date = parseDate(d.date);
         d.amount = +d.item.amount;
-        console.log(d.date);
         values.push(d.item.amount);
       });
     });

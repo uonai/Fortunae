@@ -35,13 +35,11 @@ const SpiderChart = function RadarChart(parent_selector, options) {
   //   },
   // ];
   const data1 = JSON.parse(localStorage.getItem("category2ItemsHistorical"));
-  console.log(data1);
   let itemDates = [];
   data1.forEach((item) => {
     itemDates.push(item.date);
   });
   let itemDatesFiltered = removeDuplicates(itemDates);
-  console.log(itemDatesFiltered);
 
   let filteredData = [];
   let numbersArray = [];
@@ -52,7 +50,6 @@ const SpiderChart = function RadarChart(parent_selector, options) {
     for (const key of keys) {
       numbersArray.push(key[1].item.amount);
       if (key[1].date == date) {
-        console.log(key[1].item.type);
         array.push({
           axis: key[1].item.type,
           value: key[1].item.amount,
@@ -61,10 +58,8 @@ const SpiderChart = function RadarChart(parent_selector, options) {
     }
     filteredData.push({ name: date, axes: array });
   });
-
   var data = filteredData;
   var maxNumber = Math.max(...numbersArray);
-  console.log(data);
 
   //Wraps SVG text - Taken from http://bl.ocks.org/mbostock/7555321
   const wrap = (text, width) => {

@@ -38,8 +38,6 @@ export default class DebtModal {
 
   static showEditItemModal(e) {
     this.showModal();
-    console.log(e);
-
     const form = document.querySelector("#calculator-modal");
     form.classList.add("edit");
 
@@ -59,7 +57,6 @@ export default class DebtModal {
     formTitle.value = `${e.dataset.title}`;
 
     const formType = document.querySelector("#form-calculator-type");
-    console.log(e.dataset.type);
     formType.selectedIndex = `${e.dataset.type}`;
 
     const formAmount = document.querySelector("#form-calculator-amount");
@@ -69,18 +66,9 @@ export default class DebtModal {
       "#form-calculator-remaining-months"
     );
     formRemainingMonths.value = `${e.dataset.remainingmonths}`;
-
-    // const formSubmit = document.querySelector("#form-calculator-submit");
-    // formSubmit.style.display = "none";
-
-    // const formEditSubmit = document.querySelector(
-    //   "#form-calculator-edit-submit"
-    // );
-    // formEditSubmit.style.display = "block";
   }
 
   static validate(action) {
-    console.log(action);
     const title = document.querySelector("#form-calculator-title").value;
     const amount = document.querySelector("#form-calculator-amount").value;
     const category = document.querySelector("#form-calculator-category").value;
@@ -88,10 +76,8 @@ export default class DebtModal {
     const remainingmonths = document.querySelector(
       "#form-calculator-remaining-months"
     ).value;
-    console.log(remainingmonths);
     const alertText = "Please fill out all form fields.";
     const numberAlertText = "Please enter valid number";
-    console.log("validate");
 
     if (title === "" || amount === "") {
       UI.showAlert(alertText);
@@ -99,7 +85,6 @@ export default class DebtModal {
       UI.showAlert(numberAlertText);
     } else {
       if (action == "submit") {
-        console.log("submit");
         const id = Helper.generateUUIDv4();
         const item = new DebtItem(
           id,
@@ -114,7 +99,6 @@ export default class DebtModal {
         UI.buildItemChart(category);
         UI.hideCalculatorModal();
       } else {
-        console.log("edit");
         const id = document.querySelector("#form-calculator-id").value;
         const item = new DebtItem(
           id,

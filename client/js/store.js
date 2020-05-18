@@ -32,9 +32,7 @@ export default class Store {
       HistoryChart.setTimestamp(currentItem);
 
       localStorage.setItem("history", JSON.stringify(filesDirectory));
-      console.log("files directory ");
       const recentFile = filesDirectory[0];
-      console.log(recentFile);
       if (localStorage.getItem("currentRecord") === null) {
         localStorage.setItem("currentRecord", recentFile);
       }
@@ -109,7 +107,6 @@ export default class Store {
     // this.getItems();
     localStorage.setItem("items", JSON.stringify(items));
     localStorage.setItem("currentRecord", timestamp);
-    console.log("restore items");
     this.loadCompleteDatabase();
     this.loadDatabase();
 
@@ -119,18 +116,14 @@ export default class Store {
 
   static addItem(item) {
     const items = Store.getItems();
-    console.log(items);
     items.push(item);
-    console.log(items);
     localStorage.setItem("items", JSON.stringify(items));
   }
 
   static editItem(item) {
     const items = Store.getItems();
-    console.log(items);
     const foundIndex = items.findIndex((x) => x.id == item.id);
     items[foundIndex] = item;
-    console.log(items);
     localStorage.setItem("items", JSON.stringify(items));
   }
 
@@ -164,7 +157,6 @@ export default class Store {
     fs.writeFile(__dirname + database + currentRecord, json, (err) => {
       if (err) {
         alert("An error ocurred updating the file" + err.message);
-        console.log(err);
         return;
       }
       this.resetData(currentRecord);

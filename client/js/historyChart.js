@@ -69,7 +69,6 @@ export default class HistoryChart {
   }
 
   static setTimestamp(timestamp) {
-    console.log(timestamp);
     const time = Helper.getTimeFromUNIXTimestamp(timestamp);
     const timestampDiv = document.querySelector("#timestamp");
     timestampDiv.innerHTML = time;

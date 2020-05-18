@@ -7,7 +7,7 @@ export default class PopOut {
       parent: remote.getCurrentWindow(),
       backgroundColor: "#000",
       width: 500,
-      height: 550,
+      height: 520,
       // modal: true,
       resizable: true,
       webPreferences: {
@@ -29,7 +29,7 @@ export default class PopOut {
     let win = new remote.BrowserWindow({
       parent: remote.getCurrentWindow(),
       width: 500,
-      height: 550,
+      height: 520,
       backgroundColor: "#000",
       // modal: true,
       resizable: true,
@@ -52,7 +52,7 @@ export default class PopOut {
     let win = new remote.BrowserWindow({
       parent: remote.getCurrentWindow(),
       width: 500,
-      height: 550,
+      height: 520,
       backgroundColor: "#000",
       modal: false,
       resizable: false,
@@ -75,7 +75,7 @@ export default class PopOut {
     let win = new remote.BrowserWindow({
       parent: remote.getCurrentWindow(),
       width: 500,
-      height: 550,
+      height: 520,
       backgroundColor: "#000",
       modal: false,
       resizable: false,

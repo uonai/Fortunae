@@ -1,7 +1,6 @@
 import UI from "./ui.js";
 import Store from "./store.js";
 import Recommendation from "./recommendation.js";
-import Menu from "./menu.js";
 import Chart from "./chart.js";
 import DebtModal from "./debtModal.js";
 import ExpenseModal from "./expenseModal.js";
@@ -24,7 +23,6 @@ document
   .addEventListener("click", (e) => {
     e.preventDefault();
     const category = document.querySelector("#form-calculator-category").value;
-    console.log(category);
     switch (category) {
       case "1":
         FundModal.validate("submit");
@@ -49,14 +47,12 @@ document
 document
   .querySelector("#modal-calculator-close")
   .addEventListener("click", (e) => {
-    console.log(e);
     UI.hideCalculatorModal();
   });
 
 document
   .querySelector("#form-calculator-cancel")
   .addEventListener("click", () => {
-    console.log(e);
     UI.hideCalculatorModal();
   });
 
@@ -64,7 +60,6 @@ document
   .querySelector("#form-calculator-edit-submit")
   .addEventListener("click", (e) => {
     e.preventDefault();
-    console.log(e);
     const category = document.querySelector("#form-calculator-category").value;
 
     switch (category) {
@@ -126,7 +121,6 @@ document.querySelector("#save-record").onclick = () => {
 };
 
 document.querySelector("#clone-record").onclick = () => {
-  console.log("clone");
   Store.cloneRecord();
 };
 
@@ -137,7 +131,6 @@ document.querySelector("#delete-record").onclick = () => {
 document.addEventListener("click", (e) => {
   const isButton = e.target.nodeName === "BUTTON";
 
-  //this should be a switch statement
   if (!isButton) {
     return;
   }
@@ -152,7 +145,6 @@ document.addEventListener("click", (e) => {
   }
 
   if (isButton && e.target.className == "edit") {
-    console.log(e.target.dataset.category);
     switch (e.target.dataset.category) {
       case "1":
         FundModal.showEditItemModal(e.target);
@@ -165,9 +157,12 @@ document.addEventListener("click", (e) => {
         break;
       case "4":
         IncomeModal.showEditItemModal(e.target);
+        break;
       case "5":
         NeedModal.showEditItemModal(e.target);
         break;
+      default:
+        console.log("none found");
     }
   }
 

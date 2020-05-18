@@ -4,8 +4,6 @@ if (result) {
     return item.item.type == "Checking";
   });
 
-  console.log(db);
-
   const db2 = result.filter(function (item) {
     return item.item.type == "Saving";
   });
@@ -18,7 +16,6 @@ if (result) {
     return item.item.type == "Emergency";
   });
 
-  console.log(db2);
   const data = [
     {
       name: "Checking",
@@ -33,7 +30,6 @@ if (result) {
       values: db3,
     },
   ];
-  console.log(data);
   // const data = [
   //   {
   //     name: "Checking",
@@ -71,7 +67,7 @@ if (result) {
   // ];
 
   const width = 420;
-  const height = 400;
+  const height = 450;
   const margin = 75;
   const duration = 300;
 
@@ -93,7 +89,6 @@ if (result) {
     let values = [];
     data.forEach(function (d) {
       d.values.forEach(function (d) {
-        console.log(d);
         d.date = parseDate(d.date);
         d.amount = +d.item.amount;
         values.push(d.item.amount);

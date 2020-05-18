@@ -38,7 +38,6 @@ export default class IncomeModal {
 
   static showEditItemModal(e) {
     this.showModal();
-    console.log(e);
 
     const form = document.querySelector("#calculator-modal");
     form.classList.add("edit");
@@ -60,30 +59,18 @@ export default class IncomeModal {
 
     const formType = document.querySelector("#form-calculator-type");
     formType.value = `${e.dataset.type}`;
-    console.log(`${e.dataset.type}`);
 
     const formAmount = document.querySelector("#form-calculator-amount");
     formAmount.value = `${e.dataset.amount}`;
-    console.log(formAmount.value);
-
-    // const formSubmit = document.querySelector("#form-calculator-submit");
-    // formSubmit.style.display = "none";
-
-    // const formEditSubmit = document.querySelector(
-    //   "#form-calculator-edit-submit"
-    // );
-    // formEditSubmit.style.display = "block";
   }
 
   static validate(action) {
-    console.log(action);
     const title = document.querySelector("#form-calculator-title").value;
     const amount = document.querySelector("#form-calculator-amount").value;
     const category = document.querySelector("#form-calculator-category").value;
     const type = document.querySelector("#form-calculator-type").value;
     const alertText = "Please fill out all form fields.";
     const numberAlertText = "Please enter valid number";
-    console.log("validate");
 
     if (title === "" || amount === "") {
       UI.showAlert(alertText);
@@ -91,7 +78,6 @@ export default class IncomeModal {
       UI.showAlert(numberAlertText);
     } else {
       if (action == "submit") {
-        console.log("submit");
         const id = Helper.generateUUIDv4();
         const item = new IncomeItem(id, category, title, amount, type);
         UI.addItemToList(item);
@@ -99,7 +85,6 @@ export default class IncomeModal {
         UI.buildItemChart(category);
         UI.hideCalculatorModal();
       } else {
-        console.log("edit");
         const id = document.querySelector("#form-calculator-id").value;
         const item = new IncomeItem(id, category, title, amount, type);
         UI.updateItem(item);
