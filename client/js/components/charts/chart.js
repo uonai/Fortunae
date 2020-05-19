@@ -6,8 +6,6 @@ export default class Chart {
         return item.item.type == "Checking";
       });
 
-      console.log(db);
-
       const db2 = result.filter(function (item) {
         return item.item.type == "Saving";
       });
@@ -20,7 +18,6 @@ export default class Chart {
         return item.item.type == "Emergency";
       });
 
-      console.log(db2);
       const data = [
         {
           name: "Category 1",
@@ -35,7 +32,6 @@ export default class Chart {
           values: db3,
         },
       ];
-      console.log(data);
 
       const width = 150;
       const height = 150;
@@ -59,9 +55,7 @@ export default class Chart {
         data.forEach(function (d) {
           d.values.forEach(function (d) {
             d.date = parseDate(d.date);
-            console.log(d.date);
             d.amount = +d.item.amount;
-            console.log(d.item.amount);
           });
         });
 

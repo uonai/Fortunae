@@ -90,4 +90,8 @@ export default class PopOut {
 
     win.loadURL(theUrl);
   }
+
+  static reloadChildWindows() {
+    console.log("this is where we need to pass parent -> child window refresh");
+  }
 }

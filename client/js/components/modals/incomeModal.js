@@ -1,7 +1,7 @@
-import IncomeItem from "./incomeItem.js";
-import UI from "./ui.js";
-import Store from "./store.js";
-import Helper from "./helper.js";
+import IncomeItem from "../../models/incomeItem.js";
+import UI from "../../ui.js";
+import Store from "../../store.js";
+import Helper from "../../utils/helper.js";
 export default class IncomeModal {
   static showModal(e) {
     const div = document.createElement("div");

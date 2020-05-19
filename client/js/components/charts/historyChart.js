@@ -1,6 +1,6 @@
-import Store from "./store.js";
-import HistoryItem from "./historyItem.js";
-import Helper from "./helper.js";
+import Store from "../../store.js";
+import HistoryItem from "../../models/historyItem.js";
+import Helper from "../../utils/helper.js";
 
 export default class HistoryChart {
   static loadHistoryChart() {

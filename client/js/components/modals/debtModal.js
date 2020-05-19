@@ -1,7 +1,7 @@
-import DebtItem from "./debtItem.js";
-import UI from "./ui.js";
-import Store from "./store.js";
-import Helper from "./helper.js";
+import DebtItem from "../../models/debtItem.js";
+import UI from "../../ui.js";
+import Store from "../../store.js";
+import Helper from "../../utils/helper.js";
 
 export default class DebtModal {
   static showModal() {

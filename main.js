@@ -4,9 +4,9 @@ const { ipcMain } = require("electron");
 const url = require("url");
 require("v8-compile-cache");
 
-require("electron-reload")(__dirname, {
-  electron: path.join(__dirname, "node_modules", ".bin", "electron"),
-});
+// require("electron-reload")(__dirname, {
+//   electron: path.join(__dirname, "node_modules", ".bin", "electron"),
+// });
 
 let mainWindow;
 

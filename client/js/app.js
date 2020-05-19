@@ -1,12 +1,12 @@
 import UI from "./ui.js";
 import Store from "./store.js";
 import Recommendation from "./recommendation.js";
-import Chart from "./chart.js";
-import DebtModal from "./debtModal.js";
-import ExpenseModal from "./expenseModal.js";
-import IncomeModal from "./incomeModal.js";
-import FundModal from "./fundModal.js";
-import NeedModal from "./needModal.js";
+import Chart from "./components/charts/chart.js";
+import DebtModal from "./components/modals/debtModal.js";
+import ExpenseModal from "./components/modals/expenseModal.js";
+import IncomeModal from "./components/modals/incomeModal.js";
+import FundModal from "./components/modals/fundModal.js";
+import NeedModal from "./components/modals/needModal.js";
 import PopOut from "./popOut.js";
 
 document.addEventListener(

@@ -1,7 +1,7 @@
-import FundItem from "./fundItem.js";
-import UI from "./ui.js";
-import Store from "./store.js";
-import Helper from "./helper.js";
+import FundItem from "../../models/fundItem.js";
+import UI from "../../ui.js";
+import Store from "../../store.js";
+import Helper from "../../utils/helper.js";
 export default class FundModal {
   static showModal() {
     const div = document.createElement("div");

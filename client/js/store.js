@@ -1,4 +1,5 @@
-import HistoryChart from "./historyChart.js";
+import HistoryChart from "./components/charts/historyChart.js";
+import PopOut from "./popOut.js";
 
 const fs = require("fs");
 const { getCurrentWindow } = require("electron").remote;
@@ -16,6 +17,7 @@ export default class Store {
     return items;
   }
 
+  // this should be refactored for simplicity
   static loadDatabase() {
     fs.readdir(__dirname + database, (err, files) => {
       let filesDirectory = [];
@@ -46,6 +48,7 @@ export default class Store {
     });
   }
 
+  // this should be refactored for simplicity
   static loadCompleteDatabase() {
     fs.readdir(__dirname + database, (err, files) => {
       let filesDirectory = [];
@@ -60,14 +63,9 @@ export default class Store {
       const currentItem = localStorage.getItem("currentRecord");
       let filteredDirectory = [];
       filesDirectory.forEach((file) => {
-        console.log(file);
-        console.log(currentItem);
         if (Number(file) <= Number(currentItem)) {
           filteredDirectory.push(file);
         }
-
-        console.log(file);
-        console.log(filteredDirectory);
       });
 
       let category1 = [];
@@ -111,6 +109,8 @@ export default class Store {
         JSON.stringify(category4)
       );
     });
+
+    PopOut.reloadChildWindows();
   }
 
   static restoreItems(timestamp) {

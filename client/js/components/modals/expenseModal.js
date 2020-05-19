@@ -1,27 +1,39 @@
-import NeedItem from "./needItem.js";
-import UI from "./ui.js";
-import Store from "./store.js";
-import Helper from "./helper.js";
-export default class NeedModal {
+import ExpenseItem from "../../models/expenseItem.js";
+import UI from "../../ui.js";
+import Store from "../../store.js";
+import Helper from "../../utils/helper.js";
+export default class ExpenseModal {
   static showModal() {
     const div = document.createElement("div");
     div.id = "form-calculator-content";
     div.innerHTML = `
-        <header id="form-calculator-header">Budget Item</header>
-        <input type="hidden" id="form-calculator-category" value="5" />
-        <input type="hidden" id="form-calculator-id" value="5" />
+        <header id="form-calculator-header">Expense</header>
+        <input type="hidden" id="form-calculator-category" value="2" />
+        <input type="hidden" id="form-calculator-id" value="2" />
         <div class="form-group">
           <input type="text" id="form-calculator-title" class="form-control" placeholder="Title" />
         </div>
         <select id="form-calculator-type">
         <option value="0">Category</option>
-        <option value="Need">Need</option>
-        <option value="Want">Want</option>
-        <option value="Debt">Debt</option>
-      </select>
+          <option value="Misc Expense">Misc Expense</option>
+          <option value="Savings">Savings</option>
+          <option value="Education">Education</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Personal Care">Personal Care</option>
+          <option value="Health & Fitness">Health & Fitness</option>
+          <option value="Food & Dining">Food & Dining</option>
+          <option value="Gifts & Donations">Gifts & Donations</option>
+          <option value="Investments">Investments</option>
+          <option value="Bills & Utilities">Bills & Utilities</option>
+          <option value = "Auto & Transport">Travel & Transportation</option>
+          <option value = "Fees & Charges">Fees & Charges</option>
+          <option value="Business Services">Business Services</option>
+          <option>Taxes</option>
+        </select>
         <div class="form-group">
           <input type="text" id="form-calculator-amount" class="form-control" placeholder="Amount" />
         </div>
+
  `;
     const formContainer = document.querySelector("#modal-calculator-footer");
     const parent = document.querySelector("#modal-calculator-form");
@@ -32,12 +44,11 @@ export default class NeedModal {
 
   static showEditItemModal(e) {
     this.showModal();
-
     const form = document.querySelector("#calculator-modal");
     form.classList.add("edit");
 
     const formHeader = document.querySelector("#form-calculator-header");
-    formHeader.innerHTML = `Edit Budget Item`;
+    formHeader.innerHTML = `Edit Expense`;
 
     const formCategory = document.querySelector("#form-calculator-category");
     formCategory.value = `${e.dataset.category}`;
@@ -52,6 +63,7 @@ export default class NeedModal {
     formTitle.value = `${e.dataset.title}`;
 
     const formType = document.querySelector("#form-calculator-type");
+    console.log(formType);
     formType.selectedIndex = `${e.dataset.type}`;
 
     const formAmount = document.querySelector("#form-calculator-amount");
@@ -73,14 +85,14 @@ export default class NeedModal {
     } else {
       if (action == "submit") {
         const id = Helper.generateUUIDv4();
-        const item = new NeedItem(id, category, title, amount, type);
+        const item = new ExpenseItem(id, category, title, amount, type);
         UI.addItemToList(item);
         Store.addItem(item);
         UI.buildItemChart(category);
         UI.hideCalculatorModal();
       } else {
         const id = document.querySelector("#form-calculator-id").value;
-        const item = new NeedItem(id, category, title, amount, type);
+        const item = new ExpenseItem(id, category, title, amount, type);
         UI.updateItem(item);
         Store.editItem(item);
         UI.buildItemChart(category);
