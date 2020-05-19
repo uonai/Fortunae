@@ -63,6 +63,7 @@ export default class ExpenseModal {
     formTitle.value = `${e.dataset.title}`;
 
     const formType = document.querySelector("#form-calculator-type");
+    console.log(formType);
     formType.selectedIndex = `${e.dataset.type}`;
 
     const formAmount = document.querySelector("#form-calculator-amount");

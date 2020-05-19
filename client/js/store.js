@@ -50,18 +50,31 @@ export default class Store {
     fs.readdir(__dirname + database, (err, files) => {
       let filesDirectory = [];
       files.forEach((file) => {
-        filesDirectory.push(file);
+        filesDirectory.push(Number(file));
       });
 
       filesDirectory.sort(function (a, b) {
         return new Date(Date.now(b)) - new Date(Date.now(a));
       });
 
+      const currentItem = localStorage.getItem("currentRecord");
+      let filteredDirectory = [];
+      filesDirectory.forEach((file) => {
+        console.log(file);
+        console.log(currentItem);
+        if (Number(file) <= Number(currentItem)) {
+          filteredDirectory.push(file);
+        }
+
+        console.log(file);
+        console.log(filteredDirectory);
+      });
+
       let category1 = [];
       let category2 = [];
       let category3 = [];
       let category4 = [];
-      filesDirectory.forEach((file) => {
+      filteredDirectory.forEach((file) => {
         let rawData = fs.readFileSync(__dirname + database + file);
         const items = JSON.parse(rawData);
 
