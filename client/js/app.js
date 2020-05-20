@@ -196,25 +196,34 @@ document.addEventListener("click", (e) => {
 document.addEventListener("keyup", doc_keyUp, false);
 
 function doc_keyUp(e) {
-  if (e.ctrlKey && e.keyCode == 83) {
-    Store.saveRecord();
-  } else if (e.ctrlKey && e.keyCode == 49) {
-    FundModal.showModal();
-    console.log("1");
-  } else if (e.ctrlKey && e.keyCode == 50) {
-    // ctrl + 2
-    ExpenseModal.showModal();
-    console.log("2");
-  } else if (e.ctrlKey && e.keyCode == 51) {
-    DebtModal.showModal(e);
-    console.log("3");
-  } else if (e.ctrlKey && e.keyCode == 52) {
-    IncomeModal.showModal(e);
-    console.log("4");
-  } else if (e.ctrlKey && e.keyCode == 53) {
-    NeedModal.showModal(e);
-    console.log("4");
-  } else if (e.key == "Escape") {
+  const modalOpen = document.querySelector("#calculator-modal");
+  console.log(modalOpen.classList.contains("edit"));
+  console.log(modalOpen.classList.contains("new"));
+  if (
+    !modalOpen.classList.contains("edit") &&
+    !modalOpen.classList.contains("new")
+  ) {
+    if (e.ctrlKey && e.keyCode == 83) {
+      Store.saveRecord();
+    } else if (e.ctrlKey && e.keyCode == 49) {
+      FundModal.showModal();
+      console.log("1");
+    } else if (e.ctrlKey && e.keyCode == 50) {
+      // ctrl + 2
+      ExpenseModal.showModal();
+      console.log("2");
+    } else if (e.ctrlKey && e.keyCode == 51) {
+      DebtModal.showModal(e);
+      console.log("3");
+    } else if (e.ctrlKey && e.keyCode == 52) {
+      IncomeModal.showModal(e);
+      console.log("4");
+    } else if (e.ctrlKey && e.keyCode == 53) {
+      NeedModal.showModal(e);
+      console.log("4");
+    }
+  }
+  if (e.key == "Escape") {
     UI.hideCalculatorModal();
   }
 }

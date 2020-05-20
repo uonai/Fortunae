@@ -11,8 +11,8 @@ export default class Store {
       this.loadDatabase();
       items = [];
     } else {
-      items = JSON.parse(localStorage.getItem("items"));
       this.loadDatabase();
+      items = JSON.parse(localStorage.getItem("items"));
     }
     return items;
   }
@@ -184,7 +184,7 @@ export default class Store {
           console.log(err);
           return;
         }
-        alert("The record has been deleted");
+        // alert("The record has been deleted");
         localStorage.clear();
         this.loadDatabase();
         this.loadCompleteDatabase();

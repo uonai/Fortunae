@@ -26,6 +26,7 @@ export default class IncomeModal {
     parent.insertBefore(div, formContainer);
     const form = document.querySelector("#calculator-modal");
     form.style = "display:block;";
+    form.classList.add("new");
 
     const formType = document.querySelector("#form-calculator-type");
     for (var i = 0; i < dropdownOptions.length; i++) {

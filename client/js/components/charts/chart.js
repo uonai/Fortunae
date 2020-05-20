@@ -20,16 +20,20 @@ export default class Chart {
 
       const data = [
         {
-          name: "Category 1",
+          name: "Checking",
           values: db,
         },
         {
-          name: "Checking",
+          name: "Saving",
           values: db2,
         },
         {
-          name: "Savings",
+          name: "Investment",
           values: db3,
+        },
+        {
+          name: "Emergency",
+          values: db4,
         },
       ];
 
