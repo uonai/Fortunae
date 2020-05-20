@@ -64,11 +64,8 @@ export default class NeedModal {
     const formType = document.querySelector("#form-calculator-type");
     const datasetType = `${e.dataset.type}`;
     for (var i = 0; i < dropdownOptions.length; i++) {
-      console.log(dropdownOptions[i]);
-      console.log(datasetType);
       if (dropdownOptions[i] == datasetType) {
         var option = i;
-        console.log(option);
         formType.selectedIndex = option;
         return;
       }
