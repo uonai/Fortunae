@@ -26,9 +26,6 @@ export default class DebtModal {
         <div class="form-group">
         <input type="text" id="form-calculator-amount" class="form-control" placeholder="Monthly Payment" />
       </div>
-      <div class="form-group">
-      <input type="text" id="form-calculator-remaining-months" class="form-control" placeholder="Remaining Months" />
-    </div>
         
         `;
     const formContainer = document.querySelector("#modal-calculator-footer");
@@ -79,11 +76,6 @@ export default class DebtModal {
         return;
       }
     }
-
-    const formRemainingMonths = document.querySelector(
-      "#form-calculator-remaining-months"
-    );
-    formRemainingMonths.value = `${e.dataset.remainingmonths}`;
   }
 
   static validate(action) {
@@ -91,9 +83,6 @@ export default class DebtModal {
     const amount = document.querySelector("#form-calculator-amount").value;
     const category = document.querySelector("#form-calculator-category").value;
     const type = document.querySelector("#form-calculator-type").value;
-    const remainingmonths = document.querySelector(
-      "#form-calculator-remaining-months"
-    ).value;
     const alertText = "Please fill out all form fields.";
     const numberAlertText = "Please enter valid number";
 
@@ -104,28 +93,14 @@ export default class DebtModal {
     } else {
       if (action == "submit") {
         const id = Helper.generateUUIDv4();
-        const item = new DebtItem(
-          id,
-          category,
-          title,
-          amount,
-          type,
-          remainingmonths
-        );
+        const item = new DebtItem(id, category, title, amount, type);
         UI.addItemToList(item);
         Store.addItem(item);
         UI.buildItemChart(category);
         UI.hideCalculatorModal();
       } else {
         const id = document.querySelector("#form-calculator-id").value;
-        const item = new DebtItem(
-          id,
-          category,
-          title,
-          amount,
-          type,
-          remainingmonths
-        );
+        const item = new DebtItem(id, category, title, amount, type);
         UI.updateItem(item);
         Store.editItem(item);
         UI.buildItemChart(category);

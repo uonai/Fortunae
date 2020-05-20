@@ -8,7 +8,6 @@ export default class PopOut {
       backgroundColor: "#000",
       width: 500,
       height: 520,
-      // modal: true,
       resizable: true,
       webPreferences: {
         preload: path.join(__dirname, "preload.js"),
@@ -31,7 +30,6 @@ export default class PopOut {
       width: 500,
       height: 520,
       backgroundColor: "#000",
-      // modal: true,
       resizable: true,
       webPreferences: {
         preload: path.join(__dirname, "preload.js"),
@@ -54,7 +52,6 @@ export default class PopOut {
       width: 500,
       height: 520,
       backgroundColor: "#000",
-      modal: false,
       resizable: false,
       webPreferences: {
         preload: path.join(__dirname, "preload.js"),
@@ -77,7 +74,6 @@ export default class PopOut {
       width: 500,
       height: 520,
       backgroundColor: "#000",
-      modal: false,
       resizable: false,
       webPreferences: {
         preload: path.join(__dirname, "preload.js"),
@@ -92,6 +88,8 @@ export default class PopOut {
   }
 
   static reloadChildWindows() {
-    console.log("this is where we need to pass parent -> child window refresh");
+    console.log(
+      "this is where we need to pass parent -> child window refresh1"
+    );
   }
 }

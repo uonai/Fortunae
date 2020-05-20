@@ -17,7 +17,6 @@ export default class Store {
     return items;
   }
 
-  // this should be refactored for simplicity
   static loadDatabase() {
     fs.readdir(__dirname + database, (err, files) => {
       let filesDirectory = [];
@@ -48,7 +47,6 @@ export default class Store {
     });
   }
 
-  // this should be refactored for simplicity
   static loadCompleteDatabase() {
     fs.readdir(__dirname + database, (err, files) => {
       let filesDirectory = [];

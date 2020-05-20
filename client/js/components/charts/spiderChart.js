@@ -35,6 +35,7 @@ const SpiderChart = function RadarChart(parent_selector, options) {
   //   },
   // ];
   const data1 = JSON.parse(localStorage.getItem("category2ItemsHistorical"));
+  console.log(data1);
   let itemDates = [];
   data1.forEach((item) => {
     itemDates.push(item.date);

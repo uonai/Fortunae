@@ -214,5 +214,7 @@ function doc_keyUp(e) {
   } else if (e.ctrlKey && e.keyCode == 53) {
     NeedModal.showModal(e);
     console.log("4");
+  } else if (e.key == "Escape") {
+    UI.hideCalculatorModal();
   }
 }
