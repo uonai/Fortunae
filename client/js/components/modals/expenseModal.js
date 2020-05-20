@@ -2,9 +2,29 @@ import ExpenseItem from "../../models/expenseItem.js";
 import UI from "../../ui.js";
 import Store from "../../store.js";
 import Helper from "../../utils/helper.js";
+
+const dropdownOptions = [
+  "Category",
+  "Misc Expense",
+  "Savings",
+  "Education",
+  "Shopping",
+  "Personal Care",
+  "Health & Fitness",
+  "Food & Dining",
+  "Gifts & Donations",
+  "Investments",
+  "Bills & Utilities",
+  "Auto & Transport",
+  "Fees & Charges",
+  "Business Services",
+  "Taxes",
+];
+
 export default class ExpenseModal {
   static showModal() {
     const div = document.createElement("div");
+
     div.id = "form-calculator-content";
     div.innerHTML = `
         <header id="form-calculator-header">Expense</header>
@@ -14,21 +34,6 @@ export default class ExpenseModal {
           <input type="text" id="form-calculator-title" class="form-control" placeholder="Title" />
         </div>
         <select id="form-calculator-type">
-        <option value="0">Category</option>
-          <option value="Misc Expense">Misc Expense</option>
-          <option value="Savings">Savings</option>
-          <option value="Education">Education</option>
-          <option value="Shopping">Shopping</option>
-          <option value="Personal Care">Personal Care</option>
-          <option value="Health & Fitness">Health & Fitness</option>
-          <option value="Food & Dining">Food & Dining</option>
-          <option value="Gifts & Donations">Gifts & Donations</option>
-          <option value="Investments">Investments</option>
-          <option value="Bills & Utilities">Bills & Utilities</option>
-          <option value = "Auto & Transport">Travel & Transportation</option>
-          <option value = "Fees & Charges">Fees & Charges</option>
-          <option value="Business Services">Business Services</option>
-          <option>Taxes</option>
         </select>
         <div class="form-group">
           <input type="text" id="form-calculator-amount" class="form-control" placeholder="Amount" />
@@ -40,6 +45,15 @@ export default class ExpenseModal {
     parent.insertBefore(div, formContainer);
     const form = document.querySelector("#calculator-modal");
     form.style = "display:block;";
+
+    const formType = document.querySelector("#form-calculator-type");
+
+    for (var i = 0; i < dropdownOptions.length; i++) {
+      var opt = document.createElement("option");
+      opt.innerHTML = dropdownOptions[i];
+      opt.value = dropdownOptions[i];
+      formType.appendChild(opt);
+    }
   }
 
   static showEditItemModal(e) {
@@ -62,12 +76,21 @@ export default class ExpenseModal {
     const formTitle = document.querySelector("#form-calculator-title");
     formTitle.value = `${e.dataset.title}`;
 
-    const formType = document.querySelector("#form-calculator-type");
-    console.log(formType);
-    formType.selectedIndex = `${e.dataset.type}`;
-
     const formAmount = document.querySelector("#form-calculator-amount");
     formAmount.value = `${e.dataset.amount}`;
+
+    const formType = document.querySelector("#form-calculator-type");
+    const datasetType = `${e.dataset.type}`;
+    for (var i = 0; i < dropdownOptions.length; i++) {
+      console.log(dropdownOptions[i]);
+      console.log(datasetType);
+      if (dropdownOptions[i] == datasetType) {
+        var option = i;
+        console.log(option);
+        formType.selectedIndex = option;
+        return;
+      }
+    }
   }
 
   static validate(action) {

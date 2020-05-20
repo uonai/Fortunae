@@ -316,7 +316,6 @@ path {
   display: block;
 }
 
-.edit #form-calculator-type,
 .edit #form-calculator-category,
 .edit #form-calculator-submit {
   display: none;

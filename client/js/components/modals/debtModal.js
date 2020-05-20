@@ -3,6 +3,13 @@ import UI from "../../ui.js";
 import Store from "../../store.js";
 import Helper from "../../utils/helper.js";
 
+const dropdownOptions = [
+  "Category",
+  "Secured",
+  "Unsecured",
+  "Revolving",
+  "Non-revolving",
+];
 export default class DebtModal {
   static showModal() {
     const div = document.createElement("div");
@@ -15,11 +22,6 @@ export default class DebtModal {
           <input type="text" id="form-calculator-title" class="form-control" placeholder="Title" />
         </div>
         <select id="form-calculator-type">
-        <option value="0">Category</option>
-        <option value="Secured">Secured</option>
-        <option value="Unsecured">Unsecured</option>
-        <option value="Revolving">Revolving</option>
-        <option value="Non-revolving">Non-revolving</option>
       </select>
         <div class="form-group">
         <input type="text" id="form-calculator-amount" class="form-control" placeholder="Monthly Payment" />
@@ -34,6 +36,15 @@ export default class DebtModal {
     parent.insertBefore(div, formContainer);
     const form = document.querySelector("#calculator-modal");
     form.style = "display:block;";
+
+    const formType = document.querySelector("#form-calculator-type");
+
+    for (var i = 0; i < dropdownOptions.length; i++) {
+      var opt = document.createElement("option");
+      opt.innerHTML = dropdownOptions[i];
+      opt.value = dropdownOptions[i];
+      formType.appendChild(opt);
+    }
   }
 
   static showEditItemModal(e) {
@@ -56,11 +67,21 @@ export default class DebtModal {
     const formTitle = document.querySelector("#form-calculator-title");
     formTitle.value = `${e.dataset.title}`;
 
-    const formType = document.querySelector("#form-calculator-type");
-    formType.selectedIndex = `${e.dataset.type}`;
-
     const formAmount = document.querySelector("#form-calculator-amount");
     formAmount.value = `${e.dataset.amount}`;
+
+    const formType = document.querySelector("#form-calculator-type");
+    const datasetType = `${e.dataset.type}`;
+    for (var i = 0; i < dropdownOptions.length; i++) {
+      console.log(dropdownOptions[i]);
+      console.log(datasetType);
+      if (dropdownOptions[i] == datasetType) {
+        var option = i;
+        console.log(option);
+        formType.selectedIndex = option;
+        return;
+      }
+    }
 
     const formRemainingMonths = document.querySelector(
       "#form-calculator-remaining-months"

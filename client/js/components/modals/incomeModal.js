@@ -2,6 +2,8 @@ import IncomeItem from "../../models/incomeItem.js";
 import UI from "../../ui.js";
 import Store from "../../store.js";
 import Helper from "../../utils/helper.js";
+
+const dropdownOptions = ["Category", "Active", "Passive", "Portfolio"];
 export default class IncomeModal {
   static showModal(e) {
     const div = document.createElement("div");
@@ -14,10 +16,6 @@ export default class IncomeModal {
           <input type="text" id="form-calculator-title" class="form-control" placeholder="Title" />
         </div>
         <select id="form-calculator-type">
-        <option value="Category">Category</option> 
-          <option value="Active">Active</option>
-          <option value="Passive">Passive</option>
-          <option value="Portfolio">Portfolio</option>
         </select>
         <div class="form-group">
           <input type="text" id="form-calculator-amount" class="form-control" placeholder="Amount" />
@@ -28,12 +26,14 @@ export default class IncomeModal {
     parent.insertBefore(div, formContainer);
     const form = document.querySelector("#calculator-modal");
     form.style = "display:block;";
-  }
-  static hideModal() {
-    const form = document.querySelector("#calculator-modal");
-    form.style = "display:hidden;";
-    const content = document.querySelector("#form-calculator-content");
-    content.parentNode.removeChild(content);
+
+    const formType = document.querySelector("#form-calculator-type");
+    for (var i = 0; i < dropdownOptions.length; i++) {
+      var opt = document.createElement("option");
+      opt.innerHTML = dropdownOptions[i];
+      opt.value = dropdownOptions[i];
+      formType.appendChild(opt);
+    }
   }
 
   static showEditItemModal(e) {
@@ -57,11 +57,21 @@ export default class IncomeModal {
     const formTitle = document.querySelector("#form-calculator-title");
     formTitle.value = `${e.dataset.title}`;
 
-    const formType = document.querySelector("#form-calculator-type");
-    formType.value = `${e.dataset.type}`;
-
     const formAmount = document.querySelector("#form-calculator-amount");
     formAmount.value = `${e.dataset.amount}`;
+
+    const formType = document.querySelector("#form-calculator-type");
+    const datasetType = `${e.dataset.type}`;
+    for (var i = 0; i < dropdownOptions.length; i++) {
+      console.log(dropdownOptions[i]);
+      console.log(datasetType);
+      if (dropdownOptions[i] == datasetType) {
+        var option = i;
+        console.log(option);
+        formType.selectedIndex = option;
+        return;
+      }
+    }
   }
 
   static validate(action) {

@@ -2,34 +2,46 @@ import FundItem from "../../models/fundItem.js";
 import UI from "../../ui.js";
 import Store from "../../store.js";
 import Helper from "../../utils/helper.js";
+
+const dropdownOptions = [
+  "Fund Type",
+  "Checking",
+  "Saving",
+  "Investment",
+  "Emergency",
+];
+
 export default class FundModal {
   static showModal() {
     const div = document.createElement("div");
     div.id = "form-calculator-content";
     div.innerHTML = `
-        <header id="form-calculator-header">Fund</header>
-        <input type="hidden" id="form-calculator-category" value="1" />
-        <input type="hidden" id="form-calculator-id" value="1" />
+          <header id="form-calculator-header">Fund</header>
+          <input type="hidden" id="form-calculator-category" value="1" />
+          <input type="hidden" id="form-calculator-id" value="1" />
+          <div class="form-group">
+          <input type="text" id="form-calculator-title" class="form-control" placeholder="Title" />
+        </div>
+        <select id="form-calculator-type">
+          </select>
         <div class="form-group">
-        <input type="text" id="form-calculator-title" class="form-control" placeholder="Title" />
-      </div>
-      <select id="form-calculator-type">
-      <option value="0">Fund Type</option>
-        <option value="Checking">Checking</option>
-        <option value="Saving">Saving</option>
-        <option value="Investment">Investment</option>
-        <option value="Emergency">Emergency</option>
-        </select>
-      <div class="form-group">
-        <input type="text" id="form-calculator-amount" class="form-control" placeholder="Amount" />
-      </div>
-
- `;
+          <input type="text" id="form-calculator-amount" class="form-control" placeholder="Amount" />
+        </div>
+  
+   `;
     const formContainer = document.querySelector("#modal-calculator-footer");
     const parent = document.querySelector("#modal-calculator-form");
     parent.insertBefore(div, formContainer);
     const form = document.querySelector("#calculator-modal");
     form.style = "display:block;";
+
+    const formType = document.querySelector("#form-calculator-type");
+    for (var i = 0; i < dropdownOptions.length; i++) {
+      var opt = document.createElement("option");
+      opt.innerHTML = dropdownOptions[i];
+      opt.value = dropdownOptions[i];
+      formType.appendChild(opt);
+    }
   }
 
   static showEditItemModal(e) {
@@ -52,11 +64,21 @@ export default class FundModal {
     const formTitle = document.querySelector("#form-calculator-title");
     formTitle.value = `${e.dataset.title}`;
 
-    const formType = document.querySelector("#form-calculator-type");
-    formType.value = `${e.dataset.type}`;
-
     const formAmount = document.querySelector("#form-calculator-amount");
     formAmount.value = `${e.dataset.amount}`;
+
+    const formType = document.querySelector("#form-calculator-type");
+    const datasetType = `${e.dataset.type}`;
+    for (var i = 0; i < dropdownOptions.length; i++) {
+      console.log(dropdownOptions[i]);
+      console.log(datasetType);
+      if (dropdownOptions[i] == datasetType) {
+        var option = i;
+        console.log(option);
+        formType.selectedIndex = option;
+        return;
+      }
+    }
   }
 
   static validate(action) {
