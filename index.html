@@ -21,13 +21,11 @@
   <div id="form-container">
     <form id="item-form"></form>
   </div>
-  <!-- <button class="menu">Menu</button> -->
-
   <button id="minimize-window">
-    <img style="z-index: 1000;" src="./client/images/minimize.svg" width="12px" />
+    <img src="./client/images/minimize.svg" width="12px" alt="minimize"/>
   </button>
   <button id="close-window">
-    <img style="z-index: 1000;" src="./client/images/close.svg" width="12px" />
+    <img src="./client/images/close.svg" width="12px" alt="close"/>
   </button>
   <div class="application-nav" style="-webkit-app-region: drag;"></div>
   <div class="container">
@@ -39,7 +37,6 @@
         <button id="1" class="add-item" data-title="Current Funds">
           Add Fund [+]
         </button>
-        <!-- <ul id="item-chart-1"></ul> -->
         <div id="item-chart-1" class="item-chart"></div>
       </section>
       <section id="section-2" data-section="2">
@@ -73,8 +70,6 @@
     <div class="middle">
       <section>
         <header>Recommendations
-          <!-- <button id="radar-button" class="header"
-            style="margin-bottom:0; padding-bottom:0">[::]</button> -->
         </header>
         <ul id="recommendation-list"></ul>
       </section>
@@ -107,7 +102,6 @@
       <div id="timestamp"></div>
     </footer>
 
-    <!-- form calculator-->
     <div id="calculator-modal" class="modal">
       <div class="modal-calculator-content">
         <button id="modal-calculator-close"></button>
@@ -127,7 +121,7 @@
       <li> <button id="clone-record" class="clone-record">Clone</button></li>
       <li> <button id="delete-record" class="delete-record">Delete</button></li>
     </ul>
-    <script type="text/javascript" src="./client/library/d3.js"></script>
+    <script src="./client/library/d3.js"></script>
     <script>
       require("./renderer.js");
     </script>
@@ -147,11 +141,6 @@
         })
 
     </script>
-
-
-
-    <!-- <script src="./client/js/chart.js"></script> -->
-    <!-- <script type="module" src="./client/js/historyChart.js"></script> -->
 </body>
 
 </html>

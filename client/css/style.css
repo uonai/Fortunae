@@ -1,11 +1,11 @@
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
   color: #ffffff;
   font-family: "Roboto Mono", monospace;
   line-height: 1.8;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
 
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -31,17 +31,17 @@ body {
 }
 
 .menu {
-  position: absolute;
   left: 10px;
+  position: absolute;
   top: 320px;
   transform: rotate(-90deg);
 }
 
 .right-menu {
-  transform: rotate(90deg);
   position: absolute;
   right: -80px;
   top: 320px;
+  transform: rotate(90deg);
 }
 
 .right-menu li {
@@ -50,39 +50,39 @@ body {
 }
 
 .application-nav {
-  position: absolute;
-  padding: 20px;
-  width: 90%;
-  text-align: right;
   height: 40px;
+  padding: 20px;
+  position: absolute;
+  text-align: right;
+  width: 90%;
 }
 
 #close-window {
   position: absolute;
-  z-index: 1000;
-  top: 20px;
   right: 20px;
+  top: 20px;
+  z-index: 1000;
 }
 
 #minimize-window {
   position: absolute;
-  z-index: 1000;
-  top: 16px;
   right: 50px;
+  top: 16px;
+  z-index: 1000;
 }
 
 .top {
-  padding-bottom: 20px;
   height: 220px;
+  padding-bottom: 20px;
 }
 
 .middle {
   padding-bottom: 20px;
 }
 section {
-  width: 230px;
   float: left;
   padding: 0 20px;
+  width: 230px;
 }
 section.chart {
   width: 400px;
@@ -94,22 +94,22 @@ section.chart {
 
 section.chart header,
 .header {
-  text-align: center;
   padding-bottom: 10px;
+  text-align: center;
 }
 
 .header {
   background-image: url(../images/dot.svg);
   background-position: right top;
-  width: 10px;
   height: 10px;
+  width: 10px;
 }
 section ul {
-  width: 100%;
+  box-sizing: content-box; /* So the width will be 100% + 17px */
   max-height: 115px;
   overflow-y: scroll;
   padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
-  box-sizing: content-box; /* So the width will be 100% + 17px */
+  width: 100%;
 }
 
 section ul#item-list-5 {
@@ -117,9 +117,9 @@ section ul#item-list-5 {
 }
 
 ::-webkit-scrollbar {
+  height: 0;
   /* WebKit */
   width: 0;
-  height: 0;
 }
 
 header,
@@ -129,10 +129,10 @@ header,
 .clone-record,
 .delete-record {
   font-size: 12px;
-  text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 2px;
   margin-bottom: 5px;
+  text-transform: uppercase;
 }
 
 .edit,
@@ -145,46 +145,30 @@ header,
 }
 
 button {
-  color: #fff;
-  border: none;
   background: none;
+  border: none;
+  color: #fff;
 }
 
 .rectangle {
-  width: 80%;
-  height: 10px;
   background: #fff;
+  height: 10px;
   margin-top: 10px;
+  width: 80%;
 }
 
 .item-chart {
-  width: 90%;
-  overflow: hidden;
   height: 2px;
   margin-top: 10px;
+  overflow: hidden;
+  width: 90%;
 }
 
 .inner-rectangle {
-  height: 10px;
   background: #fff;
   float: left;
+  height: 10px;
 }
-
-/* .item-chart div:nth-child(2) {
-  background: #555;
-}
-
-.item-chart div:nth-child(3) {
-  background: #aaa;
-}
-
-.item-chart div:nth-child(4) {
-  background: #666;
-}
-
-.item-chart div:nth-child(5) {
-  background: #fff;
-} */
 
 .item-chart div:nth-child(2n + 1) {
   background: #fff;
@@ -192,39 +176,28 @@ button {
 .item-chart div:nth-child(2n + 2) {
   background: #222;
 }
-/* .item-chart div:nth-child(5n + 3) {
-  background: #aaa;
-}
-
-.item-chart div:nth-child(5n + 4) {
-  background: #666;
-}
-
-.item-chart div:nth-child(5n + 5) {
-  background: #444;
-} */
 
 /* Form */
 form {
-  color: #fff;
   background: #000;
+  color: #fff;
 }
 
 form input,
 form .cancel-item {
+  background: none;
   border: none;
   border: 2px solid #fff;
-  margin-top: 10px;
-  background: none;
-  padding: 5px;
   float: left;
+  margin-top: 10px;
+  padding: 5px;
   padding: 5px 10px;
 }
 
 label {
-  width: 80px !important;
   float: left;
   line-height: 50px;
+  width: 80px !important;
 }
 
 form input .add-button {
@@ -241,17 +214,17 @@ form input .add-button {
   padding: 0 55px;
 }
 .chart-inner {
-  border-radius: 125px;
   border: 2px solid #fff;
+  border-radius: 125px;
   height: 250px;
-  width: 250px;
   padding: 25px 10px 25px 20px;
+  width: 250px;
 }
 
 path {
+  fill: none;
   stroke: #fff;
   stroke-width: 2;
-  fill: none;
 }
 
 /**bordered section **/
@@ -263,12 +236,12 @@ path {
 
 /** modal **/
 .form {
-  position: absolute;
-  left: 300px;
-  right: 300px;
   background: #000;
   border: 2px solid #fff;
+  left: 300px;
   padding: 20px;
+  position: absolute;
+  right: 300px;
   top: 200px;
 }
 
@@ -288,24 +261,24 @@ path {
 
 .modal,
 .modal-generated {
-  z-index: 1;
-  position: absolute;
-  left: 300px;
-  right: 300px;
   background: #000;
   border: 2px solid #fff;
+  left: 300px;
   padding: 20px;
+  position: absolute;
+  right: 300px;
   top: 200px;
+  z-index: 1;
 }
 
 #modal-close,
 #modal-calculator-close {
-  float: right;
   background-image: url("../images/close.svg");
   background-position: right top;
   background-repeat: no-repeat;
-  width: 15px;
+  float: right;
   height: 15px;
+  width: 15px;
 }
 
 .modal #form-calculator-edit-submit {
@@ -323,12 +296,12 @@ path {
 
 /** items **/
 .list-item {
-  width: 100%;
   text-align: left;
+  width: 100%;
 }
 .item-menu {
-  width: 100%;
   float: left;
+  width: 100%;
 }
 
 /** history **/
@@ -347,10 +320,10 @@ footer {
   padding-left: 20px;
 }
 .date {
-  z-index: 1000;
   bottom: 20px;
-  right: 38px;
   position: absolute;
+  right: 38px;
+  z-index: 1000;
 }
 
 /** focus and text area updates**/
@@ -385,10 +358,10 @@ input::placeholder {
 /** dropdown **/
 select {
   background: none;
-  width: 195px;
   border: 2px solid #fff;
-  padding: 8px 10px;
   margin: 10px 0 0;
+  padding: 8px 10px;
+  width: 195px;
 }
 
 option {
