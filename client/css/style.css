@@ -108,7 +108,6 @@ section ul {
   box-sizing: content-box; /* So the width will be 100% + 17px */
   max-height: 115px;
   overflow-y: scroll;
-  padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
   width: 100%;
 }
 
@@ -174,7 +173,7 @@ button {
   background: #fff;
 }
 .item-chart div:nth-child(2n + 2) {
-  background: #222;
+  background: #111;
 }
 
 /* Form */
@@ -425,4 +424,19 @@ body {
   to {
     opacity: 1;
   }
+}
+
+/** SCROLLBAR **/
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #fff;
+}
+*::-webkit-scrollbar {
+  width: 2px;
+}
+*::-webkit-scrollbar-track {
+  background: #000;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #fff;
 }
