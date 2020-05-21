@@ -34,7 +34,21 @@ const SpiderChart = function RadarChart(parent_selector, options) {
   //     ],
   //   },
   // ];
-  const data1 = JSON.parse(localStorage.getItem("category2ItemsHistorical"));
+
+  const items = JSON.parse(localStorage.getItem("items"));
+  console.log(items);
+  expenseSources = [];
+
+  items.forEach((item) => {
+    if (item.category == "2") {
+      expenseSources.push({
+        item,
+      });
+    }
+  });
+
+  //const data1 = JSON.parse(localStorage.getItem("category2ItemsHistorical"));
+  const data1 = expenseSources;
   console.log(data1);
   let itemDates = [];
   data1.forEach((item) => {
@@ -101,7 +115,7 @@ const SpiderChart = function RadarChart(parent_selector, options) {
 
   const cfg = {
     w: 600, //Width of the circle
-    h: 640, //Height of the circle
+    h: 600, //Height of the circle
     margin: { top: 20, right: 20, bottom: 20, left: 20 }, //The margins of the SVG
     levels: 1, //How many levels or inner circles should there be drawn
     maxValue: maxNumber, //What is the value that the biggest circle will represent
