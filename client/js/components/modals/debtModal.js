@@ -43,6 +43,9 @@ export default class DebtModal {
       opt.value = dropdownOptions[i];
       formType.appendChild(opt);
     }
+
+    const formTitle = document.querySelector("#form-calculator-title");
+    formTitle.focus();
   }
 
   static showEditItemModal(e) {

@@ -79,6 +79,13 @@ export default class PopOut {
         preload: path.join(__dirname, "preload.js"),
         nodeIntegration: true,
       },
+      if(win) {
+        const pos = win.getPosition();
+        Object.assign(opts, {
+          x: pos[0] + 10,
+          y: pos[1] + 10,
+        });
+      },
       frame: false,
     });
 

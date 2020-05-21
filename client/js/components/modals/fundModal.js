@@ -20,7 +20,7 @@ export default class FundModal {
           <input type="hidden" id="form-calculator-category" value="1" />
           <input type="hidden" id="form-calculator-id" value="1" />
           <div class="form-group">
-          <input type="text" id="form-calculator-title" class="form-control" placeholder="Title" />
+          <input type="text" id="form-calculator-title" class="form-control" placeholder="Title" autofocus />
         </div>
         <select id="form-calculator-type">
           </select>
@@ -29,6 +29,7 @@ export default class FundModal {
         </div>
   
    `;
+
     const formContainer = document.querySelector("#modal-calculator-footer");
     const parent = document.querySelector("#modal-calculator-form");
     parent.insertBefore(div, formContainer);
@@ -43,6 +44,9 @@ export default class FundModal {
       opt.value = dropdownOptions[i];
       formType.appendChild(opt);
     }
+
+    const formTitle = document.querySelector("#form-calculator-title");
+    formTitle.focus();
   }
 
   static showEditItemModal(e) {

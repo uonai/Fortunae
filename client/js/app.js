@@ -209,7 +209,6 @@ function doc_keyUp(e) {
       FundModal.showModal();
       console.log("1");
     } else if (e.ctrlKey && e.keyCode == 50) {
-      // ctrl + 2
       ExpenseModal.showModal();
       console.log("2");
     } else if (e.ctrlKey && e.keyCode == 51) {
@@ -225,5 +224,17 @@ function doc_keyUp(e) {
   }
   if (e.key == "Escape") {
     UI.hideCalculatorModal();
+  }
+  if (e.ctrlKey && e.key == "j") {
+    PopOut.openFund();
+  }
+  if (e.ctrlKey && e.key == "k") {
+    PopOut.openSankey();
+  }
+  if (e.ctrlKey && e.key == "l") {
+    PopOut.openSpider();
+  }
+  if (e.ctrlKey && e.key == ";") {
+    PopOut.openBurndown();
   }
 }
