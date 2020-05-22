@@ -41,12 +41,36 @@ const SpiderChart = function RadarChart(parent_selector, options) {
 
   items.forEach((item) => {
     if (item.category == "2") {
-      expenseSources.push({
-        item,
-      });
+      expenseSources.push(item);
     }
   });
 
+  function groupBy(list, keyGetter) {
+    const map = new Map();
+    list.forEach((item) => {
+      const key = keyGetter(item);
+      const collection = map.get(key);
+      if (!collection) {
+        map.set(key, [item]);
+      } else {
+        collection.push(item);
+      }
+    });
+    return map;
+  }
+
+  // example usage
+  console.log(expenseSources[0].item);
+
+  const grouped = groupBy(expenseSources, (item) => item.type);
+  console.log(grouped);
+
+  for (const group of grouped) {
+    console.log(group);
+    for (const item of group) {
+      console.log(item);
+    }
+  }
   //const data1 = JSON.parse(localStorage.getItem("category2ItemsHistorical"));
   const data1 = expenseSources;
   console.log(data1);
@@ -63,11 +87,11 @@ const SpiderChart = function RadarChart(parent_selector, options) {
     let array = [];
 
     for (const key of keys) {
-      numbersArray.push(key[1].item.amount);
+      numbersArray.push(key[1].amount);
       if (key[1].date == date) {
         array.push({
-          axis: key[1].item.type,
-          value: key[1].item.amount,
+          axis: key[1].type,
+          value: key[1].amount,
         });
       }
     }

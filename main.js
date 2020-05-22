@@ -2,6 +2,7 @@ const { app, BrowserWindow } = require("electron");
 const path = require("path");
 const { ipcMain } = require("electron");
 const url = require("url");
+const ipc = require("ipc");
 require("v8-compile-cache");
 
 require("electron-reload")(__dirname, {
@@ -36,10 +37,6 @@ function createWindow() {
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
   mainWindow.setMenuBarVisibility(false);
-
-  // childWindow.once("ready-to-show", () => {
-  //   childWindow.show();
-  // });
 }
 
 // This method will be called when Electron has finished

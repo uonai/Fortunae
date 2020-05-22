@@ -195,6 +195,7 @@ export default class Store {
     }
   }
   static resetData(currentRecord) {
+    console.log(currentRecord);
     localStorage.clear();
     localStorage.removeItem("items");
     localStorage.removeItem("currentRecord");

@@ -30,7 +30,7 @@ export default class PopOut {
       width: 500,
       height: 520,
       backgroundColor: "#000",
-      resizable: true,
+      resizable: false,
       webPreferences: {
         preload: path.join(__dirname, "preload.js"),
         nodeIntegration: true,
@@ -78,13 +78,6 @@ export default class PopOut {
       webPreferences: {
         preload: path.join(__dirname, "preload.js"),
         nodeIntegration: true,
-      },
-      if(win) {
-        const pos = win.getPosition();
-        Object.assign(opts, {
-          x: pos[0] + 10,
-          y: pos[1] + 10,
-        });
       },
       frame: false,
     });
