@@ -51,7 +51,7 @@ const SpiderChart = function RadarChart(parent_selector, options) {
     x[a.type] = [...(x[a.type] || []), a];
     return x;
   }, {});
-  console.log(groupOfItems);
+  // console.log(groupOfItems);
 
   let categoryRollup = [];
   for (let category of Object.keys(groupOfItems)) {

@@ -11,6 +11,8 @@ const dropdownOptions = [
   "Emergency",
 ];
 
+console.log(data);
+
 export default class FundModal {
   static showModal() {
     const div = document.createElement("div");
