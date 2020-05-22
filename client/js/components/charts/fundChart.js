@@ -71,13 +71,13 @@ if (result) {
   const margin = 75;
   const duration = 300;
 
-  const lineOpacity = "0.9";
+  const lineOpacity = "1";
   const lineOpacityHover = "1";
   const otherLinesOpacityHover = "0.05";
   const lineStroke = "2px";
   const lineStrokeHover = "px";
 
-  const circleOpacity = "0.9";
+  const circleOpacity = "1";
   const circleOpacityOnLineHover = "1";
   const circleRadius = 5;
   const circleRadiusHover = 6;

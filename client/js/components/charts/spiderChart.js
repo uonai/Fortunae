@@ -139,7 +139,7 @@ const SpiderChart = function RadarChart(parent_selector, options) {
     maxValue: maxNumber, //What is the value that the biggest circle will represent
     labelFactor: 1.25, //How much farther than the radius of the outer circle should the labels be placed
     wrapWidth: 60, //The number of pixels after which a label needs to be given a new line
-    opacityArea: 0.01, //The opacity of the area of the blob
+    opacityArea: 0, //The opacity of the area of the blob
     dotRadius: 4, //The size of the colored circles of each blog
     opacityCircles: 0.1, //The opacity of the circles of each blob
     strokeWidth: 2, //The width of the stroke around each blob
@@ -317,9 +317,9 @@ const SpiderChart = function RadarChart(parent_selector, options) {
         .selectAll(".radarArea")
         .transition()
         .duration(200)
-        .style("fill-opacity", 0.1);
+        .style("fill-opacity", 0);
       //Bring back the hovered over blob
-      d3.select(this).transition().duration(200).style("fill-opacity", 0.7);
+      d3.select(this).transition().duration(200).style("fill-opacity", 0);
     })
     .on("mouseout", () => {
       //Bring back all blobs

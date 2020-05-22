@@ -1,5 +1,6 @@
 import HistoryChart from "./components/charts/historyChart.js";
 import PopOut from "./popOut.js";
+import Chart from "./components/charts/chart.js";
 
 const fs = require("fs");
 const { getCurrentWindow } = require("electron").remote;
@@ -14,10 +15,12 @@ export default class Store {
       this.loadDatabase();
       items = JSON.parse(localStorage.getItem("items"));
     }
+
     return items;
   }
 
   static loadDatabase() {
+    console.log("loda database");
     fs.readdir(__dirname + database, (err, files) => {
       let filesDirectory = [];
       files.forEach((file) => {
@@ -33,18 +36,21 @@ export default class Store {
       HistoryChart.setTimestamp(currentItem);
 
       localStorage.setItem("history", JSON.stringify(filesDirectory));
-      const recentFile = filesDirectory[0];
+      const recentFile = filesDirectory.pop();
       if (localStorage.getItem("currentRecord") === null) {
         localStorage.setItem("currentRecord", recentFile);
+        HistoryChart.setTimestamp(recentFile);
       }
 
       let rawData = fs.readFileSync(__dirname + database + recentFile);
       let items = JSON.parse(rawData);
       if (localStorage.getItem("items") === null) {
         localStorage.setItem("items", JSON.stringify(items));
+        Chart.loadChart();
       }
       HistoryChart.loadHistoryChart();
     });
+    Chart.loadChart();
   }
 
   static loadCompleteDatabase() {
@@ -186,8 +192,7 @@ export default class Store {
         }
         // alert("The record has been deleted");
         localStorage.clear();
-        this.loadDatabase();
-        this.loadCompleteDatabase();
+        this.getItems();
         getCurrentWindow().reload();
       });
     } else {

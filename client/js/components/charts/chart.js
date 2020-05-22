@@ -42,13 +42,13 @@ export default class Chart {
       const margin = 40;
       const duration = 300;
 
-      const lineOpacity = "0.9";
+      const lineOpacity = "1";
       const lineOpacityHover = "0.1";
       const otherLinesOpacityHover = "0";
       const lineStroke = "2px";
       const lineStrokeHover = "0.5px";
 
-      const circleOpacity = "0.9";
+      const circleOpacity = "1";
       const circleOpacityOnLineHover = "0.1";
       const circleRadius = 5;
       const circleRadiusHover = 6;
@@ -67,12 +67,12 @@ export default class Chart {
         const xScale = d3
           .scaleTime()
           .domain(d3.extent(data[0].values, (d) => d.date))
-          .range([0, width - margin]);
+          .range([5, width - margin]);
 
         const yScale = d3
           .scaleLinear()
           .domain([0, d3.max(data[0].values, (d) => d.amount)])
-          .range([height - margin, 0]);
+          .range([height - margin, 5]);
 
         const color = d3.scaleOrdinal(d3.schemeGreys);
 
@@ -154,7 +154,7 @@ export default class Chart {
               .attr("class", "text")
               .style("fill", "#ffffff")
               .text(`${d.amount}`)
-              .attr("x", (d) => xScale(d.date) + 5)
+              .attr("x", (d) => xScale(d.date) + -10)
               .attr("y", (d) => yScale(d.amount) - 10);
           })
           .on("mouseout", function (d) {
