@@ -42,7 +42,7 @@ export default class HistoryChart {
         .style("position", "absolute")
         .style("z-index", "1000")
         .style("visibility", "hidden")
-        .style("background-color", "black")
+        .style("background-color", "#000")
         .text(item.infoISO);
 
       d3.select("#g-1")
@@ -50,7 +50,7 @@ export default class HistoryChart {
         .attr("cx", item.x)
         .attr("cy", item.y)
         .attr("r", 5)
-        .style("fill", "white")
+        .style("fill", "#fff")
         .on("mouseover", function () {
           return tooltip.style("visibility", "visible");
         })

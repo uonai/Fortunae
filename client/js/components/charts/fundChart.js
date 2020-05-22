@@ -135,7 +135,7 @@ if (result) {
         svg
           .append("text")
           .attr("class", "title-text")
-          .style("fill", "#ffffff")
+          .style("fill", "#fff")
           .text(d.name)
           .attr("text-anchor", "middle")
           .attr("x", (width - margin) / 2)
@@ -182,7 +182,7 @@ if (result) {
           .style("cursor", "pointer")
           .append("text")
           .attr("class", "text")
-          .style("fill", "#ffffff")
+          .style("fill", "#fff")
           .text(`${d.amount}`)
           .attr("x", (d) => xScale(d.date) + 5)
           .attr("y", (d) => yScale(d.amount) - 10);
@@ -205,7 +205,7 @@ if (result) {
         d3.select(this)
           .transition()
           .duration(duration)
-          .style("background-color", "#ffffff")
+          .style("background-color", "#fff")
           .attr("r", circleRadiusHover);
       })
       .on("mouseout", function (d) {

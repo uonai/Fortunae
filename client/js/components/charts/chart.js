@@ -104,7 +104,7 @@ export default class Chart {
             svg
               .append("text")
               .attr("class", "title-text")
-              .style("fill", "#ffffff")
+              .style("fill", "#fff")
               .text(d.name)
               .attr("text-anchor", "middle")
               .attr("x", (width - margin) / 2)
@@ -152,7 +152,7 @@ export default class Chart {
               .style("cursor", "pointer")
               .append("text")
               .attr("class", "text")
-              .style("fill", "#ffffff")
+              .style("fill", "#fff")
               .text(`${d.amount}`)
               .attr("x", (d) => xScale(d.date) + -10)
               .attr("y", (d) => yScale(d.amount) - 10);
@@ -170,12 +170,12 @@ export default class Chart {
           .attr("cy", (d) => yScale(d.amount))
           .attr("r", circleRadius)
           .style("opacity", circleOpacity)
-          .style("fill", "white")
+          .style("fill", "#fff")
           .on("mouseover", function (d) {
             d3.select(this)
               .transition()
               .duration(duration)
-              .style("background-color", "#ffffff")
+              .style("background-color", "#fff")
               .attr("r", circleRadiusHover);
           })
           .on("mouseout", function (d) {

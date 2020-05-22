@@ -1,6 +1,12 @@
+:root {
+  --text-color: #fff;
+  --background-color: #000;
+  --alert-color: #fc533e;
+}
+
 * {
   box-sizing: border-box;
-  color: #ffffff;
+  color: var(--text-color);
   font-family: "Roboto Mono", monospace;
   line-height: 1.8;
   margin: 0;
@@ -20,8 +26,8 @@
 }
 
 body {
-  background: #000;
-  color: #fff;
+  background: var(--background-color);
+  color: var(--text-color);
   font-size: 12px;
   font-weight: 400;
 }
@@ -146,11 +152,11 @@ header,
 button {
   background: none;
   border: none;
-  color: #fff;
+  color: var(--text-color);
 }
 
 .rectangle {
-  background: #fff;
+  background: var(--text-color);
   height: 10px;
   margin-top: 10px;
   width: 80%;
@@ -164,13 +170,13 @@ button {
 }
 
 .inner-rectangle {
-  background: #fff;
+  background: var(--text-color);
   float: left;
   height: 10px;
 }
 
 .item-chart div:nth-child(2n + 1) {
-  background: #fff;
+  background: var(--text-color);
 }
 .item-chart div:nth-child(2n + 2) {
   background: #111;
@@ -178,15 +184,15 @@ button {
 
 /* Form */
 form {
-  background: #000;
-  color: #fff;
+  background: var(--background-color);
+  color: var(--text-color);
 }
 
 form input,
 form .cancel-item {
   background: none;
   border: none;
-  border: 2px solid #fff;
+  border: 2px solid var(--text-color);
   float: left;
   margin-top: 10px;
   padding: 5px;
@@ -204,7 +210,7 @@ form input .add-button {
 }
 
 .alert {
-  color: #fc533e;
+  color: var(--alert-color);
 }
 
 /** chart **/
@@ -213,7 +219,7 @@ form input .add-button {
   padding: 0 55px;
 }
 .chart-inner {
-  border: 2px solid #fff;
+  border: 2px solid var(--text-color);
   border-radius: 125px;
   height: 250px;
   padding: 25px 10px 25px 20px;
@@ -222,21 +228,21 @@ form input .add-button {
 
 path {
   fill: none;
-  stroke: #fff;
+  stroke: var(--text-color);
   stroke-width: 2;
 }
 
 /**bordered section **/
 
 .bordered {
-  border: 2px solid #fff;
+  border: 2px solid var(--text-color);
   padding: 15px 20px 20px;
 }
 
 /** modal **/
 .form {
-  background: #000;
-  border: 2px solid #fff;
+  background: var(--background-color);
+  border: 2px solid var(--text-color);
   left: 300px;
   padding: 20px;
   position: absolute;
@@ -260,8 +266,8 @@ path {
 
 .modal,
 .modal-generated {
-  background: #000;
-  border: 2px solid #fff;
+  background: var(--background-color);
+  border: 2px solid var(--text-color);
   left: 300px;
   padding: 20px;
   position: absolute;
@@ -306,7 +312,7 @@ path {
 /** history **/
 path {
   fill: none;
-  stroke: #fff;
+  stroke: var(--text-color);
 }
 
 #timestamp {
@@ -342,7 +348,7 @@ input[type="button"] {
 
 input[type="text"]:focus,
 textarea:focus {
-  box-shadow: 0 0 5px #ffffff;
+  box-shadow: 0 0 5px var(--text-color);
 }
 
 input[type="button"]:focus,
@@ -351,20 +357,20 @@ textarea:focus {
 }
 
 input::placeholder {
-  color: #fff;
+  color: var(--text-color);
 }
 
 /** dropdown **/
 select {
   background: none;
-  border: 2px solid #fff;
+  border: 2px solid var(--text-color);
   margin: 10px 0 0;
   padding: 8px 10px;
   width: 195px;
 }
 
 option {
-  background: #000;
+  background: var(--background-color);
   padding: 10px;
 }
 
@@ -429,14 +435,21 @@ body {
 /** SCROLLBAR **/
 * {
   scrollbar-width: thin;
-  scrollbar-color: #fff;
+  scrollbar-color: var(--text-color);
 }
 *::-webkit-scrollbar {
   width: 2px;
 }
 *::-webkit-scrollbar-track {
-  background: #000;
+  background: var(--background-color);
 }
 *::-webkit-scrollbar-thumb {
-  background-color: #fff;
+  background-color: var(--text-color);
+}
+
+/** Fund Chart **/
+
+.tick text {
+  color: var(--text-color);
+  fill: var(--text-color);
 }
