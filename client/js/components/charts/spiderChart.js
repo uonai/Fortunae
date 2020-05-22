@@ -45,34 +45,28 @@ const SpiderChart = function RadarChart(parent_selector, options) {
     }
   });
 
-  function groupBy(list, keyGetter) {
-    const map = new Map();
-    list.forEach((item) => {
-      const key = keyGetter(item);
-      const collection = map.get(key);
-      if (!collection) {
-        map.set(key, [item]);
-      } else {
-        collection.push(item);
-      }
+  let groupOfItems = expenseSources.reduce((x, a) => {
+    // console.log("a", a);
+    // console.log("x", x);
+    x[a.type] = [...(x[a.type] || []), a];
+    return x;
+  }, {});
+  console.log(groupOfItems);
+
+  let categoryRollup = [];
+  for (let category of Object.keys(groupOfItems)) {
+    numbers = [];
+    const items = groupOfItems[category];
+
+    items.forEach((item) => {
+      numbers.push(Number(item.amount));
     });
-    return map;
+
+    const numbersTotal = numbers.reduce((a, b) => a + b, 0);
+    categoryRollup.push({ type: category, amount: numbersTotal });
   }
 
-  // example usage
-  console.log(expenseSources[0].item);
-
-  const grouped = groupBy(expenseSources, (item) => item.type);
-  console.log(grouped);
-
-  for (const group of grouped) {
-    console.log(group);
-    for (const item of group) {
-      console.log(item);
-    }
-  }
-  //const data1 = JSON.parse(localStorage.getItem("category2ItemsHistorical"));
-  const data1 = expenseSources;
+  const data1 = categoryRollup;
   console.log(data1);
   let itemDates = [];
   data1.forEach((item) => {
