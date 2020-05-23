@@ -231,6 +231,7 @@ form input .add-button {
 /** chart **/
 
 .chart-outer {
+  height: 286px;
   padding: 0 55px;
 }
 .chart-inner {
