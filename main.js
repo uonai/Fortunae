@@ -19,6 +19,7 @@ function createWindow() {
     backgroundColor: "#000",
     resizable: false,
     webPreferences: {
+      devTools: false,
       preload: path.join(__dirname, "preload.js"),
       nodeIntegration: true,
     },
@@ -60,30 +61,6 @@ app.on("activate", function () {
 ipcMain.on("request-mainprocess-action", (event, arg) => {
   console.log(arg);
 });
-
-function createAddWindow() {
-  addWindow = new BrowserWindow({
-    width: 300,
-    height: 200,
-    title: "test",
-    webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
-      nodeIntegration: true,
-    },
-  });
-
-  addWindow.loadURL(
-    url.format({
-      pathname: path.join(__dirname, "prefs.html"),
-      protocol: "file",
-      slashes: true,
-    })
-  );
-
-  addWindow.on("close", function () {
-    addWindow = null;
-  });
-}
 
 // catch item refresh
 
@@ -176,10 +153,6 @@ function createSankeyChart() {
   );
 }
 
-ipcMain.on("window:open", function () {
-  createAddWindow();
-});
-
 ipcMain.on("fund:open", function () {
   createFundChart();
 });
@@ -197,10 +170,6 @@ ipcMain.on("sankey:open", function () {
 });
 
 ipcMain.on("window:refresh", function () {
-  if (typeof addWindow !== "undefined") {
-    // addWindow.webContents.send("window:refresh");
-  }
-
   if (typeof fundChart !== "undefined") {
     fundChart.reload();
   }
@@ -223,10 +192,6 @@ ipcMain.on("window:refresh", function () {
 });
 
 ipcMain.on("window:close", function () {
-  if (typeof addWindow !== "undefined") {
-    // addWindow.webContents.send("window:refresh");
-  }
-
   if (typeof fundChart !== "undefined") {
     fundChart.close();
   }

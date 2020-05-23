@@ -8,6 +8,7 @@ import IncomeModal from "./components/modals/incomeModal.js";
 import FundModal from "./components/modals/fundModal.js";
 import NeedModal from "./components/modals/needModal.js";
 import PopOut from "./popOut.js";
+import HistoryChart from "./components/charts/historyChart.js";
 
 const EDIT = "edit";
 const SUBMIT = "submit";
@@ -17,6 +18,7 @@ document.addEventListener(
   UI.displayItems(),
   Recommendation.displayRecommendations(),
   Chart.loadChart(),
+  HistoryChart.loadHistoryChart(),
   Store.loadCompleteDatabase()
 );
 

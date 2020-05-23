@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8" />
   <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-  <!-- <meta
+  <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
     />
     <meta
       http-equiv="X-Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
-    /> -->
+    />
 
   <link rel="stylesheet" type="text/css" href="./client/css/style.css" />
   <title>Fortunae</title>
@@ -27,13 +27,13 @@
   <button id="close-window">
     <img src="./client/images/close.svg" width="12px" alt="close" />
   </button>
-  <div class="application-nav" style="-webkit-app-region: drag;"></div>
+  <div class="application-nav"></div>
   <div class="container">
     <div class="top">
       <section id="section-1" data-section="1">
         <header>
           Funds
-          <button id="child-window" class="header" style="margin-bottom: 0; padding-bottom: 0;"></button>
+          <button id="child-window" class="header" ></button>
         </header>
         <ul id="item-list-1"></ul>
         <button id="1" class="add-item" data-title="Current Funds">
@@ -44,7 +44,7 @@
       <section id="section-2" data-section="2">
         <header>
           Expenses
-          <button id="radar-button" class="header" style="margin-bottom: 0; padding-bottom: 0;"></button>
+          <button id="radar-button" class="header"></button>
         </header>
         <ul id="item-list-2"></ul>
         <button id="2" class="add-item" data-title="Expenses">
@@ -55,7 +55,7 @@
       <section id="section-3" data-section="3">
         <header>
           Debts
-          <button id="burndown-button" class="header" style="margin-bottom: 0; padding-bottom: 0;"></button>
+          <button id="burndown-button" class="header"></button>
         </header>
         <ul id="item-list-3"></ul>
         <button id="3" class="add-item" data-title="Debt Calculator">
@@ -66,7 +66,7 @@
       <section id="section-4" data-section="4">
         <header>
           Incomes
-          <button id="sankey-button" class="header" style="margin-bottom: 0; padding-bottom: 0;"></button>
+          <button id="sankey-button" class="header"></button>
         </header>
         <ul id="item-list-4"></ul>
         <button id="4" class="add-item" data-title="Income Calculator">
@@ -88,7 +88,7 @@
           </div>
         </div>
       </section>
-      <section style="width: 270px;">
+      <section class="last">
         <div class="bordered">
           <header>Budget</header>
           <ul id="item-list-5"></ul>
@@ -126,24 +126,10 @@
       <li><button id="delete-record" class="delete-record">Delete</button></li>
     </ul>
     <script src="./client/library/d3.js"></script>
-    <script>
-      require("./renderer.js");
+    <script src="./renderer.js">
     </script>
     <script type="module" src="./client/js/app.js"></script>
-    <script>
-      const remote = require("electron").remote;
-      document
-        .getElementById("close-window")
-        .addEventListener("click", function (e) {
-          var window = remote.getCurrentWindow();
-          window.close();
-        });
-      document
-        .getElementById("minimize-window")
-        .addEventListener("click", function (e) {
-          var window = remote.getCurrentWindow();
-          window.minimize();
-        });
+    <script src="./client/js/utils/menu.js">
     </script>
 </body>
 

@@ -16,7 +16,7 @@
   </head>
   <body>
     <button id="close-window"><img style="z-index:1000" src="./client/images/close.svg" width="12px" /></button>
-    <div class="application-nav" style="-webkit-app-region: drag;">
+    <div class="application-nav">
 
     </div>
 <header style="padding:40px 0 0 0; text-align:center;">Funds</header>
@@ -39,12 +39,8 @@
         }
       });
     </script>
-    <script>
-       const remote = require('electron').remote;
-       document.getElementById("close-window").addEventListener("click", function (e) {
-       var window = remote.getCurrentWindow();
-       window.close();
-  }); 
-    </script>
+     <script src="./client/js/utils/menu.js"></script>
+
+    
   </body>
 </html>

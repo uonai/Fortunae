@@ -75,6 +75,7 @@ body {
   position: absolute;
   text-align: right;
   width: 90%;
+  -webkit-app-region: drag;
 }
 
 #close-window {
@@ -91,14 +92,6 @@ body {
   z-index: 1000;
 }
 
-.top {
-  height: 220px;
-  padding-bottom: 20px;
-}
-
-.middle {
-  padding-bottom: 20px;
-}
 section {
   float: left;
   padding: 0 20px;
@@ -118,11 +111,26 @@ section.chart header,
   text-align: center;
 }
 
+.top {
+  height: 220px;
+  padding-bottom: 20px;
+}
+
+.middle {
+  padding-bottom: 20px;
+}
+
+.last {
+  width: 270px;
+}
+
 .header {
   background-image: url(../images/dot.svg);
   background-position: right top;
   height: 10px;
   width: 10px;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 section ul {
   box-sizing: content-box; /* So the width will be 100% + 17px */

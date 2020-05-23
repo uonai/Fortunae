@@ -117,7 +117,6 @@ export default class Store {
         JSON.stringify(category4)
       );
     });
-    Chart.loadChart();
   }
 
   static restoreItems(timestamp) {

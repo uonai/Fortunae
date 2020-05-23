@@ -3,28 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <!-- <meta
+    <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
     />
     <meta
       http-equiv="X-Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
-    /> -->
+    />
     <link rel="stylesheet" type="text/css" href="./client/css/chart.css" />
-    <style></style>
     <title>Fortunae</title>
   </head>
   <body>
     <button id="close-window">
-      <img
-        style="z-index: 1000;"
-        src="./client/images/close.svg"
-        width="12px"
-      />
+      <img src="./client/images/close.svg" width="12px" />
     </button>
-    <div class="application-nav" style="-webkit-app-region: drag;"></div>
-    <header style="padding: 35px 0 0 0; text-align: center;">
+    <div class="application-nav"></div>
+    <header class="sankey-header">
       INCOME FLOW
     </header>
     <div class="container"></div>
@@ -35,28 +30,7 @@
     <script src="./client/library/d3-shape.js"></script>
     <script src="./client/library/d3-sankey.js"></script>
     <script src="./client/js/components/charts/sankeyChart.js"></script>
-    <script>
-      require("./renderer.js");
-    </script>
 
-    <script>
-      document.addEventListener("keydown", function (e) {
-        if (e.which === 123) {
-          require("remote").getCurrentWindow().toggleDevTools();
-        } else if (e.which === 116) {
-          location.reload();
-        }
-      });
-    </script>
-
-    <script>
-      const remote = require("electron").remote;
-      document
-        .getElementById("close-window")
-        .addEventListener("click", function (e) {
-          var window = remote.getCurrentWindow();
-          window.close();
-        });
-    </script>
+    <script src="./client/js/utils/menu.js"></script>
   </body>
 </html>
