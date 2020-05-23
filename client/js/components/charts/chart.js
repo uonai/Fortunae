@@ -57,10 +57,13 @@ export default class Chart {
       /* Format Data */
       if (db) {
         const parseDate = d3.timeParse("%s");
+
+        let values = [];
         data.forEach(function (d) {
           d.values.forEach(function (d) {
             d.date = parseDate(d.date);
             d.amount = +d.item.amount;
+            values.push(d.item.amount);
           });
         });
 
@@ -68,12 +71,12 @@ export default class Chart {
         const xScale = d3
           .scaleTime()
           .domain(d3.extent(data[0].values, (d) => d.date))
-          .range([5, width - margin]);
+          .range([0, width - margin]);
 
         const yScale = d3
           .scaleLinear()
-          .domain([0, d3.max(data[0].values, (d) => d.amount)])
-          .range([height - margin, 5]);
+          .domain([0, Math.max(...values)])
+          .range([height - margin, 0]);
 
         const color = d3.scaleOrdinal(d3.schemeGreys);
 
