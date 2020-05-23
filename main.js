@@ -9,7 +9,7 @@ require("electron-reload")(__dirname, {
   electron: path.join(__dirname, "node_modules", ".bin", "electron"),
 });
 
-let mainWindow;
+let mainWindow, prefsWindow;
 
 function createWindow() {
   // Create the browser window.
@@ -61,5 +61,39 @@ ipcMain.on("request-mainprocess-action", (event, arg) => {
   console.log(arg);
 });
 
+function createAddWindow() {
+  addWindow = new BrowserWindow({
+    width: 300,
+    height: 200,
+    title: "test",
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+      nodeIntegration: true,
+    },
+  });
+
+  addWindow.loadURL(
+    url.format({
+      pathname: path.join(__dirname, "prefs.html"),
+      protocol: "file",
+      slashes: true,
+    })
+  );
+
+  addWindow.on("close", function () {
+    addWindow = null;
+  });
+}
+
+// catch item refresh
+
+ipcMain.on("window:open", function () {
+  createAddWindow();
+});
+
+ipcMain.on("window:refresh", function () {
+  addWindow.webContents.send("window:refresh");
+  addWindow.close();
+});
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.

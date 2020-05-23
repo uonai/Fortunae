@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Window</title>
+  </head>
+  <body>
+    <h1>Preferences</h1>
+    <script>
+      const electron = require("electron");
+      const { ipcRenderer } = electron;
+
+      ipcRenderer.on("window:refresh", function () {
+        console.log("test");
+      });
+    </script>
+  </body>
+</html>

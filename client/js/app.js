@@ -240,4 +240,10 @@ function doc_keyUp(e) {
   if (e.ctrlKey && e.key == ";") {
     PopOut.openBurndown();
   }
+  if (e.ctrlKey && e.key == "b") {
+    PopOut.reloadChildWindows();
+  }
+  if (e.ctrlKey && e.key == "/") {
+    PopOut.callChildFunction();
+  }
 }

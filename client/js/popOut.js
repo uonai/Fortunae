@@ -91,5 +91,14 @@ export default class PopOut {
     console.log(
       "this is where we need to pass parent -> child window refresh1"
     );
+    const electron = require("electron");
+    const { ipcRenderer } = electron;
+    ipcRenderer.send("window:open");
+  }
+
+  static callChildFunction() {
+    const electron = require("electron");
+    const { ipcRenderer } = electron;
+    ipcRenderer.send("window:refresh");
   }
 }

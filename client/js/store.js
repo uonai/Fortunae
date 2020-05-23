@@ -1,5 +1,6 @@
 import HistoryChart from "./components/charts/historyChart.js";
 import Chart from "./components/charts/chart.js";
+import PopOut from "./popOut.js";
 
 const ITEMS = "items";
 const CURRENTRECORD = "currentRecord";
