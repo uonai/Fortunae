@@ -241,9 +241,9 @@ function doc_keyUp(e) {
     PopOut.openBurndown();
   }
   if (e.ctrlKey && e.key == "b") {
-    PopOut.reloadChildWindows();
+    PopOut.openChildWindow();
   }
   if (e.ctrlKey && e.key == "/") {
-    PopOut.callChildFunction();
+    PopOut.refreshChildWindows();
   }
 }

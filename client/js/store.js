@@ -132,6 +132,7 @@ export default class Store {
 
     // this is an intense way to reload the window, need to find a different solution
     getCurrentWindow().reload();
+    PopOut.refreshChildWindows();
   }
 
   static addItem(item) {

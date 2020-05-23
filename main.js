@@ -87,13 +87,139 @@ function createAddWindow() {
 
 // catch item refresh
 
+function createFundChart() {
+  fundChart = new BrowserWindow({
+    backgroundColor: "#000",
+    width: 500,
+    height: 520,
+    resizable: true,
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+      nodeIntegration: true,
+    },
+    frame: false,
+  });
+
+  fundChart.loadURL(
+    url.format({
+      pathname: path.join(__dirname, "fund.html"),
+      protocol: "file",
+      slashes: true,
+    })
+  );
+}
+
+// BURNDOWN CHART
+function createBurndownChart() {
+  burndownChart = new BrowserWindow({
+    width: 500,
+    height: 520,
+    backgroundColor: "#000",
+    resizable: false,
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+      nodeIntegration: true,
+    },
+    frame: false,
+  });
+
+  burndownChart.loadURL(
+    url.format({
+      pathname: path.join(__dirname, "burndown.html"),
+      protocol: "file",
+      slashes: true,
+    })
+  );
+}
+
+function createSpiderChart() {
+  spiderChart = new BrowserWindow({
+    width: 500,
+    height: 520,
+    backgroundColor: "#000",
+    resizable: false,
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+      nodeIntegration: true,
+    },
+    frame: false,
+  });
+
+  spiderChart.loadURL(
+    url.format({
+      pathname: path.join(__dirname, "spider.html"),
+      protocol: "file",
+      slashes: true,
+    })
+  );
+}
+
+function createSankeyChart() {
+  sankeyChart = new BrowserWindow({
+    width: 500,
+    height: 520,
+    backgroundColor: "#000",
+    resizable: false,
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+      nodeIntegration: true,
+    },
+    frame: false,
+  });
+
+  sankeyChart.loadURL(
+    url.format({
+      pathname: path.join(__dirname, "sankey.html"),
+      protocol: "file",
+      slashes: true,
+    })
+  );
+}
+
 ipcMain.on("window:open", function () {
   createAddWindow();
 });
 
+ipcMain.on("fund:open", function () {
+  createFundChart();
+});
+
+ipcMain.on("burndown:open", function () {
+  createBurndownChart();
+});
+
+ipcMain.on("spider:open", function () {
+  createSpiderChart();
+});
+
+ipcMain.on("sankey:open", function () {
+  createSankeyChart();
+});
+
 ipcMain.on("window:refresh", function () {
-  addWindow.webContents.send("window:refresh");
-  addWindow.close();
+  if (typeof addWindow !== "undefined") {
+    // addWindow.webContents.send("window:refresh");
+  }
+
+  if (typeof fundChart !== "undefined") {
+    fundChart.reload();
+  }
+
+  if (typeof spiderChart !== "undefined") {
+    spiderChart.reload();
+  }
+
+  if (typeof burndownChart !== "undefined") {
+    burndownChart.reload();
+  }
+
+  if (typeof sankeyChart !== "undefined") {
+    sankeyChart.reload();
+  }
+  // reloads window
+  // addWindow.reload();
+  //closes window
+  //addWindow.close();
 });
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
