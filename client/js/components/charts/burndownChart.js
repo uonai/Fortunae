@@ -148,6 +148,7 @@ if (result) {
       .scaleTime()
       .domain(d3.extent(data[0].values, (d) => d.date))
       .range([0, width - margin]);
+    console.log(data);
 
     const yScale = d3
       .scaleLinear()

@@ -130,7 +130,7 @@ export default class Store {
     this.loadDatabase();
 
     // this is an intense way to reload the window, need to find a different solution
-    getCurrentWindow().reload();
+    remote.getCurrentWindow().reload();
     PopOut.refreshChildWindows();
   }
 

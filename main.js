@@ -214,6 +214,7 @@ ipcMain.on("window:refresh", function () {
   if (typeof tome !== "undefined") {
     tome.reload();
   }
+  return;
   // reloads window
   // addWindow.reload();
   //closes window
@@ -236,6 +237,7 @@ ipcMain.on("window:close", function () {
   if (typeof sankeyChart !== "undefined") {
     sankeyChart.close();
   }
+  return;
   // reloads window
   // addWindow.reload();
   //closes window
