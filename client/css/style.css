@@ -154,7 +154,13 @@ header,
 .save-record,
 .header,
 .clone-record,
-.delete-record {
+.delete-record,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 2px;
@@ -242,6 +248,13 @@ form input .add-button {
   height: 286px;
   padding: 0 55px;
 }
+
+.chart-outer span {
+  width: 100%;
+  text-align: center;
+  float: left;
+}
+
 .chart-inner {
   border: 2px solid var(--text-color);
   border-radius: 125px;
@@ -477,4 +490,24 @@ body {
 .tick text {
   color: var(--text-color);
   fill: var(--text-color);
+}
+
+/** Tome **/
+#tome {
+  float: left;
+}
+
+.tome-header {
+  padding: 40px 30px 0px 30px;
+}
+
+.tome {
+  overflow: scroll;
+  height: 420px;
+  margin: 10px 25px 30px 30px;
+  padding-right: 20px;
+}
+
+.tome p {
+  margin-bottom: 20px;
 }

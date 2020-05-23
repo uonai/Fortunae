@@ -18,6 +18,10 @@ export default class PopOut {
     ipcRenderer.send("burndown:open");
   }
 
+  static openTome() {
+    ipcRenderer.send("tome:open");
+  }
+
   static openChildWindow() {
     console.log(
       "this is where we need to pass parent -> child window refresh1"

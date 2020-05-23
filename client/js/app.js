@@ -190,6 +190,10 @@ document.addEventListener("click", (e) => {
   if (isButton && e.target.id === "burndown-button") {
     PopOut.openBurndown();
   }
+
+  if (isButton && e.target.id === "tome-button") {
+    PopOut.openTome();
+  }
   if (isButton && e.target.id === "main-button") {
     UI.showModal(e.target);
   }

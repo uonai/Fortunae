@@ -4,14 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-  <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-    <meta
-      http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
 
   <link rel="stylesheet" type="text/css" href="./client/css/style.css" />
   <title>Fortunae</title>
@@ -33,7 +27,7 @@
       <section id="section-1" data-section="1">
         <header>
           Funds
-          <button id="child-window" class="header" ></button>
+          <button id="child-window" class="header"></button>
         </header>
         <ul id="item-list-1"></ul>
         <button id="1" class="add-item" data-title="Current Funds">
@@ -105,7 +99,11 @@
       <svg width="920" height="30">
         <g id="g-1"></g>
       </svg>
+      <div id="tome">
+        <button id="tome-button">Tome [+]</button>
+      </div>
       <div id="timestamp"></div>
+
     </footer>
 
     <div id="calculator-modal" class="modal">

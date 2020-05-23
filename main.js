@@ -19,7 +19,7 @@ function createWindow() {
     backgroundColor: "#000",
     resizable: false,
     webPreferences: {
-      devTools: false,
+      // devTools: false,
       preload: path.join(__dirname, "preload.js"),
       nodeIntegration: true,
     },
@@ -153,6 +153,28 @@ function createSankeyChart() {
   );
 }
 
+function createTome() {
+  tome = new BrowserWindow({
+    width: 500,
+    height: 520,
+    backgroundColor: "#000",
+    resizable: false,
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+      nodeIntegration: true,
+    },
+    frame: false,
+  });
+
+  tome.loadURL(
+    url.format({
+      pathname: path.join(__dirname, "tome.html"),
+      protocol: "file",
+      slashes: true,
+    })
+  );
+}
+
 ipcMain.on("fund:open", function () {
   createFundChart();
 });
@@ -167,6 +189,10 @@ ipcMain.on("spider:open", function () {
 
 ipcMain.on("sankey:open", function () {
   createSankeyChart();
+});
+
+ipcMain.on("tome:open", function () {
+  createTome();
 });
 
 ipcMain.on("window:refresh", function () {
@@ -184,6 +210,9 @@ ipcMain.on("window:refresh", function () {
 
   if (typeof sankeyChart !== "undefined") {
     sankeyChart.reload();
+  }
+  if (typeof tome !== "undefined") {
+    tome.reload();
   }
   // reloads window
   // addWindow.reload();
