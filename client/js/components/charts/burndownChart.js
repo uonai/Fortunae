@@ -1,20 +1,63 @@
 const result = JSON.parse(localStorage.getItem("category3ItemsHistorical"));
+
+reduceItems = (itemType) => {
+  console.log(itemType);
+  let groupOfItems = itemType.reduce((x, a) => {
+    x[a.date] = [...(x[a.date] || []), a];
+    return x;
+  }, {});
+
+  let categoryRollup = [];
+  for (let date of Object.keys(groupOfItems)) {
+    numbers = [];
+    const items = groupOfItems[date];
+
+    items.forEach((item) => {
+      numbers.push(Number(item.item.amount));
+      console.log(item.item.amount);
+    });
+
+    console.log(numbers);
+
+    const numbersTotal = numbers.reduce((a, b) => a + b, 0);
+    console.log(numbersTotal);
+    categoryRollup.push({ date: date, amount: numbersTotal });
+  }
+
+  console.log(categoryRollup);
+  return categoryRollup;
+};
+
 if (result) {
-  const db = result.filter(function (item) {
-    return item.item.type == "Secured";
+  securedItems = [];
+  unsecuredItems = [];
+  revolvingItems = [];
+  nonRevolvingItems = [];
+
+  result.forEach((item) => {
+    if (item.item.type == "Secured") {
+      securedItems.push(item);
+    }
+    if (item.item.type == "Unsecured") {
+      unsecuredItems.push(item);
+    }
+    if (item.item.type == "Revolving") {
+      revolvingItems.push(item);
+    }
+    if (item.item.type == "Non-revolving") {
+      nonRevolvingItems.push(item);
+    }
   });
 
-  const db2 = result.filter(function (item) {
-    return item.item.type == "Unsecured";
-  });
+  console.log(securedItems);
+  console.log(unsecuredItems);
+  console.log(revolvingItems);
+  console.log(nonRevolvingItems);
 
-  const db3 = result.filter(function (item) {
-    return item.item.type == "Revolving";
-  });
-
-  const db4 = result.filter(function (item) {
-    return item.item.type == "Non-revolving";
-  });
+  const db = reduceItems(securedItems);
+  const db2 = reduceItems(unsecuredItems);
+  const db3 = reduceItems(revolvingItems);
+  const db4 = reduceItems(nonRevolvingItems);
 
   const data = [
     {
@@ -76,13 +119,13 @@ if (result) {
   const margin = 75;
   const duration = 300;
 
-  const lineOpacity = "0.9";
-  const lineOpacityHover = "1";
-  const otherLinesOpacityHover = "0.05";
+  const lineOpacity = "1";
+  const lineOpacityHover = "0.1";
+  const otherLinesOpacityHover = "0.5";
   const lineStroke = "2px";
-  const lineStrokeHover = "px";
+  const lineStrokeHover = "4px";
 
-  const circleOpacity = "0.9";
+  const circleOpacity = "1";
   const circleOpacityOnLineHover = "1";
   const circleRadius = 5;
   const circleRadiusHover = 6;
@@ -95,8 +138,9 @@ if (result) {
     data.forEach(function (d) {
       d.values.forEach(function (d) {
         d.date = parseDate(d.date);
-        d.amount = +d.item.amount;
-        values.push(d.item.amount);
+        console.log(d);
+        d.amount = +d.amount;
+        values.push(d.amount);
       });
     });
     /* Scale */

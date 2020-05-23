@@ -1,27 +1,62 @@
 export default class Chart {
+  static reduceItems = (itemType) => {
+    let groupOfItems = itemType.reduce((x, a) => {
+      x[a.date] = [...(x[a.date] || []), a];
+      return x;
+    }, {});
+
+    let categoryRollup = [];
+    for (let date of Object.keys(groupOfItems)) {
+      let numbers = [];
+      const items = groupOfItems[date];
+
+      items.forEach((item) => {
+        numbers.push(Number(item.item.amount));
+        console.log(item.item.amount);
+      });
+
+      console.log(numbers);
+
+      const numbersTotal = numbers.reduce((a, b) => a + b, 0);
+      console.log(numbersTotal);
+      categoryRollup.push({ date: date, amount: numbersTotal });
+    }
+
+    console.log(categoryRollup);
+    return categoryRollup;
+  };
+
   static loadChart() {
     const result = JSON.parse(localStorage.getItem("category1ItemsHistorical"));
-    console.log(result);
+
     if (result) {
       if (result.length) {
         const chartContainer = document.querySelector(".chart-inner");
         chartContainer.classList.remove("hidden");
+        let checkingItems = [];
+        let savingItems = [];
+        let investmentItems = [];
+        let emergencyItems = [];
 
-        const db = result.filter(function (item) {
-          return item.item.type == "Checking";
+        result.forEach((item) => {
+          if (item.item.type == "Checking") {
+            checkingItems.push(item);
+          }
+          if (item.item.type == "Saving") {
+            savingItems.push(item);
+          }
+          if (item.item.type == "Investment") {
+            investmentItems.push(item);
+          }
+          if (item.item.type == "Emergency") {
+            emergencyItems.push(item);
+          }
         });
 
-        const db2 = result.filter(function (item) {
-          return item.item.type == "Saving";
-        });
-
-        const db3 = result.filter(function (item) {
-          return item.item.type == "Investment";
-        });
-
-        const db4 = result.filter(function (item) {
-          return item.item.type == "Emergency";
-        });
+        const db = this.reduceItems(checkingItems);
+        const db2 = this.reduceItems(savingItems);
+        const db3 = this.reduceItems(investmentItems);
+        const db4 = this.reduceItems(emergencyItems);
 
         const data = [
           {
@@ -42,6 +77,23 @@ export default class Chart {
           },
         ];
 
+        console.log(data);
+        console.log(db);
+        // FOR REFEREHCE
+        // const data = [
+        //   {
+        //     name: "Checking",
+        //     values: [
+        //       { date: "2000", amount: "2000" },
+        //       { date: "2001", amount: "2200" },
+        //       { date: "2002", amount: "3000" },
+        //       { date: "2003", amount: "4000" },
+        //       { date: "2004", amount: "2000" },
+        //       { date: "2005", amount: "1500" },
+        //     ],
+        //   },
+        // ];
+
         const width = 150;
         const height = 150;
         const margin = 40;
@@ -49,12 +101,12 @@ export default class Chart {
 
         const lineOpacity = "1";
         const lineOpacityHover = "0.1";
-        const otherLinesOpacityHover = "0";
+        const otherLinesOpacityHover = "0.5";
         const lineStroke = "2px";
-        const lineStrokeHover = "0.5px";
+        const lineStrokeHover = "4px";
 
         const circleOpacity = "1";
-        const circleOpacityOnLineHover = "0.1";
+        const circleOpacityOnLineHover = "1";
         const circleRadius = 5;
         const circleRadiusHover = 6;
 
@@ -66,11 +118,10 @@ export default class Chart {
           data.forEach(function (d) {
             d.values.forEach(function (d) {
               d.date = parseDate(d.date);
-              d.amount = +d.item.amount;
-              values.push(d.item.amount);
+              d.amount = +d.amount;
+              values.push(d.amount);
             });
           });
-
           /* Scale */
           const xScale = d3
             .scaleTime()
@@ -116,7 +167,7 @@ export default class Chart {
                 .text(d.name)
                 .attr("text-anchor", "middle")
                 .attr("x", (width - margin) / 2)
-                .attr("y", 30);
+                .attr("y", 100);
             })
             .on("mouseout", function (d) {
               svg.select(".title-text").remove();
@@ -125,7 +176,6 @@ export default class Chart {
             .attr("class", "line")
             .attr("d", (d) => line(d.values))
             .style("stroke", (d, i) => color(i))
-            .style("stroke-width", lineStroke)
             .style("opacity", lineOpacity)
             .on("mouseover", function (d) {
               d3.selectAll(".line").style("opacity", otherLinesOpacityHover);
@@ -146,6 +196,7 @@ export default class Chart {
                 .style("cursor", "none");
             });
 
+          /* Add circles in the line */
           /* Add circles in the line */
           lines
             .selectAll("circle-group")

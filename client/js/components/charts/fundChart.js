@@ -95,16 +95,15 @@ if (result) {
   const duration = 300;
 
   const lineOpacity = "1";
-  const lineOpacityHover = "1";
-  const otherLinesOpacityHover = "0.05";
+  const lineOpacityHover = "0.1";
+  const otherLinesOpacityHover = "0.5";
   const lineStroke = "2px";
-  const lineStrokeHover = "px";
+  const lineStrokeHover = "4px";
 
   const circleOpacity = "1";
   const circleOpacityOnLineHover = "1";
   const circleRadius = 5;
   const circleRadiusHover = 6;
-
   /* Format Data */
   if (db) {
     const parseDate = d3.timeParse("%s");
