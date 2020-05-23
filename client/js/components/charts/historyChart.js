@@ -20,13 +20,22 @@ export default class HistoryChart {
     ];
 
     const historyData = JSON.parse(localStorage.getItem("history"));
+    const historyDataItems = historyData.length;
+    console.log(historyDataItems);
     let n = 15;
     const history = historyData.map(function (item) {
       const x = n + 10;
       const y = 20;
       const _item = item;
       const infoISO = Helper.getTimeFromUNIXTimestamp(_item);
-      n += 100;
+      if (historyDataItems <= 12) {
+        n += 100;
+      } else if (historyDataItems <= 24) {
+        n += 38;
+      } else {
+        n += 22;
+      }
+
       return new HistoryItem(x, y, item, infoISO);
     });
 
