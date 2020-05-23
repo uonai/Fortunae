@@ -1,5 +1,3 @@
-import Store from "./store.js";
-
 export default class Recommendation {
   static displayRecommendations() {
     const data = JSON.parse(localStorage.getItem("items"));

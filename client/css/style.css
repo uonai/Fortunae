@@ -4,6 +4,20 @@
   --alert-color: #fc533e;
 }
 
+@font-face {
+  font-family: "Roboto Mono";
+  src: url("../fonts/RobotoMono-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto Mono Bold";
+  src: url("../fonts/RobotoMono-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: bold;
+}
+
 * {
   box-sizing: border-box;
   color: var(--text-color);
@@ -138,6 +152,7 @@ header,
   letter-spacing: 2px;
   margin-bottom: 5px;
   text-transform: uppercase;
+  font-family: "Roboto Mono", monospace;
 }
 
 .edit,

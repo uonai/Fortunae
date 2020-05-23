@@ -9,6 +9,9 @@ import FundModal from "./components/modals/fundModal.js";
 import NeedModal from "./components/modals/needModal.js";
 import PopOut from "./popOut.js";
 
+const EDIT = "edit";
+const SUBMIT = "submit";
+
 document.addEventListener(
   "DOMContentLoaded",
   UI.displayItems(),
@@ -25,19 +28,19 @@ document
     const category = document.querySelector("#form-calculator-category").value;
     switch (category) {
       case "1":
-        FundModal.validate("submit");
+        FundModal.validate(SUBMIT);
         break;
       case "2":
-        ExpenseModal.validate("submit");
+        ExpenseModal.validate(SUBMIT);
         break;
       case "3":
-        DebtModal.validate("submit");
+        DebtModal.validate(SUBMIT);
         break;
       case "4":
-        IncomeModal.validate("submit");
+        IncomeModal.validate(SUBMIT);
         break;
       case "5":
-        NeedModal.validate("submit");
+        NeedModal.validate(SUBMIT);
         break;
       default:
         console.log("none found");
@@ -64,19 +67,19 @@ document
 
     switch (category) {
       case "1":
-        FundModal.validate("edit");
+        FundModal.validate(EDIT);
         break;
       case "2":
-        ExpenseModal.validate("edit");
+        ExpenseModal.validate(EDIT);
         break;
       case "3":
-        DebtModal.validate("edit");
+        DebtModal.validate(EDIT);
         break;
       case "4":
-        IncomeModal.validate("edit");
+        IncomeModal.validate(EDIT);
         break;
       case "5":
-        NeedModal.validate("edit");
+        NeedModal.validate(EDIT);
         break;
       default:
         console.log("none found");
@@ -144,7 +147,7 @@ document.addEventListener("click", (e) => {
     UI.deleteItem(e.target);
   }
 
-  if (isButton && e.target.className == "edit") {
+  if (isButton && e.target.className == EDIT) {
     switch (e.target.dataset.category) {
       case "1":
         FundModal.showEditItemModal(e.target);
@@ -197,10 +200,10 @@ document.addEventListener("keyup", doc_keyUp, false);
 
 function doc_keyUp(e) {
   const modalOpen = document.querySelector("#calculator-modal");
-  console.log(modalOpen.classList.contains("edit"));
+  console.log(modalOpen.classList.contains(EDIT));
   console.log(modalOpen.classList.contains("new"));
   if (
-    !modalOpen.classList.contains("edit") &&
+    !modalOpen.classList.contains(EDIT) &&
     !modalOpen.classList.contains("new")
   ) {
     if (e.ctrlKey && e.keyCode == 83) {

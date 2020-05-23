@@ -130,8 +130,8 @@ createSankeyDiagram(sampleData, containerFrame);
 // function creating the sankey diagram, based on an input data and frame (in which the visualization is plotted)
 function createSankeyDiagram(sampleData, frame) {
   // detail a color scale
-  var COLOURS = ["#fff"];
-  const color = d3.scaleOrdinal(COLOURS);
+  var COLORS = ["#fff"];
+  const color = d3.scaleOrdinal(COLORS);
 
   // detail the sankey function
   const sankey = d3
@@ -144,32 +144,6 @@ function createSankeyDiagram(sampleData, frame) {
 
   // destructure the two arrays for the nodes and links in two variables
   const { nodes, links } = sankey(sampleData);
-
-  // detail in a defs block one linear gradient for each link
-  // detail a unique identifier as to later call the id with the specified index
-  const defs = frame.append("defs");
-
-  const linearGradients = defs
-    .selectAll("linearGradient")
-    .data(links)
-    .enter()
-    .append("linearGradient")
-    .attr("id", (d) => `gradient${d.index}`)
-    .attr("x1", "0%")
-    .attr("y1", "50%")
-    .attr("x2", "100%")
-    .attr("y2", "50%");
-
-  // linear gradient going from left to right and detailing a color based on the source and target values
-  // linearGradients
-  //   .append("stop")
-  //   .attr("offset", "100%")
-  //   .attr("stop-color", (d) => color("#fff"));
-
-  // linearGradients
-  //   .append("stop")
-  //   .attr("offset", "100%")
-  //   .attr("stop-color", (d) => color("#fff"));
 
   // detail a generator function for the links
   const sankeyLinks = d3.sankeyLinkHorizontal();
@@ -202,12 +176,7 @@ function createSankeyDiagram(sampleData, frame) {
 
       tooltip.append("p").html(`Value: <strong>${d.value}</strong>`);
 
-      tooltip
-        .style("opacity", 1)
-        // .style("left", `${d3.event.pageX}px`)
-        // .style("top", `${d3.event.pageY}px`);
-        .style("left", `200px`)
-        .style("top", `200px`);
+      tooltip.style("opacity", 1).style("left", `200px`).style("top", `200px`);
     })
     .on("mouseout", function () {
       d3.select(this).transition().attr("opacity", 1);
@@ -228,8 +197,6 @@ function createSankeyDiagram(sampleData, frame) {
     .attr("width", 4)
     .attr("height", (d) => d.y1 - d.y0)
     .attr("pointer-events", "none")
-    //.attr("stroke", "#555")
-    //.attr("stroke-width", "4px")
     .attr("fill", (d) => color(d.index));
 
   // for each node append also a text element, detailing the respective value

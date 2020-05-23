@@ -29,7 +29,13 @@ if (result) {
       name: "Investment",
       values: db3,
     },
+    {
+      name: "Emergency",
+      values: db4,
+    },
   ];
+
+  // FOR REFEREHCE
   // const data = [
   //   {
   //     name: "Checking",
@@ -40,28 +46,6 @@ if (result) {
   //       { date: "2003", amount: "4000" },
   //       { date: "2004", amount: "2000" },
   //       { date: "2005", amount: "1500" },
-  //     ],
-  //   },
-  //   {
-  //     name: "Savings",
-  //     values: [
-  //       { date: "2000", amount: "3000" },
-  //       { date: "2001", amount: "3500" },
-  //       { date: "2002", amount: "4000" },
-  //       { date: "2003", amount: "4500" },
-  //       { date: "2004", amount: "5000" },
-  //       { date: "2005", amount: "5500" },
-  //     ],
-  //   },
-  //   {
-  //     name: "Investment",
-  //     values: [
-  //       { date: "2000", amount: "1000" },
-  //       { date: "2001", amount: "1200" },
-  //       { date: "2002", amount: "800" },
-  //       { date: "2003", amount: "1200" },
-  //       { date: "2004", amount: "1500" },
-  //       { date: "2005", amount: "2000" },
   //     ],
   //   },
   // ];

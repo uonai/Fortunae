@@ -1,17 +1,23 @@
 import HistoryChart from "./components/charts/historyChart.js";
 import Chart from "./components/charts/chart.js";
 
+const ITEMS = "items";
+const CURRENTRECORD = "currentRecord";
+const DBPATH = "/db/";
+const FILEUNAVAILABLE = "This file doesn't exist, can't delete";
+const ERROROCCURRED = "An error ocurred updating the file";
+
 const fs = require("fs");
 const { getCurrentWindow } = require("electron").remote;
-const database = "/db/";
+const database = DBPATH;
 export default class Store {
   static getItems() {
     let items;
-    if (localStorage.getItem("items") === null) {
+    if (localStorage.getItem(ITEMS) === null) {
       this.loadDatabase();
       items = [];
     } else {
-      items = JSON.parse(localStorage.getItem("items"));
+      items = JSON.parse(localStorage.getItem(ITEMS));
       this.loadDatabase();
     }
 
@@ -30,20 +36,20 @@ export default class Store {
       });
 
       // get most recent file
-      const currentItem = localStorage.getItem("currentRecord");
+      const currentItem = localStorage.getItem(CURRENTRECORD);
       HistoryChart.setTimestamp(currentItem);
 
       localStorage.setItem("history", JSON.stringify(filesDirectory));
       const recentFile = filesDirectory.pop();
-      if (localStorage.getItem("currentRecord") === null) {
-        localStorage.setItem("currentRecord", recentFile);
+      if (localStorage.getItem(CURRENTRECORD) === null) {
+        localStorage.setItem(CURRENTRECORD, recentFile);
         HistoryChart.setTimestamp(recentFile);
       }
 
       let rawData = fs.readFileSync(__dirname + database + recentFile);
       let items = JSON.parse(rawData);
-      if (localStorage.getItem("items") == null) {
-        localStorage.setItem("items", JSON.stringify(items));
+      if (localStorage.getItem(ITEMS) == null) {
+        localStorage.setItem(ITEMS, JSON.stringify(items));
       }
       HistoryChart.loadHistoryChart();
     });
@@ -61,7 +67,7 @@ export default class Store {
         return new Date(Date.now(b)) - new Date(Date.now(a));
       });
 
-      const currentItem = localStorage.getItem("currentRecord");
+      const currentItem = localStorage.getItem(CURRENTRECORD);
       let filteredDirectory = [];
       filesDirectory.forEach((file) => {
         if (Number(file) <= Number(currentItem)) {
@@ -116,10 +122,10 @@ export default class Store {
   static restoreItems(timestamp) {
     let rawData = fs.readFileSync(__dirname + database + timestamp);
     let items = JSON.parse(rawData);
-    localStorage.removeItem("items");
+    localStorage.removeItem(ITEMS);
     // this.getItems();
-    localStorage.setItem("items", JSON.stringify(items));
-    localStorage.setItem("currentRecord", timestamp);
+    localStorage.setItem(ITEMS, JSON.stringify(items));
+    localStorage.setItem(CURRENTRECORD, timestamp);
     this.loadCompleteDatabase();
     this.loadDatabase();
 
@@ -130,14 +136,14 @@ export default class Store {
   static addItem(item) {
     const items = Store.getItems();
     items.push(item);
-    localStorage.setItem("items", JSON.stringify(items));
+    localStorage.setItem(ITEMS, JSON.stringify(items));
   }
 
   static editItem(item) {
     const items = Store.getItems();
     const foundIndex = items.findIndex((x) => x.id == item.id);
     items[foundIndex] = item;
-    localStorage.setItem("items", JSON.stringify(items));
+    localStorage.setItem(ITEMS, JSON.stringify(items));
   }
 
   static removeItem(id) {
@@ -147,15 +153,15 @@ export default class Store {
         items.splice(index, 1);
       }
     });
-    localStorage.setItem("items", JSON.stringify(items));
+    localStorage.setItem(ITEMS, JSON.stringify(items));
   }
 
   static cloneRecord() {
     // generate unix timestamp
     const fileName = Math.round(new Date().getTime() / 1000);
-    let items = JSON.parse(localStorage.getItem("items"));
+    let items = JSON.parse(localStorage.getItem(ITEMS));
     const json = JSON.stringify(items);
-    fs.writeFile(__dirname + "/db/" + fileName, json, "utf8", (err) => {
+    fs.writeFile(__dirname + DBPATH + fileName, json, "utf8", (err) => {
       if (err) {
         return;
       }
@@ -164,12 +170,12 @@ export default class Store {
   }
 
   static saveRecord() {
-    const currentRecord = localStorage.getItem("currentRecord");
-    let items = JSON.parse(localStorage.getItem("items"));
+    const currentRecord = localStorage.getItem(CURRENTRECORD);
+    let items = JSON.parse(localStorage.getItem(ITEMS));
     const json = JSON.stringify(items);
     fs.writeFile(__dirname + database + currentRecord, json, (err) => {
       if (err) {
-        alert("An error ocurred updating the file" + err.message);
+        alert(ERROROCCURRED + err.message);
         return;
       }
       this.resetData(currentRecord);
@@ -177,12 +183,12 @@ export default class Store {
   }
 
   static deleteRecord() {
-    const currentRecord = localStorage.getItem("currentRecord");
+    const currentRecord = localStorage.getItem(CURRENTRECORD);
 
     if (fs.existsSync(__dirname + database + currentRecord)) {
       fs.unlink(__dirname + database + currentRecord, (err) => {
         if (err) {
-          alert("An error ocurred updating the file" + err.message);
+          alert(ERROROCCURRED + err.message);
           console.log(err);
           return;
         }
@@ -192,14 +198,14 @@ export default class Store {
         getCurrentWindow().reload();
       });
     } else {
-      alert("This file doesn't exist, can't delete");
+      alert(FILEUNAVAILABLE);
     }
   }
   static resetData(currentRecord) {
     localStorage.clear();
-    localStorage.removeItem("items");
-    localStorage.removeItem("currentRecord");
-    localStorage.setItem("currentRecord", currentRecord);
+    localStorage.removeItem(ITEMS);
+    localStorage.removeItem(CURRENTRECORD);
+    localStorage.setItem(CURRENTRECORD, currentRecord);
     this.restoreItems(currentRecord);
   }
 }
