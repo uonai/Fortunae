@@ -197,6 +197,7 @@ export default class Store {
         localStorage.clear();
         this.getItems();
         getCurrentWindow().reload();
+        getCurrentWindow().removeAllListeners();
       });
     } else {
       alert(FILEUNAVAILABLE);

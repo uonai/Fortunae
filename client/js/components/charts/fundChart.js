@@ -1,20 +1,57 @@
 const result = JSON.parse(localStorage.getItem("category1ItemsHistorical"));
+
+reduceItems = (itemType) => {
+  let groupOfItems = itemType.reduce((x, a) => {
+    x[a.date] = [...(x[a.date] || []), a];
+    return x;
+  }, {});
+
+  let categoryRollup = [];
+  for (let date of Object.keys(groupOfItems)) {
+    numbers = [];
+    const items = groupOfItems[date];
+
+    items.forEach((item) => {
+      numbers.push(Number(item.item.amount));
+      console.log(item.item.amount);
+    });
+
+    console.log(numbers);
+
+    const numbersTotal = numbers.reduce((a, b) => a + b, 0);
+    console.log(numbersTotal);
+    categoryRollup.push({ date: date, amount: numbersTotal });
+  }
+
+  console.log(categoryRollup);
+  return categoryRollup;
+};
+
 if (result) {
-  const db = result.filter(function (item) {
-    return item.item.type == "Checking";
+  checkingItems = [];
+  savingItems = [];
+  investmentItems = [];
+  emergencyItems = [];
+
+  result.forEach((item) => {
+    if (item.item.type == "Checking") {
+      checkingItems.push(item);
+    }
+    if (item.item.type == "Saving") {
+      savingItems.push(item);
+    }
+    if (item.item.type == "Investment") {
+      investmentItems.push(item);
+    }
+    if (item.item.type == "Emergency") {
+      emergencyItems.push(item);
+    }
   });
 
-  const db2 = result.filter(function (item) {
-    return item.item.type == "Saving";
-  });
-
-  const db3 = result.filter(function (item) {
-    return item.item.type == "Investment";
-  });
-
-  const db4 = result.filter(function (item) {
-    return item.item.type == "Emergency";
-  });
+  const db = reduceItems(checkingItems);
+  const db2 = reduceItems(savingItems);
+  const db3 = reduceItems(investmentItems);
+  const db4 = reduceItems(emergencyItems);
 
   const data = [
     {
@@ -35,6 +72,8 @@ if (result) {
     },
   ];
 
+  console.log(data);
+  console.log(db);
   // FOR REFEREHCE
   // const data = [
   //   {
@@ -74,8 +113,8 @@ if (result) {
     data.forEach(function (d) {
       d.values.forEach(function (d) {
         d.date = parseDate(d.date);
-        d.amount = +d.item.amount;
-        values.push(d.item.amount);
+        d.amount = +d.amount;
+        values.push(d.amount);
       });
     });
     /* Scale */
