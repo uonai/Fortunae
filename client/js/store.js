@@ -1,5 +1,4 @@
 import HistoryChart from "./components/charts/historyChart.js";
-import PopOut from "./popOut.js";
 import Chart from "./components/charts/chart.js";
 
 const fs = require("fs");
@@ -12,15 +11,14 @@ export default class Store {
       this.loadDatabase();
       items = [];
     } else {
-      this.loadDatabase();
       items = JSON.parse(localStorage.getItem("items"));
+      this.loadDatabase();
     }
 
     return items;
   }
 
   static loadDatabase() {
-    console.log("loda database");
     fs.readdir(__dirname + database, (err, files) => {
       let filesDirectory = [];
       files.forEach((file) => {
@@ -44,13 +42,12 @@ export default class Store {
 
       let rawData = fs.readFileSync(__dirname + database + recentFile);
       let items = JSON.parse(rawData);
-      if (localStorage.getItem("items") === null) {
+      if (localStorage.getItem("items") == null) {
         localStorage.setItem("items", JSON.stringify(items));
-        Chart.loadChart();
       }
       HistoryChart.loadHistoryChart();
     });
-    Chart.loadChart();
+    this.loadCompleteDatabase();
   }
 
   static loadCompleteDatabase() {
@@ -113,8 +110,7 @@ export default class Store {
         JSON.stringify(category4)
       );
     });
-
-    PopOut.reloadChildWindows();
+    Chart.loadChart();
   }
 
   static restoreItems(timestamp) {
@@ -200,7 +196,6 @@ export default class Store {
     }
   }
   static resetData(currentRecord) {
-    console.log(currentRecord);
     localStorage.clear();
     localStorage.removeItem("items");
     localStorage.removeItem("currentRecord");

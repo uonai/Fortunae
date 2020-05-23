@@ -1,6 +1,7 @@
 export default class Chart {
   static loadChart() {
     const result = JSON.parse(localStorage.getItem("category1ItemsHistorical"));
+    console.log(result);
     if (result) {
       const db = result.filter(function (item) {
         return item.item.type == "Checking";
