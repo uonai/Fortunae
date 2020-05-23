@@ -246,4 +246,8 @@ function doc_keyUp(e) {
   if (e.ctrlKey && e.key == "/") {
     PopOut.refreshChildWindows();
   }
+
+  if (e.ctrlKey && e.key == "q") {
+    PopOut.closeChildWindows();
+  }
 }

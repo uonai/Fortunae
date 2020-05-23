@@ -221,5 +221,31 @@ ipcMain.on("window:refresh", function () {
   //closes window
   //addWindow.close();
 });
+
+ipcMain.on("window:close", function () {
+  if (typeof addWindow !== "undefined") {
+    // addWindow.webContents.send("window:refresh");
+  }
+
+  if (typeof fundChart !== "undefined") {
+    fundChart.close();
+  }
+
+  if (typeof spiderChart !== "undefined") {
+    spiderChart.close();
+  }
+
+  if (typeof burndownChart !== "undefined") {
+    burndownChart.close();
+  }
+
+  if (typeof sankeyChart !== "undefined") {
+    sankeyChart.close();
+  }
+  // reloads window
+  // addWindow.reload();
+  //closes window
+  //addWindow.close();
+});
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.

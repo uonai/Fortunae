@@ -27,5 +27,7 @@ Expenses Chart: ctrl + k
 Debts Chart: ctrl + l
 Incomes Chart + ctrl + ;
 
+Close all Charts: ctrl + q
+
 Save: ctrl + s
 Escape from Modal: esc
