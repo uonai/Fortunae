@@ -19,6 +19,7 @@ document.addEventListener(
   Store.createRecordEmptyDatabase(),
   Store.loadDatabase(),
   Store.loadCompleteDatabase(),
+  PopOut.refreshChildWindows(),
   UI.displayItems(),
   Recommendation.displayRecommendations(),
   HistoryChart.loadHistoryChart()

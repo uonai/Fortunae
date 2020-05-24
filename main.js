@@ -84,6 +84,10 @@ function createFundChart() {
       slashes: true,
     })
   );
+
+  fundChart.on("closed", () => {
+    fundChart = null;
+  });
 }
 
 // BURNDOWN CHART
@@ -107,6 +111,10 @@ function createBurndownChart() {
       slashes: true,
     })
   );
+
+  burndownChart.on("closed", () => {
+    burndownChart = null;
+  });
 }
 
 function createSpiderChart() {
@@ -129,6 +137,10 @@ function createSpiderChart() {
       slashes: true,
     })
   );
+
+  spiderChart.on("closed", () => {
+    spiderChart = null;
+  });
 }
 
 function createSankeyChart() {
@@ -136,7 +148,7 @@ function createSankeyChart() {
     width: 500,
     height: 520,
     backgroundColor: "#000",
-    resizable: true,
+    resizable: false,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       nodeIntegration: true,
@@ -151,6 +163,10 @@ function createSankeyChart() {
       slashes: true,
     })
   );
+
+  sankeyChart.on("closed", () => {
+    sankeyChart = null;
+  });
 }
 
 function createTome() {
@@ -173,6 +189,10 @@ function createTome() {
       slashes: true,
     })
   );
+
+  tome.on("closed", () => {
+    tome = null;
+  });
 }
 
 ipcMain.on("fund:open", function () {
@@ -197,22 +217,32 @@ ipcMain.on("tome:open", function () {
 
 ipcMain.on("window:refresh", function () {
   if (typeof fundChart !== "undefined") {
-    fundChart.reload();
+    if (fundChart !== null) {
+      fundChart.reload();
+    }
   }
 
   if (typeof spiderChart !== "undefined") {
-    spiderChart.reload();
+    if (spiderChart !== null) {
+      spiderChart.reload();
+    }
   }
 
   if (typeof burndownChart !== "undefined") {
-    burndownChart.reload();
+    if (burndownChart !== null) {
+      burndownChart.reload();
+    }
   }
 
   if (typeof sankeyChart !== "undefined") {
-    sankeyChart.reload();
+    if (sankeyChart !== null) {
+      sankeyChart.reload();
+    }
   }
   if (typeof tome !== "undefined") {
-    tome.reload();
+    if (tome !== null) {
+      tome.reload();
+    }
   }
   return;
   // reloads window
@@ -230,7 +260,8 @@ ipcMain.on("window:close", function () {
     spiderChart = null;
   }
 
-  if (typeof burndownChart !== "undefined") {
+  if (burndownChart !== "undefined") {
+    console.log("close burndown");
     burndownChart = null;
   }
 
@@ -241,7 +272,6 @@ ipcMain.on("window:close", function () {
   if (typeof tome !== "undefined") {
     tome = null;
   }
-  return;
   // reloads window
   // addWindow.reload();
   //closes window

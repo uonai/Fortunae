@@ -104,6 +104,7 @@ export default class Store {
         "category1ItemsHistorical",
         JSON.stringify(category1)
       );
+      console.log(category1);
       localStorage.setItem(
         "category2ItemsHistorical",
         JSON.stringify(category2)
@@ -118,7 +119,6 @@ export default class Store {
       );
       Chart.loadChart();
     });
-    //
   }
 
   static restoreItems(timestamp) {
@@ -132,7 +132,6 @@ export default class Store {
     this.loadDatabase();
     // this is an intense way to reload the window, need to find a different solution
     getCurrentWindow().reload();
-    PopOut.refreshChildWindows();
   }
 
   static addItem(item) {
@@ -218,7 +217,7 @@ export default class Store {
         localStorage.clear();
         this.getItems();
         getCurrentWindow().reload();
-        getCurrentWindow().removeAllListeners();
+        // getCurrentWindow().removeAllListeners();
         this.loadDatabase();
       });
     } else {
