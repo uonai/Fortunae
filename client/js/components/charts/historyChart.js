@@ -20,61 +20,63 @@ export default class HistoryChart {
     ];
 
     const historyData = JSON.parse(localStorage.getItem("history"));
-    const historyDataItems = historyData.length;
-    console.log(historyDataItems);
-    let n = 15;
-    const history = historyData.map(function (item) {
-      const x = n + 10;
-      const y = 20;
-      const _item = item;
-      const infoISO = Helper.getTimeFromUNIXTimestamp(_item);
-      if (historyDataItems <= 12) {
-        n += 100;
-      } else if (historyDataItems <= 24) {
-        n += 38;
-      } else {
-        n += 22;
-      }
+    if (historyData) {
+      const historyDataItems = historyData.length;
+      console.log(historyDataItems);
+      let n = 15;
+      const history = historyData.map(function (item) {
+        const x = n + 10;
+        const y = 20;
+        const _item = item;
+        const infoISO = Helper.getTimeFromUNIXTimestamp(_item);
+        if (historyDataItems <= 12) {
+          n += 100;
+        } else if (historyDataItems <= 24) {
+          n += 38;
+        } else {
+          n += 22;
+        }
 
-      return new HistoryItem(x, y, item, infoISO);
-    });
-
-    d3.select("#g-1")
-      .append("path")
-      .attr("d", line(points))
-      .attr("id", "myPath");
-
-    history.forEach((item) => {
-      var tooltip = d3
-        .select("body")
-        .append("div")
-        .style("position", "absolute")
-        .style("z-index", "1000")
-        .style("visibility", "hidden")
-        .style("background-color", "#000")
-        .text(item.infoISO);
+        return new HistoryItem(x, y, item, infoISO);
+      });
 
       d3.select("#g-1")
-        .append("svg:circle")
-        .attr("cx", item.x)
-        .attr("cy", item.y)
-        .attr("r", 5)
-        .style("fill", "#fff")
-        .on("mouseover", function () {
-          return tooltip.style("visibility", "visible");
-        })
-        .on("mousemove", function () {
-          return tooltip
-            .style("top", event.pageY + 5 + "px")
-            .style("left", event.pageX + 20 + "px");
-        })
-        .on("mouseout", function () {
-          return tooltip.style("visibility", "hidden");
-        })
-        .on("click", function () {
-          Store.restoreItems(item.info);
-        });
-    });
+        .append("path")
+        .attr("d", line(points))
+        .attr("id", "myPath");
+
+      history.forEach((item) => {
+        var tooltip = d3
+          .select("body")
+          .append("div")
+          .style("position", "absolute")
+          .style("z-index", "1000")
+          .style("visibility", "hidden")
+          .style("background-color", "#000")
+          .text(item.infoISO);
+
+        d3.select("#g-1")
+          .append("svg:circle")
+          .attr("cx", item.x)
+          .attr("cy", item.y)
+          .attr("r", 5)
+          .style("fill", "#fff")
+          .on("mouseover", function () {
+            return tooltip.style("visibility", "visible");
+          })
+          .on("mousemove", function () {
+            return tooltip
+              .style("top", event.pageY + 5 + "px")
+              .style("left", event.pageX + 20 + "px");
+          })
+          .on("mouseout", function () {
+            return tooltip.style("visibility", "hidden");
+          })
+          .on("click", function () {
+            Store.restoreItems(item.info);
+          });
+      });
+    }
   }
 
   static setTimestamp(timestamp) {

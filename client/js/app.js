@@ -15,6 +15,7 @@ const SUBMIT = "submit";
 
 document.addEventListener(
   "DOMContentLoaded",
+  Store.createRecordEmptyDatabase(),
   UI.displayItems(),
   Recommendation.displayRecommendations(),
   Chart.loadChart(),

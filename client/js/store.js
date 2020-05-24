@@ -10,7 +10,6 @@ const ERROROCCURRED = "An error ocurred updating the file";
 
 const fs = require("fs");
 const { getCurrentWindow } = require("electron").remote;
-const database = DBPATH;
 export default class Store {
   static getItems() {
     let items;
@@ -26,8 +25,11 @@ export default class Store {
   }
 
   static loadDatabase() {
-    fs.readdir(__dirname + database, (err, files) => {
+    fs.readdir(__dirname + DBPATH, (err, files) => {
       let filesDirectory = [];
+      if (filesDirectory.length == 0) {
+        this.createRecordEmptyDatabase();
+      }
       files.forEach((file) => {
         filesDirectory.push(file);
       });
@@ -35,7 +37,6 @@ export default class Store {
       filesDirectory.sort(function (a, b) {
         return new Date(Date.now(b)) - new Date(Date.now(a));
       });
-
       // get most recent file
       const currentItem = localStorage.getItem(CURRENTRECORD);
       HistoryChart.setTimestamp(currentItem);
@@ -47,18 +48,17 @@ export default class Store {
         HistoryChart.setTimestamp(recentFile);
       }
 
-      let rawData = fs.readFileSync(__dirname + database + recentFile);
+      let rawData = fs.readFileSync(__dirname + DBPATH + recentFile);
       let items = JSON.parse(rawData);
       if (localStorage.getItem(ITEMS) == null) {
         localStorage.setItem(ITEMS, JSON.stringify(items));
       }
-      HistoryChart.loadHistoryChart();
     });
-    this.loadCompleteDatabase();
+    HistoryChart.loadHistoryChart();
   }
 
   static loadCompleteDatabase() {
-    fs.readdir(__dirname + database, (err, files) => {
+    fs.readdir(__dirname + DBPATH, (err, files) => {
       let filesDirectory = [];
       files.forEach((file) => {
         filesDirectory.push(Number(file));
@@ -81,7 +81,7 @@ export default class Store {
       let category3 = [];
       let category4 = [];
       filteredDirectory.forEach((file) => {
-        let rawData = fs.readFileSync(__dirname + database + file);
+        let rawData = fs.readFileSync(__dirname + DBPATH + file);
         const items = JSON.parse(rawData);
 
         items.forEach((item) => {
@@ -120,7 +120,7 @@ export default class Store {
   }
 
   static restoreItems(timestamp) {
-    let rawData = fs.readFileSync(__dirname + database + timestamp);
+    let rawData = fs.readFileSync(__dirname + DBPATH + timestamp);
     let items = JSON.parse(rawData);
     localStorage.removeItem(ITEMS);
     // this.getItems();
@@ -130,7 +130,7 @@ export default class Store {
     this.loadDatabase();
 
     // this is an intense way to reload the window, need to find a different solution
-    remote.getCurrentWindow().reload();
+    getCurrentWindow().reload();
     PopOut.refreshChildWindows();
   }
 
@@ -157,6 +157,26 @@ export default class Store {
     localStorage.setItem(ITEMS, JSON.stringify(items));
   }
 
+  static createRecordEmptyDatabase() {
+    const fileName = Math.round(new Date().getTime() / 1000);
+    const json = JSON.stringify([]);
+    fs.readdir(__dirname + DBPATH, (err, files) => {
+      let filesDirectory = [];
+      files.forEach((file) => {
+        filesDirectory.push(Number(file));
+      });
+      if (filesDirectory.length == 0) {
+        fs.writeFile(__dirname + DBPATH + fileName, json, (err) => {
+          if (err) {
+            alert(ERROROCCURRED + err.message);
+            return;
+          }
+          this.resetData(fileName);
+        });
+      }
+    });
+  }
+
   static cloneRecord() {
     // generate unix timestamp
     const fileName = Math.round(new Date().getTime() / 1000);
@@ -174,7 +194,7 @@ export default class Store {
     const currentRecord = localStorage.getItem(CURRENTRECORD);
     let items = JSON.parse(localStorage.getItem(ITEMS));
     const json = JSON.stringify(items);
-    fs.writeFile(__dirname + database + currentRecord, json, (err) => {
+    fs.writeFile(__dirname + DBPATH + currentRecord, json, (err) => {
       if (err) {
         alert(ERROROCCURRED + err.message);
         return;
@@ -186,8 +206,8 @@ export default class Store {
   static deleteRecord() {
     const currentRecord = localStorage.getItem(CURRENTRECORD);
 
-    if (fs.existsSync(__dirname + database + currentRecord)) {
-      fs.unlink(__dirname + database + currentRecord, (err) => {
+    if (fs.existsSync(__dirname + DBPATH + currentRecord)) {
+      fs.unlink(__dirname + DBPATH + currentRecord, (err) => {
         if (err) {
           alert(ERROROCCURRED + err.message);
           console.log(err);
