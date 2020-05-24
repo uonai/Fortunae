@@ -9,6 +9,7 @@ import FundModal from "./components/modals/fundModal.js";
 import NeedModal from "./components/modals/needModal.js";
 import PopOut from "./popOut.js";
 import HistoryChart from "./components/charts/historyChart.js";
+import DeleteDialog from "./components/dialogs/delete.js";
 
 const EDIT = "edit";
 const SUBMIT = "submit";
@@ -131,7 +132,19 @@ document.querySelector("#clone-record").onclick = () => {
 };
 
 document.querySelector("#delete-record").onclick = () => {
+  DeleteDialog.showDialog();
+};
+
+document.querySelector("#dialog-confirm").onclick = () => {
   Store.deleteRecord();
+};
+
+document.querySelector("#dialog-cancel").onclick = () => {
+  DeleteDialog.hideDialog();
+};
+
+document.querySelector("#dialog-close").onclick = () => {
+  DeleteDialog.hideDialog();
 };
 
 document.addEventListener("click", (e) => {

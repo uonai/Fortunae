@@ -276,6 +276,28 @@ path {
   padding: 15px 20px 20px;
 }
 
+/** dialog **/
+.dialog {
+  display: none;
+  background: var(--background-color);
+  border: 2px solid var(--text-color);
+  left: 350px;
+  padding: 20px;
+  position: absolute;
+  right: 350px;
+  top: 200px;
+}
+
+.dialog input {
+  color: #fff;
+  background: none;
+  border-width: 0px;
+}
+
+.dialog p {
+  padding-bottom: 10px;
+}
+
 /** modal **/
 .form {
   background: var(--background-color);
@@ -314,7 +336,8 @@ path {
 }
 
 #modal-close,
-#modal-calculator-close {
+#modal-calculator-close,
+#dialog-close {
   background-image: url("../images/close.svg");
   background-position: right top;
   background-repeat: no-repeat;

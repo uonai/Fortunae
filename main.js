@@ -136,7 +136,7 @@ function createSankeyChart() {
     width: 500,
     height: 520,
     backgroundColor: "#000",
-    resizable: false,
+    resizable: true,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       nodeIntegration: true,
