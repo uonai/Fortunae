@@ -10,22 +10,19 @@ savingSources = [];
 
 data.forEach((item) => {
   if (item.category == "4") {
-    incomeSources.push({
-      item,
-    });
+    incomeSources.push(item);
   } else if (item.category == "2" && item.type !== "Savings") {
     console.log(item);
-    expenseSources.push({
-      item,
-    });
+    expenseSources.push(item);
   } else if (item.category == "2" && item.type == "Savings") {
     console.log(item);
-    savingSources.push({ item });
+    savingSources.push(item);
   }
 });
+
 nodes = [];
 incomeSources.forEach((item) => {
-  nodes.push({ name: item.item.title });
+  nodes.push({ name: item.title });
 });
 
 nodes.push({ name: "Income" }, { name: "Expenses" });
@@ -34,11 +31,11 @@ if (savingSources.length) {
 }
 
 expenseSources.forEach((item) => {
-  nodes.push({ name: item.item.title });
+  nodes.push({ name: item.title });
 });
 
 savingSources.forEach((item) => {
-  nodes.push({ name: item.item.title });
+  nodes.push({ name: item.title });
 });
 
 links = [];
@@ -47,9 +44,9 @@ incomeSources.forEach((item, index) => {
   links.push({
     source: index,
     target: incomeSources.length,
-    value: Number(item.item.amount),
+    value: Number(item.amount),
   });
-  totalIncome.push(Number(item.item.amount));
+  totalIncome.push(Number(item.amount));
 });
 
 links.push({
@@ -61,7 +58,7 @@ links.push({
 totalSavings = [];
 if (savingSources.length) {
   savingSources.forEach((item) => {
-    totalSavings.push(Number(item.item.amount));
+    totalSavings.push(Number(item.amount));
   });
   links.push({
     source: incomeSources.length,
@@ -75,7 +72,7 @@ expenseSources.forEach((item, index) => {
   links.push({
     source: expenseStartingPoint - 1,
     target: index + 1 + expenseStartingPoint,
-    value: Number(item.item.amount),
+    value: Number(item.amount),
   });
 });
 
@@ -84,7 +81,7 @@ savingSources.forEach((item, index) => {
   links.push({
     source: incomeSources.length + 2,
     target: index + 1 + savingsStartingPoint,
-    value: Number(item.item.amount),
+    value: Number(item.amount),
   });
 });
 
