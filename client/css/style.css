@@ -107,7 +107,6 @@ section.chart {
 
 section.chart header,
 .header {
-  padding-bottom: 10px;
   text-align: center;
 }
 
@@ -261,6 +260,7 @@ form input .add-button {
   height: 250px;
   padding: 25px 10px 25px 20px;
   width: 250px;
+  margin-top: 10px;
 }
 
 path {

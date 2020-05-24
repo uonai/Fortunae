@@ -12,24 +12,17 @@ export default class Chart {
 
       items.forEach((item) => {
         numbers.push(Number(item.item.amount));
-        console.log(item.item.amount);
       });
 
-      console.log(numbers);
-
       const numbersTotal = numbers.reduce((a, b) => a + b, 0);
-      console.log(numbersTotal);
       categoryRollup.push({ date: date, amount: numbersTotal });
     }
 
-    console.log(categoryRollup);
     return categoryRollup;
   };
 
   static loadChart() {
     const result = JSON.parse(localStorage.getItem("category1ItemsHistorical"));
-    console.log("loadChart result called");
-    console.log(result);
 
     if (result) {
       if (result.length) {
@@ -79,8 +72,6 @@ export default class Chart {
           },
         ];
 
-        console.log(data);
-        console.log(db);
         // FOR REFEREHCE
         // const data = [
         //   {
