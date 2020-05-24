@@ -57,14 +57,6 @@
     <script>
       require("./renderer.js");
     </script>
-    <script>
-      const remote = require("electron").remote;
-      document
-        .getElementById("close-window")
-        .addEventListener("click", function (e) {
-          var window = remote.getCurrentWindow();
-          window.close();
-        });
-    </script>
+     <script src="./client/js/utils/menu.js"></script>
   </body>
 </html>

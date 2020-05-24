@@ -223,19 +223,23 @@ ipcMain.on("window:refresh", function () {
 
 ipcMain.on("window:close", function () {
   if (typeof fundChart !== "undefined") {
-    fundChart.close();
+    fundChart = null;
   }
 
   if (typeof spiderChart !== "undefined") {
-    spiderChart.close();
+    spiderChart = null;
   }
 
   if (typeof burndownChart !== "undefined") {
-    burndownChart.close();
+    burndownChart = null;
   }
 
   if (typeof sankeyChart !== "undefined") {
-    sankeyChart.close();
+    sankeyChart = null;
+  }
+
+  if (typeof tome !== "undefined") {
+    tome = null;
   }
   return;
   // reloads window
