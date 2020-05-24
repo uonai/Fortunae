@@ -13,10 +13,14 @@ export default class Recommendation {
           if (item.category == "1" && item.type == "Emergency") {
             fundItems.push(Number(item.amount));
           }
+          if (item.category == "1" && item.type == "Saving") {
+            fundItems.push(Number(item.amount));
+          }
         });
 
         const income = incomeItems.reduce((a, b) => a + b, 0);
         const emergencyFund = fundItems.reduce((a, b) => a + b, 0);
+        console.log(emergencyFund);
         if (income && emergencyFund >= income * 3) {
           this.addSaveRecommendationToList(income);
           this.addSpendRecommendationToList(income);

@@ -32,6 +32,14 @@ Close all Charts: ctrl + q
 Save: ctrl + s
 Escape from Modal: esc
 
+## Algorithm:
+
+Recommendations algorithm sums all sources of income for the time period specified.
+
+If combined total of Savings and Emergency Fund is greater than or equal to 3x the Income on your record, you're given a recommendation of Spending 60%, Saving 30%, and Investing 10%.
+
+If combined total of Savings and Emergency Fund is less than or equal to 3x the Income on your record, you're given a recommendation to Spend 60%, and add 40% to an Emergency Fund. For tracking purposes, these funds can be added to a Savings Fund or an Emergency Fund.
+
 ### Overview of Terminology
 
 #### General Setup
@@ -81,7 +89,7 @@ Types of income include Active, Passive, and Portfolio.
 
 ###### Active (Investopedia df.)
 
-Active income refers to income received from performing a service and includes wages, tips, salaries, commissions, and income from businesses in which there is material participation.1﻿ An accountant who works for a monthly paycheck, for example, receives active income.
+Active income refers to income received from performing a service and includes wages, tips, salaries, commissions, and income from businesses in which there is material participation. An accountant who works for a monthly paycheck, for example, receives active income.
 
 ###### Passive (Investopedia df.)
 
