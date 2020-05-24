@@ -17,11 +17,11 @@ const SUBMIT = "submit";
 document.addEventListener(
   "DOMContentLoaded",
   Store.createRecordEmptyDatabase(),
+  Store.loadDatabase(),
+  Store.loadCompleteDatabase(),
   UI.displayItems(),
   Recommendation.displayRecommendations(),
-  Chart.loadChart(),
-  HistoryChart.loadHistoryChart(),
-  Store.loadCompleteDatabase()
+  HistoryChart.loadHistoryChart()
 );
 
 // EXPENSE FORM CALCULATOR SUBMIT
@@ -137,6 +137,8 @@ document.querySelector("#delete-record").onclick = () => {
 
 document.querySelector("#dialog-confirm").onclick = () => {
   Store.deleteRecord();
+  DeleteDialog.hideDialog();
+  console.log("delete record called");
 };
 
 document.querySelector("#dialog-cancel").onclick = () => {

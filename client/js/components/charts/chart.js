@@ -28,6 +28,8 @@ export default class Chart {
 
   static loadChart() {
     const result = JSON.parse(localStorage.getItem("category1ItemsHistorical"));
+    console.log("loadChart result called");
+    console.log(result);
 
     if (result) {
       if (result.length) {

@@ -116,7 +116,9 @@ export default class Store {
         "category4ItemsHistorical",
         JSON.stringify(category4)
       );
+      Chart.loadChart();
     });
+    //
   }
 
   static restoreItems(timestamp) {
@@ -128,7 +130,6 @@ export default class Store {
     localStorage.setItem(CURRENTRECORD, timestamp);
     this.loadCompleteDatabase();
     this.loadDatabase();
-
     // this is an intense way to reload the window, need to find a different solution
     getCurrentWindow().reload();
     PopOut.refreshChildWindows();
@@ -218,6 +219,7 @@ export default class Store {
         this.getItems();
         getCurrentWindow().reload();
         getCurrentWindow().removeAllListeners();
+        this.loadDatabase();
       });
     } else {
       alert(FILEUNAVAILABLE);
