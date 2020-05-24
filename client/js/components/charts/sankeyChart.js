@@ -20,22 +20,76 @@ data.forEach((item) => {
   }
 });
 
+// EXPENSE ROLLUP
+
+let groupOfItems = expenseSources.reduce((x, a) => {
+  console.log("a", a);
+  console.log("x", x);
+  x[a.type] = [...(x[a.type] || []), a];
+  return x;
+}, {});
+// console.log(groupOfItems);
+
+let expenseCategoryRollup = [];
+for (let type of Object.keys(groupOfItems)) {
+  numbers = [];
+  const items = groupOfItems[type];
+
+  items.forEach((item) => {
+    numbers.push(Number(item.amount));
+    console.log(item.type);
+  });
+
+  const numbersTotal = numbers.reduce((a, b) => a + b, 0);
+  expenseCategoryRollup.push({ type: type, amount: numbersTotal });
+}
+
+// END EXPENSE ROLLUP
+
+// SAVINGS ROLLUP (THIS SHOULD BE MERGED WITH ABOVE CODE INTO A REUSABLE FUNCTION)
+
+let groupOfSavingItems = savingSources.reduce((x, a) => {
+  console.log("a", a);
+  console.log("x", x);
+  x[a.type] = [...(x[a.type] || []), a];
+  return x;
+}, {});
+console.log(groupOfSavingItems);
+
+let savingCategoryRollup = [];
+for (let type of Object.keys(groupOfSavingItems)) {
+  numbers = [];
+  const items = groupOfSavingItems[type];
+
+  items.forEach((item) => {
+    numbers.push(Number(item.amount));
+    console.log(item.type);
+  });
+
+  const numbersTotal = numbers.reduce((a, b) => a + b, 0);
+  savingCategoryRollup.push({ type: type, amount: numbersTotal });
+}
+
+console.log(savingCategoryRollup);
+
+// END SAVINGS ROLLUP
+
 nodes = [];
 incomeSources.forEach((item) => {
   nodes.push({ name: item.title });
 });
 
 nodes.push({ name: "Income" }, { name: "Expenses" });
-if (savingSources.length) {
+if (savingCategoryRollup.length) {
   nodes.push({ name: "Savings" });
 }
 
-expenseSources.forEach((item) => {
-  nodes.push({ name: item.title });
+expenseCategoryRollup.forEach((item) => {
+  nodes.push({ name: item.type });
 });
 
-savingSources.forEach((item) => {
-  nodes.push({ name: item.title });
+savingCategoryRollup.forEach((item) => {
+  nodes.push({ name: item.type });
 });
 
 links = [];
@@ -56,8 +110,8 @@ links.push({
 });
 
 totalSavings = [];
-if (savingSources.length) {
-  savingSources.forEach((item) => {
+if (savingCategoryRollup.length) {
+  savingCategoryRollup.forEach((item) => {
     totalSavings.push(Number(item.amount));
   });
   links.push({
@@ -68,7 +122,7 @@ if (savingSources.length) {
 }
 
 const expenseStartingPoint = links.length;
-expenseSources.forEach((item, index) => {
+expenseCategoryRollup.forEach((item, index) => {
   links.push({
     source: expenseStartingPoint - 1,
     target: index + 1 + expenseStartingPoint,
@@ -77,7 +131,7 @@ expenseSources.forEach((item, index) => {
 });
 
 const savingsStartingPoint = links.length;
-savingSources.forEach((item, index) => {
+savingCategoryRollup.forEach((item, index) => {
   links.push({
     source: incomeSources.length + 2,
     target: index + 1 + savingsStartingPoint,
@@ -171,7 +225,7 @@ function createSankeyDiagram(sampleData, frame) {
           `<strong>${d.source.name}</strong> - <strong>${d.target.name}</strong>`
         );
 
-      tooltip.append("p").html(`Value: <strong>${d.value}</strong>`);
+      tooltip.append("p").html(`Total: <strong>${d.value}</strong>`);
 
       tooltip.style("opacity", 1).style("left", `200px`).style("top", `200px`);
     })
