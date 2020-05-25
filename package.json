@@ -34,9 +34,11 @@
     "v8-compile-cache": "^2.1.0"
   },
   "build": {
+    "productName": "fortunae",
     "appId": "fortunae",
     "win": {
       "target": "nsis",
+      "icon": "build/icon.ico",
       "asar": false
     }
   }
