@@ -123,11 +123,19 @@ if (savingCategoryRollup.length) {
 
 const expenseStartingPoint = links.length;
 expenseCategoryRollup.forEach((item, index) => {
-  links.push({
-    source: expenseStartingPoint - 1,
-    target: index + 1 + expenseStartingPoint,
-    value: Number(item.amount),
-  });
+  if (totalSavings.length) {
+    links.push({
+      source: expenseStartingPoint - 1,
+      target: index + 1 + expenseStartingPoint,
+      value: Number(item.amount),
+    });
+  } else {
+    links.push({
+      source: expenseStartingPoint,
+      target: index + 1 + expenseStartingPoint,
+      value: Number(item.amount),
+    });
+  }
 });
 
 const savingsStartingPoint = links.length;
