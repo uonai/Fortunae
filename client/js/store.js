@@ -55,7 +55,6 @@ export default class Store {
         localStorage.setItem(ITEMS, JSON.stringify(items));
       }
     });
-    HistoryChart.loadHistoryChart();
   }
 
   static loadCompleteDatabase() {
@@ -119,6 +118,7 @@ export default class Store {
         JSON.stringify(category4)
       );
       Chart.loadChart();
+      HistoryChart.loadHistoryChart();
     });
   }
   static addItem(item) {
@@ -236,6 +236,8 @@ export default class Store {
       Confirmation.writeConfirmation("Record has been saved");
     } else if (type === "clone") {
       Confirmation.writeConfirmation("Record has been cloned");
+    } else if (type === "history") {
+      Confirmation.writeConfirmation("New historical record selected");
     }
     getCurrentWindow().reload();
   }

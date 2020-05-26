@@ -30,7 +30,7 @@ export default class HistoryChart {
         const _item = item;
         const infoISO = Helper.getTimeFromUNIXTimestamp(_item);
         if (historyDataItems <= 12) {
-          n += 100;
+          n += 80;
         } else if (historyDataItems <= 24) {
           n += 38;
         } else {
@@ -53,6 +53,7 @@ export default class HistoryChart {
           .style("z-index", "1000")
           .style("visibility", "hidden")
           .style("background-color", "#000")
+          .style("left", "-10000px")
           .text(item.infoISO);
 
         d3.select("#g-1")
@@ -73,7 +74,7 @@ export default class HistoryChart {
             return tooltip.style("visibility", "hidden");
           })
           .on("click", function () {
-            Store.restoreItems(item.info);
+            Store.restoreItems(item.info, "history");
           });
       });
     }

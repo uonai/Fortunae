@@ -23,7 +23,7 @@ document.addEventListener(
   PopOut.refreshChildWindows(),
   UI.displayItems(),
   Recommendation.displayRecommendations(),
-  HistoryChart.loadHistoryChart(),
+  // HistoryChart.loadHistoryChart(),
   Confirmation.showConfirmation()
 );
 
