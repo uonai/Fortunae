@@ -1,6 +1,7 @@
 import HistoryChart from "./components/charts/historyChart.js";
 import Chart from "./components/charts/chart.js";
 import PopOut from "./popOut.js";
+import Confirmation from "./confirmation.js";
 
 const ITEMS = "items";
 const CURRENTRECORD = "currentRecord";
@@ -120,20 +121,6 @@ export default class Store {
       Chart.loadChart();
     });
   }
-
-  static restoreItems(timestamp) {
-    let rawData = fs.readFileSync(__dirname + DBPATH + timestamp);
-    let items = JSON.parse(rawData);
-    localStorage.removeItem(ITEMS);
-    // this.getItems();
-    localStorage.setItem(ITEMS, JSON.stringify(items));
-    localStorage.setItem(CURRENTRECORD, timestamp);
-    this.loadCompleteDatabase();
-    this.loadDatabase();
-    // this is an intense way to reload the window, need to find a different solution
-    getCurrentWindow().reload();
-  }
-
   static addItem(item) {
     const items = Store.getItems();
     items.push(item);
@@ -186,7 +173,7 @@ export default class Store {
       if (err) {
         return;
       }
-      this.resetData(fileName);
+      this.resetData(fileName, "clone");
     });
   }
 
@@ -199,7 +186,7 @@ export default class Store {
         alert(ERROROCCURRED + err.message);
         return;
       }
-      this.resetData(currentRecord);
+      this.resetData(currentRecord, "save");
     });
   }
 
@@ -216,6 +203,7 @@ export default class Store {
         // alert("The record has been deleted");
         localStorage.clear();
         this.getItems();
+        Confirmation.writeConfirmation("Record has been deleted");
         getCurrentWindow().reload();
         // getCurrentWindow().removeAllListeners();
         this.loadDatabase();
@@ -224,11 +212,31 @@ export default class Store {
       alert(FILEUNAVAILABLE);
     }
   }
-  static resetData(currentRecord) {
+  static resetData(currentRecord, type) {
     localStorage.clear();
     localStorage.removeItem(ITEMS);
     localStorage.removeItem(CURRENTRECORD);
     localStorage.setItem(CURRENTRECORD, currentRecord);
-    this.restoreItems(currentRecord);
+    this.restoreItems(currentRecord, type);
+  }
+
+  static restoreItems(timestamp, type) {
+    console.log(type);
+    let rawData = fs.readFileSync(__dirname + DBPATH + timestamp);
+    let items = JSON.parse(rawData);
+    localStorage.removeItem(ITEMS);
+    // this.getItems();
+    localStorage.setItem(ITEMS, JSON.stringify(items));
+    localStorage.setItem(CURRENTRECORD, timestamp);
+    this.loadCompleteDatabase();
+    this.loadDatabase();
+
+    // this is an intense way to reload the window, need to find a different solution
+    if (type === "save") {
+      Confirmation.writeConfirmation("Record has been saved");
+    } else if (type === "clone") {
+      Confirmation.writeConfirmation("Record has been cloned");
+    }
+    getCurrentWindow().reload();
   }
 }

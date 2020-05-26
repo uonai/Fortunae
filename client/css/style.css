@@ -1,7 +1,8 @@
 :root {
   --foreground-color: #fff;
   --background-color: #000;
-  --alert-color: #fc533e;
+  --alert-color: #ffb545;
+  --confirmation-color: #fff;
 }
 
 @font-face {
@@ -239,6 +240,22 @@ form input .add-button {
 
 .alert {
   color: var(--alert-color);
+}
+
+#confirmation {
+  position: absolute;
+  bottom: 30px;
+  left: 200px;
+  width: 550px;
+  text-align: center;
+}
+.confirmation-message {
+  color: var(--confirmation-color);
+  animation: fadeIn ease 1s;
+  -webkit-animation: fadeIn ease 1s;
+  -moz-animation: fadeIn ease 1s;
+  -o-animation: fadeIn ease 1s;
+  -ms-animation: fadeIn ease 1s;
 }
 
 /** chart **/

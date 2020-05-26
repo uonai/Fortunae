@@ -10,6 +10,7 @@ import NeedModal from "./components/modals/needModal.js";
 import PopOut from "./popOut.js";
 import HistoryChart from "./components/charts/historyChart.js";
 import DeleteDialog from "./components/dialogs/delete.js";
+import Confirmation from "./confirmation.js";
 
 const EDIT = "edit";
 const SUBMIT = "submit";
@@ -22,7 +23,8 @@ document.addEventListener(
   PopOut.refreshChildWindows(),
   UI.displayItems(),
   Recommendation.displayRecommendations(),
-  HistoryChart.loadHistoryChart()
+  HistoryChart.loadHistoryChart(),
+  Confirmation.showConfirmation()
 );
 
 // EXPENSE FORM CALCULATOR SUBMIT
