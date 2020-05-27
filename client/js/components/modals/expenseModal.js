@@ -5,19 +5,19 @@ import Helper from "../../utils/helper.js";
 
 const dropdownOptions = [
   "Category",
-  "Misc Expense",
-  "Savings",
+  "Auto & Transport",
+  "Bills & Utilities",
+  "Business Services",
   "Education",
-  "Shopping",
-  "Personal Care",
-  "Health & Fitness",
+  "Fees & Charges",
   "Food & Dining",
   "Gifts & Donations",
+  "Health & Fitness",
   "Investments",
-  "Bills & Utilities",
-  "Auto & Transport",
-  "Fees & Charges",
-  "Business Services",
+  "Misc Expense",
+  "Personal Care",
+  "Savings",
+  "Shopping",
   "Taxes",
 ];
 
