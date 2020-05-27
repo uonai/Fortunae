@@ -1,11 +1,11 @@
-import NeedItem from "../../models/needItem.js";
+import BudgetItem from "../../models/budgetItem.js";
 import UI from "../../ui.js";
 import Store from "../../store.js";
 import Helper from "../../utils/helper.js";
 
 const dropdownOptions = ["Category", "Want", "Need", "Debt"];
 
-export default class NeedModal {
+export default class BudgetModal {
   static showModal() {
     const div = document.createElement("div");
     div.id = "form-calculator-content";
@@ -91,14 +91,14 @@ export default class NeedModal {
     } else {
       if (action == "submit") {
         const id = Helper.generateUUIDv4();
-        const item = new NeedItem(id, category, title, amount, type);
+        const item = new BudgetItem(id, category, title, amount, type);
         UI.addItemToList(item);
         Store.addItem(item);
         UI.buildItemChart(category);
         UI.hideCalculatorModal();
       } else {
         const id = document.querySelector("#form-calculator-id").value;
-        const item = new NeedItem(id, category, title, amount, type);
+        const item = new BudgetItem(id, category, title, amount, type);
         UI.updateItem(item);
         Store.editItem(item);
         UI.buildItemChart(category);

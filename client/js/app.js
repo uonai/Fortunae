@@ -6,7 +6,7 @@ import DebtModal from "./components/modals/debtModal.js";
 import ExpenseModal from "./components/modals/expenseModal.js";
 import IncomeModal from "./components/modals/incomeModal.js";
 import FundModal from "./components/modals/fundModal.js";
-import NeedModal from "./components/modals/needModal.js";
+import BudgetModal from "./components/modals/budgetModal.js";
 import PopOut from "./popOut.js";
 import HistoryChart from "./components/charts/historyChart.js";
 import DeleteDialog from "./components/dialogs/delete.js";
@@ -47,7 +47,7 @@ document
         IncomeModal.validate(SUBMIT);
         break;
       case "5":
-        NeedModal.validate(SUBMIT);
+        BudgetModal.validate(SUBMIT);
         break;
       default:
         console.log("none found");
@@ -86,7 +86,7 @@ document
         IncomeModal.validate(EDIT);
         break;
       case "5":
-        NeedModal.validate(EDIT);
+        BudgetModal.validate(EDIT);
         break;
       default:
         console.log("none found");
@@ -109,7 +109,7 @@ document.querySelectorAll(".add-item").forEach((item) => {
         IncomeModal.showModal(e);
         break;
       case "5":
-        NeedModal.showModal(e);
+        BudgetModal.showModal(e);
         break;
       default:
         console.log("none found");
@@ -183,7 +183,7 @@ document.addEventListener("click", (e) => {
         IncomeModal.showEditItemModal(e.target);
         break;
       case "5":
-        NeedModal.showEditItemModal(e.target);
+        BudgetModal.showEditItemModal(e.target);
         break;
       default:
         console.log("none found");
@@ -246,7 +246,7 @@ function doc_keyUp(e) {
       IncomeModal.showModal(e);
       console.log("4");
     } else if (e.ctrlKey && e.keyCode == 53) {
-      NeedModal.showModal(e);
+      BudgetModal.showModal(e);
       console.log("4");
     }
   }

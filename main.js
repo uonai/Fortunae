@@ -19,7 +19,7 @@ function createWindow() {
     backgroundColor: "#000",
     resizable: false,
     webPreferences: {
-      //  devTools: false,
+      devTools: false,
       preload: path.join(__dirname, "preload.js"),
       nodeIntegration: true,
     },
