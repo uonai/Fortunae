@@ -3,60 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <!-- <meta
+    <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
     />
     <meta
       http-equiv="X-Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
-    /> -->
+    />
 
     <link rel="stylesheet" type="text/css" href="./client/css/chart.css" />
     <title>Fortunae</title>
   </head>
   <body>
     <button id="close-window">
-      <img
-        style="z-index: 1000;"
-        src="./client/images/close.svg"
-        width="12px"
-      />
+      <img src="./client/images/close.svg" width="12px" />
     </button>
-    <div class="application-nav" style="-webkit-app-region: drag;"></div>
-    <header style="padding: 30px 0 10px 0; text-align: center;">
+    <div class="application-nav"></div>
+    <header class="spider-header">
       EXPENSE BREAKDOWN
     </header>
+    <div class="radarChart"></div>
     <script src="./client/library/d3.js"></script>
     <script src="./client/js/components/charts/spiderChart.js"></script>
-    <div class="radarChart" style="display: inline-flex;"></div>
-
-    <script>
-
-			const margin = { top: 50, right: 80, bottom: 100, left: 80 },
-				width = Math.min(700, window.innerWidth / 4) - margin.left - margin.right,
-				height = Math.min(width, window.innerHeight - margin.top - margin.bottom);
-    
-	
-			const spiderChartOptions = {
-			  w: 320,
-			  h: 320,
-			  margin: margin,
-			  levels: 1,
-			  roundStrokes: true,
-				color: d3.scaleOrdinal().range(["#fff", "#fff"]),
-				format: '.0f'
-			};
-
-			// Draw the chart, get a reference the created svg element :
-			let svg_radar1 = SpiderChart(".radarChart", spiderChartOptions);
-
-
-		</script>
-    </script>
-    <script>
-      require("./renderer.js");
-    </script>
-     <script src="./client/js/utils/menu.js"></script>
+    <script src="./client/js/components/charts/spiderChartOptions.js"></script>
+    <script src="./client/js/utils/menu.js"></script>
   </body>
 </html>

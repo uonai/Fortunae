@@ -1,42 +1,29 @@
 <!DOCTYPE html>
 <html style="border-radius: 5px;">
-  <head>
-    <meta charset="UTF-8" />
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <!-- <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-    <meta
-      http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    /> -->
-    <link rel="stylesheet" type="text/css" href="./client/css/style.css" />
-    <title>Fortunae</title>
-  </head>
-  <body>
-    <button id="close-window"><img style="z-index:1000" src="./client/images/close.svg" width="12px" /></button>
-    <div class="application-nav">
 
-    </div>
-<header style="padding:40px 0 0 0; text-align:center;">Debt Burndown</header>
-              <div id="line" style="position:fixed; left: 0; right: 0; top: 10px; bottom: 0;"></div>
-  
-    </div>
-    <script src="./client/library/d3.js"></script>
-    <script>
-      require("./renderer.js");
-    </script>
-    <script src="./client/js/components/charts/burndownChart.js"></script>
-    <script>
-      document.addEventListener("keydown", function (e) {
-        if (e.which === 123) {
-          require("remote").getCurrentWindow().toggleDevTools();
-        } else if (e.which === 116) {
-          location.reload();
-        }
-      });
-    </script>
-    <script src="./client/js/utils/menu.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+  <link rel="stylesheet" type="text/css" href="./client/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="./client/css/chart.css" />
+  <title>Fortunae</title>
+</head>
+
+<body>
+  <button id="close-window"><img src="./client/images/close.svg" width="12px" /></button>
+  <div class="application-nav">
+
+  </div>
+  <header class="debt-burndown-header">Debt Burndown</header>
+  <div id="line"></div>
+
+  </div>
+  <script src="./client/library/d3.js"></script>
+
+  <script src="./client/js/components/charts/burndownChart.js"></script>
+  <script src="./client/js/utils/menu.js"></script>
+</body>
+
 </html>

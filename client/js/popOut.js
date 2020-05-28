@@ -23,9 +23,6 @@ export default class PopOut {
   }
 
   static openChildWindow() {
-    console.log(
-      "this is where we need to pass parent -> child window refresh1"
-    );
     ipcRenderer.send("window:open");
   }
 

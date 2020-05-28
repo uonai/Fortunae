@@ -9,7 +9,7 @@ require("electron-reload")(__dirname, {
   electron: path.join(__dirname, "node_modules", ".bin", "electron"),
 });
 
-let mainWindow, prefsWindow;
+let mainWindow;
 
 function createWindow() {
   // Create the browser window.

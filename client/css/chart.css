@@ -162,7 +162,9 @@ header {
   fill: #fff;
 }
 
-.sankey-header {
+.sankey-header,
+.fund-header,
+.debt-burndown-header {
   padding: 35px 0 0 0;
   text-align: center;
 }
@@ -174,4 +176,13 @@ header {
 
 .radarChart {
   display: inline-flex;
+}
+
+/** chart **/
+#line {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 10px;
+  bottom: 0;
 }

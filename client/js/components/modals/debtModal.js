@@ -24,7 +24,7 @@ export default class DebtModal {
         <select id="form-calculator-type">
       </select>
         <div class="form-group">
-        <input type="text" id="form-calculator-amount" class="form-control" placeholder="Monthly Payment" />
+        <input type="text" id="form-calculator-amount" class="form-control" placeholder="Remaining Debt" />
       </div>
         
         `;
