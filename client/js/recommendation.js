@@ -61,7 +61,7 @@ export default class Recommendation {
     const save = Math.round(salary * 0.3);
 
     listItem.innerHTML = `
-        <button class="list-item">Save: $${save}</button>
+        <button class="list-item">Save: ${save}</button>
         `;
     list.appendChild(listItem);
   }
@@ -72,7 +72,7 @@ export default class Recommendation {
     const spend = Math.round(salary * 0.6);
 
     listItem.innerHTML = `
-               <button class="list-item">Spend: $${spend}</button>
+               <button class="list-item">Spend: ${spend}</button>
                `;
     list.appendChild(listItem);
   }
@@ -83,7 +83,7 @@ export default class Recommendation {
     const invest = Math.round(salary * 0.1);
 
     listItem.innerHTML = `
-            <button class="list-item">Invest: $${invest}</button>
+            <button class="list-item">Invest: ${invest}</button>
             `;
     list.appendChild(listItem);
   }
@@ -94,7 +94,7 @@ export default class Recommendation {
     const emergencyFund = Math.round(salary * 0.4);
 
     listItem.innerHTML = `
-            <button class="list-item">Emergency Fund: $${emergencyFund}</button>
+            <button class="list-item">Emergency Fund: ${emergencyFund}</button>
             `;
     list.appendChild(listItem);
   }
