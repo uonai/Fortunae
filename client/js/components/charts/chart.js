@@ -22,6 +22,10 @@ export default class Chart {
   };
 
   static loadChart() {
+    const foregroundColor = getComputedStyle(
+      document.documentElement
+    ).getPropertyValue("--foreground-color");
+
     const result = JSON.parse(localStorage.getItem("category1ItemsHistorical"));
 
     if (result) {
@@ -156,7 +160,7 @@ export default class Chart {
               svg
                 .append("text")
                 .attr("class", "title-text")
-                .style("fill", "#fff")
+                .style("fill", foregroundColor)
                 .text(d.name)
                 .attr("text-anchor", "middle")
                 .attr("x", (width - margin) / 2)
@@ -207,7 +211,7 @@ export default class Chart {
                 .style("cursor", "pointer")
                 .append("text")
                 .attr("class", "text")
-                .style("fill", "#fff")
+                .style("fill", foregroundColor)
                 .text(`${d.amount}`)
                 .attr("x", (d) => xScale(d.date) + -10)
                 .attr("y", (d) => yScale(d.amount) - 10);
@@ -225,12 +229,12 @@ export default class Chart {
             .attr("cy", (d) => yScale(d.amount))
             .attr("r", circleRadius)
             .style("opacity", circleOpacity)
-            .style("fill", "#fff")
+            .style("fill", foregroundColor)
             .on("mouseover", function (d) {
               d3.select(this)
                 .transition()
                 .duration(duration)
-                .style("background-color", "#fff")
+                .style("background-color", foregroundColor)
                 .attr("r", circleRadiusHover);
             })
             .on("mouseout", function (d) {

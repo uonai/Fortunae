@@ -1,3 +1,7 @@
+const foregroundColor = getComputedStyle(
+  document.documentElement
+).getPropertyValue("--foreground-color");
+
 const max = Math.max;
 const sin = Math.sin;
 const cos = Math.cos;
@@ -132,9 +136,9 @@ const SpiderChart = function RadarChart(parent_selector, options) {
   }; //wrap
 
   const cfg = {
-    w: 600, //Width of the circle
-    h: 600, //Height of the circle
-    margin: { top: 20, right: 20, bottom: 20, left: 20 }, //The margins of the SVG
+    w: 320, //Width of the circle
+    h: 320, //Height of the circle
+    margin: { top: 50, right: 80, bottom: 100, left: 80 }, //The margins of the SVG
     levels: 1, //How many levels or inner circles should there be drawn
     maxValue: maxNumber, //What is the value that the biggest circle will represent
     labelFactor: 1.25, //How much farther than the radius of the outer circle should the labels be placed
@@ -143,9 +147,9 @@ const SpiderChart = function RadarChart(parent_selector, options) {
     dotRadius: 4, //The size of the colored circles of each blog
     opacityCircles: 0.1, //The opacity of the circles of each blob
     strokeWidth: 2, //The width of the stroke around each blob
-    roundStrokes: false, //If true the area and stroke will follow a round path (cardinal-closed)
-    color: d3.scaleOrdinal(d3.schemeCategory10), //Color function,
-    format: ".2%",
+    roundStrokes: true, //If true the area and stroke will follow a round path (cardinal-closed)
+    color: d3.scaleOrdinal().range([foregroundColor, foregroundColor]), //Color function,
+    format: ".0f",
     unit: "",
     legend: true,
   };
@@ -256,7 +260,7 @@ const SpiderChart = function RadarChart(parent_selector, options) {
       (d, i) => rScale(maxValue * 1.1) * sin(angleSlice * i - HALF_PI)
     )
     .attr("class", "line")
-    .style("stroke", "white")
+    .style("stroke", foregroundColor)
     .style("stroke-width", "2px");
 
   //Append the labels at each axis
@@ -265,7 +269,7 @@ const SpiderChart = function RadarChart(parent_selector, options) {
     .attr("class", "legend")
     .style("font-size", "10px")
     .attr("text-anchor", "middle")
-    .style("fill", "white")
+    .style("fill", foregroundColor)
 
     .attr("dy", "0.35em")
     .attr(
@@ -399,7 +403,7 @@ const SpiderChart = function RadarChart(parent_selector, options) {
     .style("font-size", "12px")
     .style("display", "none")
     .attr("text-anchor", "middle")
-    .style("fill", "white")
+    .style("fill", foregroundColor)
     .attr("dy", "0.35em");
 
   if (cfg.legend !== false && typeof cfg.legend === "object") {
@@ -438,8 +442,8 @@ const SpiderChart = function RadarChart(parent_selector, options) {
       .attr("y", 50)
       .attr("width", 10)
       .attr("height", 10)
-      .style("fill", "white")
-      .attr("stroke", "white");
+      .style("fill", foregroundColor)
+      .attr("stroke", foregroundColor);
     // Create labels
     legend
       .selectAll("text")
@@ -449,8 +453,8 @@ const SpiderChart = function RadarChart(parent_selector, options) {
       .attr("x", cfg.w - 52)
       .attr("y", (d, i) => i * 20 + 9)
       .attr("font-size", "10px")
-      .attr("fill", "white")
-      .attr("stroke", "white")
+      .attr("fill", foregroundColor)
+      .attr("stroke", foregroundColor)
       .text((d) => d);
   }
   return svg;

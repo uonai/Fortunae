@@ -1,4 +1,9 @@
+const foregroundColor = getComputedStyle(
+  document.documentElement
+).getPropertyValue("--foreground-color");
+
 /* globals d3 */
+
 const container = d3.select(".container");
 
 // BEGIN NODE ALGORITHSM
@@ -189,7 +194,7 @@ createSankeyDiagram(sampleData, containerFrame);
 // function creating the sankey diagram, based on an input data and frame (in which the visualization is plotted)
 function createSankeyDiagram(sampleData, frame) {
   // detail a color scale
-  var COLORS = ["#fff"];
+  var COLORS = [foregroundColor];
   const color = d3.scaleOrdinal(COLORS);
 
   // detail the sankey function
@@ -218,7 +223,7 @@ function createSankeyDiagram(sampleData, frame) {
     .attr("d", sankeyLinks)
     .attr("fill", "none")
     // stroke using the gradient
-    .attr("stroke", (d) => "#fff")
+    .attr("stroke", (d) => foregroundColor)
     // stroke width based on the width of each data point
     .attr("stroke-width", (d) => "3px")
     // alter the opacity on hover
@@ -267,7 +272,7 @@ function createSankeyDiagram(sampleData, frame) {
     .append("text")
     .text((d) => d.name)
     .attr("font-size", "16")
-    .attr("fill", "#fff")
+    .attr("fill", foregroundColor)
     .attr("class", "tick")
     .attr("x", (d) => {
       if (d.sourceLinks.length > 0) {

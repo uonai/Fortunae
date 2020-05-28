@@ -1,3 +1,11 @@
+const foregroundColor = getComputedStyle(
+  document.documentElement
+).getPropertyValue("--foreground-color");
+
+const backgroundColor = getComputedStyle(
+  document.documentElement
+).getPropertyValue("--background-color");
+
 const result = JSON.parse(localStorage.getItem("category1ItemsHistorical"));
 
 reduceItems = (itemType) => {
@@ -131,7 +139,7 @@ if (result) {
 
     /* Add SVG */
     const svg = d3
-      .select("#line")
+      .select("#lineChild")
       .append("svg")
       .attr("width", width + margin + "px")
       .attr("height", height + margin + "px")
@@ -157,7 +165,7 @@ if (result) {
         svg
           .append("text")
           .attr("class", "title-text")
-          .style("fill", "#fff")
+          .style("fill", foregroundColor)
           .text(d.name)
           .attr("text-anchor", "middle")
           .attr("x", (width - margin) / 2)
@@ -204,7 +212,7 @@ if (result) {
           .style("cursor", "pointer")
           .append("text")
           .attr("class", "text")
-          .style("fill", "#fff")
+          .style("fill", foregroundColor)
           .text(`${d.amount}`)
           .attr("x", (d) => xScale(d.date) + 5)
           .attr("y", (d) => yScale(d.amount) - 10);
@@ -222,12 +230,12 @@ if (result) {
       .attr("cy", (d) => yScale(d.amount))
       .attr("r", circleRadius)
       .style("opacity", circleOpacity)
-      .style("fill", "white")
+      .style("fill", foregroundColor)
       .on("mouseover", function (d) {
         d3.select(this)
           .transition()
           .duration(duration)
-          .style("background-color", "#fff")
+          .style("background-color", foregroundColor)
           .attr("r", circleRadiusHover);
       })
       .on("mouseout", function (d) {
@@ -241,7 +249,7 @@ if (result) {
       .append("g")
       .attr("class", "x axis")
       .attr("transform", `translate(0, ${height - margin})`)
-      .style("fill", "white")
+      .style("fill", foregroundColor)
       .call(xAxis);
 
     svg
@@ -251,6 +259,6 @@ if (result) {
       .append("text")
       .attr("y", 15)
       .attr("transform", "rotate(-90)")
-      .attr("fill", "white");
+      .attr("fill", foregroundColor);
   }
 }

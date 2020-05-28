@@ -552,3 +552,54 @@ body {
 .tome p {
   margin-bottom: 20px;
 }
+
+/**begin child window css **/
+
+.container a {
+  color: inherit;
+}
+.container #tooltip {
+  pointer-events: none;
+  position: absolute;
+  opacity: 0;
+  padding: 1rem;
+  /* box-shadow: 0 0 4px rgba(66, 66, 78, 0.2); */
+  background: #000;
+  line-height: 2;
+  transition: all 0.2s ease-out;
+}
+
+.tick {
+  paint-order: stroke;
+  stroke: #000;
+  stroke-width: 5px;
+  stroke-linecap: butt;
+  stroke-linejoin: miter;
+  font-weight: 400;
+  fill: #fff;
+}
+
+.sankey-header,
+.fund-header,
+.debt-burndown-header {
+  padding: 35px 0 0 0;
+  text-align: center;
+}
+
+.spider-header {
+  padding: 30px 0 10px 0;
+  text-align: center;
+}
+
+.radarChart {
+  display: inline-flex;
+}
+
+/** chart **/
+#lineChild {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 10px;
+  bottom: 0;
+}

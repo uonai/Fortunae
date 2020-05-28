@@ -4,6 +4,13 @@ import Helper from "../../utils/helper.js";
 
 export default class HistoryChart {
   static loadHistoryChart() {
+    const foregroundColor = getComputedStyle(
+      document.documentElement
+    ).getPropertyValue("--foreground-color");
+
+    const backgroundColor = getComputedStyle(
+      document.documentElement
+    ).getPropertyValue("--background-color");
     const line = d3
       .line()
       .x(function (d) {
@@ -52,7 +59,7 @@ export default class HistoryChart {
           .style("position", "absolute")
           .style("z-index", "1000")
           .style("visibility", "hidden")
-          .style("background-color", "#000")
+          .style("background-color", backgroundColor)
           .style("left", "-10000px")
           .text(item.infoISO);
 
@@ -61,7 +68,7 @@ export default class HistoryChart {
           .attr("cx", item.x)
           .attr("cy", item.y)
           .attr("r", 5)
-          .style("fill", "#fff")
+          .style("fill", foregroundColor)
           .on("mouseover", function () {
             return tooltip.style("visibility", "visible");
           })
