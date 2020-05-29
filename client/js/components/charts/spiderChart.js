@@ -50,12 +50,9 @@ function SpiderChart(parent_selector, options) {
   });
 
   let groupOfItems = expenseSources.reduce((x, a) => {
-    // console.log("a", a);
-    // console.log("x", x);
     x[a.type] = [...(x[a.type] || []), a];
     return x;
   }, {});
-  // console.log(groupOfItems);
 
   let categoryRollup = [];
   for (let category of Object.keys(groupOfItems)) {
@@ -98,7 +95,6 @@ function SpiderChart(parent_selector, options) {
   var data = filteredData;
   var maxNumber = Math.max(...numbersArray);
 
-  //Wraps SVG text - Taken from http://bl.ocks.org/mbostock/7555321
   const wrap = (text, width) => {
     text.each(function () {
       var text = d3.select(this),
@@ -154,17 +150,14 @@ function SpiderChart(parent_selector, options) {
     legend: true,
   };
 
-  //Put all of the options into a variable called cfg
   if ("undefined" !== typeof options) {
     for (var i in options) {
       if ("undefined" !== typeof options[i]) {
         cfg[i] = options[i];
       }
-    } //for i
-  } //if
+    }
+  }
 
-  //If the supplied maxValue is smaller than the actual one, replace by the max in the data
-  // var maxValue = max(cfg.maxValue, d3.max(data, function(i){return d3.max(i.map(function(o){return o.value;}))}));
   let maxValue = 0;
   for (let j = 0; j < data.length; j++) {
     for (let i = 0; i < data[j].axes.length; i++) {
@@ -176,24 +169,18 @@ function SpiderChart(parent_selector, options) {
   }
   maxValue = max(cfg.maxValue, maxValue);
 
-  const allAxis = data[0].axes.map((i, j) => i.axis), //Names of each axis
-    total = allAxis.length, //The number of different axes
-    radius = Math.min(cfg.w / 2, cfg.h / 2), //Radius of the outermost circle
-    Format = d3.format(cfg.format), //Formatting
-    angleSlice = (Math.PI * 2) / total; //The width in radians of each "slice"
+  const allAxis = data[0].axes.map((i, j) => i.axis),
+    total = allAxis.length,
+    radius = Math.min(cfg.w / 2, cfg.h / 2),
+    Format = d3.format(cfg.format),
+    angleSlice = (Math.PI * 2) / total;
 
-  //Scale for the radius
   const rScale = d3.scaleLinear().range([0, radius]).domain([0, maxValue]);
 
-  /////////////////////////////////////////////////////////
-  //////////// Create the container SVG and g /////////////
-  /////////////////////////////////////////////////////////
   const parent = d3.select(parent_selector);
 
-  //Remove whatever chart with the same id/class was present before
   parent.select("svg").remove();
 
-  //Initiate the radar chart SVG
   let svg = parent
     .append("svg")
     .attr("width", cfg.w + cfg.margin.left + cfg.margin.right)
@@ -212,41 +199,17 @@ function SpiderChart(parent_selector, options) {
         ")"
     );
 
-  /////////////////////////////////////////////////////////
-  ////////// Glow filter for some extra pizzazz ///////////
-  /////////////////////////////////////////////////////////
-
-  //Filter for the outside glow
-  let filter = g.append("defs").append("filter").attr("id", "glow"),
-    feGaussianBlur = filter
-      .append("feGaussianBlur")
-      .attr("stdDeviation", "0.5")
-      .attr("result", "coloredBlur"),
-    feMerge = filter.append("feMerge"),
-    feMergeNode_1 = feMerge.append("feMergeNode").attr("in", "coloredBlur"),
-    feMergeNode_2 = feMerge.append("feMergeNode").attr("in", "SourceGraphic");
-
-  /////////////////////////////////////////////////////////
-  /////////////// Draw the Circular grid //////////////////
-  /////////////////////////////////////////////////////////
-
-  //Wrapper for the grid & axes
   let axisGrid = g.append("g").attr("class", "axisWrapper");
 
   axisGrid;
 
-  /////////////////////////////////////////////////////////
-  //////////////////// Draw the axes //////////////////////
-  /////////////////////////////////////////////////////////
-
-  //Create the straight lines radiating outward from the center
   var axis = axisGrid
     .selectAll(".axis")
     .data(allAxis)
     .enter()
     .append("g")
     .attr("class", "axis");
-  //Append the lines
+
   axis
     .append("line")
     .attr("x1", 0)
@@ -263,7 +226,6 @@ function SpiderChart(parent_selector, options) {
     .style("stroke", foregroundColor)
     .style("stroke-width", "2px");
 
-  //Append the labels at each axis
   axis
     .append("text")
     .attr("class", "legend")
@@ -285,11 +247,6 @@ function SpiderChart(parent_selector, options) {
     .text((d) => d)
     .call(wrap, cfg.wrapWidth);
 
-  /////////////////////////////////////////////////////////
-  ///////////// Draw the radar chart blobs ////////////////
-  /////////////////////////////////////////////////////////
-
-  //The radial line function
   const radarLine = d3
     .radialLine()
     .curve(d3.curveLinearClosed)
@@ -300,7 +257,6 @@ function SpiderChart(parent_selector, options) {
     radarLine.curve(d3.curveCardinalClosed);
   }
 
-  //Create a wrapper for the blobs
   const blobWrapper = g
     .selectAll(".radarWrapper")
     .data(data)
@@ -308,7 +264,6 @@ function SpiderChart(parent_selector, options) {
     .append("g")
     .attr("class", "radarWrapper");
 
-  //Append the backgrounds
   blobWrapper
     .append("path")
     .attr("class", "radarArea")
@@ -316,35 +271,20 @@ function SpiderChart(parent_selector, options) {
     .style("fill", (d, i) => cfg.color(i))
     .style("fill-opacity", cfg.opacityArea)
     .on("mouseover", function (d, i) {
-      //Dim all blobs
       parent
         .selectAll(".radarArea")
         .transition()
         .duration(200)
         .style("fill-opacity", 0);
-      //Bring back the hovered over blob
       d3.select(this).transition().duration(200).style("fill-opacity", 0);
     })
     .on("mouseout", () => {
-      //Bring back all blobs
       parent
         .selectAll(".radarArea")
         .transition()
         .duration(200)
         .style("fill-opacity", cfg.opacityArea);
     });
-
-  //Create the outlines
-  blobWrapper
-    .append("path")
-    .attr("class", "radarStroke")
-    .attr("d", function (d, i) {
-      return radarLine(d.axes);
-    })
-    .style("stroke-width", cfg.strokeWidth + "px")
-    .style("stroke", (d, i) => cfg.color(i))
-    .style("fill", "none")
-    .style("filter", "url(#glow)");
 
   //Append the circles
   blobWrapper
@@ -357,11 +297,7 @@ function SpiderChart(parent_selector, options) {
     .attr("cx", (d, i) => rScale(d.value) * cos(angleSlice * i - HALF_PI))
     .attr("cy", (d, i) => rScale(d.value) * sin(angleSlice * i - HALF_PI))
     .style("fill", (d) => cfg.color(d.id))
-    .style("fill-opacity", 0.8);
-
-  /////////////////////////////////////////////////////////
-  //////// Append invisible circles for tooltip ///////////
-  /////////////////////////////////////////////////////////
+    .style("fill-opacity", 1);
 
   //Wrapper for the invisible circles on top
   const blobCircleWrapper = g

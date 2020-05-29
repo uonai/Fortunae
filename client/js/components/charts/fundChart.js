@@ -80,8 +80,6 @@ if (result) {
     },
   ];
 
-  console.log(data);
-  console.log(db);
   // FOR REFEREHCE
   // const data = [
   //   {

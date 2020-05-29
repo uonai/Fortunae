@@ -83,10 +83,6 @@ export default class Chart {
         //     values: [
         //       { date: "2000", amount: "2000" },
         //       { date: "2001", amount: "2200" },
-        //       { date: "2002", amount: "3000" },
-        //       { date: "2003", amount: "4000" },
-        //       { date: "2004", amount: "2000" },
-        //       { date: "2005", amount: "1500" },
         //     ],
         //   },
         // ];
@@ -193,8 +189,6 @@ export default class Chart {
                 .style("cursor", "none");
             });
 
-          /* Add circles in the line */
-          /* Add circles in the line */
           lines
             .selectAll("circle-group")
             .data(data)

@@ -167,8 +167,6 @@ const sampleData = {
 };
 const tooltip = container.append("div").attr("id", "tooltip");
 
-// SVG frame
-// the same margin, width and height are used for both visualizations
 const margin = {
   top: 20,
   right: 20,
@@ -191,29 +189,20 @@ const containerFrame = container
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 createSankeyDiagram(sampleData, containerFrame);
-// function creating the sankey diagram, based on an input data and frame (in which the visualization is plotted)
+
 function createSankeyDiagram(sampleData, frame) {
-  // detail a color scale
   var COLORS = [foregroundColor];
   const color = d3.scaleOrdinal(COLORS);
 
-  // detail the sankey function
-  const sankey = d3
-    .sankey()
-    // limit the nodes and links within the containing group
-    .extent([
-      [0, 0],
-      [width, height],
-    ]);
+  const sankey = d3.sankey().extent([
+    [0, 0],
+    [width, height],
+  ]);
 
-  // destructure the two arrays for the nodes and links in two variables
   const { nodes, links } = sankey(sampleData);
 
-  // detail a generator function for the links
   const sankeyLinks = d3.sankeyLinkHorizontal();
 
-  // append a path element for each link
-  // using the generator function
   frame
     .selectAll("path.link")
     .data(links)
@@ -222,12 +211,8 @@ function createSankeyDiagram(sampleData, frame) {
     .attr("class", "link")
     .attr("d", sankeyLinks)
     .attr("fill", "none")
-    // stroke using the gradient
     .attr("stroke", (d) => foregroundColor)
-    // stroke width based on the width of each data point
     .attr("stroke-width", (d) => "3px")
-    // alter the opacity on hover
-    // detail also the data through a simple tooltip
     .attr("opacity", 1)
     .on("mouseenter", function (d) {
       d3.select(this).transition().attr("opacity", 0.2);
@@ -248,8 +233,6 @@ function createSankeyDiagram(sampleData, frame) {
       tooltip.style("opacity", 0).selectAll("p").remove();
     });
 
-  // append a rectangle for each node
-  // using the fabricated values and the color based on the index
   frame
     .selectAll("rect.node")
     .data(nodes)
@@ -263,8 +246,6 @@ function createSankeyDiagram(sampleData, frame) {
     .attr("pointer-events", "none")
     .attr("fill", (d) => color(d.index));
 
-  // for each node append also a text element, detailing the respective value
-  // horizontally position the text after or before the rectangle elements for each node
   frame
     .selectAll("text.node")
     .data(nodes)
