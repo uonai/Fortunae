@@ -2,41 +2,30 @@ import ExpenseItem from "../../models/expenseItem.js";
 import UI from "../../ui.js";
 import Store from "../../store.js";
 import Helper from "../../utils/helper.js";
+import Language from "../../utils/language.js";
 
-const dropdownOptions = [
-  "Category",
-  "Auto & Transport",
-  "Bills & Utilities",
-  "Business Services",
-  "Education",
-  "Fees & Charges",
-  "Food & Dining",
-  "Gifts & Donations",
-  "Health & Fitness",
-  "Investments",
-  "Misc Expense",
-  "Personal Care",
-  "Savings",
-  "Shopping",
-  "Taxes",
-];
+const dropdownOptionsData = Language.getTerminology("expense", "categories");
+let modalTitle = Language.getTerminology("expense", "modalTitle");
+let placeholderTitle = Language.getTerminology("general", "title");
+let placeholderAmount = Language.getTerminology("general", "amount");
 
 export default class ExpenseModal {
   static showModal() {
+    let dropdownOptions = Object.values(dropdownOptionsData);
     const div = document.createElement("div");
 
     div.id = "form-calculator-content";
     div.innerHTML = `
-        <header id="form-calculator-header">Expense</header>
+        <header id="form-calculator-header">${modalTitle}</header>
         <input type="hidden" id="form-calculator-category" value="2" />
         <input type="hidden" id="form-calculator-id" value="2" />
         <div class="form-group">
-          <input type="text" id="form-calculator-title" class="form-control" placeholder="Title" />
+          <input type="text" id="form-calculator-title" class="form-control" placeholder=${placeholderTitle} />
         </div>
         <select id="form-calculator-type">
         </select>
         <div class="form-group">
-          <input type="text" id="form-calculator-amount" class="form-control" placeholder="Amount" />
+          <input type="text" id="form-calculator-amount" class="form-control" placeholder=${placeholderAmount} />
         </div>
 
  `;
@@ -60,6 +49,7 @@ export default class ExpenseModal {
   }
 
   static showEditItemModal(e) {
+    let dropdownOptions = Object.values(dropdownOptionsData);
     this.showModal();
     const form = document.querySelector("#calculator-modal");
     form.classList.add("edit");

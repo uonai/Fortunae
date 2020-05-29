@@ -29,7 +29,9 @@ export default class Chart {
     const result = JSON.parse(localStorage.getItem("category1ItemsHistorical"));
 
     const locale = JSON.parse(localStorage.getItem("language"));
-    d3.timeFormatDefaultLocale(locale.time);
+    if (locale) {
+      d3.timeFormatDefaultLocale(locale.time);
+    }
 
     if (result) {
       if (result.length) {

@@ -67,12 +67,44 @@
     },
     "addFund": "Add Fund"
   },
+  "expense": {
+    "categories": {
+      "category": "Category",
+      "autoAndTransport": "Auto & Transport",
+      "billsAndUtilities": "Bills & Utilities",
+      "businessServices": "Business Services",
+      "education": "Education",
+      "feesAndCharges": "Fees & Charges",
+      "foodAndDining": "Food & Dining",
+      "giftsAndDonations": "Gifts & Donations",
+      "healthAndFitness": "Health & Fitness",
+      "investments": "Investments",
+      "miscExpense": "Misc Expense",
+      "personalCare": "Personal Care",
+      "savings": "Savings",
+      "shopping": "Shopping",
+      "taxes": "Taxes"
+    },
+    "modalTitle": "Expense Item"
+  },
   "budget": {
     "title": "budget",
     "categories": {
       "category": "Category",
       "wants": "Wants",
       "needs": "Needs"
-    }
+    },
+    "modalTitle": "Budget Item"
+  },
+  "debt": {
+    "title": "debt",
+    "categories": {
+      "category": "Category",
+      "secured": "Secured",
+      "unsecured": "Unsecured",
+      "revolving": "Revolving",
+      "nonRevolving": "Non-revolving"
+    },
+    "modalTitle": "Debt Item"
   }
 }

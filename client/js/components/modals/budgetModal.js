@@ -5,14 +5,14 @@ import Helper from "../../utils/helper.js";
 import Language from "../../utils/language.js";
 
 const dropdownOptionsData = Language.getTerminology("budget", "categories");
-const dropdownOptions = Object.values(dropdownOptionsData);
 
-const modalTitle = Language.getTerminology("budget", "modalTitle");
-const placeholderTitle = Language.getTerminology("general", "title");
-const placeholderAmount = Language.getTerminology("general", "amount");
+let modalTitle = Language.getTerminology("budget", "modalTitle");
+let placeholderTitle = Language.getTerminology("general", "title");
+let placeholderAmount = Language.getTerminology("general", "amount");
 
 export default class BudgetModal {
   static showModal() {
+    let dropdownOptions = Object.values(dropdownOptionsData);
     const div = document.createElement("div");
     div.id = "form-calculator-content";
     div.innerHTML = `
@@ -48,6 +48,7 @@ export default class BudgetModal {
   }
 
   static showEditItemModal(e) {
+    let dropdownOptions = Object.values(dropdownOptionsData);
     this.showModal();
 
     const form = document.querySelector("#calculator-modal");

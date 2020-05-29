@@ -1,6 +1,9 @@
 import HistoryChart from "./components/charts/historyChart.js";
 import Chart from "./components/charts/chart.js";
 import Confirmation from "./confirmation.js";
+import PopOut from "./utils/popOut.js";
+import UI from "./ui.js";
+import Recommendation from "./recommendation.js";
 
 const ITEMS = "items";
 const CURRENTRECORD = "currentRecord";
@@ -33,15 +36,29 @@ export default class Store {
         "--confirmation-color",
         settings.colors.confirmationColor
       );
+
+      this.getLanguage(settings.language);
     });
   }
 
-  static getLanguage() {
-    fs.readFile(__dirname + "/language/es-mx.json", (err, data) => {
-      if (err) throw err;
-      let language = JSON.parse(data);
-      localStorage.setItem("language", JSON.stringify(language));
-    });
+  static getLanguage(language) {
+    console.log("get language ran");
+    let file = language;
+    try {
+      fs.readFile(__dirname + "/language/" + file + ".json", (err, data) => {
+        if (err) throw err;
+        let language = JSON.parse(data);
+        localStorage.setItem("language", JSON.stringify(language));
+      });
+    } finally {
+      Store.createRecordEmptyDatabase(),
+        Store.loadDatabase(),
+        Store.loadCompleteDatabase(),
+        PopOut.refreshChildWindows(),
+        Recommendation.displayRecommendations(),
+        Confirmation.showConfirmation(),
+        UI.displayItems();
+    }
   }
 
   static getItems() {

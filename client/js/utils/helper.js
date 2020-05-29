@@ -12,16 +12,18 @@ export default class Helper {
     const unixTimestamp = item;
     let x = new Date(unixTimestamp * 1000);
     const locale = JSON.parse(localStorage.getItem("language"));
-    const months = locale.time.shortMonths;
-    const year = x.getFullYear();
-    const month = months[x.getMonth()];
-    const date = x.getDate();
-    const hour = x.getHours();
-    const min = x.getMinutes();
-    const sec = x.getSeconds();
-    const time =
-      date + " " + month + " " + year + " " + hour + ":" + min + ":" + sec;
-    return time;
+    if (locale) {
+      const months = locale.time.shortMonths;
+      const year = x.getFullYear();
+      const month = months[x.getMonth()];
+      const date = x.getDate();
+      const hour = x.getHours();
+      const min = x.getMinutes();
+      const sec = x.getSeconds();
+      const time =
+        date + " " + month + " " + year + " " + hour + ":" + min + ":" + sec;
+      return time;
+    }
   }
 
   static removeDuplicates(array) {

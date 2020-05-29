@@ -13,18 +13,7 @@ import Confirmation from "./confirmation.js";
 const EDIT = "edit";
 const SUBMIT = "submit";
 
-document.addEventListener(
-  "DOMContentLoaded",
-  Store.getLanguage(),
-  Store.getSettings(),
-  Store.createRecordEmptyDatabase(),
-  Store.loadDatabase(),
-  Store.loadCompleteDatabase(),
-  PopOut.refreshChildWindows(),
-  UI.displayItems(),
-  Recommendation.displayRecommendations(),
-  Confirmation.showConfirmation()
-);
+document.addEventListener("DOMContentLoaded", Store.getSettings());
 
 document
   .querySelector("#form-calculator-submit")
