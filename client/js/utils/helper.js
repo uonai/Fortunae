@@ -11,20 +11,8 @@ export default class Helper {
   static getTimeFromUNIXTimestamp(item) {
     const unixTimestamp = item;
     let x = new Date(unixTimestamp * 1000);
-    const months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
+    const locale = JSON.parse(localStorage.getItem("language"));
+    const months = locale.time.shortMonths;
     const year = x.getFullYear();
     const month = months[x.getMonth()];
     const date = x.getDate();

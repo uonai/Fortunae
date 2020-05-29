@@ -6,6 +6,9 @@ const foregroundColor = getComputedStyle(
 
 const container = d3.select(".container");
 
+const locale = JSON.parse(localStorage.getItem("language"));
+d3.timeFormatDefaultLocale(locale.time);
+
 // BEGIN NODE ALGORITHSM
 const data = JSON.parse(localStorage.getItem("items"));
 console.log(data);

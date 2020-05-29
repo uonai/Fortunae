@@ -11,6 +11,10 @@ export default class HistoryChart {
     const backgroundColor = getComputedStyle(
       document.documentElement
     ).getPropertyValue("--background-color");
+
+    const locale = JSON.parse(localStorage.getItem("language"));
+    d3.timeFormatDefaultLocale(locale.time);
+
     const line = d3
       .line()
       .x(function (d) {

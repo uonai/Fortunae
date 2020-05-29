@@ -8,6 +8,9 @@ const backgroundColor = getComputedStyle(
 
 const result = JSON.parse(localStorage.getItem("category1ItemsHistorical"));
 
+const locale = JSON.parse(localStorage.getItem("language"));
+d3.timeFormatDefaultLocale(locale.time);
+
 reduceItems = (itemType) => {
   let groupOfItems = itemType.reduce((x, a) => {
     x[a.date] = [...(x[a.date] || []), a];

@@ -12,7 +12,7 @@ const fs = require("fs");
 const { getCurrentWindow } = require("electron").remote;
 
 export default class Store {
-  static getColors() {
+  static getSettings() {
     console.log("colors");
     fs.readFile(__dirname + "/settings.json", (err, data) => {
       if (err) throw err;
@@ -35,6 +35,15 @@ export default class Store {
       );
     });
   }
+
+  static getLanguage() {
+    fs.readFile(__dirname + "/language/es-mx.json", (err, data) => {
+      if (err) throw err;
+      let language = JSON.parse(data);
+      localStorage.setItem("language", JSON.stringify(language));
+    });
+  }
+
   static getItems() {
     let items;
     if (localStorage.getItem(ITEMS) === null) {

@@ -1,0 +1,79 @@
+{
+  "general": {
+    "save": "Save",
+    "clone": "Clone",
+    "delete": "Delete",
+    "saveEdits": "Save Edits",
+    "cancel": "Cancel",
+    "title": "Title1",
+    "amount": "Amount1"
+  },
+  "time": {
+    "decimal": ",",
+    "thousands": ".",
+    "grouping": [3],
+    "currency": ["€", ""],
+    "dateTime": "%a %b %e %X %Y",
+    "date": "%d/%m/%Y",
+    "time": "%H:%M:%S",
+    "periods": ["AM", "PM"],
+    "days": [
+      "Domingo",
+      "Lunes",
+      "Martes",
+      "Miércoles",
+      "Jueves",
+      "Viernes",
+      "Sábado"
+    ],
+    "shortDays": ["Dom", "Lun", "Mar", "Mi", "Jue", "Vie", "Sab"],
+    "months": [
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Diciembre"
+    ],
+    "shortMonths": [
+      "Ene",
+      "Feb",
+      "Mar",
+      "Abr",
+      "May",
+      "Jun",
+      "Jul",
+      "Ago",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dic"
+    ]
+  },
+  "funds": {
+    "title": "funds",
+    "categories": {
+      "category": "Category",
+      "checking": "Comprobación",
+      "saving": "Saving",
+      "investment": "Investment",
+      "emergency": "Emergency"
+    },
+    "addFund": "Add Fund"
+  },
+  "budget": {
+    "title": "budget",
+    "categories": {
+      "category": "Category",
+      "wants": "Wants",
+      "needs": "Needs"
+    },
+    "modalTitle": "Budget Item"
+  }
+}

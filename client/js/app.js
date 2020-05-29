@@ -15,7 +15,8 @@ const SUBMIT = "submit";
 
 document.addEventListener(
   "DOMContentLoaded",
-  Store.getColors(),
+  Store.getLanguage(),
+  Store.getSettings(),
   Store.createRecordEmptyDatabase(),
   Store.loadDatabase(),
   Store.loadCompleteDatabase(),
