@@ -210,12 +210,9 @@ function createSankeyDiagram(sampleData, frame) {
     .append("path")
     .attr("class", "link")
     .attr("d", sankeyLinks)
-    .attr("fill", "none")
-    .attr("stroke", (d) => foregroundColor)
-    .attr("stroke-width", (d) => "3px")
     .attr("opacity", 1)
     .on("mouseenter", function (d) {
-      d3.select(this).transition().attr("opacity", 0.2);
+      d3.select(this).transition().attr("opacity", 0.1);
 
       tooltip
         .append("p")

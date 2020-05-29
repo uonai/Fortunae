@@ -94,7 +94,7 @@ export default class Chart {
 
         const lineOpacity = "1";
         const lineOpacityHover = "0.1";
-        const otherLinesOpacityHover = "0.5";
+        const otherLinesOpacityHover = "0.1";
         const lineStroke = "2px";
         const lineStrokeHover = "4px";
 

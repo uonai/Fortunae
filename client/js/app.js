@@ -1,14 +1,12 @@
 import UI from "./ui.js";
 import Store from "./store.js";
 import Recommendation from "./recommendation.js";
-import Chart from "./components/charts/chart.js";
 import DebtModal from "./components/modals/debtModal.js";
 import ExpenseModal from "./components/modals/expenseModal.js";
 import IncomeModal from "./components/modals/incomeModal.js";
 import FundModal from "./components/modals/fundModal.js";
 import BudgetModal from "./components/modals/budgetModal.js";
-import PopOut from "./popOut.js";
-import HistoryChart from "./components/charts/historyChart.js";
+import PopOut from "./utils/popOut.js";
 import DeleteDialog from "./components/dialogs/delete.js";
 import Confirmation from "./confirmation.js";
 

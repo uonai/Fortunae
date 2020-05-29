@@ -279,13 +279,16 @@ form input .add-button {
 }
 
 path {
-  fill: none;
   stroke: var(--foreground-color);
   stroke-width: 2;
 }
 
-/**bordered section **/
+.sankey path:hover {
+  stroke-width: 4;
+  opacity: 0.1;
+}
 
+/**bordered section **/
 .bordered {
   border: 2px solid var(--foreground-color);
   padding: 15px 20px 20px;
