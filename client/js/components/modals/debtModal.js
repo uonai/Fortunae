@@ -90,7 +90,7 @@ export default class DebtModal {
     const alertText = "Please fill out all form fields.";
     const numberAlertText = "Please enter valid number";
 
-    if (title === "" || amount === "") {
+    if (title === "" || amount === "" || type === "Category") {
       UI.showAlert(alertText);
     } else if (!Number(amount)) {
       UI.showAlert(numberAlertText);

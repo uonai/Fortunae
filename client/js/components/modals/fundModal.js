@@ -4,7 +4,7 @@ import Store from "../../store.js";
 import Helper from "../../utils/helper.js";
 
 const dropdownOptions = [
-  "Fund Type",
+  "Category",
   "Checking",
   "Saving",
   "Investment",
@@ -90,7 +90,7 @@ export default class FundModal {
     const type = document.querySelector("#form-calculator-type").value;
     const alertText = "Please fill out all form fields.";
     const numberAlertText = "Please enter valid number";
-    if (title === "" || amount === "") {
+    if (title === "" || amount === "" || type === "Category") {
       UI.showAlert(alertText);
     } else if (!Number(amount)) {
       UI.showAlert(numberAlertText);

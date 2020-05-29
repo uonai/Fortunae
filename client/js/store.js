@@ -1,6 +1,5 @@
 import HistoryChart from "./components/charts/historyChart.js";
 import Chart from "./components/charts/chart.js";
-import PopOut from "./popOut.js";
 import Confirmation from "./confirmation.js";
 
 const ITEMS = "items";
