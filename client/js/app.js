@@ -153,6 +153,24 @@ document.querySelector("#dialog-close").onclick = () => {
 };
 
 document.addEventListener("click", (e) => {
+  if (e.target.id === "child-window") {
+    PopOut.openFund();
+  }
+
+  if (e.target.id === "sankey-button") {
+    PopOut.openSankey();
+  }
+
+  if (e.target.id === "radar-button") {
+    PopOut.openSpider();
+  }
+
+  if (e.target.id === "burndown-button") {
+    PopOut.openBurndown();
+  }
+});
+
+document.addEventListener("click", (e) => {
   const isButton = e.target.nodeName === "BUTTON";
 
   if (!isButton) {
@@ -189,27 +207,9 @@ document.addEventListener("click", (e) => {
         console.log("none found");
     }
   }
-
   if (isButton && e.target.className === "menu") {
     Menu.showModal(e.target);
   }
-
-  if (isButton && e.target.id === "child-window") {
-    PopOut.openFund();
-  }
-
-  if (isButton && e.target.id === "sankey-button") {
-    PopOut.openSankey();
-  }
-
-  if (isButton && e.target.id === "radar-button") {
-    PopOut.openSpider();
-  }
-
-  if (isButton && e.target.id === "burndown-button") {
-    PopOut.openBurndown();
-  }
-
   if (isButton && e.target.id === "tome-button") {
     PopOut.openTome();
   }

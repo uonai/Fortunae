@@ -16,10 +16,17 @@
     <form id="item-form"></form>
   </div>
   <button id="minimize-window">
-    <img src="./client/images/minimize.svg" width="12px" alt="minimize" />
+    <svg width="13" height="3" viewBox="0 0 13 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="12.8562" y1="1.85638" x2="0.856201" y2="1.85638" stroke=var(--foreground-color) stroke-width="2" />
+    </svg>
+
   </button>
   <button id="close-window">
-    <img src="./client/images/close.svg" width="12px" alt="close" />
+    <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="9.23823" y1="1.17598" x2="0.752953" y2="9.66126" stroke=var(--foreground-color) stroke-width="2" />
+      <line x1="9.39189" y1="9.80614" x2="0.906611" y2="1.32086" stroke=var(--foreground-color) stroke-width="2" />
+    </svg>
+
   </button>
   <div class="application-nav"></div>
   <div class="container">
@@ -27,10 +34,14 @@
       <section id="section-1" data-section="1">
         <header>
           Funds
-          <button id="child-window" class="header"></button>
+          <button class="header">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle id="child-window" cx="5" cy="5" r="5" fill=var(--foreground-color) />
+            </svg>
+          </button>
         </header>
         <ul id="item-list-1"></ul>
-        <button id="1" class="add-item" data-title="Current Funds" >
+        <button id="1" class="add-item" data-title="Current Funds">
           Add Fund [+]
         </button>
         <div id="item-chart-1" class="item-chart"></div>
@@ -38,7 +49,9 @@
       <section id="section-2" data-section="2">
         <header>
           Expenses
-          <button id="radar-button" class="header"></button>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle id="radar-button" cx="5" cy="5" r="5" fill=var(--foreground-color) />
+          </svg>
         </header>
         <ul id="item-list-2"></ul>
         <button id="2" class="add-item" data-title="Expenses">
@@ -49,7 +62,9 @@
       <section id="section-3" data-section="3">
         <header>
           Debts
-          <button id="burndown-button" class="header"></button>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle id="burndown-button" cx="5" cy="5" r="5" fill=var(--foreground-color) />
+          </svg>
         </header>
         <ul id="item-list-3"></ul>
         <button id="3" class="add-item" data-title="Debt Calculator">
@@ -60,7 +75,9 @@
       <section id="section-4" data-section="4">
         <header>
           Incomes
-          <button id="sankey-button" class="header"></button>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle id="sankey-button" cx="5" cy="5" r="5" fill=var(--foreground-color) />
+          </svg>
         </header>
         <ul id="item-list-4"></ul>
         <button id="4" class="add-item" data-title="Income Calculator">

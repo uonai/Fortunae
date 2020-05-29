@@ -273,7 +273,6 @@ if (result) {
       .append("g")
       .attr("class", "x axis")
       .attr("transform", `translate(0, ${height - margin})`)
-      .style("fill", foregroundColor)
       .call(xAxis);
 
     svg
@@ -282,7 +281,6 @@ if (result) {
       .call(yAxis)
       .append("text")
       .attr("y", 15)
-      .attr("transform", "rotate(-90)")
-      .attr("fill", foregroundColor);
+      .attr("transform", "rotate(-90)");
   }
 }

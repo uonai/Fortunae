@@ -1,8 +1,8 @@
 :root {
-  --foreground-color: #fff;
-  --background-color: #000;
+  --foreground-color: #000;
+  --background-color: #fff;
   --alert-color: #ffb545;
-  --confirmation-color: #fff;
+  --confirmation-color: #000;
 }
 
 @font-face {
@@ -125,9 +125,7 @@ section.chart header,
 }
 
 .header {
-  background-image: url(../images/dot.svg);
-  background-position: right top;
-  height: 10px;
+  height: 15px;
   width: 10px;
   margin-bottom: 0;
   padding-bottom: 0;
