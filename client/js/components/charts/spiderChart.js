@@ -10,8 +10,8 @@ const HALF_PI = Math.PI / 2;
 const removeDuplicates = (itemDates) => {
   return itemDates.filter((a, b) => itemDates.indexOf(a) === b);
 };
-
-const SpiderChart = function RadarChart(parent_selector, options) {
+let spider_chart = SpiderChart(".spider-chart");
+function SpiderChart(parent_selector, options) {
   // var data = [
   //   {
   //     name: "Feb",
@@ -458,4 +458,4 @@ const SpiderChart = function RadarChart(parent_selector, options) {
       .text((d) => d);
   }
   return svg;
-};
+}

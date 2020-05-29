@@ -164,7 +164,7 @@ h6 {
   letter-spacing: 2px;
   margin-bottom: 5px;
   text-transform: uppercase;
-  font-family: "Roboto Mono", monospace;
+  font-family: "Roboto Mono Bold", monospace;
 }
 
 .edit,
@@ -353,9 +353,6 @@ path {
 #modal-close,
 #modal-calculator-close,
 #dialog-close {
-  background-image: url("../images/close.svg");
-  background-position: right top;
-  background-repeat: no-repeat;
   float: right;
   height: 15px;
   width: 15px;
