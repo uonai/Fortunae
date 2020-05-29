@@ -1,8 +1,8 @@
 :root {
-  --foreground-color: #000;
-  --background-color: #fff;
+  --foreground-color: #fff;
+  --background-color: #000;
   --alert-color: #ffb545;
-  --confirmation-color: #000;
+  --confirmation-color: #fff;
 }
 
 @font-face {
@@ -304,7 +304,7 @@ path {
 }
 
 .dialog input {
-  color: #fff;
+  color: var(--foreground-color);
   background: none;
   border-width: 0px;
 }
@@ -559,19 +559,19 @@ body {
   opacity: 0;
   padding: 1rem;
   /* box-shadow: 0 0 4px rgba(66, 66, 78, 0.2); */
-  background: #000;
+  background: var(--background-color);
   line-height: 2;
   transition: all 0.2s ease-out;
 }
 
-.tick {
+.tick-sankey {
   paint-order: stroke;
-  stroke: #000;
+  stroke: var(--background-color);
   stroke-width: 5px;
   stroke-linecap: butt;
   stroke-linejoin: miter;
   font-weight: 400;
-  fill: #fff;
+  fill: var(--foreground-color);
 }
 
 .sankey-header,
@@ -586,7 +586,7 @@ body {
   text-align: center;
 }
 
-.radarChart {
+.spider-chart {
   display: inline-flex;
 }
 

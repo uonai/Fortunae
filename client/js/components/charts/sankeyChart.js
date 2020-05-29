@@ -273,7 +273,7 @@ function createSankeyDiagram(sampleData, frame) {
     .text((d) => d.name)
     .attr("font-size", "16")
     .attr("fill", foregroundColor)
-    .attr("class", "tick")
+    .attr("class", "tick-sankey")
     .attr("x", (d) => {
       if (d.sourceLinks.length > 0) {
         return d.x0 + sankey.nodeWidth() + 10;
