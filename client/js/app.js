@@ -15,17 +15,16 @@ const SUBMIT = "submit";
 
 document.addEventListener(
   "DOMContentLoaded",
+  Store.getColors(),
   Store.createRecordEmptyDatabase(),
   Store.loadDatabase(),
   Store.loadCompleteDatabase(),
   PopOut.refreshChildWindows(),
   UI.displayItems(),
   Recommendation.displayRecommendations(),
-  // HistoryChart.loadHistoryChart(),
   Confirmation.showConfirmation()
 );
 
-// EXPENSE FORM CALCULATOR SUBMIT
 document
   .querySelector("#form-calculator-submit")
   .addEventListener("click", (e) => {

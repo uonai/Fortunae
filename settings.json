@@ -1,0 +1,8 @@
+{
+  "colors": {
+    "foregroundColor": "#fff",
+    "backgroundColor": "#000",
+    "alertColor": "#ffb545",
+    "confirmationColor": "#fff"
+  }
+}

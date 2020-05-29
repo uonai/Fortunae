@@ -10,7 +10,31 @@ const ERROROCCURRED = "An error ocurred updating the file";
 
 const fs = require("fs");
 const { getCurrentWindow } = require("electron").remote;
+
 export default class Store {
+  static getColors() {
+    console.log("colors");
+    fs.readFile(__dirname + "/settings.json", (err, data) => {
+      if (err) throw err;
+      let settings = JSON.parse(data);
+      console.log(settings.colors.foregroundColor);
+
+      let global = document.documentElement;
+      global.style.setProperty(
+        "--foreground-color",
+        settings.colors.foregroundColor
+      );
+      global.style.setProperty(
+        "--background-color",
+        settings.colors.backgroundColor
+      );
+      global.style.setProperty("--alert-color", settings.colors.alertColor);
+      global.style.setProperty(
+        "--confirmation-color",
+        settings.colors.confirmationColor
+      );
+    });
+  }
   static getItems() {
     let items;
     if (localStorage.getItem(ITEMS) === null) {

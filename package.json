@@ -40,6 +40,11 @@
       "target": "nsis",
       "icon": "build/icon.ico",
       "asar": false
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "build/icon.ico",
+      "asar": false
     }
   }
 }
