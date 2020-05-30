@@ -127,9 +127,7 @@
     "categories": {
       "category": "Category",
       "secured": "Secured",
-      "unsecured": "Unsecured",
-      "revolving": "Revolving",
-      "nonRevolving": "Non-revolving"
+      "unsecured": "Unsecured"
     },
     "addItem": "Add Debt",
     "modalTitle": "Debt Item",

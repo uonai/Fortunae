@@ -1,30 +1,30 @@
 {
   "general": {
-    "save": "Savex",
-    "clone": "Clonex",
-    "delete": "Deletex",
-    "edit": "Editx",
-    "saveEdits": "Save Editsx",
-    "saveNew": "Save Newx",
-    "cancel": "Cancelx",
-    "title": "Titlex",
-    "amount": "Amountx",
-    "total": "Totalx",
-    "recommendations": "Recommendationsx",
-    "trendData": "Trend Datax",
-    "history": "Historyx",
-    "tome": "Tomex",
-    "noDataAvailable": "No Data Availablex",
-    "recordSaved": "Record has been savedx",
-    "recordCloned": "Record has been clonedx",
-    "recordSelected": "New historical record selectedx",
-    "recordDeleted": "Record has been deletedx",
-    "confirm": "Yes",
-    "deny": "No"
+    "save": "Guardar",
+    "clone": "Duplicar",
+    "delete": "Borrar",
+    "edit": "Editar",
+    "saveEdits": "Guardar",
+    "saveNew": "Guardar Nuevo",
+    "cancel": "Cancelar",
+    "title": "Titulo",
+    "amount": "Importe",
+    "total": "Total",
+    "recommendations": "Recomendaciones",
+    "trendData": "Datos de tendencia",
+    "history": "Instructiones",
+    "tome": "Manual",
+    "noDataAvailable": "Datos no disponsibles",
+    "recordSaved": "Grabación guardado",
+    "recordCloned": "Elemento ha sido duplicado",
+    "recordSelected": "Nuevo registro histórico ha sido seleccionado",
+    "recordDeleted": "Elemento borradó",
+    "confirm": "Confirmar",
+    "deny": "Negar"
   },
   "delete": {
-    "confirmation": "Are you sure?x",
-    "confirmationSubtext": "This will delete the financial record permanently.x"
+    "confirmation": "Estas seguro?",
+    "confirmationSubtext": "Esto eliminará el registro financiero permanentemente"
   },
   "time": {
     "decimal": ",",
@@ -75,84 +75,82 @@
     ]
   },
   "fund": {
-    "title": "fundsx",
+    "title": "Fondos",
     "categories": {
-      "category": "Categoryx",
-      "checking": "Checkingx",
-      "saving": "Savingx",
-      "investment": "Investmentx",
-      "emergency": "Emergencyx"
+      "category": "Categoria",
+      "checking": "Cuenta de Cheques",
+      "saving": "Cuenta de Ahorros",
+      "investment": "Inversión",
+      "emergency": "Emergencia"
     },
-    "addItem": "Add Fundx",
-    "modalTitle": "Fund Itemx",
-    "editItem": "Edit Fund Itemx"
+    "addItem": "Añadir Cuenta",
+    "modalTitle": "Itema",
+    "editItem": "Editar Elemento"
   },
   "expense": {
-    "title": "Expensesx",
-    "savings": "Savingsx",
+    "title": "Gastos",
+    "savings": "Cuenta de Ahorros",
     "categories": {
-      "category": "Categoryx",
-      "autoAndTransport": "Auto & Transportx",
-      "billsAndUtilities": "Bills & Utilitiesx",
-      "businessServices": "Business Servicesx",
-      "education": "Educationx",
-      "feesAndCharges": "Fees & Chargesx",
-      "foodAndDining": "Food & Diningx",
-      "giftsAndDonations": "Gifts & Donationsx",
-      "healthAndFitness": "Health & Fitnessx",
-      "investments": "Investmentsx",
-      "miscExpense": "Misc Expensex",
-      "personalCare": "Personal Carex",
-      "savings": "Savingsx",
-      "shopping": "Shoppingx",
-      "taxes": "Taxesx"
+      "category": "Categorias",
+      "autoAndTransport": "Transportación",
+      "billsAndUtilities": "Fracturas de Servicios Públicos",
+      "businessServices": "Servicios de Negocios",
+      "education": "Educación",
+      "feesAndCharges": "Honorarios y Cargos",
+      "foodAndDining": "Comida",
+      "giftsAndDonations": "Regalos y Donaciones",
+      "healthAndFitness": "Salud y Bienestar",
+      "investments": "Inversiónes",
+      "miscExpense": "Gastos Misceláneos",
+      "personalCare": "Cuidado Personal",
+      "savings": "Cuenta de Ahorros",
+      "shopping": "Compras",
+      "taxes": "Impuestos"
     },
-    "addItem": "Add Expensex",
-    "modalTitle": "Expense Itemx",
-    "editItem": "Edit Expense Itemx"
+    "addItem": "Agregar Gastos",
+    "modalTitle": "Partida de Gastos",
+    "editItem": "Edita Partida de Gastos"
   },
   "budget": {
-    "title": "Budgetx",
+    "title": "Presupuesto",
     "categories": {
-      "category": "Categoryx",
-      "wants": "Wantsx",
-      "needs": "Needsx"
+      "category": "Categorias",
+      "wants": "Cosas Que Quiero",
+      "needs": "Cosas Que Necesito"
     },
-    "addItem": "Add Itemx",
-    "modalTitle": "Budget Itemx",
-    "editItem": "Edit Budget Itemx"
+    "addItem": "Agrega Itemo",
+    "modalTitle": "Itemo Presupuesto",
+    "editItem": "Edita Itemo Presupuesto"
   },
   "debt": {
-    "title": "debtx",
+    "title": "Deuda",
     "categories": {
-      "category": "Categoryx",
-      "secured": "Securedx",
-      "unsecured": "Unsecuredx",
-      "revolving": "Revolvingx",
-      "nonRevolving": "Non-revolvingx"
+      "category": "Categorias",
+      "secured": "Seguro",
+      "unsecured": "No Segura"
     },
-    "addItem": "Add Debtx",
-    "modalTitle": "Debt Itemx",
-    "editItem": "Edit Debt Itemx"
+    "addItem": "Agrega Deuda",
+    "modalTitle": "Itema Deuda",
+    "editItem": "Edita Itema Deuda"
   },
   "income": {
-    "title": "Incomex",
+    "title": "Ingresos",
     "categories": {
-      "category": "Categoryx",
-      "active": "Activex",
-      "passive": "Passivex",
-      "portfolio": "Portfoliox"
+      "category": "Categorias",
+      "active": "Activa",
+      "passive": "Pasiva",
+      "portfolio": "La Cartera de Acciones"
     },
-    "addItem": "Add Incomex",
-    "modalTitle": "Income Itemx",
-    "editItem": "Edit Income Itemx"
+    "addItem": "Agrega Ingresos",
+    "modalTitle": "Itema Ingresos",
+    "editItem": "Edita Itema Ingresos"
   },
   "recommendation": {
-    "save": "Savex",
-    "spend": "Spendx",
-    "invest": "Investx",
-    "emergencyFund": "Emergency Fundx",
-    "needSourceOfIncome": "Need Source of Incomex"
+    "save": "Guardar",
+    "spend": "Gastar",
+    "invest": "Inversión",
+    "emergencyFund": "Fondo de Emergencia",
+    "needSourceOfIncome": "Necesitar Fuente de Ingresos"
   },
   "settings": {
     "title": "Settingsx",
