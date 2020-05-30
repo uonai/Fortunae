@@ -1,156 +1,259 @@
 <!DOCTYPE html>
 <html style="border-radius: 5px;">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
-  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+    <link rel="stylesheet" type="text/css" href="./client/css/style.css" />
+    <title>Fortunae</title>
+  </head>
 
-  <link rel="stylesheet" type="text/css" href="./client/css/style.css" />
-  <title>Fortunae</title>
-</head>
-
-<body>
-  <div id="form-container">
-    <form id="item-form"></form>
-  </div>
-  <button id="minimize-window">
-    <svg width="13" height="3" viewBox="0 0 13 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="12.8562" y1="1.85638" x2="0.856201" y2="1.85638" stroke=var(--foreground-color) stroke-width="2" />
-    </svg>
-
-  </button>
-  <button id="close-window">
-    <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="9.23823" y1="1.17598" x2="0.752953" y2="9.66126" stroke=var(--foreground-color) stroke-width="2" />
-      <line x1="9.39189" y1="9.80614" x2="0.906611" y2="1.32086" stroke=var(--foreground-color) stroke-width="2" />
-    </svg>
-
-  </button>
-  <div class="application-nav"></div>
-  <div class="container">
-    <div class="top">
-      <section id="section-1" data-section="1">
-        <header>
-          <span id="funds-header"></span>
-          <button class="header">
-            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle id="child-window" cx="5" cy="5" r="5" fill=var(--foreground-color) />
-            </svg>
-          </button>
-        </header>
-        <ul id="item-list-1"></ul>
-        <button id="1" class="add-item" data-title="Current Funds">
-        </button>
-        <div id="item-chart-1" class="item-chart"></div>
-      </section>
-      <section id="section-2" data-section="2">
-        <header>
-          <span id="expenses-header">Expenses</span>
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle id="radar-button" cx="5" cy="5" r="5" fill=var(--foreground-color) />
-          </svg>
-        </header>
-        <ul id="item-list-2"></ul>
-        <button id="2" class="add-item" data-title="Expenses">
-        </button>
-        <div id="item-chart-2" class="item-chart"></div>
-      </section>
-      <section id="section-3" data-section="3">
-        <header>
-          <span id="debts-header"></span>
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle id="burndown-button" cx="5" cy="5" r="5" fill=var(--foreground-color) />
-          </svg>
-        </header>
-        <ul id="item-list-3"></ul>
-        <button id="3" class="add-item" data-title="Debt Calculator">
-        </button>
-        <div id="item-chart-3" class="item-chart"></div>
-      </section>
-      <section id="section-4" data-section="4">
-        <header>
-          <span id="incomes-header"></span>
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle id="sankey-button" cx="5" cy="5" r="5" fill=var(--foreground-color) />
-          </svg>
-        </header>
-        <ul id="item-list-4"></ul>
-        <button id="4" class="add-item" data-title="Income Calculator">
-        </button>
-        <div id="item-chart-4" class="item-chart"></div>
-      </section>
+  <body>
+    <div id="form-container">
+      <form id="item-form"></form>
     </div>
-    <div class="middle">
-      <section>
-        <header><span id="recommendations-header"></span></header>
-        <ul id="recommendation-list"></ul>
-      </section>
-      <section class="chart">
-        <div class="chart-outer">
-          <header><span id="trend-data-header"></span></header>
-          <div class="chart-inner hidden">
-            <div id="line"></div>
-          </div>
-        </div>
-      </section>
-      <section class="last">
-        <div class="bordered">
-          <header><span id="budget-header"></span></header>
-          <ul id="item-list-5"></ul>
-          <button id="5" class="add-item" data-title="Needs">
-            Add Item [+]
-          </button>
-          <div id="item-chart-5" class="item-chart"></div>
-        </div>
-      </section>
-    </div>
-
-    <footer>
-      <header><span id="history-header"></span></header>
-      <svg width="920" height="30">
-        <g id="g-1"></g>
+    <button id="minimize-window">
+      <svg
+        width="13"
+        height="3"
+        viewBox="0 0 13 3"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="12.8562"
+          y1="1.85638"
+          x2="0.856201"
+          y2="1.85638"
+          stroke="var(--foreground-color)"
+          stroke-width="2"
+        />
       </svg>
-      <div id="tome">
-        <button id="tome-button"></button>
+    </button>
+    <button id="close-window">
+      <svg
+        width="11"
+        height="11"
+        viewBox="0 0 11 11"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="9.23823"
+          y1="1.17598"
+          x2="0.752953"
+          y2="9.66126"
+          stroke="var(--foreground-color)"
+          stroke-width="2"
+        />
+        <line
+          x1="9.39189"
+          y1="9.80614"
+          x2="0.906611"
+          y2="1.32086"
+          stroke="var(--foreground-color)"
+          stroke-width="2"
+        />
+      </svg>
+    </button>
+    <div class="application-nav"></div>
+    <div class="container">
+      <div class="top">
+        <section id="section-1" data-section="1">
+          <header>
+            <span id="funds-header"></span>
+            <button class="header">
+              <svg
+                width="10"
+                height="10"
+                viewBox="0 0 10 10"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  id="child-window"
+                  cx="5"
+                  cy="5"
+                  r="5"
+                  fill="var(--foreground-color)"
+                />
+              </svg>
+            </button>
+          </header>
+          <ul id="item-list-1"></ul>
+          <button id="1" class="add-item" data-title="Current Funds"></button>
+          <div id="item-chart-1" class="item-chart"></div>
+        </section>
+        <section id="section-2" data-section="2">
+          <header>
+            <span id="expenses-header">Expenses</span>
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 10 10"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                id="radar-button"
+                cx="5"
+                cy="5"
+                r="5"
+                fill="var(--foreground-color)"
+              />
+            </svg>
+          </header>
+          <ul id="item-list-2"></ul>
+          <button id="2" class="add-item" data-title="Expenses"></button>
+          <div id="item-chart-2" class="item-chart"></div>
+        </section>
+        <section id="section-3" data-section="3">
+          <header>
+            <span id="debts-header"></span>
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 10 10"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                id="burndown-button"
+                cx="5"
+                cy="5"
+                r="5"
+                fill="var(--foreground-color)"
+              />
+            </svg>
+          </header>
+          <ul id="item-list-3"></ul>
+          <button id="3" class="add-item" data-title="Debt Calculator"></button>
+          <div id="item-chart-3" class="item-chart"></div>
+        </section>
+        <section id="section-4" data-section="4">
+          <header>
+            <span id="incomes-header"></span>
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 10 10"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                id="sankey-button"
+                cx="5"
+                cy="5"
+                r="5"
+                fill="var(--foreground-color)"
+              />
+            </svg>
+          </header>
+          <ul id="item-list-4"></ul>
+          <button
+            id="4"
+            class="add-item"
+            data-title="Income Calculator"
+          ></button>
+          <div id="item-chart-4" class="item-chart"></div>
+        </section>
       </div>
-      <div id="confirmation"></div>
-      <div id="timestamp"></div>
-
-    </footer>
-
-    <div id="calculator-modal" class="modal">
-      <div class="modal-calculator-content">
-        <svg id="modal-calculator-close" width="11" height="11" viewBox="0 0 11 11" fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <line x1="9.23823" y1="1.17598" x2="0.752953" y2="9.66126" stroke=var(--foreground-color) stroke-width="2" />
-          <line x1="9.39189" y1="9.80614" x2="0.906611" y2="1.32086" stroke=var(--foreground-color) stroke-width="2" />
-        </svg>
-        <form id="modal-calculator-form">
-          <div class="form-group" id="modal-calculator-footer">
-            <input type="button" id="form-calculator-edit-submit" value="" />
-            <input type="button" id="form-calculator-submit" value="" />
-            <input type="button" id="form-calculator-cancel" value="" />
+      <div class="middle">
+        <section>
+          <header><span id="recommendations-header"></span></header>
+          <ul id="recommendation-list"></ul>
+        </section>
+        <section class="chart">
+          <div class="chart-outer">
+            <header><span id="trend-data-header"></span></header>
+            <div class="chart-inner hidden">
+              <div id="line"></div>
+            </div>
           </div>
-        </form>
+        </section>
+        <section class="last">
+          <div class="bordered">
+            <header><span id="budget-header"></span></header>
+            <ul id="item-list-5"></ul>
+            <button id="5" class="add-item" data-title="Needs">
+              Add Item [+]
+            </button>
+            <div id="item-chart-5" class="item-chart"></div>
+          </div>
+        </section>
       </div>
-    </div>
-    <div id="dialog" class="dialog">
-      <button id="dialog-close"></button>
-      <header id="dialog-header"></header>
-      <p><span id="dialog-subtext"></span></p>
-      <input type="button" id="dialog-confirm" value="" />
-      <input type="button" id="dialog-cancel" value="" />
-    </div>
-    <ul id="right-menu" class="right-menu">
-      <li><button id="save-record" class="save-record"></button></li>
-      <li><button id="clone-record" class="clone-record"></button></li>
-      <li><button id="delete-record" class="delete-record"></button></li>
-    </ul>
-    <script src="./client/library/d3.js"></script>
-    <script type="module" src="./client/js/app.js"></script>
-    <script src="./client/js/utils/menu.js"></script>
-</body>
 
+      <footer>
+        <header><span id="history-header"></span></header>
+        <svg width="920" height="30">
+          <g id="g-1"></g>
+        </svg>
+        <div id="tome">
+          <button id="tome-button"></button>
+        </div>
+        <div id="confirmation"></div>
+        <div id="timestamp"></div>
+      </footer>
+
+      <div id="calculator-modal" class="modal">
+        <div class="modal-calculator-content">
+          <svg
+            id="modal-calculator-close"
+            width="11"
+            height="11"
+            viewBox="0 0 11 11"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="9.23823"
+              y1="1.17598"
+              x2="0.752953"
+              y2="9.66126"
+              stroke="var(--foreground-color)"
+              stroke-width="2"
+            />
+            <line
+              x1="9.39189"
+              y1="9.80614"
+              x2="0.906611"
+              y2="1.32086"
+              stroke="var(--foreground-color)"
+              stroke-width="2"
+            />
+          </svg>
+          <form id="modal-calculator-form">
+            <div class="form-group" id="modal-calculator-footer">
+              <input type="button" id="form-calculator-edit-submit" value="" />
+              <input type="button" id="form-calculator-submit" value="" />
+              <input type="button" id="form-calculator-cancel" value="" />
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id="dialog" class="dialog">
+        <button id="dialog-close"></button>
+        <header id="dialog-header"></header>
+        <p><span id="dialog-subtext"></span></p>
+        <input type="button" id="dialog-confirm" value="" />
+        <input type="button" id="dialog-cancel" value="" />
+      </div>
+      <ul id="right-menu" class="right-menu">
+        <li><button id="save-record" class="save-record"></button></li>
+        <li><button id="clone-record" class="clone-record"></button></li>
+        <li><button id="delete-record" class="delete-record"></button></li>
+      </ul>
+      <script src="./client/library/d3.js"></script>
+      <script type="module" src="./client/js/app.js"></script>
+      <script src="./client/js/utils/menu.js"></script>
+    </div>
+  </body>
 </html>
