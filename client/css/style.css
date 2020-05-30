@@ -107,22 +107,22 @@ body {
 }
 
 .menu {
-  left: 10px;
+  right: -220px;
   position: absolute;
   top: 320px;
-  transform: rotate(-90deg);
+  transform: rotate(90deg);
+  width: 500px;
+  display: table; /* Allow the centering to work */
+  margin: 0 auto;
 }
 
 .right-menu {
-  position: absolute;
-  right: -80px;
-  top: 320px;
-  transform: rotate(90deg);
+  justify-content: center;
+  display: flex;
 }
 
 .right-menu li {
-  display: inline;
-  margin-right: 20px;
+  padding: 0 10px;
 }
 
 .application-nav {
