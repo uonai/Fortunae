@@ -1,3 +1,4 @@
+import Language from "../../utils/language.js";
 const foregroundColor = getComputedStyle(
   document.documentElement
 ).getPropertyValue("--foreground-color");
@@ -7,14 +8,22 @@ const foregroundColor = getComputedStyle(
 const container = d3.select(".container");
 
 const locale = JSON.parse(localStorage.getItem("language"));
+const expenseCategories = Language.getTerminology("expense", "categories");
+const incomeCategories = Language.getTerminology("income", "categories");
+const expensesTerminology = Language.getTerminology("expense", "title");
+const savingsTerminology = Language.getTerminology("expense", "savings");
+const incomesTerminology = Language.getTerminology("income", "title");
+const totalTerminology = Language.getTerminology("general", "total");
+
+console.log(incomeCategories);
 d3.timeFormatDefaultLocale(locale.time);
 
 // BEGIN NODE ALGORITHSM
 const data = JSON.parse(localStorage.getItem("items"));
 console.log(data);
-incomeSources = [];
-expenseSources = [];
-savingSources = [];
+const incomeSources = [];
+const expenseSources = [];
+const savingSources = [];
 
 data.forEach((item) => {
   if (item.category == "4") {
@@ -40,7 +49,7 @@ let groupOfItems = expenseSources.reduce((x, a) => {
 
 let expenseCategoryRollup = [];
 for (let type of Object.keys(groupOfItems)) {
-  numbers = [];
+  const numbers = [];
   const items = groupOfItems[type];
 
   items.forEach((item) => {
@@ -49,7 +58,19 @@ for (let type of Object.keys(groupOfItems)) {
   });
 
   const numbersTotal = numbers.reduce((a, b) => a + b, 0);
-  expenseCategoryRollup.push({ type: type, amount: numbersTotal });
+
+  let expenseTypeTerminology = "";
+  Object.keys(expenseCategories).forEach((key) => {
+    if (key == type) {
+      const x = expenseCategories[key];
+      console.log(x);
+      expenseTypeTerminology = x;
+    }
+  });
+  expenseCategoryRollup.push({
+    type: expenseTypeTerminology,
+    amount: numbersTotal,
+  });
 }
 
 // END EXPENSE ROLLUP
@@ -66,7 +87,7 @@ console.log(groupOfSavingItems);
 
 let savingCategoryRollup = [];
 for (let type of Object.keys(groupOfSavingItems)) {
-  numbers = [];
+  const numbers = [];
   const items = groupOfSavingItems[type];
 
   items.forEach((item) => {
@@ -75,21 +96,32 @@ for (let type of Object.keys(groupOfSavingItems)) {
   });
 
   const numbersTotal = numbers.reduce((a, b) => a + b, 0);
-  savingCategoryRollup.push({ type: type, amount: numbersTotal });
-}
 
-console.log(savingCategoryRollup);
+  let savingsTypeTerminology = "";
+  Object.keys(expenseCategories).forEach((key) => {
+    if (key == type) {
+      const x = expenseCategories[key];
+      console.log(x);
+      savingsTypeTerminology = x;
+    }
+  });
+
+  savingCategoryRollup.push({
+    type: savingsTypeTerminology,
+    amount: numbersTotal,
+  });
+}
 
 // END SAVINGS ROLLUP
 
-nodes = [];
+const nodes = [];
 incomeSources.forEach((item) => {
   nodes.push({ name: item.title });
 });
 
-nodes.push({ name: "Income" }, { name: "Expenses" });
+nodes.push({ name: incomesTerminology }, { name: expensesTerminology });
 if (savingCategoryRollup.length) {
-  nodes.push({ name: "Savings" });
+  nodes.push({ name: savingsTerminology });
 }
 
 expenseCategoryRollup.forEach((item) => {
@@ -100,8 +132,8 @@ savingCategoryRollup.forEach((item) => {
   nodes.push({ name: item.type });
 });
 
-links = [];
-totalIncome = [];
+const links = [];
+const totalIncome = [];
 incomeSources.forEach((item, index) => {
   links.push({
     source: index,
@@ -117,7 +149,7 @@ links.push({
   value: totalIncome.reduce((a, b) => a + b, 0),
 });
 
-totalSavings = [];
+const totalSavings = [];
 if (savingCategoryRollup.length) {
   savingCategoryRollup.forEach((item) => {
     totalSavings.push(Number(item.amount));
@@ -223,7 +255,9 @@ function createSankeyDiagram(sampleData, frame) {
           `<strong>${d.source.name}</strong> - <strong>${d.target.name}</strong>`
         );
 
-      tooltip.append("p").html(`Total: <strong>${d.value}</strong>`);
+      tooltip
+        .append("p")
+        .html(`${totalTerminology}: <strong>${d.value}</strong>`);
 
       tooltip.style("opacity", 1).style("left", `200px`).style("top", `200px`);
     })

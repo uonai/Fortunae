@@ -6,7 +6,8 @@
     "saveEdits": "Save Edits",
     "cancel": "Cancel",
     "title": "Title1",
-    "amount": "Amount1"
+    "amount": "Amount1",
+    "total": "Totalx"
   },
   "time": {
     "decimal": ",",
@@ -70,6 +71,8 @@
     "editItem": "Edit Fund Itemx"
   },
   "expense": {
+    "title": "Expensesx",
+    "savings": "Savingsx",
     "categories": {
       "category": "Categoryx",
       "autoAndTransport": "Auto & Transportx",
@@ -113,7 +116,7 @@
     "editItem": "Edit Debt Itemx"
   },
   "income": {
-    "title": "incomex",
+    "title": "Incomex",
     "categories": {
       "category": "Categoryx",
       "active": "Activex",

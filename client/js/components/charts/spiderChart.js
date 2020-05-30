@@ -1,3 +1,5 @@
+import Language from "../../utils/language.js";
+
 const foregroundColor = getComputedStyle(
   document.documentElement
 ).getPropertyValue("--foreground-color");
@@ -40,11 +42,12 @@ function SpiderChart(parent_selector, options) {
   // ];
 
   const locale = JSON.parse(localStorage.getItem("language"));
+  const expenseCategories = Language.getTerminology("expense", "categories");
   d3.timeFormatDefaultLocale(locale.time);
 
   const items = JSON.parse(localStorage.getItem("items"));
   console.log(items);
-  expenseSources = [];
+  const expenseSources = [];
 
   items.forEach((item) => {
     if (item.category == "2") {
@@ -59,7 +62,7 @@ function SpiderChart(parent_selector, options) {
 
   let categoryRollup = [];
   for (let category of Object.keys(groupOfItems)) {
-    numbers = [];
+    const numbers = [];
     const items = groupOfItems[category];
 
     items.forEach((item) => {
@@ -67,7 +70,17 @@ function SpiderChart(parent_selector, options) {
     });
 
     const numbersTotal = numbers.reduce((a, b) => a + b, 0);
-    categoryRollup.push({ type: category, amount: numbersTotal });
+
+    let expenseTypeTerminology = "";
+    Object.keys(expenseCategories).forEach((key) => {
+      if (key == category) {
+        const x = expenseCategories[key];
+        console.log(x);
+        expenseTypeTerminology = x;
+      }
+    });
+
+    categoryRollup.push({ type: expenseTypeTerminology, amount: numbersTotal });
   }
 
   const data1 = categoryRollup;
