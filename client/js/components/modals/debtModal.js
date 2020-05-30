@@ -7,12 +7,13 @@ import Language from "../../utils/language.js";
 const dropdownOptionsData = Language.getTerminology("debt", "categories");
 
 let modalTitle = Language.getTerminology("debt", "modalTitle");
+let editItem = Language.getTerminology("debt", "editItem");
 let placeholderTitle = Language.getTerminology("general", "title");
 let placeholderAmount = Language.getTerminology("general", "amount");
 
 export default class DebtModal {
   static showModal() {
-    let dropdownOptions = Object.values(dropdownOptionsData);
+    let dropdownOptions = dropdownOptionsData;
     const div = document.createElement("div");
     div.id = "form-calculator-content";
     div.innerHTML = `
@@ -38,25 +39,27 @@ export default class DebtModal {
 
     const formType = document.querySelector("#form-calculator-type");
 
-    for (var i = 0; i < dropdownOptions.length; i++) {
-      var opt = document.createElement("option");
-      opt.innerHTML = dropdownOptions[i];
-      opt.value = dropdownOptions[i];
+    Object.keys(dropdownOptions).forEach((key, index) => {
+      console.log(key, dropdownOptions[key]);
+      let opt = document.createElement("option");
+      opt.innerHTML = dropdownOptions[key];
+      opt.value = key;
+      opt.id = key;
       formType.appendChild(opt);
-    }
+    });
 
     const formTitle = document.querySelector("#form-calculator-title");
     formTitle.focus();
   }
 
   static showEditItemModal(e) {
-    let dropdownOptions = Object.values(dropdownOptionsData);
+    let dropdownOptions = dropdownOptionsData;
     this.showModal();
     const form = document.querySelector("#calculator-modal");
     form.classList.add("edit");
 
     const formHeader = document.querySelector("#form-calculator-header");
-    formHeader.innerHTML = `Edit Debt`;
+    formHeader.innerHTML = `${editItem}`;
 
     const formCategory = document.querySelector("#form-calculator-category");
     formCategory.value = `${e.dataset.category}`;
@@ -75,13 +78,13 @@ export default class DebtModal {
 
     const formType = document.querySelector("#form-calculator-type");
     const datasetType = `${e.dataset.type}`;
-    for (var i = 0; i < dropdownOptions.length; i++) {
-      if (dropdownOptions[i] == datasetType) {
-        var option = i;
-        formType.selectedIndex = option;
+    Object.keys(dropdownOptions).forEach((key, index) => {
+      console.log(datasetType);
+      if (key == datasetType) {
+        formType.selectedIndex = Object.keys(dropdownOptions).indexOf(key);
         return;
       }
-    }
+    });
   }
 
   static validate(action) {

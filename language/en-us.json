@@ -85,7 +85,8 @@
       "shopping": "Shopping",
       "taxes": "Taxes"
     },
-    "modalTitle": "Expense Item"
+    "modalTitle": "Expense Item",
+    "editItem": "Edit Expense Item"
   },
   "budget": {
     "title": "budget",
@@ -94,7 +95,8 @@
       "wants": "Wants",
       "needs": "Needs"
     },
-    "modalTitle": "Budget Item"
+    "modalTitle": "Budget Item",
+    "editItem": "Edit Budget Item"
   },
   "debt": {
     "title": "debt",
@@ -105,6 +107,7 @@
       "revolving": "Revolving",
       "nonRevolving": "Non-revolving"
     },
-    "modalTitle": "Debt Item"
+    "modalTitle": "Debt Item",
+    "editItem": "Edit Debt Item"
   }
 }
