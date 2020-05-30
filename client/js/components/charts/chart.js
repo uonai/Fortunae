@@ -1,3 +1,5 @@
+import Language from "../../utils/language.js";
+
 export default class Chart {
   static reduceItems = (itemType) => {
     let groupOfItems = itemType.reduce((x, a) => {
@@ -29,6 +31,8 @@ export default class Chart {
     const result = JSON.parse(localStorage.getItem("category1ItemsHistorical"));
 
     const locale = JSON.parse(localStorage.getItem("language"));
+    const headers = Language.getTerminology("fund", "categories");
+
     if (locale) {
       d3.timeFormatDefaultLocale(locale.time);
     }
@@ -43,16 +47,16 @@ export default class Chart {
         let emergencyItems = [];
 
         result.forEach((item) => {
-          if (item.item.type == "Checking") {
+          if (item.item.type == "checking") {
             checkingItems.push(item);
           }
-          if (item.item.type == "Saving") {
+          if (item.item.type == "saving") {
             savingItems.push(item);
           }
-          if (item.item.type == "Investment") {
+          if (item.item.type == "investment") {
             investmentItems.push(item);
           }
-          if (item.item.type == "Emergency") {
+          if (item.item.type == "emergency") {
             emergencyItems.push(item);
           }
         });
@@ -64,19 +68,19 @@ export default class Chart {
 
         const data = [
           {
-            name: "Checking",
+            name: headers[Object.keys(headers)[0]],
             values: db,
           },
           {
-            name: "Saving",
+            name: headers[Object.keys(headers)[1]],
             values: db2,
           },
           {
-            name: "Investment",
+            name: headers[Object.keys(headers)[2]],
             values: db3,
           },
           {
-            name: "Emergency",
+            name: headers[Object.keys(headers)[3]],
             values: db4,
           },
         ];

@@ -1,12 +1,15 @@
+import Language from "../../utils/language.js";
+
 const foregroundColor = getComputedStyle(
   document.documentElement
 ).getPropertyValue("--foreground-color");
 
 const result = JSON.parse(localStorage.getItem("category3ItemsHistorical"));
 const locale = JSON.parse(localStorage.getItem("language"));
+const headers = Language.getTerminology("debt", "categories");
 d3.timeFormatDefaultLocale(locale.time);
 
-reduceItems = (itemType) => {
+const reduceItems = (itemType) => {
   console.log(itemType);
   let groupOfItems = itemType.reduce((x, a) => {
     x[a.date] = [...(x[a.date] || []), a];
@@ -15,7 +18,7 @@ reduceItems = (itemType) => {
 
   let categoryRollup = [];
   for (let date of Object.keys(groupOfItems)) {
-    numbers = [];
+    const numbers = [];
     const items = groupOfItems[date];
 
     items.forEach((item) => {
@@ -35,22 +38,22 @@ reduceItems = (itemType) => {
 };
 
 if (result) {
-  securedItems = [];
-  unsecuredItems = [];
-  revolvingItems = [];
-  nonRevolvingItems = [];
+  const securedItems = [];
+  const unsecuredItems = [];
+  const revolvingItems = [];
+  const nonRevolvingItems = [];
 
   result.forEach((item) => {
-    if (item.item.type == "Secured") {
+    if (item.item.type == "secured") {
       securedItems.push(item);
     }
-    if (item.item.type == "Unsecured") {
+    if (item.item.type == "unsecured") {
       unsecuredItems.push(item);
     }
-    if (item.item.type == "Revolving") {
+    if (item.item.type == "revolving") {
       revolvingItems.push(item);
     }
-    if (item.item.type == "Non-revolving") {
+    if (item.item.type == "nonRevolving") {
       nonRevolvingItems.push(item);
     }
   });
@@ -67,19 +70,19 @@ if (result) {
 
   const data = [
     {
-      name: "Secured",
+      name: headers[Object.keys(headers)[0]],
       values: db,
     },
     {
-      name: "Unsecured",
+      name: headers[Object.keys(headers)[1]],
       values: db2,
     },
     {
-      name: "Revolving",
+      name: headers[Object.keys(headers)[2]],
       values: db3,
     },
     {
-      name: "Non-revolving",
+      name: headers[Object.keys(headers)[3]],
       values: db4,
     },
   ];

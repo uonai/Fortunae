@@ -19,10 +19,10 @@ savingSources = [];
 data.forEach((item) => {
   if (item.category == "4") {
     incomeSources.push(item);
-  } else if (item.category == "2" && item.type !== "Savings") {
+  } else if (item.category == "2" && item.type !== "savings") {
     console.log(item);
     expenseSources.push(item);
-  } else if (item.category == "2" && item.type == "Savings") {
+  } else if (item.category == "2" && item.type == "savings") {
     console.log(item);
     savingSources.push(item);
   }

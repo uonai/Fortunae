@@ -1,3 +1,5 @@
+import Language from "../../utils/language.js";
+
 const foregroundColor = getComputedStyle(
   document.documentElement
 ).getPropertyValue("--foreground-color");
@@ -9,9 +11,10 @@ const backgroundColor = getComputedStyle(
 const result = JSON.parse(localStorage.getItem("category1ItemsHistorical"));
 
 const locale = JSON.parse(localStorage.getItem("language"));
+const headers = Language.getTerminology("fund", "categories");
 d3.timeFormatDefaultLocale(locale.time);
 
-reduceItems = (itemType) => {
+const reduceItems = (itemType) => {
   let groupOfItems = itemType.reduce((x, a) => {
     x[a.date] = [...(x[a.date] || []), a];
     return x;
@@ -19,7 +22,7 @@ reduceItems = (itemType) => {
 
   let categoryRollup = [];
   for (let date of Object.keys(groupOfItems)) {
-    numbers = [];
+    const numbers = [];
     const items = groupOfItems[date];
 
     items.forEach((item) => {
@@ -39,22 +42,22 @@ reduceItems = (itemType) => {
 };
 
 if (result) {
-  checkingItems = [];
-  savingItems = [];
-  investmentItems = [];
-  emergencyItems = [];
+  const checkingItems = [];
+  const savingItems = [];
+  const investmentItems = [];
+  const emergencyItems = [];
 
   result.forEach((item) => {
-    if (item.item.type == "Checking") {
+    if (item.item.type == "checking") {
       checkingItems.push(item);
     }
-    if (item.item.type == "Saving") {
+    if (item.item.type == "saving") {
       savingItems.push(item);
     }
-    if (item.item.type == "Investment") {
+    if (item.item.type == "investment") {
       investmentItems.push(item);
     }
-    if (item.item.type == "Emergency") {
+    if (item.item.type == "emergency") {
       emergencyItems.push(item);
     }
   });
@@ -66,19 +69,19 @@ if (result) {
 
   const data = [
     {
-      name: "Checking",
+      name: headers[Object.keys(headers)[0]],
       values: db,
     },
     {
-      name: "Saving",
+      name: headers[Object.keys(headers)[1]],
       values: db2,
     },
     {
-      name: "Investment",
+      name: headers[Object.keys(headers)[2]],
       values: db3,
     },
     {
-      name: "Emergency",
+      name: headers[Object.keys(headers)[3]],
       values: db4,
     },
   ];
