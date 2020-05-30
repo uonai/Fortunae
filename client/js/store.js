@@ -83,8 +83,8 @@ export default class Store {
 
   static buildApp() {
     Store.createRecordEmptyDatabase();
-    Store.loadDatabase();
     Store.loadCompleteDatabase();
+    Store.loadDatabase();
     PopOut.refreshChildWindows();
     Recommendation.displayRecommendations();
     Confirmation.showConfirmation();
@@ -280,19 +280,18 @@ export default class Store {
           return;
         }
         // alert("The record has been deleted");
-        localStorage.clear();
+        localStorage.removeItem(ITEMS);
+        localStorage.removeItem(CURRENTRECORD);
         this.getItems();
         Confirmation.writeConfirmation(recordDeletedTerminology);
         getCurrentWindow().reload();
-        // getCurrentWindow().removeAllListeners();
-        this.loadDatabase();
       });
     } else {
       alert(FILEUNAVAILABLE);
     }
   }
   static resetData(currentRecord, type) {
-    localStorage.clear();
+    // localStorage.clear();
     localStorage.removeItem(ITEMS);
     localStorage.removeItem(CURRENTRECORD);
     localStorage.setItem(CURRENTRECORD, currentRecord);
@@ -307,9 +306,8 @@ export default class Store {
     // this.getItems();
     localStorage.setItem(ITEMS, JSON.stringify(items));
     localStorage.setItem(CURRENTRECORD, timestamp);
-    this.loadCompleteDatabase();
-    this.loadDatabase();
-
+    // this.loadCompleteDatabase();
+    // this.loadDatabase();
     // this is an intense way to reload the window, need to find a different solution
     if (type === "save") {
       Confirmation.writeConfirmation(recordSavedTerminology);
