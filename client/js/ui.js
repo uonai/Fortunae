@@ -10,7 +10,6 @@ export default class UI {
     const fundsHeader = document.querySelector(`#funds-header`);
     fundsHeader.innerHTML = `${fundsHeaderTerminology}`;
 
-    console.log(fundsHeaderTerminology);
     const expensesHeaderTerminology = Language.getTerminology(
       "expense",
       "title"

@@ -38,12 +38,10 @@ const { getCurrentWindow } = require("electron").remote;
 
 export default class Store {
   static getSettings() {
-    console.log("colors");
     fs.readFile(__dirname + "/settings.json", (err, data) => {
       if (err) throw err;
       let settings = JSON.parse(data);
-      console.log(settings.colors.foregroundColor);
-
+      localStorage.setItem("settings", JSON.stringify(settings));
       let global = document.documentElement;
       global.style.setProperty(
         "--foreground-color",
@@ -65,6 +63,15 @@ export default class Store {
 
   static getLanguage(language) {
     let file = language;
+
+    fs.readdir(__dirname + "/language/", (err, languages) => {
+      let languageDirectory = [];
+      languages.forEach((language) => {
+        languageDirectory.push(language);
+      });
+
+      localStorage.setItem("languages", JSON.stringify(languageDirectory));
+    });
 
     fs.readFile(__dirname + "/language/" + file + ".json", (err, data) => {
       if (err) throw err;
@@ -177,7 +184,6 @@ export default class Store {
         "category1ItemsHistorical",
         JSON.stringify(category1)
       );
-      console.log(category1);
       localStorage.setItem(
         "category2ItemsHistorical",
         JSON.stringify(category2)

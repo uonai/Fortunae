@@ -1,6 +1,7 @@
 import Store from "../../store.js";
 import HistoryItem from "../../models/historyItem.js";
 import Helper from "../../utils/helper.js";
+import Language from "../../utils/language.js";
 
 export default class HistoryChart {
   static loadHistoryChart() {
@@ -35,7 +36,6 @@ export default class HistoryChart {
     const historyData = JSON.parse(localStorage.getItem("history"));
     if (historyData) {
       const historyDataItems = historyData.length;
-      console.log(historyDataItems);
       let n = 15;
       const history = historyData.map(function (item) {
         const x = n + 10;

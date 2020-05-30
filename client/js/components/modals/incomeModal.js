@@ -37,7 +37,6 @@ export default class IncomeModal {
 
     const formType = document.querySelector("#form-calculator-type");
     Object.keys(dropdownOptions).forEach((key) => {
-      console.log(key, dropdownOptions[key]);
       let opt = document.createElement("option");
       opt.innerHTML = dropdownOptions[key];
       opt.value = key;

@@ -40,7 +40,6 @@ export default class FundModal {
 
     const formType = document.querySelector("#form-calculator-type");
     Object.keys(dropdownOptions).forEach((key) => {
-      console.log(key, dropdownOptions[key]);
       let opt = document.createElement("option");
       opt.innerHTML = dropdownOptions[key];
       opt.value = key;
@@ -79,7 +78,6 @@ export default class FundModal {
     const formType = document.querySelector("#form-calculator-type");
     const datasetType = `${e.dataset.type}`;
     Object.keys(dropdownOptions).forEach((key) => {
-      console.log(datasetType);
       if (key == datasetType) {
         formType.selectedIndex = Object.keys(dropdownOptions).indexOf(key);
         return;

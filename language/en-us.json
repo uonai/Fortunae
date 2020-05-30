@@ -153,5 +153,14 @@
     "invest": "Invest",
     "emergencyFund": "Emergency Fund",
     "needSourceOfIncome": "Need Source of Income"
+  },
+  "settings": {
+    "title": "Settings",
+    "foreground": "Foreground",
+    "background": "Background",
+    "alert": "Alert",
+    "confirmation": "Confirmation",
+    "language": "Language",
+    "editItem": "Edit Settings"
   }
 }

@@ -23,7 +23,6 @@ export default class Recommendation {
     let fundItems = [];
     if (data) {
       if (data.length) {
-        console.log("data available");
         data.forEach((item) => {
           if (item.category == "4") {
             incomeItems.push(Number(item.amount));
@@ -38,7 +37,6 @@ export default class Recommendation {
 
         const income = incomeItems.reduce((a, b) => a + b, 0);
         const emergencyFund = fundItems.reduce((a, b) => a + b, 0);
-        console.log(emergencyFund);
         if (income && emergencyFund >= income * 3) {
           this.addSaveRecommendationToList(income);
           this.addSpendRecommendationToList(income);

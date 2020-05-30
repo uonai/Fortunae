@@ -6,9 +6,9 @@ import ExpenseModal from "./components/modals/expenseModal.js";
 import IncomeModal from "./components/modals/incomeModal.js";
 import FundModal from "./components/modals/fundModal.js";
 import BudgetModal from "./components/modals/budgetModal.js";
+import SettingsModal from "./components/modals/settingsModal.js";
 import PopOut from "./utils/popOut.js";
 import DeleteDialog from "./components/dialogs/delete.js";
-import Confirmation from "./confirmation.js";
 
 const EDIT = "edit";
 const SUBMIT = "submit";
@@ -35,6 +35,9 @@ document
         break;
       case "5":
         BudgetModal.validate(SUBMIT);
+        break;
+      case "6":
+        SettingsModal.validate(SUBMIT);
         break;
       default:
         console.log("none found");
@@ -74,6 +77,9 @@ document
         break;
       case "5":
         BudgetModal.validate(EDIT);
+        break;
+      case "6":
+        SettingsModal.validate(EDIT);
         break;
       default:
         console.log("none found");
@@ -234,6 +240,9 @@ function doc_keyUp(e) {
       console.log("4");
     } else if (e.ctrlKey && e.keyCode == 53) {
       BudgetModal.showModal(e);
+      console.log("4");
+    } else if (e.ctrlKey && e.keyCode == 54) {
+      SettingsModal.showEditItemModal(e);
       console.log("4");
     }
   }
