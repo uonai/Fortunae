@@ -56,7 +56,7 @@
       "Dec"
     ]
   },
-  "funds": {
+  "fund": {
     "title": "funds",
     "categories": {
       "category": "Category",
@@ -65,7 +65,9 @@
       "investment": "Investment",
       "emergency": "Emergency"
     },
-    "addFund": "Add Fund"
+    "addFund": "Add Fund",
+    "modalTitle": "Fund Item",
+    "editItem": "Edit Fund Item"
   },
   "expense": {
     "categories": {
@@ -109,5 +111,16 @@
     },
     "modalTitle": "Debt Item",
     "editItem": "Edit Debt Item"
+  },
+  "income": {
+    "title": "income",
+    "categories": {
+      "category": "Category",
+      "active": "Active",
+      "passive": "Passive",
+      "portfolio": "Portfolio"
+    },
+    "modalTitle": "Income Item",
+    "editItem": "Edit Income Item"
   }
 }

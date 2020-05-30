@@ -21,7 +21,7 @@ export default class DebtModal {
         <input type="hidden" id="form-calculator-category" value="3" />
         <input type="hidden" id="form-calculator-id" value="3" />
         <div class="form-group">
-          <input type="text" id="form-calculator-title" class="form-control" placeholder=${placeholderTitle}/>
+          <input type="text" id="form-calculator-title" class="form-control" placeholder=${placeholderTitle} />
         </div>
         <select id="form-calculator-type">
       </select>

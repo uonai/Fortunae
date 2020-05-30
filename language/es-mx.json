@@ -56,24 +56,71 @@
       "Dic"
     ]
   },
-  "funds": {
-    "title": "funds",
+  "fund": {
+    "title": "fundsx",
     "categories": {
-      "category": "Category",
-      "checking": "Comprobación",
-      "saving": "Saving",
-      "investment": "Investment",
-      "emergency": "Emergency"
+      "category": "Categoryx",
+      "checking": "Checkingx",
+      "saving": "Savingx",
+      "investment": "Investmentx",
+      "emergency": "Emergencyx"
     },
-    "addFund": "Add Fund"
+    "addFund": "Add Fundx",
+    "modalTitle": "Fund Itemx",
+    "editItem": "Edit Fund Itemx"
+  },
+  "expense": {
+    "categories": {
+      "category": "Categoryx",
+      "autoAndTransport": "Auto & Transportx",
+      "billsAndUtilities": "Bills & Utilitiesx",
+      "businessServices": "Business Servicesx",
+      "education": "Educationx",
+      "feesAndCharges": "Fees & Chargesx",
+      "foodAndDining": "Food & Diningx",
+      "giftsAndDonations": "Gifts & Donationsx",
+      "healthAndFitness": "Health & Fitnessx",
+      "investments": "Investmentsx",
+      "miscExpense": "Misc Expensex",
+      "personalCare": "Personal Carex",
+      "savings": "Savingsx",
+      "shopping": "Shoppingx",
+      "taxes": "Taxesx"
+    },
+    "modalTitle": "Expense Itemx",
+    "editItem": "Edit Expense Itemx"
   },
   "budget": {
-    "title": "budget",
+    "title": "budgetx",
     "categories": {
-      "category": "Category",
-      "wants": "Wants",
-      "needs": "Needs"
+      "category": "Categoryx",
+      "wants": "Wantsx",
+      "needs": "Needsx"
     },
-    "modalTitle": "Budget Item"
+    "modalTitle": "Budget Itemx",
+    "editItem": "Edit Budget Itemx"
+  },
+  "debt": {
+    "title": "debtx",
+    "categories": {
+      "category": "Categoryx",
+      "secured": "Securedx",
+      "unsecured": "Unsecuredx",
+      "revolving": "Revolvingx",
+      "nonRevolving": "Non-revolvingx"
+    },
+    "modalTitle": "Debt Itemx",
+    "editItem": "Edit Debt Itemx"
+  },
+  "income": {
+    "title": "incomex",
+    "categories": {
+      "category": "Categoryx",
+      "active": "Activex",
+      "passive": "Passivex",
+      "portfolio": "Portfoliox"
+    },
+    "modalTitle": "Income Itemx",
+    "editItem": "Edit Income Itemx"
   }
 }

@@ -2,23 +2,30 @@ import IncomeItem from "../../models/incomeItem.js";
 import UI from "../../ui.js";
 import Store from "../../store.js";
 import Helper from "../../utils/helper.js";
+import Language from "../../utils/language.js";
 
-const dropdownOptions = ["Category", "Active", "Passive", "Portfolio"];
+const dropdownOptionsData = Language.getTerminology("income", "categories");
+let modalTitle = Language.getTerminology("income", "modalTitle");
+let editItem = Language.getTerminology("income", "editItem");
+let placeholderTitle = Language.getTerminology("general", "title");
+let placeholderAmount = Language.getTerminology("general", "amount");
+
 export default class IncomeModal {
   static showModal(e) {
+    let dropdownOptions = dropdownOptionsData;
     const div = document.createElement("div");
     div.id = "form-calculator-content";
     div.innerHTML = `
-        <header id="form-calculator-header">Income Calculator</header>
+        <header id="form-calculator-header">${modalTitle}</header>
         <input type="hidden" id="form-calculator-category" value="4" />
         <input type="hidden" id="form-calculator-id" value="4" />
         <div class="form-group">
-          <input type="text" id="form-calculator-title" class="form-control" placeholder="Title" />
+          <input type="text" id="form-calculator-title" class="form-control" placeholder=${placeholderTitle} />
         </div>
         <select id="form-calculator-type">
         </select>
         <div class="form-group">
-          <input type="text" id="form-calculator-amount" class="form-control" placeholder="Amount" />
+          <input type="text" id="form-calculator-amount" class="form-control" placeholder=${placeholderAmount} />
         </div>
 `;
     const formContainer = document.querySelector("#modal-calculator-footer");
@@ -29,25 +36,28 @@ export default class IncomeModal {
     form.classList.add("new");
 
     const formType = document.querySelector("#form-calculator-type");
-    for (var i = 0; i < dropdownOptions.length; i++) {
-      var opt = document.createElement("option");
-      opt.innerHTML = dropdownOptions[i];
-      opt.value = dropdownOptions[i];
+    Object.keys(dropdownOptions).forEach((key, index) => {
+      console.log(key, dropdownOptions[key]);
+      let opt = document.createElement("option");
+      opt.innerHTML = dropdownOptions[key];
+      opt.value = key;
+      opt.id = key;
       formType.appendChild(opt);
-    }
+    });
 
     const formTitle = document.querySelector("#form-calculator-title");
     formTitle.focus();
   }
 
   static showEditItemModal(e) {
+    let dropdownOptions = dropdownOptionsData;
     this.showModal();
 
     const form = document.querySelector("#calculator-modal");
     form.classList.add("edit");
 
     const formHeader = document.querySelector("#form-calculator-header");
-    formHeader.innerHTML = `Edit Income`;
+    formHeader.innerHTML = `${editItem}`;
 
     const formCategory = document.querySelector("#form-calculator-category");
     formCategory.value = `${e.dataset.category}`;
@@ -66,13 +76,13 @@ export default class IncomeModal {
 
     const formType = document.querySelector("#form-calculator-type");
     const datasetType = `${e.dataset.type}`;
-    for (var i = 0; i < dropdownOptions.length; i++) {
-      if (dropdownOptions[i] == datasetType) {
-        var option = i;
-        formType.selectedIndex = option;
+    Object.keys(dropdownOptions).forEach((key, index) => {
+      console.log(datasetType);
+      if (key == datasetType) {
+        formType.selectedIndex = Object.keys(dropdownOptions).indexOf(key);
         return;
       }
-    }
+    });
   }
 
   static validate(action) {
