@@ -5,9 +5,9 @@ const foregroundColor = getComputedStyle(
 ).getPropertyValue("--foreground-color");
 
 const result = JSON.parse(localStorage.getItem("category3ItemsHistorical"));
-const locale = JSON.parse(localStorage.getItem("language"));
+const locale = Language.getCategory("time");
 const headers = Language.getTerminology("debt", "categories");
-d3.timeFormatDefaultLocale(locale.time);
+d3.timeFormatDefaultLocale(locale);
 
 const reduceItems = (itemType) => {
   console.log(itemType);

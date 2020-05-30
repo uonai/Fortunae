@@ -30,7 +30,7 @@ export default class Chart {
 
     const result = JSON.parse(localStorage.getItem("category1ItemsHistorical"));
 
-    const locale = JSON.parse(localStorage.getItem("language"));
+    const locale = Language.getCategory("time");
     const headers = Language.getTerminology("fund", "categories");
     const noDataAvailableTerminology = Language.getTerminology(
       "general",
@@ -38,10 +38,10 @@ export default class Chart {
     );
 
     if (locale) {
-      d3.timeFormatDefaultLocale(locale.time);
+      d3.timeFormatDefaultLocale(locale);
     }
 
-    if (result) {
+    if (result && headers) {
       if (result.length) {
         const chartContainer = document.querySelector(".chart-inner");
         chartContainer.classList.remove("hidden");

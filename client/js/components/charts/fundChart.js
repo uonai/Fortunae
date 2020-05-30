@@ -6,9 +6,9 @@ const foregroundColor = getComputedStyle(
 
 const result = JSON.parse(localStorage.getItem("category1ItemsHistorical"));
 
-const locale = JSON.parse(localStorage.getItem("language"));
+const locale = Language.getCategory("time");
 const headers = Language.getTerminology("fund", "categories");
-d3.timeFormatDefaultLocale(locale.time);
+d3.timeFormatDefaultLocale(locale);
 
 const reduceItems = (itemType) => {
   let groupOfItems = itemType.reduce((x, a) => {

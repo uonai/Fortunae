@@ -64,24 +64,25 @@ export default class Store {
   }
 
   static getLanguage(language) {
-    console.log("get language ran");
     let file = language;
-    try {
-      fs.readFile(__dirname + "/language/" + file + ".json", (err, data) => {
-        if (err) throw err;
-        let language = JSON.parse(data);
-        localStorage.setItem("language", JSON.stringify(language));
-      });
-    } finally {
-      Store.createRecordEmptyDatabase(),
-        Store.loadDatabase(),
-        Store.loadCompleteDatabase(),
-        PopOut.refreshChildWindows(),
-        Recommendation.displayRecommendations(),
-        Confirmation.showConfirmation(),
-        UI.buildUI(),
-        UI.displayItems();
-    }
+
+    fs.readFile(__dirname + "/language/" + file + ".json", (err, data) => {
+      if (err) throw err;
+      let language = JSON.parse(data);
+      localStorage.setItem("language", JSON.stringify(language));
+      this.buildApp();
+    });
+  }
+
+  static buildApp() {
+    Store.createRecordEmptyDatabase();
+    Store.loadDatabase();
+    Store.loadCompleteDatabase();
+    PopOut.refreshChildWindows();
+    Recommendation.displayRecommendations();
+    Confirmation.showConfirmation();
+    UI.buildUI();
+    UI.displayItems();
   }
 
   static getItems() {

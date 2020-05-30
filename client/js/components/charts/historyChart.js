@@ -12,9 +12,9 @@ export default class HistoryChart {
       document.documentElement
     ).getPropertyValue("--background-color");
 
-    const locale = JSON.parse(localStorage.getItem("language"));
+    const locale = Language.getCategory("time");
     if (locale) {
-      d3.timeFormatDefaultLocale(locale.time);
+      d3.timeFormatDefaultLocale(locale);
     }
 
     const line = d3

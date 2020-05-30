@@ -11,9 +11,9 @@ export default class Helper {
   static getTimeFromUNIXTimestamp(item) {
     const unixTimestamp = item;
     let x = new Date(unixTimestamp * 1000);
-    const locale = JSON.parse(localStorage.getItem("language"));
+    const locale = Language.getCategory("time");
     if (locale) {
-      const months = locale.time.shortMonths;
+      const months = locale.shortMonths;
       const year = x.getFullYear();
       const month = months[x.getMonth()];
       const date = x.getDate();

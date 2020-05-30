@@ -41,9 +41,9 @@ function SpiderChart(parent_selector, options) {
   //   },
   // ];
 
-  const locale = JSON.parse(localStorage.getItem("language"));
+  const locale = Language.getCategory("time");
   const expenseCategories = Language.getTerminology("expense", "categories");
-  d3.timeFormatDefaultLocale(locale.time);
+  d3.timeFormatDefaultLocale(locale);
 
   const items = JSON.parse(localStorage.getItem("items"));
   console.log(items);
