@@ -84,6 +84,10 @@ export default class UI {
     const addIncomeButton = document.getElementById("4");
     addIncomeButton.innerHTML = `${addIncomeTerminology} [+]`;
 
+    const addBudgetTerminology = Language.getTerminology("budget", "addItem");
+    const addBudgetButton = document.getElementById("5");
+    addBudgetButton.innerHTML = `${addBudgetTerminology} [+]`;
+
     const dialogHeaderTerminology = Language.getTerminology(
       "delete",
       "confirmation"
