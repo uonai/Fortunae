@@ -33,7 +33,7 @@
     <div class="top">
       <section id="section-1" data-section="1">
         <header>
-          Funds
+          <span id="funds-header"></span>
           <button class="header">
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle id="child-window" cx="5" cy="5" r="5" fill=var(--foreground-color) />
@@ -42,58 +42,54 @@
         </header>
         <ul id="item-list-1"></ul>
         <button id="1" class="add-item" data-title="Current Funds">
-          Add Fund [+]
         </button>
         <div id="item-chart-1" class="item-chart"></div>
       </section>
       <section id="section-2" data-section="2">
         <header>
-          Expenses
+          <span id="expenses-header">Expenses</span>
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle id="radar-button" cx="5" cy="5" r="5" fill=var(--foreground-color) />
           </svg>
         </header>
         <ul id="item-list-2"></ul>
         <button id="2" class="add-item" data-title="Expenses">
-          Add Expense [+]
         </button>
         <div id="item-chart-2" class="item-chart"></div>
       </section>
       <section id="section-3" data-section="3">
         <header>
-          Debts
+          <span id="debts-header"></span>
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle id="burndown-button" cx="5" cy="5" r="5" fill=var(--foreground-color) />
           </svg>
         </header>
         <ul id="item-list-3"></ul>
         <button id="3" class="add-item" data-title="Debt Calculator">
-          Add Debt [+]
         </button>
         <div id="item-chart-3" class="item-chart"></div>
       </section>
       <section id="section-4" data-section="4">
         <header>
-          Incomes
+          <span id="incomes-header"></span>
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle id="sankey-button" cx="5" cy="5" r="5" fill=var(--foreground-color) />
           </svg>
         </header>
         <ul id="item-list-4"></ul>
         <button id="4" class="add-item" data-title="Income Calculator">
-          Add Income [+]
         </button>
         <div id="item-chart-4" class="item-chart"></div>
       </section>
     </div>
     <div class="middle">
       <section>
-        <header>Recommendations</header>
+        <header><span id="recommendations-header"></span></header>
         <ul id="recommendation-list"></ul>
       </section>
       <section class="chart">
         <div class="chart-outer">
-          <header>Trend Data</header>
+          <header><span id="trend-data-header"></span></header>
           <div class="chart-inner hidden">
             <div id="line"></div>
           </div>
@@ -101,7 +97,7 @@
       </section>
       <section class="last">
         <div class="bordered">
-          <header>Budget</header>
+          <header><span id="budget-header"></span></header>
           <ul id="item-list-5"></ul>
           <button id="5" class="add-item" data-title="Needs">
             Add Item [+]
@@ -112,12 +108,12 @@
     </div>
 
     <footer>
-      <header>History</header>
+      <header><span id="history-header"></span></header>
       <svg width="920" height="30">
         <g id="g-1"></g>
       </svg>
       <div id="tome">
-        <button id="tome-button">Tome [?]</button>
+        <button id="tome-button"></button>
       </div>
       <div id="confirmation"></div>
       <div id="timestamp"></div>
@@ -133,24 +129,24 @@
         </svg>
         <form id="modal-calculator-form">
           <div class="form-group" id="modal-calculator-footer">
-            <input type="button" id="form-calculator-edit-submit" value="Save Edits [+]" />
-            <input type="button" id="form-calculator-submit" value="Save New [+]" />
-            <input type="button" id="form-calculator-cancel" value="Cancel [-]" />
+            <input type="button" id="form-calculator-edit-submit" value="" />
+            <input type="button" id="form-calculator-submit" value="" />
+            <input type="button" id="form-calculator-cancel" value="" />
           </div>
         </form>
       </div>
     </div>
     <div id="dialog" class="dialog">
       <button id="dialog-close"></button>
-      <header> Are you sure?</header>
-      <p>This will delete the financial record permanently.</p>
-      <input type="button" id="dialog-confirm" value="Yes [✓]" />
-      <input type="button" id="dialog-cancel" value="No [x]" />
+      <header id="dialog-header"></header>
+      <p><span id="dialog-subtext"></span></p>
+      <input type="button" id="dialog-confirm" value="" />
+      <input type="button" id="dialog-cancel" value="" />
     </div>
     <ul id="right-menu" class="right-menu">
-      <li><button id="save-record" class="save-record">Save</button></li>
-      <li><button id="clone-record" class="clone-record">Clone</button></li>
-      <li><button id="delete-record" class="delete-record">Delete</button></li>
+      <li><button id="save-record" class="save-record"></button></li>
+      <li><button id="clone-record" class="clone-record"></button></li>
+      <li><button id="delete-record" class="delete-record"></button></li>
     </ul>
     <script src="./client/library/d3.js"></script>
     <script type="module" src="./client/js/app.js"></script>

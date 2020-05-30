@@ -1,3 +1,21 @@
+import Language from "./utils/language.js";
+
+const saveTerminology = Language.getTerminology("recommendation", "save");
+const spendTerminology = Language.getTerminology("recommendation", "spend");
+const investTerminology = Language.getTerminology("recommendation", "invest");
+const emergencyFundTerminology = Language.getTerminology(
+  "recommendation",
+  "emergencyFund"
+);
+const needSourceOfIncomeTerminology = Language.getTerminology(
+  "recommendation",
+  "needSourceOfIncome"
+);
+const noDataAvailableTerminology = Language.getTerminology(
+  "general",
+  "noDataAvailable"
+);
+
 export default class Recommendation {
   static displayRecommendations() {
     const data = JSON.parse(localStorage.getItem("items"));
@@ -10,10 +28,10 @@ export default class Recommendation {
           if (item.category == "4") {
             incomeItems.push(Number(item.amount));
           }
-          if (item.category == "1" && item.type == "Emergency") {
+          if (item.category == "1" && item.type == "emergency") {
             fundItems.push(Number(item.amount));
           }
-          if (item.category == "1" && item.type == "Saving") {
+          if (item.category == "1" && item.type == "saving") {
             fundItems.push(Number(item.amount));
           }
         });
@@ -36,7 +54,7 @@ export default class Recommendation {
           const listItem = document.createElement("li");
 
           listItem.innerHTML = `
-            <button class="list-item">Need Source of Income</button>
+            <button class="list-item">${needSourceOfIncomeTerminology}</button>
             `;
           list.appendChild(listItem);
         }
@@ -47,7 +65,7 @@ export default class Recommendation {
         const listItem = document.createElement("li");
 
         listItem.innerHTML = `
-          <button class="list-item">No Data Available</button>
+          <button class="list-item">${noDataAvailableTerminology}</button>
           `;
         list.appendChild(listItem);
       }
@@ -61,7 +79,7 @@ export default class Recommendation {
     const save = Math.round(salary * 0.3);
 
     listItem.innerHTML = `
-        <button class="list-item">Save: ${save}</button>
+        <button class="list-item">${saveTerminology}: ${save}</button>
         `;
     list.appendChild(listItem);
   }
@@ -72,7 +90,7 @@ export default class Recommendation {
     const spend = Math.round(salary * 0.6);
 
     listItem.innerHTML = `
-               <button class="list-item">Spend: ${spend}</button>
+               <button class="list-item">${spendTerminology}: ${spend}</button>
                `;
     list.appendChild(listItem);
   }
@@ -83,7 +101,7 @@ export default class Recommendation {
     const invest = Math.round(salary * 0.1);
 
     listItem.innerHTML = `
-            <button class="list-item">Invest: ${invest}</button>
+            <button class="list-item">${investTerminology}: ${invest}</button>
             `;
     list.appendChild(listItem);
   }
@@ -94,7 +112,7 @@ export default class Recommendation {
     const emergencyFund = Math.round(salary * 0.4);
 
     listItem.innerHTML = `
-            <button class="list-item">Emergency Fund: ${emergencyFund}</button>
+            <button class="list-item">${emergencyFundTerminology}: ${emergencyFund}</button>
             `;
     list.appendChild(listItem);
   }

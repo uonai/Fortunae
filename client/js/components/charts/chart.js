@@ -32,6 +32,10 @@ export default class Chart {
 
     const locale = JSON.parse(localStorage.getItem("language"));
     const headers = Language.getTerminology("fund", "categories");
+    const noDataAvailableTerminology = Language.getTerminology(
+      "general",
+      "noDataAvailable"
+    );
 
     if (locale) {
       d3.timeFormatDefaultLocale(locale.time);
@@ -250,7 +254,7 @@ export default class Chart {
       } else {
         console.log("chart else");
         const noData = document.createElement("span");
-        noData.innerHTML = "No Data Available";
+        noData.innerHTML = `${noDataAvailableTerminology}`;
         const parent = document.querySelector(".chart-outer");
 
         const chartContainer = document.querySelector(".chart-inner");

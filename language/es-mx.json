@@ -1,13 +1,30 @@
 {
   "general": {
-    "save": "Save",
-    "clone": "Clone",
-    "delete": "Delete",
-    "saveEdits": "Save Edits",
-    "cancel": "Cancel",
-    "title": "Title1",
-    "amount": "Amount1",
-    "total": "Totalx"
+    "save": "Savex",
+    "clone": "Clonex",
+    "delete": "Deletex",
+    "edit": "Editx",
+    "saveEdits": "Save Editsx",
+    "saveNew": "Save Newx",
+    "cancel": "Cancelx",
+    "title": "Titlex",
+    "amount": "Amountx",
+    "total": "Totalx",
+    "recommendations": "Recommendationsx",
+    "trendData": "Trend Datax",
+    "history": "Historyx",
+    "tome": "Tomex",
+    "noDataAvailable": "No Data Availablex",
+    "recordSaved": "Record has been savedx",
+    "recordCloned": "Record has been clonedx",
+    "recordSelected": "New historical record selectedx",
+    "recordDeleted": "Record has been deletedx",
+    "confirm": "Yes",
+    "deny": "No"
+  },
+  "delete": {
+    "confirmation": "Are you sure?x",
+    "confirmationSubtext": "This will delete the financial record permanently.x"
   },
   "time": {
     "decimal": ",",
@@ -66,7 +83,7 @@
       "investment": "Investmentx",
       "emergency": "Emergencyx"
     },
-    "addFund": "Add Fundx",
+    "addItem": "Add Fundx",
     "modalTitle": "Fund Itemx",
     "editItem": "Edit Fund Itemx"
   },
@@ -90,16 +107,18 @@
       "shopping": "Shoppingx",
       "taxes": "Taxesx"
     },
+    "addItem": "Add Expensex",
     "modalTitle": "Expense Itemx",
     "editItem": "Edit Expense Itemx"
   },
   "budget": {
-    "title": "budgetx",
+    "title": "Budgetx",
     "categories": {
       "category": "Categoryx",
       "wants": "Wantsx",
       "needs": "Needsx"
     },
+    "addItem": "Add Itemx",
     "modalTitle": "Budget Itemx",
     "editItem": "Edit Budget Itemx"
   },
@@ -112,6 +131,7 @@
       "revolving": "Revolvingx",
       "nonRevolving": "Non-revolvingx"
     },
+    "addItem": "Add Debtx",
     "modalTitle": "Debt Itemx",
     "editItem": "Edit Debt Itemx"
   },
@@ -123,7 +143,15 @@
       "passive": "Passivex",
       "portfolio": "Portfoliox"
     },
+    "addItem": "Add Incomex",
     "modalTitle": "Income Itemx",
     "editItem": "Edit Income Itemx"
+  },
+  "recommendation": {
+    "save": "Savex",
+    "spend": "Spendx",
+    "invest": "Investx",
+    "emergencyFund": "Emergency Fundx",
+    "needSourceOfIncome": "Need Source of Incomex"
   }
 }

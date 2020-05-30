@@ -4,12 +4,33 @@ import Confirmation from "./confirmation.js";
 import PopOut from "./utils/popOut.js";
 import UI from "./ui.js";
 import Recommendation from "./recommendation.js";
+import Language from "./utils/language.js";
 
 const ITEMS = "items";
 const CURRENTRECORD = "currentRecord";
 const DBPATH = "/db/";
 const FILEUNAVAILABLE = "This file doesn't exist, can't delete";
 const ERROROCCURRED = "An error ocurred updating the file";
+
+const recordSavedTerminology = Language.getTerminology(
+  "general",
+  "recordSaved"
+);
+
+const recordClonedTerminology = Language.getTerminology(
+  "general",
+  "recordCloned"
+);
+
+const recordSelectedTerminology = Language.getTerminology(
+  "general",
+  "recordSelected"
+);
+
+const recordDeletedTerminology = Language.getTerminology(
+  "general",
+  "recordDeleted"
+);
 
 const fs = require("fs");
 const { getCurrentWindow } = require("electron").remote;
@@ -57,6 +78,7 @@ export default class Store {
         PopOut.refreshChildWindows(),
         Recommendation.displayRecommendations(),
         Confirmation.showConfirmation(),
+        UI.buildUI(),
         UI.displayItems();
     }
   }
@@ -252,7 +274,7 @@ export default class Store {
         // alert("The record has been deleted");
         localStorage.clear();
         this.getItems();
-        Confirmation.writeConfirmation("Record has been deleted");
+        Confirmation.writeConfirmation(recordDeletedTerminology);
         getCurrentWindow().reload();
         // getCurrentWindow().removeAllListeners();
         this.loadDatabase();
@@ -282,11 +304,11 @@ export default class Store {
 
     // this is an intense way to reload the window, need to find a different solution
     if (type === "save") {
-      Confirmation.writeConfirmation("Record has been saved");
+      Confirmation.writeConfirmation(recordSavedTerminology);
     } else if (type === "clone") {
-      Confirmation.writeConfirmation("Record has been cloned");
+      Confirmation.writeConfirmation(recordClonedTerminology);
     } else if (type === "history") {
-      Confirmation.writeConfirmation("New historical record selected");
+      Confirmation.writeConfirmation(recordSelectedTerminology);
     }
     getCurrentWindow().reload();
   }

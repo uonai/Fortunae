@@ -3,11 +3,28 @@
     "save": "Save",
     "clone": "Clone",
     "delete": "Delete",
+    "edit": "Edit",
     "saveEdits": "Save Edits",
+    "saveNew": "Save Newx",
     "cancel": "Cancel",
     "title": "Title",
     "amount": "Amount",
-    "total": "Total"
+    "total": "Total",
+    "recommendations": "Recommendations",
+    "trendData": "Trend Data",
+    "history": "History",
+    "tome": "Tome",
+    "noDataAvailable": "No Data Available",
+    "recordSaved": "Record has been saved",
+    "recordCloned": "Record has been cloned",
+    "recordSelected": "New historical record selected",
+    "recordDeleted": "Record has been deleted",
+    "confirm": "Yes",
+    "deny": "No"
+  },
+  "delete": {
+    "confirmation": "Are you sure?",
+    "confirmationSubtext": "This will delete the financial record permanently."
   },
   "time": {
     "decimal": ".",
@@ -58,7 +75,7 @@
     ]
   },
   "fund": {
-    "title": "funds",
+    "title": "Funds",
     "categories": {
       "category": "Category",
       "checking": "Checking",
@@ -66,7 +83,7 @@
       "investment": "Investment",
       "emergency": "Emergency"
     },
-    "addFund": "Add Fund",
+    "addItem": "Add Fund",
     "modalTitle": "Fund Item",
     "editItem": "Edit Fund Item"
   },
@@ -90,16 +107,18 @@
       "shopping": "Shopping",
       "taxes": "Taxes"
     },
+    "addItem": "Add Expense",
     "modalTitle": "Expense Item",
     "editItem": "Edit Expense Item"
   },
   "budget": {
-    "title": "budget",
+    "title": "Budget",
     "categories": {
       "category": "Category",
       "wants": "Wants",
       "needs": "Needs"
     },
+    "addItem": "Add Item",
     "modalTitle": "Budget Item",
     "editItem": "Edit Budget Item"
   },
@@ -112,6 +131,7 @@
       "revolving": "Revolving",
       "nonRevolving": "Non-revolving"
     },
+    "addItem": "Add Debt",
     "modalTitle": "Debt Item",
     "editItem": "Edit Debt Item"
   },
@@ -123,7 +143,15 @@
       "passive": "Passive",
       "portfolio": "Portfolio"
     },
+    "addItem": "Add Income",
     "modalTitle": "Income Item",
     "editItem": "Edit Income Item"
+  },
+  "recommendation": {
+    "save": "Save",
+    "spend": "Spend",
+    "invest": "Invest",
+    "emergencyFund": "Emergency Fund",
+    "needSourceOfIncome": "Need Source of Income"
   }
 }

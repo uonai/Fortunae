@@ -1,5 +1,6 @@
 export default class Confirmation {
   static writeConfirmation(message) {
+    console.log(message);
     localStorage.setItem("confirmationMessage", message);
   }
 
