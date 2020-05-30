@@ -12,7 +12,7 @@ const HALF_PI = Math.PI / 2;
 const removeDuplicates = (itemDates) => {
   return itemDates.filter((a, b) => itemDates.indexOf(a) === b);
 };
-let spider_chart = SpiderChart(".spider-chart");
+SpiderChart(".spider-chart");
 function SpiderChart(parent_selector, options) {
   // var data = [
   //   {
@@ -185,7 +185,7 @@ function SpiderChart(parent_selector, options) {
   }
   maxValue = max(cfg.maxValue, maxValue);
 
-  const allAxis = data[0].axes.map((i, j) => i.axis),
+  const allAxis = data[0].axes.map((i) => i.axis),
     total = allAxis.length,
     radius = Math.min(cfg.w / 2, cfg.h / 2),
     Format = d3.format(cfg.format),
@@ -286,7 +286,7 @@ function SpiderChart(parent_selector, options) {
     .attr("d", (d) => radarLine(d.axes))
     .style("fill", (d, i) => cfg.color(i))
     .style("fill-opacity", cfg.opacityArea)
-    .on("mouseover", function (d, i) {
+    .on("mouseover", function () {
       parent
         .selectAll(".radarArea")
         .transition()
@@ -335,7 +335,7 @@ function SpiderChart(parent_selector, options) {
     .attr("cy", (d, i) => rScale(d.value) * sin(angleSlice * i - HALF_PI))
     .style("fill", "none")
     .style("pointer-events", "all")
-    .on("mouseover", function (d, i) {
+    .on("mouseover", function (d) {
       tooltip
         .attr("x", this.cx.baseVal.value - 10)
         .attr("y", this.cy.baseVal.value - 10)
@@ -361,20 +361,6 @@ function SpiderChart(parent_selector, options) {
   if (cfg.legend !== false && typeof cfg.legend === "object") {
     let legendZone = svg.append("g");
     let names = data.map((el) => el.name);
-    if (cfg.legend.title) {
-      let title = legendZone
-        .append("text")
-        .attr("class", "title")
-        .attr(
-          "transform",
-          `translate(${cfg.legend.translateX},${cfg.legend.translateY})`
-        )
-        .attr("x", cfg.w - 70)
-        .attr("y", 10)
-        .attr("font-size", "12px")
-        .attr("fill", "red")
-        .text(cfg.legend.title);
-    }
     let legend = legendZone
       .append("g")
       .attr("class", "legend")

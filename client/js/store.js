@@ -1,3 +1,4 @@
+/* global require */
 import HistoryChart from "./components/charts/historyChart.js";
 import Chart from "./components/charts/chart.js";
 import Confirmation from "./confirmation.js";

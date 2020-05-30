@@ -20,7 +20,8 @@
   "devDependencies": {
     "electron": "^8.2.5",
     "electron-builder": "^22.6.1",
-    "electron-packager": "^14.2.1"
+    "electron-packager": "^14.2.1",
+    "eslint": "^7.1.0"
   },
   "dependencies": {
     "d3": "^5.16.0",

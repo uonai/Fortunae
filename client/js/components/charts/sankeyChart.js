@@ -3,8 +3,6 @@ const foregroundColor = getComputedStyle(
   document.documentElement
 ).getPropertyValue("--foreground-color");
 
-/* globals d3 */
-
 const container = d3.select(".container");
 
 const locale = JSON.parse(localStorage.getItem("language"));

@@ -1,7 +1,7 @@
 import Language from "../../utils/language.js";
 
 export default class Chart {
-  static reduceItems = (itemType) => {
+  static reduceItems(itemType) {
     let groupOfItems = itemType.reduce((x, a) => {
       x[a.date] = [...(x[a.date] || []), a];
       return x;
@@ -21,7 +21,7 @@ export default class Chart {
     }
 
     return categoryRollup;
-  };
+  }
 
   static loadChart() {
     const foregroundColor = getComputedStyle(
@@ -165,7 +165,7 @@ export default class Chart {
             .enter()
             .append("g")
             .attr("class", "line-group")
-            .on("mouseover", function (d, i) {
+            .on("mouseover", function (d) {
               svg
                 .append("text")
                 .attr("class", "title-text")
@@ -175,7 +175,7 @@ export default class Chart {
                 .attr("x", (width - margin) / 2)
                 .attr("y", 100);
             })
-            .on("mouseout", function (d) {
+            .on("mouseout", function () {
               svg.select(".title-text").remove();
             })
             .append("path")
@@ -183,7 +183,7 @@ export default class Chart {
             .attr("d", (d) => line(d.values))
             .style("stroke", (d, i) => color(i))
             .style("opacity", lineOpacity)
-            .on("mouseover", function (d) {
+            .on("mouseover", function () {
               d3.selectAll(".line").style("opacity", otherLinesOpacityHover);
               d3.selectAll(".circle").style(
                 "opacity",
@@ -194,7 +194,7 @@ export default class Chart {
                 .style("stroke-width", lineStrokeHover)
                 .style("cursor", "pointer");
             })
-            .on("mouseout", function (d) {
+            .on("mouseout", function () {
               d3.selectAll(".line").style("opacity", lineOpacity);
               d3.selectAll(".circle").style("opacity", circleOpacity);
               d3.select(this)
@@ -223,7 +223,7 @@ export default class Chart {
                 .attr("x", (d) => xScale(d.date) + -10)
                 .attr("y", (d) => yScale(d.amount) - 10);
             })
-            .on("mouseout", function (d) {
+            .on("mouseout", function () {
               d3.select(this)
                 .style("cursor", "none")
                 .transition()
@@ -237,14 +237,14 @@ export default class Chart {
             .attr("r", circleRadius)
             .style("opacity", circleOpacity)
             .style("fill", foregroundColor)
-            .on("mouseover", function (d) {
+            .on("mouseover", function () {
               d3.select(this)
                 .transition()
                 .duration(duration)
                 .style("background-color", foregroundColor)
                 .attr("r", circleRadiusHover);
             })
-            .on("mouseout", function (d) {
+            .on("mouseout", function () {
               d3.select(this)
                 .transition()
                 .duration(duration)

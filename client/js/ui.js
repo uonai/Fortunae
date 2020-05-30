@@ -206,7 +206,7 @@ export default class UI {
     this.buildItemChart(e.dataset.category);
   }
 
-  static clearFields(e) {
+  static clearFields() {
     document.querySelector("#form-calculator-title").value = "";
     document.querySelector("#form-calculator-amount").value = "";
   }

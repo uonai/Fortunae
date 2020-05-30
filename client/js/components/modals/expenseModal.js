@@ -38,7 +38,7 @@ export default class ExpenseModal {
     form.classList.add("new");
 
     const formType = document.querySelector("#form-calculator-type");
-    Object.keys(dropdownOptions).forEach((key, index) => {
+    Object.keys(dropdownOptions).forEach((key) => {
       console.log(key, dropdownOptions[key]);
       let opt = document.createElement("option");
       opt.innerHTML = dropdownOptions[key];
@@ -77,7 +77,7 @@ export default class ExpenseModal {
 
     const formType = document.querySelector("#form-calculator-type");
     const datasetType = `${e.dataset.type}`;
-    Object.keys(dropdownOptions).forEach((key, index) => {
+    Object.keys(dropdownOptions).forEach((key) => {
       console.log(datasetType);
       if (key == datasetType) {
         formType.selectedIndex = Object.keys(dropdownOptions).indexOf(key);

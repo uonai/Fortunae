@@ -177,7 +177,7 @@ if (result) {
       .enter()
       .append("g")
       .attr("class", "line-group")
-      .on("mouseover", function (d, i) {
+      .on("mouseover", function (d) {
         svg
           .append("text")
           .attr("class", "title-text")
@@ -187,7 +187,7 @@ if (result) {
           .attr("x", (width - margin) / 2)
           .attr("y", 100);
       })
-      .on("mouseout", function (d) {
+      .on("mouseout", function () {
         svg.select(".title-text").remove();
       })
       .append("path")
@@ -195,7 +195,7 @@ if (result) {
       .attr("d", (d) => line(d.values))
       .style("stroke", (d, i) => color(i))
       .style("opacity", lineOpacity)
-      .on("mouseover", function (d) {
+      .on("mouseover", function () {
         d3.selectAll(".line").style("opacity", otherLinesOpacityHover);
         d3.selectAll(".circle").style("opacity", circleOpacityOnLineHover);
         d3.select(this)
@@ -203,7 +203,7 @@ if (result) {
           .style("stroke-width", lineStrokeHover)
           .style("cursor", "pointer");
       })
-      .on("mouseout", function (d) {
+      .on("mouseout", function () {
         d3.selectAll(".line").style("opacity", lineOpacity);
         d3.selectAll(".circle").style("opacity", circleOpacity);
         d3.select(this)
@@ -233,7 +233,7 @@ if (result) {
           .attr("x", (d) => xScale(d.date) + 5)
           .attr("y", (d) => yScale(d.amount) - 10);
       })
-      .on("mouseout", function (d) {
+      .on("mouseout", function () {
         d3.select(this)
           .style("cursor", "none")
           .transition()
@@ -247,14 +247,14 @@ if (result) {
       .attr("r", circleRadius)
       .style("opacity", circleOpacity)
       .style("fill", foregroundColor)
-      .on("mouseover", function (d) {
+      .on("mouseover", function () {
         d3.select(this)
           .transition()
           .duration(duration)
           .style("background-color", foregroundColor)
           .attr("r", circleRadiusHover);
       })
-      .on("mouseout", function (d) {
+      .on("mouseout", function () {
         d3.select(this).transition().duration(duration).attr("r", circleRadius);
       });
 
