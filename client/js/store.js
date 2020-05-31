@@ -12,6 +12,8 @@ const CURRENTRECORD = "currentRecord";
 const DBPATH = "/db/";
 const FILEUNAVAILABLE = "This file doesn't exist, can't delete";
 const ERROROCCURRED = "An error ocurred updating the file";
+const SETTINGSFILE = "/settings.json";
+const SETTINGS = "settings";
 
 const recordSavedTerminology = Language.getTerminology(
   "general",
@@ -38,26 +40,31 @@ const { getCurrentWindow } = require("electron").remote;
 
 export default class Store {
   static getSettings() {
-    fs.readFile(__dirname + "/settings.json", (err, data) => {
+    fs.readFile(__dirname + SETTINGSFILE, (err, data) => {
       if (err) throw err;
       let settings = JSON.parse(data);
-      localStorage.setItem("settings", JSON.stringify(settings));
+      localStorage.setItem(SETTINGS, JSON.stringify(settings));
       let global = document.documentElement;
-      global.style.setProperty(
-        "--foreground-color",
-        settings.colors.foregroundColor
-      );
-      global.style.setProperty(
-        "--background-color",
-        settings.colors.backgroundColor
-      );
-      global.style.setProperty("--alert-color", settings.colors.alertColor);
+      global.style.setProperty("--foreground-color", settings.foregroundColor);
+      global.style.setProperty("--background-color", settings.backgroundColor);
+      global.style.setProperty("--alert-color", settings.alertColor);
       global.style.setProperty(
         "--confirmation-color",
-        settings.colors.confirmationColor
+        settings.confirmationColor
       );
 
       this.getLanguage(settings.language);
+    });
+  }
+
+  static editSettings(item) {
+    const data = JSON.stringify(item);
+    fs.writeFile(__dirname + SETTINGSFILE, data, (err) => {
+      if (err) {
+        alert(ERROROCCURRED + err.message);
+        return;
+      }
+      this.resetData(currentRecord, "save");
     });
   }
 
@@ -67,7 +74,8 @@ export default class Store {
     fs.readdir(__dirname + "/language/", (err, languages) => {
       let languageDirectory = [];
       languages.forEach((language) => {
-        languageDirectory.push(language);
+        const languageFormatted = language.split(".")[0];
+        languageDirectory.push(languageFormatted);
       });
 
       localStorage.setItem("languages", JSON.stringify(languageDirectory));
@@ -292,6 +300,7 @@ export default class Store {
   }
   static resetData(currentRecord, type) {
     // localStorage.clear();
+    localStorage.removeItem(SETTINGS);
     localStorage.removeItem(ITEMS);
     localStorage.removeItem(CURRENTRECORD);
     localStorage.setItem(CURRENTRECORD, currentRecord);

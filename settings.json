@@ -1,9 +1,1 @@
-{
-  "language": "en-us",
-  "colors": {
-    "foregroundColor": "#fff",
-    "backgroundColor": "#000",
-    "alertColor": "#ffb545",
-    "confirmationColor": "#fff"
-  }
-}
+{"language":"es-mx","foregroundColor":"#fff","backgroundColor":"#000","alertColor":"#ffb545","confirmationColor":"#fff"}

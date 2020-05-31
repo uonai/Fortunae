@@ -35,19 +35,19 @@ export default class SettingsModal {
           </div>
           <div class="form-group">
           <label>${foregroundTerminology}</label>
-            <input type="text" id="form-calculator-foreground" class="form-control" placeholder="${settings.colors.foregroundColor}" />
+            <input type="text" id="form-calculator-foreground" class="form-control" placeholder="${settings.foregroundColor}" />
           </div>
           <div class="form-group">
           <label>${backgroundTerminology}</label>
-            <input type="text" id="form-calculator-background" class="form-control" placeholder="${settings.colors.backgroundColor}" />
+            <input type="text" id="form-calculator-background" class="form-control" placeholder="${settings.backgroundColor}" />
           </div>
           <div class="form-group">
           <label>${alertTerminology}</label>
-            <input type="text" id="form-calculator-alert" class="form-control" placeholder="${settings.colors.alertColor}" />
+            <input type="text" id="form-calculator-alert" class="form-control" placeholder="${settings.alertColor}" />
           </div>
           <div class="form-group">
           <label>${confirmationTerminology}</label>
-            <input type="text" id="form-calculator-confrimation" class="form-control" placeholder="${settings.colors.confirmationColor}" />
+            <input type="text" id="form-calculator-confirmation" class="form-control" placeholder="${settings.confirmationColor}" />
           </div>
    `;
     const formContainer = document.querySelector("#modal-calculator-footer");
@@ -59,11 +59,12 @@ export default class SettingsModal {
 
     const formType = document.querySelector("#form-calculator-type");
 
-    Object.keys(dropdownOptions).forEach((key) => {
+    Object.values(dropdownOptions).forEach((value) => {
+      console.log(value);
       let opt = document.createElement("option");
-      opt.innerHTML = dropdownOptions[key];
-      opt.value = key;
-      opt.id = key;
+      opt.innerHTML = value;
+      opt.value = value;
+      opt.id = value;
       formType.appendChild(opt);
     });
     formType.focus();
@@ -84,29 +85,56 @@ export default class SettingsModal {
 
     const formType = document.querySelector("#form-calculator-type");
     const datasetType = `${settings.language}`;
-    Object.keys(dropdownOptions).forEach((key) => {
-      console.log(datasetType);
-      if (key == datasetType) {
-        formType.selectedIndex = Object.keys(dropdownOptions).indexOf(key);
+    Object.values(dropdownOptions).forEach((value) => {
+      if (value == datasetType) {
+        formType.selectedIndex = dropdownOptions.findIndex(
+          (item) => item == value
+        );
+        console.log(formType.selectedIndex);
         return;
       }
     });
-  }
 
-  static validate() {
-    const language = document.querySelector("#form-calculator-type").value;
     const foregroundColor = document.querySelector(
       "#form-calculator-foreground"
     );
+    foregroundColor.value = settings.foregroundColor;
+
     const backgroundColor = document.querySelector(
       "#form-calculator-background"
     );
+    backgroundColor.value = settings.backgroundColor;
+
     const alertColor = document.querySelector("#form-calculator-alert");
+    alertColor.value = settings.alertColor;
+
     const confirmationColor = document.querySelector(
       "#form-calculator-confirmation"
     );
+    confirmationColor.value = settings.confirmationColor;
+  }
+
+  static validate() {
+    const language = document.querySelector("#form-calculator-type");
+    const languageSelectedValue =
+      language.options[language.selectedIndex].innerHTML;
+    console.log(languageSelectedValue);
+
+    const foregroundColor = document.querySelector(
+      "#form-calculator-foreground"
+    ).value;
+    const backgroundColor = document.querySelector(
+      "#form-calculator-background"
+    ).value;
+    const alertColor = document.querySelector("#form-calculator-alert").value;
+    const confirmationColor = document.querySelector(
+      "#form-calculator-confirmation"
+    ).value;
     const alertText = "Please fill out all form fields.";
-    const numberAlertText = "Please enter valid number";
+    const numberAlertText =
+      "Please enter valid HEX in all fields. Example format: #fff .";
+    const foregroundBackgroundAlertText =
+      "Foreground and background colors should contrast.";
 
     if (
       foregroundColor === "" ||
@@ -115,19 +143,28 @@ export default class SettingsModal {
       confirmationColor === ""
     ) {
       UI.showAlert(alertText);
-    } else if (Helper.checkIfHex(foregroundColor) == false) {
+    } else if (
+      Helper.checkIfHex(foregroundColor) == false ||
+      Helper.checkIfHex(backgroundColor) == false ||
+      Helper.checkIfHex(alertColor) == false ||
+      Helper.checkIfHex(confirmationColor) == false
+    ) {
+      console.log(foregroundColor);
       UI.showAlert(numberAlertText);
+    } else if (foregroundColor == backgroundColor) {
+      UI.showAlert(foregroundBackgroundAlertText);
     } else {
-      const item = new settingsItem(
-        language,
+      console.log(foregroundColor);
+      const item = new SettingsItem(
+        languageSelectedValue,
         foregroundColor,
         backgroundColor,
         alertColor,
         confirmationColor
       );
-      UI.updateItem(item);
-      Store.editItem(item);
-      UI.buildItemChart(category);
+      // UI.updateSettings(item);
+      Store.editSettings(item);
+      //  UI.buildItemChart(category);
       UI.hideCalculatorModal();
     }
   }

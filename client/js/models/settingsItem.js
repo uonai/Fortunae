@@ -7,11 +7,9 @@ export default class SettingsItem {
     confirmationColor
   ) {
     this.language = language;
-    colors: {
-      this.foregroundColor = foregroundColor;
-      this.backgroundColor = backgroundColor;
-      this.alertColor = alertColor;
-      this.confirmationColor = confirmationColor;
-    }
+    this.foregroundColor = foregroundColor;
+    this.backgroundColor = backgroundColor;
+    this.alertColor = alertColor;
+    this.confirmationColor = confirmationColor;
   }
 }

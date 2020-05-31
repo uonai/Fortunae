@@ -37,6 +37,7 @@ export default class IncomeModal {
 
     const formType = document.querySelector("#form-calculator-type");
     Object.keys(dropdownOptions).forEach((key) => {
+      console.log(key);
       let opt = document.createElement("option");
       opt.innerHTML = dropdownOptions[key];
       opt.value = key;
@@ -77,6 +78,7 @@ export default class IncomeModal {
     const datasetType = `${e.dataset.type}`;
     Object.keys(dropdownOptions).forEach((key) => {
       console.log(datasetType);
+      console.log(key);
       if (key == datasetType) {
         formType.selectedIndex = Object.keys(dropdownOptions).indexOf(key);
         return;
