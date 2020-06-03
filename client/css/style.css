@@ -1,9 +1,9 @@
-:root {
+/* :root {
   --foreground-color: #fff;
   --background-color: #000;
   --alert-color: #ffb545;
   --confirmation-color: #fff;
-}
+} */
 
 @font-face {
   font-family: "Roboto Mono";
@@ -597,4 +597,8 @@ option {
   right: 0;
   top: 10px;
   bottom: 0;
+}
+
+.line {
+  stroke: var(--foreground-color);
 }

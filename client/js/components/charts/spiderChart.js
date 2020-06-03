@@ -148,7 +148,7 @@ function SpiderChart(parent_selector, options) {
   }; //wrap
 
   const cfg = {
-    w: 320, //Width of the circle
+    w: 340, //Width of the circle
     h: 320, //Height of the circle
     margin: { top: 50, right: 80, bottom: 100, left: 80 }, //The margins of the SVG
     levels: 1, //How many levels or inner circles should there be drawn
@@ -284,8 +284,8 @@ function SpiderChart(parent_selector, options) {
     .append("path")
     .attr("class", "radarArea")
     .attr("d", (d) => radarLine(d.axes))
-    .style("fill", (d, i) => cfg.color(i))
-    .style("fill-opacity", cfg.opacityArea)
+    .style("fill", (d, i) => foregroundColor)
+    // .style("fill-opacity", cfg.opacityArea)
     .on("mouseover", function () {
       parent
         .selectAll(".radarArea")

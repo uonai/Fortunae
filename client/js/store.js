@@ -91,8 +91,9 @@ export default class Store {
 
   static buildApp() {
     Store.createRecordEmptyDatabase();
-    Store.loadCompleteDatabase();
     Store.loadDatabase();
+    Store.loadCompleteDatabase();
+
     PopOut.refreshChildWindows();
     Recommendation.displayRecommendations();
     Confirmation.showConfirmation();
@@ -299,7 +300,6 @@ export default class Store {
     }
   }
   static resetData(currentRecord, type) {
-    // localStorage.clear();
     localStorage.removeItem(SETTINGS);
     localStorage.removeItem(ITEMS);
     localStorage.removeItem(CURRENTRECORD);
