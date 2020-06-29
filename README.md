@@ -15,7 +15,7 @@ npm install
 npm start
 ```
 
-## Hotkeys
+## Windows Hotkeys
 
 Funds: ctrl + 1
 Expenses: ctrl + 2
@@ -31,6 +31,8 @@ Close all Charts: ctrl + q
 
 Save: ctrl + s
 Escape from Modal: esc
+
+Change settings: ctrl + 6
 
 ## Algorithm:
 
