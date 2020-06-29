@@ -4,6 +4,8 @@ Fortunæ is an offline-first personal finance tool designed to quickly create an
 
 Fortunæ manages data locally in JSON files in human-readable format and allows historical browsing of records within the application.
 
+Compiled application can be found at https://uonai.itch.io/fortunae
+
 ## Install & Run
 
 To install the desktop version of Fortunæ in Windows and Linux:
@@ -15,24 +17,32 @@ npm install
 npm start
 ```
 
+## Localization
+
+Fortunae is available in English and Spanish. To toggle language, navigate to the settings using ctrl + 6.
+
+## Theming
+
+Fortunae can be themed. To update colors, navigate to the settings using ctrl + 6.
+
 ## Windows Hotkeys
 
-Funds: ctrl + 1
-Expenses: ctrl + 2
-Debts: ctrl + 3
-Income: ctrl + 4
+- Funds: ctrl + 1
+- Expenses: ctrl + 2
+- Debts: ctrl + 3
+- Income: ctrl + 4
 
-Funds Chart: ctrl + j
-Expenses Chart: ctrl + k
-Debts Chart: ctrl + l
-Incomes Chart + ctrl + ;
+- Funds Chart: ctrl + j
+- Expenses Chart: ctrl + k
+- Debts Chart: ctrl + l
+- Incomes Chart + ctrl + ;
 
-Close all Charts: ctrl + q
+- Close all Charts: ctrl + q
 
-Save: ctrl + s
-Escape from Modal: esc
+- Save: ctrl + s
+- Escape from Modal: esc
 
-Change settings: ctrl + 6
+- Change settings: ctrl + 6
 
 ## Algorithm:
 
