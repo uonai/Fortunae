@@ -10,7 +10,7 @@ A video tutorial is available here https://www.youtube.com/watch?v=F_DSCm1LjIw
 
 ## Install & Run
 
-To install Fortunæ in Windows and Linux:
+To install Fortunæ on Windows and Linux ([NixOS users see here](https://github.com/uonai/Fortunae/issues/1)):
 
 ```
 git clone https://github.com/uonai/Fortunae
