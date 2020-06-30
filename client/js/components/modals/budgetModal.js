@@ -89,11 +89,12 @@ export default class BudgetModal {
 
   static validate(action) {
     const title = document.querySelector("#form-calculator-title").value;
-    const amount = document.querySelector("#form-calculator-amount").value;
     const category = document.querySelector("#form-calculator-category").value;
     const type = document.querySelector("#form-calculator-type").value;
     const alertText = "Please fill out all form fields.";
     const numberAlertText = "Please enter valid number";
+    const localizedAmount = document.querySelector("#form-calculator-amount").value;
+    const amount = Language.delocalizeAmount(localizedAmount);
 
     if (title === "" || amount === "" || type === "Category") {
       UI.showAlert(alertText);

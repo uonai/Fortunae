@@ -10,18 +10,18 @@ A video tutorial is available here https://www.youtube.com/watch?v=F_DSCm1LjIw
 
 ## Install & Run
 
-To install the desktop version of Fortunæ in Windows and Linux:
+To install Fortunæ in Windows and Linux:
 
 ```
 git clone https://github.com/uonai/Fortunae
-cd Fortunae/desktop/
+cd Fortunae
 npm install
 npm start
 ```
 
 ## Localization
 
-Fortunae is available in English and Spanish. To toggle language, navigate to the settings using ctrl + 6.
+Fortunae is available in English, Spanish and German. To toggle language, navigate to the settings using ctrl + 6.
 
 ## Theming
 
@@ -58,7 +58,7 @@ If combined total of Savings and Emergency Fund is less than or equal to 3x the 
 
 #### General Setup
 
-You should decide between whether you are tracking your finances weekly or monthly and adhere to this. Each record will reperesent that time frame and it will make record keeping dependable.
+You should decide between whether you are tracking your finances weekly or monthly and adhere to this. Each record will represent that time frame and it will make record keeping dependable.
 
 #### Funds
 

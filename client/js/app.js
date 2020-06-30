@@ -240,10 +240,10 @@ function doc_keyUp(e) {
       console.log("4");
     } else if (e.ctrlKey && e.keyCode == 53) {
       BudgetModal.showModal(e);
-      console.log("4");
+      console.log("5");
     } else if (e.ctrlKey && e.keyCode == 54) {
       SettingsModal.showEditItemModal(e);
-      console.log("4");
+      console.log("6");
     }
   }
   if (e.key == "Escape") {
