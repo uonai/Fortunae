@@ -6,6 +6,8 @@ Fortunæ manages data locally in JSON files in human-readable format and allows 
 
 Compiled application can be found at https://uonai.itch.io/fortunae
 
+A video tutorial is available here https://www.youtube.com/watch?v=F_DSCm1LjIw
+
 ## Install & Run
 
 To install the desktop version of Fortunæ in Windows and Linux:
