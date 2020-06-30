@@ -14,7 +14,7 @@ To install the desktop version of Fortunæ in Windows and Linux:
 
 ```
 git clone https://github.com/uonai/Fortunae
-cd Fortunae/desktop/
+cd Fortunae
 npm install
 npm start
 ```
@@ -58,7 +58,7 @@ If combined total of Savings and Emergency Fund is less than or equal to 3x the 
 
 #### General Setup
 
-You should decide between whether you are tracking your finances weekly or monthly and adhere to this. Each record will reperesent that time frame and it will make record keeping dependable.
+You should decide between whether you are tracking your finances weekly or monthly and adhere to this. Each record will represent that time frame and it will make record keeping dependable.
 
 #### Funds
 
