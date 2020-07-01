@@ -98,7 +98,7 @@ In a non-revolving loan, the borrower receives a maximum principal amount in a l
 
 #### Incomes
 
-Each item that is added as an income should reflect the income for that period of time. If you are tracking weekly finanances and add a salary, it will be the salary for the week (after taxes). If you hare tracking monthly finances and add a salary, it will be the salary for the month (after taxes).
+Each item that is added as an income should reflect the income for that period of time. If you are tracking weekly finances and add a salary, it will be the salary for the week (after taxes). If you hare tracking monthly finances and add a salary, it will be the salary for the month (after taxes).
 Types of income include Active, Passive, and Portfolio.
 
 ###### Active (Investopedia df.)
