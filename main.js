@@ -36,7 +36,6 @@ function createWindow() {
   );
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
   mainWindow.setMenuBarVisibility(false);
 }
 
