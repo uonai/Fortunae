@@ -1,4 +1,5 @@
 node_modules
 client/db
 dist
+db
 .DS_Store
