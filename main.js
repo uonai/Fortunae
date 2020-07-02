@@ -3,6 +3,7 @@ const path = require("path");
 const { ipcMain } = require("electron");
 const url = require("url");
 const ipc = require("ipc");
+const fs = require("fs");
 require("v8-compile-cache");
 
 require("electron-reload")(__dirname, {
@@ -10,13 +11,24 @@ require("electron-reload")(__dirname, {
 });
 
 let mainWindow;
+let windowBackgroundColor = "#000"
 
+function getWindowBackgroundColor() {
+  const SETTINGS = "settings";
+const SETTINGSFILE = "/settings.json";
+fs.readFile(__dirname + SETTINGSFILE, (err, data) => {
+  if (err) windowBackgroundColor = "#000";
+  let settings = JSON.parse(data);
+  windowBackgroundColor = settings.backgroundColor;
+  createWindow()
+});
+}
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 1000,
     height: 680,
-    backgroundColor: "#000",
+    backgroundColor: windowBackgroundColor,
     resizable: false,
     webPreferences: {
       //  devTools: false,
@@ -42,7 +54,7 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.whenReady().then(createWindow);
+app.whenReady().then(getWindowBackgroundColor);
 
 // Quit when all windows are closed.
 app.on("window-all-closed", function () {
@@ -54,7 +66,7 @@ app.on("window-all-closed", function () {
 app.on("activate", function () {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
-  if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  if (BrowserWindow.getAllWindows().length === 0) getWindowBackgroundColor();
 });
 
 ipcMain.on("request-mainprocess-action", (event, arg) => {
@@ -65,7 +77,7 @@ ipcMain.on("request-mainprocess-action", (event, arg) => {
 
 function createFundChart() {
   fundChart = new BrowserWindow({
-    backgroundColor: "#000",
+    backgroundColor: windowBackgroundColor,
     width: 500,
     height: 520,
     resizable: true,
@@ -94,7 +106,7 @@ function createBurndownChart() {
   burndownChart = new BrowserWindow({
     width: 500,
     height: 520,
-    backgroundColor: "#000",
+    backgroundColor: windowBackgroundColor,
     resizable: false,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
@@ -120,7 +132,7 @@ function createSpiderChart() {
   spiderChart = new BrowserWindow({
     width: 500,
     height: 520,
-    backgroundColor: "#000",
+    backgroundColor: windowBackgroundColor,
     resizable: false,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
@@ -146,7 +158,7 @@ function createSankeyChart() {
   sankeyChart = new BrowserWindow({
     width: 500,
     height: 520,
-    backgroundColor: "#000",
+    backgroundColor: windowBackgroundColor,
     resizable: false,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
@@ -172,7 +184,7 @@ function createTome() {
   tome = new BrowserWindow({
     width: 500,
     height: 520,
-    backgroundColor: "#000",
+    backgroundColor: windowBackgroundColor,
     resizable: false,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
