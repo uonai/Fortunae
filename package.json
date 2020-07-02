@@ -32,7 +32,13 @@
     "fs-extra": "^9.0.0",
     "ipc": "0.0.1",
     "save": "^2.4.0",
-    "v8-compile-cache": "^2.1.0"
+    "v8-compile-cache": "^2.1.0",
+    "@types/request": "~2.48.3",
+    "lodash": "^4.17.15",
+    "promise": "^8.0.3",
+    "query-string": "^4.3.2",
+    "request": "^2.88.0",
+    "should": "^11.1.1"
   },
   "build": {
     "productName": "fortunae",
