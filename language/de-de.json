@@ -1,0 +1,164 @@
+{
+  "general": {
+    "save": "Speichern",
+    "clone": "Duplizieren",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "saveEdits": "Änderungen speichern",
+    "saveNew": "Speichern",
+    "cancel": "Abbrechen",
+    "title": "Titel",
+    "amount": "Betrag",
+    "total": "Summe",
+    "recommendations": "Empfehlungen",
+    "trendData": "Trendkurve",
+    "history": "Historie",
+    "tome": "Dokumentation",
+    "noDataAvailable": "Keine Daten verfügbar",
+    "recordSaved": "Eintrag wurde gespeichert",
+    "recordCloned": "Eintrag wurde dupliziert",
+    "recordSelected": "Neuer historischer Eintrag markiert",
+    "recordDeleted": "Eintrag wurde gelöscht",
+    "confirm": "Ja",
+    "deny": "Nein"
+  },
+  "delete": {
+    "confirmation": "Sicher?",
+    "confirmationSubtext": "Eintrag wird unwiederruflich gelöscht."
+  },
+  "time": {
+    "decimal": ",",
+    "thousands": ".",
+    "grouping": [3],
+    "currency": ["€", ""],
+    "dateTime": "%a %b %e %X %Y",
+    "date": "%d.%m.%Y",
+    "time": "%H:%M:%S",
+    "periods": ["AM", "PM"],
+    "days": [
+      "Montag",
+      "Dienstag",
+      "Mittwoch",
+      "Donnerstag",
+      "Freitag",
+      "Samstag",
+      "Sonntag"
+    ],
+    "shortDays": ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
+    "months": [
+      "Januar",
+      "Februar",
+      "März",
+      "April",
+      "Mai",
+      "Juni",
+      "Juli",
+      "August",
+      "September",
+      "Oktober",
+      "November",
+      "Dezember"
+    ],
+    "shortMonths": [
+      "Jan",
+      "Feb",
+      "Mär",
+      "Apr",
+      "Mai",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Okt",
+      "Nov",
+      "Dez"
+    ]
+  },
+  "fund": {
+    "title": "Erspartes",
+    "categories": {
+      "category": "Kategorie",
+      "checking": "Rücklage",
+      "saving": "Erspartes",
+      "investment": "Investition",
+      "emergency": "Notfall"
+    },
+    "addItem": "Hinzufügen",
+    "modalTitle": "Erspartes hinzufügen",
+    "editItem": "Erspartes editieren"
+  },
+  "expense": {
+    "title": "Ausgaben",
+    "savings": "Rücklagen",
+    "categories": {
+      "category": "Kategorie",
+      "autoAndTransport": "Auto & Transport",
+      "billsAndUtilities": "Rechnungen & Nebenkosten",
+      "businessServices": "Dienstleistungen",
+      "education": "Weiterbildung",
+      "feesAndCharges": "Gebühren & Daueraufträge",
+      "foodAndDining": "Essen",
+      "giftsAndDonations": "Geschenke & Spenden",
+      "healthAndFitness": "Gesundheit & Fitness",
+      "investments": "Anschaffungen",
+      "miscExpense": "Sonstiges",
+      "personalCare": "Persönlich",
+      "savings": "Rücklagen",
+      "shopping": "Einkaufen",
+      "taxes": "Steuern"
+    },
+    "addItem": "Hinzufügen",
+    "modalTitle": "Ausgaben hinzufügen",
+    "editItem": "Ausgaben bearbeiten"
+  },
+  "budget": {
+    "title": "Finanzplan",
+    "categories": {
+      "category": "Kategorie",
+      "wants": "Gewünscht",
+      "needs": "Benötigt"
+    },
+    "addItem": "Hinzufügen",
+    "modalTitle": "Etwas finanzieren",
+    "editItem": "Bearbeiten"
+  },
+  "debt": {
+    "title": "Schulden",
+    "categories": {
+      "category": "Kategorie",
+      "secured": "Versichert",
+      "unsecured": "Unversichert"
+    },
+    "addItem": "Hinzufügen",
+    "modalTitle": "Schulden hinzufügen",
+    "editItem": "Bearbeiten"
+  },
+  "income": {
+    "title": "Einnahmen",
+    "categories": {
+      "category": "Kategorie",
+      "active": "Aktiv",
+      "passive": "Passiv",
+      "portfolio": "Anlage"
+    },
+    "addItem": "Hinzufügen",
+    "modalTitle": "Einnahmen hinzufügen",
+    "editItem": "Bearbeiten"
+  },
+  "recommendation": {
+    "save": "Rücklagen bilden",
+    "spend": "Für Ausgaben",
+    "invest": "Investiere",
+    "emergencyFund": "Sicherheitsücklage",
+    "needSourceOfIncome": "Weitere Einnahmequelle wird benötigt"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "foreground": "Vordergrund",
+    "background": "Hintergrund",
+    "alert": "Alarm",
+    "confirmation": "Bestätigung",
+    "language": "Language",
+    "editItem": "Einstellungen bearbeiten"
+  }
+}

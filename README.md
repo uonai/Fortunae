@@ -10,7 +10,7 @@ A video tutorial is available here https://www.youtube.com/watch?v=F_DSCm1LjIw
 
 ## Install & Run
 
-To install the desktop version of Fortunæ in Windows and Linux (Ubuntu):
+To install Fortunæ on Windows and Linux ([NixOS users see here](https://github.com/uonai/Fortunae/issues/1)):
 
 ```
 git clone https://github.com/uonai/Fortunae
@@ -21,7 +21,7 @@ npm start
 
 ## Localization
 
-Fortunae is available in English and Spanish. To toggle language, navigate to the settings using ctrl + 6.
+Fortunae is available in English, Spanish and German. To toggle language, navigate to the settings using ctrl + 6.
 
 ## Theming
 
