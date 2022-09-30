@@ -24,7 +24,7 @@
     "eslint": "^7.1.0"
   },
   "dependencies": {
-    "d3": "^5.16.0",
+    "d3": "^7.6.1",
     "electron-reload": "^1.5.0",
     "electron-store": "^5.1.1",
     "electron-window-manager": "^1.0.6",
